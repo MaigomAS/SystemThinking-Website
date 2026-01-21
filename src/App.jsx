@@ -9,7 +9,7 @@ import HeroRotator from './components/HeroRotator.jsx';
 import OrganizationModal from './components/OrganizationModal.jsx';
 import { organizations } from './data/organizations.js';
 
-const navLinks = ['Programa', 'Método', 'Experiencia', 'Equipo', 'FAQ', 'Contacto'];
+const navLinks = ['Programa', 'Método', 'Liderazgo', 'FAQ', 'Contacto'];
 
 const outcomes = [
   'Comprender situaciones complejas de naturaleza social, organizacional, tecnológica y territorial; identificar causas raíz y comunicar una visión estratégica clara para la acción.',
@@ -269,16 +269,19 @@ function App() {
         </div>
       </Section>
 
-      <Section id="equipo" title="A quién está dirigido" tone="light" className="reveal">
-        <div className="split split--reverse">
-          <Card variant="elevated" className="section-grid">
-            <p>
-              Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.
-            </p>
-            <p>
-              Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y capacidad real de acción.
-            </p>
-          </Card>
+      <Section id="liderazgo" title="Liderazgo" tone="light" className="reveal">
+        <div className="split split--reverse split--equipo">
+          <div className="section-grid">
+            <h3>A quién está dirigido</h3>
+            <Card variant="elevated" className="section-grid equipo-card">
+              <p>
+                Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.
+              </p>
+              <p>
+                Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y capacidad real de acción.
+              </p>
+            </Card>
+          </div>
           <div className="section-grid">
             <h3>Quiénes convocan</h3>
             <div className="card-grid">
@@ -299,12 +302,11 @@ function App() {
                   <p>{org.description}</p>
                   <div className="convocan-card__meta">
                     <span>{org.url ? 'Sitio disponible' : 'Detalle interno'}</span>
-                    <span>Ver preview →</span>
+                    <span>Ver más →</span>
                   </div>
                 </Card>
               ))}
             </div>
-            <p className="interactive__note">Nota: en el overview PDF se incluyen perfiles ampliados, agenda detallada y logística.</p>
           </div>
         </div>
       </Section>

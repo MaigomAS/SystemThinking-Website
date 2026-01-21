@@ -265,7 +265,7 @@ function DesignPlayground() {
               <p>{org.description}</p>
               <div className="org-card__meta">
                 <span>{org.url ? 'Sitio disponible' : 'Detalle interno'}</span>
-                <span>Ver preview →</span>
+                <span>Ver más →</span>
               </div>
             </Card>
           ))}

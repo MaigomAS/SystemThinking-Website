@@ -555,6 +555,15 @@ img {
   grid-template-columns: 1.1fr 1.3fr;
 }
 
+.split--equipo {
+  grid-template-columns: minmax(280px, 1fr) minmax(320px, 1.4fr);
+  align-items: start;
+}
+
+.equipo-card {
+  margin-top: 4px;
+}
+
 .gradient-card {
   height: 230px;
   border-radius: var(--radius-xl);
