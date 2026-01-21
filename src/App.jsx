@@ -1,4 +1,10 @@
 import { useMemo, useState } from 'react';
+import Button from './components/ui/Button.jsx';
+import Card from './components/ui/Card.jsx';
+import Chip from './components/ui/Chip.jsx';
+import Container from './components/ui/Container.jsx';
+import Section from './components/ui/Section.jsx';
+import DesignPlayground from './components/DesignPlayground.jsx';
 
 const navLinks = ['Programa', 'Método', 'Experiencia', 'Equipo', 'FAQ', 'Contacto'];
 
@@ -117,46 +123,39 @@ const zoomBlock = {
   note: 'Ejemplo: cuando solo se mide velocidad, se sacrifica calidad y confianza.',
 };
 
-function SectionShell({ id, eyebrow, title, description, children, tone = 'dark' }) {
-  return (
-    <section id={id} className={`section section--${tone}`}>
-      <div className="container">
-        {(eyebrow || title || description) && (
-          <header className="section__header">
-            {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-            {title && <h2>{title}</h2>}
-            {description && <p>{description}</p>}
-          </header>
-        )}
-        {children}
-      </div>
-    </section>
-  );
-}
-
 function App() {
   const [activeTab, setActiveTab] = useState('sintomas');
   const tabContent = interactiveTabs[activeTab];
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), []);
+  const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
+
+  if (isPlayground) {
+    return <DesignPlayground />;
+  }
 
   return (
     <div className="page">
       <header className="hero" id="inicio">
-        <div className="container">
-          <nav className="nav">
-            <div className="logo">ANNiA</div>
-            <div className="nav__links">
+        <Container>
+          <nav className="hero__topbar">
+            <div className="brandmark">ANNiA</div>
+            <div className="nav-links">
               {navLinks.map((link) => (
                 <a key={link} href={`#${link.toLowerCase()}`}>
                   {link}
                 </a>
               ))}
             </div>
-            <button className="nav__cta">Solicitar información →</button>
+            <div className="hero__actions">
+              <Button variant="ghost" as="a" href="/playground">
+                Playground
+              </Button>
+              <Button variant="secondary">Solicitar información →</Button>
+            </div>
           </nav>
 
           <div className="hero__content">
-            <div className="hero__badge">Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026</div>
+            <Chip className="hero__badge">Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026</Chip>
             <h1>Systemic Strategy &amp; Leadership for Complex Issues</h1>
             <p>
               Encuentro ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado,
@@ -164,38 +163,39 @@ function App() {
             </p>
             <p className="hero__meta">Bergen, Noruega · Noviembre 2026 · Presencial · Full-time</p>
             <div className="hero__actions">
-              <button className="btn btn--primary">Solicitar información →</button>
-              <button className="btn btn--ghost">Descargar overview (PDF)</button>
+              <Button variant="primary">Solicitar información →</Button>
+              <Button variant="ghost">Descargar overview (PDF)</Button>
             </div>
             <div className="hero__chips">
               {heroBadges.map((badge) => (
-                <span key={badge} className="chip">
+                <Chip key={badge} variant="outline">
                   {badge}
-                </span>
+                </Chip>
               ))}
             </div>
           </div>
-        </div>
+        </Container>
       </header>
 
-      <SectionShell
+      <Section
         id="metodo"
         title="Trabajar en los sistemas, no solo en los síntomas"
         description="Una forma clara y aplicada de entender qué significa pensar sistémicamente — sin teoría innecesaria."
       />
 
-      <SectionShell id="experiencia" eyebrow="Síntomas vs Sistema" title="Interactivo" tone="mid">
+      <Section id="experiencia" eyebrow="Síntomas vs Sistema" title="Interactivo" tone="mid">
         <div className="interactive">
-          <div className="interactive__card">
-            <div className="interactive__tabs">
+          <Card variant="glass" as="article">
+            <div className="interactive-tabs">
               {tabKeys.map((key) => (
-                <button
+                <Button
                   key={key}
-                  className={`tab ${activeTab === key ? 'tab--active' : ''}`}
+                  variant="ghost"
+                  className={`interactive-tab ${activeTab === key ? 'interactive-tab--active' : ''}`}
                   onClick={() => setActiveTab(key)}
                 >
                   {key === 'sintomas' ? 'Síntomas' : 'Sistema'}
-                </button>
+                </Button>
               ))}
             </div>
             <h3>{tabContent.title}</h3>
@@ -206,15 +206,15 @@ function App() {
               ))}
             </ul>
             <p className="interactive__note">{tabContent.note}</p>
-          </div>
-          <div className="interactive__grid">
+          </Card>
+          <div className="card-grid">
             {systemBlocks.map((block) => (
-              <article key={block.title} className="glass-card">
+              <Card key={block.title} variant="glass" as="article">
                 <h4>{block.title}</h4>
                 <p>{block.copy}</p>
-              </article>
+              </Card>
             ))}
-            <article className="glass-card glass-card--accent">
+            <Card variant="glass" as="article" className="section-grid" style={{ gridColumn: 'span 2' }}>
               <h4>{zoomBlock.title}</h4>
               <ul>
                 {zoomBlock.bullets.map((item) => (
@@ -222,70 +222,70 @@ function App() {
                 ))}
               </ul>
               <p className="interactive__note">{zoomBlock.note}</p>
-            </article>
+            </Card>
           </div>
         </div>
-      </SectionShell>
+      </Section>
 
-      <SectionShell id="programa" title="Qué ocurre en este encuentro" tone="mid">
-        <div className="card-row">
+      <Section id="programa" title="Qué ocurre en este encuentro" tone="mid">
+        <div className="card-grid">
           {highlightCards.map((card) => (
-            <article key={card.title} className="glass-card">
+            <Card key={card.title} variant="glass" as="article">
               <h4>{card.title}</h4>
               <p>{card.copy}</p>
-            </article>
+            </Card>
           ))}
         </div>
-      </SectionShell>
+      </Section>
 
-      <SectionShell id="resultados" title="Resultados para los participantes" tone="light">
+      <Section id="resultados" title="Resultados para los participantes" tone="light">
         <div className="result-grid">
           {outcomes.map((outcome) => (
-            <article key={outcome} className="card card--light">
+            <Card key={outcome} variant="elevated" as="article">
               <p>{outcome}</p>
-            </article>
+            </Card>
           ))}
         </div>
-      </SectionShell>
+      </Section>
 
-      <SectionShell id="formato" title="Formato del encuentro" tone="light">
-        <div className="format-grid">
+      <Section id="formato" title="Formato del encuentro" tone="light">
+        <div className="card-grid">
           {formatCards.map((card) => (
-            <article key={card.title} className="card card--light">
+            <Card key={card.title} variant="elevated" as="article">
               <span>{card.title}</span>
               <strong>{card.value}</strong>
-            </article>
+            </Card>
           ))}
         </div>
-        <p className="section__note">Cupos limitados · Aplicación requerida · Conversación de encaje disponible</p>
-      </SectionShell>
+        <p className="interactive__note">Cupos limitados · Aplicación requerida · Conversación de encaje disponible</p>
+      </Section>
 
-      <SectionShell id="bergen" title="Por qué Bergen, Noruega" tone="light">
+      <Section id="bergen" title="Por qué Bergen, Noruega" tone="light">
         <div className="split">
-          <div>
+          <div className="section-grid">
             <p>
-              La reflexión profunda y el aprendizaje sistémico requieren entornos que favorezcan el enfoque, el rigor y la
-              perspectiva de largo plazo.
+              La reflexión profunda y el aprendizaje sistémico requieren entornos que favorezcan el enfoque, el rigor y
+              la perspectiva de largo plazo.
             </p>
             <p>
               Noruega ofrece un contexto singular donde naturaleza, tecnología y gobernanza conviven de manera avanzada.
               Bergen no es un escenario decorativo: es parte del método.
             </p>
-            <div className="chip-row">
+            <div className="hero__chips">
               {['Inmersión', 'Enfoque', 'Rigor', 'Naturaleza + tecnología'].map((chip) => (
-                <span key={chip} className="chip chip--light">
+                <Chip key={chip} variant="solid">
                   {chip}
-                </span>
+                </Chip>
               ))}
             </div>
           </div>
           <div className="gradient-card" />
         </div>
-      </SectionShell>
+      </Section>
 
-      <SectionShell id="equipo" title="A quién está dirigido" tone="light">
+      <Section id="equipo" title="A quién está dirigido" tone="light">
         <div className="split split--reverse">
-          <div className="card card--light">
+          <Card variant="elevated" className="section-grid">
             <p>
               Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con
               responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.
@@ -294,65 +294,65 @@ function App() {
               Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y
               capacidad real de acción.
             </p>
-          </div>
-          <div>
+          </Card>
+          <div className="section-grid">
             <h3>Quiénes convocan</h3>
-            <div className="card-row">
+            <div className="card-grid">
               {convocanCards.map((card) => (
-                <article key={card.title} className="card card--light">
+                <Card key={card.title} variant="elevated" as="article">
                   <h4>{card.title}</h4>
                   <p>{card.copy}</p>
-                </article>
+                </Card>
               ))}
             </div>
-            <p className="section__note">
+            <p className="interactive__note">
               Nota: en el overview PDF se incluyen perfiles ampliados, agenda detallada y logística.
             </p>
           </div>
         </div>
-      </SectionShell>
+      </Section>
 
-      <SectionShell id="faq" title="Preguntas frecuentes" tone="light">
-        <div className="faq">
+      <Section id="faq" title="Preguntas frecuentes" tone="light">
+        <div className="faq-list">
           {faqs.map((question) => (
-            <button key={question} className="faq__item">
+            <button key={question} className="faq-item" type="button">
               <span>{question}</span>
-              <span className="faq__icon">+</span>
+              <span>+</span>
             </button>
           ))}
         </div>
-      </SectionShell>
+      </Section>
 
-      <SectionShell id="contacto" title="Conversemos" tone="light">
+      <Section id="contacto" title="Conversemos" tone="light">
         <div className="split">
-          <div>
+          <div className="section-grid">
             <p>
               Si estás evaluando tu participación o la de tu institución, podemos conversar directamente para explorar
               encaje y próximos pasos.
             </p>
             <div className="contact-actions">
-              <button className="btn btn--primary">WhatsApp</button>
-              <button className="btn btn--ghost btn--light">Agendar conversación</button>
+              <Button variant="primary">WhatsApp</Button>
+              <Button variant="outline">Agendar conversación</Button>
             </div>
-            <p className="section__note">
+            <p className="interactive__note">
               *Próximamente: asistente inteligente para responder preguntas frecuentes sobre el programa.*
             </p>
           </div>
-          <form className="card card--light form">
+          <Card variant="elevated" as="form" className="ui-form">
             <h4>Solicitud rápida</h4>
             <input type="text" placeholder="Nombre" />
             <input type="email" placeholder="Correo" />
             <input type="text" placeholder="Rol / Organización" />
-            <button type="button" className="btn btn--dark">
+            <Button type="button" variant="dark">
               Enviar
-            </button>
-            <p className="form__note">Al enviar, te contactamos con el overview y próximos pasos.</p>
-          </form>
+            </Button>
+            <p className="interactive__note">Al enviar, te contactamos con el overview y próximos pasos.</p>
+          </Card>
         </div>
-      </SectionShell>
+      </Section>
 
       <footer className="footer">
-        <div className="container footer__content">
+        <Container className="footer__content">
           <div>
             <p>ANNiA + Vida al Centro · Cohorte fundacional 2026</p>
             <p>
@@ -364,7 +364,7 @@ function App() {
             <span>Instagram</span>
             <span>YouTube</span>
           </div>
-        </div>
+        </Container>
       </footer>
     </div>
   );

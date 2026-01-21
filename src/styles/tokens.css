@@ -1,0 +1,77 @@
+:root {
+  color-scheme: light dark;
+
+  --font-family-base: 'Manrope', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-family-display: 'Manrope', 'Inter', system-ui, -apple-system, sans-serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.35rem;
+  --font-size-2xl: 1.8rem;
+  --font-size-3xl: 2.4rem;
+  --font-size-4xl: 3.25rem;
+
+  --line-height-tight: 1.1;
+  --line-height-snug: 1.35;
+  --line-height-base: 1.6;
+
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 2px 6px rgba(15, 23, 42, 0.2);
+  --shadow-sm: 0 6px 18px rgba(15, 23, 42, 0.18);
+  --shadow-md: 0 16px 32px rgba(15, 23, 42, 0.24);
+  --shadow-lg: 0 30px 60px rgba(6, 10, 20, 0.4);
+
+  --color-white: #ffffff;
+  --color-slate-50: #f5f7ff;
+  --color-slate-100: #e3e7f5;
+  --color-slate-200: #c7cede;
+  --color-slate-300: #a5afc4;
+  --color-slate-400: #8c96ad;
+  --color-slate-500: #6e7893;
+  --color-slate-600: #4b556f;
+  --color-slate-700: #343d56;
+  --color-slate-800: #1f2740;
+  --color-slate-900: #141a2f;
+  --color-slate-950: #0a0f1f;
+
+  --color-brand-1: #7ae7ff;
+  --color-brand-2: #7c6aff;
+  --color-brand-3: #2cd5c4;
+  --color-brand-4: #f58bff;
+
+  --color-success: #2ed4a7;
+  --color-warning: #fbbf24;
+  --color-danger: #fb7185;
+
+  --color-text-primary: #f8f9ff;
+  --color-text-secondary: #c8d0e5;
+  --color-text-muted: #9aa6c3;
+  --color-text-on-light: #101527;
+
+  --color-bg: #0a0f1f;
+  --color-bg-elevated: #111830;
+  --color-surface: #141c36;
+  --color-surface-2: #192347;
+  --color-surface-3: #1f2a52;
+  --color-border: rgba(138, 155, 204, 0.25);
+  --color-border-strong: rgba(138, 155, 204, 0.45);
+  --color-border-light: #e2e6f2;
+  --color-surface-light: #f8f9fc;
+
+  --gradient-primary: linear-gradient(135deg, #6fe7ff 0%, #7c6aff 50%, #f58bff 100%);
+  --gradient-secondary: linear-gradient(120deg, rgba(124, 106, 255, 0.2), rgba(44, 213, 196, 0.2));
+  --gradient-hero: radial-gradient(circle at top left, rgba(122, 231, 255, 0.25), transparent 55%),
+    radial-gradient(circle at 70% 20%, rgba(124, 106, 255, 0.2), transparent 45%),
+    linear-gradient(135deg, rgba(10, 15, 31, 0.92), rgba(15, 20, 43, 0.98));
+
+  --transition-fast: 150ms ease;
+  --transition-base: 220ms ease;
+}
