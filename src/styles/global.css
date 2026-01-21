@@ -288,6 +288,62 @@ img {
   padding: 120px 0 96px;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.hero-rotator {
+  position: relative;
+}
+
+.hero-rotator__track {
+  display: grid;
+}
+
+.hero-rotator__panel {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+
+.hero-rotator__panel.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-rotator__panel[aria-hidden='true'] {
+  pointer-events: none;
+}
+
+.hero-rotator__panel .playground-hero {
+  position: relative;
+}
+
+.hero-rotator__content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-rotator__image {
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/bergen-hero.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  filter: blur(2px);
+  transform: scale(1.04);
+  pointer-events: none;
+}
+
 .hero--parallax,
 .playground-hero {
   position: relative;
@@ -742,6 +798,11 @@ img {
   .playground-hero::after,
   .hero-orb {
     transform: none;
+  }
+
+  .hero-rotator__panel {
+    transform: none;
+    transition: none;
   }
 }
 
