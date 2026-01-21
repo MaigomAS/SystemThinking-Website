@@ -1,4 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
+import { organizations } from '../data/organizations.js';
+import OrganizationModal from './OrganizationModal.jsx';
 import Button from './ui/Button.jsx';
 import Card from './ui/Card.jsx';
 import Chip from './ui/Chip.jsx';
@@ -165,6 +167,19 @@ function HeroPreview({ variant }) {
 
 function DesignPlayground() {
   const [activeHero, setActiveHero] = useState('editorial');
+  const [isOrgModalOpen, setIsOrgModalOpen] = useState(false);
+  const [activeOrg, setActiveOrg] = useState(null);
+  const returnFocusRef = useRef(null);
+
+  const handleOpenOrg = useCallback((org, trigger) => {
+    returnFocusRef.current = trigger;
+    setActiveOrg(org);
+    setIsOrgModalOpen(true);
+  }, []);
+
+  const handleCloseOrg = useCallback(() => {
+    setIsOrgModalOpen(false);
+  }, []);
 
   return (
     <div className="playground">
@@ -232,6 +247,31 @@ function DesignPlayground() {
         </div>
       </Section>
 
+      <Section tone="mid" title="Quiénes convocan (demo)">
+        <div className="org-card-grid">
+          {organizations.map((org) => (
+            <Card
+              key={org.id}
+              variant="glass"
+              as="button"
+              type="button"
+              className="org-card"
+              onClick={(event) => handleOpenOrg(org, event.currentTarget)}
+            >
+              <div className="org-card__header">
+                <h4>{org.name}</h4>
+                <span className="org-card__tagline">{org.tagline}</span>
+              </div>
+              <p>{org.description}</p>
+              <div className="org-card__meta">
+                <span>{org.url ? 'Sitio disponible' : 'Detalle interno'}</span>
+                <span>Ver más →</span>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </Section>
+
       <Section tone="mid" title="Componentes base">
         <div className="section-grid">
           <div className="card-grid">
@@ -292,6 +332,8 @@ function DesignPlayground() {
           </Card>
         </div>
       </Section>
+
+      <OrganizationModal open={isOrgModalOpen} onClose={handleCloseOrg} org={activeOrg} returnFocusRef={returnFocusRef} />
     </div>
   );
 }

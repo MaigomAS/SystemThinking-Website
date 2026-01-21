@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Button from './components/ui/Button.jsx';
 import Card from './components/ui/Card.jsx';
 import Chip from './components/ui/Chip.jsx';
@@ -6,8 +6,10 @@ import Container from './components/ui/Container.jsx';
 import Section from './components/ui/Section.jsx';
 import DesignPlayground from './components/DesignPlayground.jsx';
 import HeroRotator from './components/HeroRotator.jsx';
+import OrganizationModal from './components/OrganizationModal.jsx';
+import { organizations } from './data/organizations.js';
 
-const navLinks = ['Programa', 'Método', 'Experiencia', 'Equipo', 'FAQ', 'Contacto'];
+const navLinks = ['Programa', 'Método', 'Liderazgo', 'FAQ', 'Contacto'];
 
 const outcomes = [
   'Comprender situaciones complejas de naturaleza social, organizacional, tecnológica y territorial; identificar causas raíz y comunicar una visión estratégica clara para la acción.',
@@ -39,28 +41,12 @@ const highlightCards = [
   },
 ];
 
-const convocanCards = [
-  {
-    title: 'ANNiA',
-    copy: 'Hub colaborativo con base en Noruega para proyectos y encuentros de alto impacto, enfocado en pensamiento sistémico, estrategia y condiciones para el bienestar colectivo.',
-  },
-  {
-    title: 'Vida al Centro',
-    copy: 'Iniciativa latinoamericana con más de 15 años de experiencia en liderazgo, transformación sistémica y aprendizaje aplicado en contextos sociales, organizacionales y territoriales.',
-  },
-  {
-    title: 'Dirección académica',
-    copy: 'Encuentro co-diseñado y facilitado por Vanesa Armendáriz, con trayectoria en iniciativas internacionales de liderazgo sistémico y sostenibilidad.',
-  },
-];
-
 const faqs = ['¿Es un programa introductorio?', '¿Qué incluye el encuentro?', '¿Cómo es el proceso de aplicación?', '¿Se publica el costo?'];
 
 // Reemplaza el número con el formato internacional sin "+" (ej: 56912345678).
 const whatsappPhone = '4741368586';
 const whatsappMessage = 'Hola, me gustaría conversar sobre el programa y próximos pasos.';
 const calendlyLink = 'https://calendly.com/annia-info/30min';
-
 const interactiveTabs = {
   sintomas: {
     title: 'Cuando solo tratamos síntomas, el sistema se defiende',
@@ -101,7 +87,27 @@ function App() {
     [],
   );
 
+  const returnFocusRef = useRef(null);
+
+  const whatsappLink = useMemo(
+    () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`,
+    [whatsappPhone, whatsappMessage],
+);
+
+
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeOrg, setActiveOrg] = useState(null);
+  const [isOrgModalOpen, setIsOrgModalOpen] = useState(false);
+
+  const handleOpenOrg = (org, focusTarget) => {
+    setActiveOrg(org);
+    setIsOrgModalOpen(true);
+    returnFocusRef.current = focusTarget;
+  };
+
+  const handleCloseOrg = () => {
+    setIsOrgModalOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 12);
@@ -267,27 +273,44 @@ function App() {
         </div>
       </Section>
 
-      <Section id="equipo" title="A quién está dirigido" tone="light" className="reveal">
-        <div className="split split--reverse">
-          <Card variant="elevated" className="section-grid">
-            <p>
-              Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.
-            </p>
-            <p>
-              Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y capacidad real de acción.
-            </p>
-          </Card>
+      <Section id="liderazgo" title="Liderazgo" tone="light" className="reveal">
+        <div className="split split--reverse split--equipo">
+          <div className="section-grid">
+            <h3>A quién está dirigido</h3>
+            <Card variant="elevated" className="section-grid equipo-card">
+              <p>
+                Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.
+              </p>
+              <p>
+                Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y capacidad real de acción.
+              </p>
+            </Card>
+          </div>
           <div className="section-grid">
             <h3>Quiénes convocan</h3>
             <div className="card-grid">
-              {convocanCards.map((card) => (
-                <Card key={card.title} variant="elevated" as="article">
-                  <h4>{card.title}</h4>
-                  <p>{card.copy}</p>
+              {organizations.map((org) => (
+                <Card
+                  key={org.id}
+                  variant="elevated"
+                  as="button"
+                  type="button"
+                  className="convocan-card"
+                  aria-haspopup="dialog"
+                  onClick={(event) => handleOpenOrg(org, event.currentTarget)}
+                >
+                  <div className="convocan-card__header">
+                    <h4>{org.name}</h4>
+                    <span className="convocan-card__tagline">{org.tagline}</span>
+                  </div>
+                  <p>{org.description}</p>
+                  <div className="convocan-card__meta">
+                    <span>{org.url ? 'Sitio disponible' : 'Detalle interno'}</span>
+                    <span>Ver más →</span>
+                  </div>
                 </Card>
               ))}
             </div>
-            <p className="interactive__note">Nota: en el overview PDF se incluyen perfiles ampliados, agenda detallada y logística.</p>
           </div>
         </div>
       </Section>
@@ -347,18 +370,48 @@ function App() {
 
       <footer className="footer reveal">
         <Container className="footer__content">
-          <div>
+          <div className="footer__meta">
             <p>ANNiA + Vida al Centro · Cohorte fundacional 2026</p>
             <p>
               Systemic Strategy &amp; Leadership for Complex Issues es una iniciativa educativa diseñada para fortalecer capacidades de liderazgo sistémico y estratégico frente a desafíos complejos.
             </p>
           </div>
-          <div className="footer__icons">
-            <span>Instagram</span>
-            <span>YouTube</span>
+          <div className="footer__icons" aria-label="Redes sociales">
+            <span className="footer__sky" aria-hidden="true" />
+            <a
+              className="footer__icon-link"
+              href="https://www.instagram.com/annia.no?igsh=MTYzcXkwY2hkczg4eA=="
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram de ANNiA"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7Zm5 3.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Zm5.5-.8a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span className="sr-only">Instagram</span>
+            </a>
+            <a
+              className="footer__icon-link"
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M21.7 8.1a3 3 0 0 0-2.1-2.1C17.8 5.5 12 5.5 12 5.5s-5.8 0-7.6.5A3 3 0 0 0 2.3 8.1 31.3 31.3 0 0 0 1.9 12c0 1.3.1 2.6.4 3.9a3 3 0 0 0 2.1 2.1c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a3 3 0 0 0 2.1-2.1c.3-1.3.4-2.6.4-3.9 0-1.3-.1-2.6-.4-3.9Zm-11 6V9.9l3.6 2.1-3.6 2.1Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span className="sr-only">YouTube</span>
+            </a>
           </div>
         </Container>
       </footer>
+      <OrganizationModal open={isOrgModalOpen} onClose={handleCloseOrg} org={activeOrg} returnFocusRef={returnFocusRef} />
     </div>
   );
 }
