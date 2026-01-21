@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Button from './components/ui/Button.jsx';
 import Card from './components/ui/Card.jsx';
 import Chip from './components/ui/Chip.jsx';
@@ -8,12 +8,7 @@ import DesignPlayground from './components/DesignPlayground.jsx';
 
 const navLinks = ['Programa', 'Método', 'Experiencia', 'Equipo', 'FAQ', 'Contacto'];
 
-const heroBadges = [
-  'Presencial · Full-time',
-  '2-20 Noviembre 2026',
-  'Bergen, Noruega',
-  'Cupos limitados · Aplicación',
-];
+const heroBadges = ['Presencial · Full-time', '2-20 Noviembre 2026', 'Bergen, Noruega', 'Cupos limitados · Aplicación'];
 
 const outcomes = [
   'Comprender situaciones complejas de naturaleza social, organizacional, tecnológica y territorial; identificar causas raíz y comunicar una visión estratégica clara para la acción.',
@@ -33,56 +28,41 @@ const formatCards = [
 const highlightCards = [
   {
     title: 'Comprensión sistémica aplicada',
-    copy:
-      'Aprendizaje y comprensión sistémica basada en casos reales, más allá de marcos conceptuales o motivacionales.',
+    copy: 'Aprendizaje y comprensión sistémica basada en casos reales, más allá de marcos conceptuales o motivacionales.',
   },
   {
     title: 'Estrategia en sistemas vivos',
-    copy:
-      'Integración equilibrada de dinámica de sistemas, estrategia sistémica y gobernanza, con aprendizajes derivados de prueba y error en proyectos reales.',
+    copy: 'Integración equilibrada de dinámica de sistemas, estrategia sistémica y gobernanza, con aprendizajes derivados de prueba y error en proyectos reales.',
   },
   {
     title: 'Decisión y acción en la práctica',
-    copy:
-      'Trabajo aplicado, análisis estratégico, reflexión colectiva y espacios de integración personal sobre lo que implica liderar en contextos complejos reales.',
+    copy: 'Trabajo aplicado, análisis estratégico, reflexión colectiva y espacios de integración personal sobre lo que implica liderar en contextos complejos reales.',
   },
 ];
 
 const convocanCards = [
   {
     title: 'ANNiA',
-    copy:
-      'Hub colaborativo con base en Noruega para proyectos y encuentros de alto impacto, enfocado en pensamiento sistémico, estrategia y condiciones para el bienestar colectivo.',
+    copy: 'Hub colaborativo con base en Noruega para proyectos y encuentros de alto impacto, enfocado en pensamiento sistémico, estrategia y condiciones para el bienestar colectivo.',
   },
   {
     title: 'Vida al Centro',
-    copy:
-      'Iniciativa latinoamericana con más de 15 años de experiencia en liderazgo, transformación sistémica y aprendizaje aplicado en contextos sociales, organizacionales y territoriales.',
+    copy: 'Iniciativa latinoamericana con más de 15 años de experiencia en liderazgo, transformación sistémica y aprendizaje aplicado en contextos sociales, organizacionales y territoriales.',
   },
   {
     title: 'Dirección académica',
-    copy:
-      'Encuentro co-diseñado y facilitado por Vanesa Armendáriz, con trayectoria en iniciativas internacionales de liderazgo sistémico y sostenibilidad.',
+    copy: 'Encuentro co-diseñado y facilitado por Vanesa Armendáriz, con trayectoria en iniciativas internacionales de liderazgo sistémico y sostenibilidad.',
   },
 ];
 
-const faqs = [
-  '¿Es un programa introductorio?',
-  '¿Qué incluye el encuentro?',
-  '¿Cómo es el proceso de aplicación?',
-  '¿Se publica el costo?',
-];
+const faqs = ['¿Es un programa introductorio?', '¿Qué incluye el encuentro?', '¿Cómo es el proceso de aplicación?', '¿Se publica el costo?'];
 
 const interactiveTabs = {
   sintomas: {
     title: 'Cuando solo tratamos síntomas, el sistema se defiende',
     description:
       'Las soluciones parciales pueden aliviar hoy... y agravar mañana: costos ocultos, efectos colaterales, fatiga organizacional.',
-    bullets: [
-      'Parchea sin cambiar la estructura',
-      'Produce efectos no deseados',
-      'Refuerza el problema a mediano plazo',
-    ],
+    bullets: ['Parchea sin cambiar la estructura', 'Produce efectos no deseados', 'Refuerza el problema a mediano plazo'],
     note: 'El reto no es “hacer más”, es decidir mejor dónde intervenir.',
   },
   sistema: {
@@ -95,31 +75,15 @@ const interactiveTabs = {
 };
 
 const systemBlocks = [
-  {
-    title: 'Incentivos',
-    copy: 'Lo que el sistema premia (y castiga) manda.',
-  },
-  {
-    title: 'Información',
-    copy: 'Lo que se sabe, cuándo se sabe y quién lo sabe.',
-  },
-  {
-    title: 'Relaciones',
-    copy: 'La coordinación es infraestructura, no “buena voluntad”.',
-  },
-  {
-    title: 'Reglas',
-    copy: 'Normas formales e informales: el verdadero “código” del sistema.',
-  },
+  { title: 'Incentivos', copy: 'Lo que el sistema premia (y castiga) manda.' },
+  { title: 'Información', copy: 'Lo que se sabe, cuándo se sabe y quién lo sabe.' },
+  { title: 'Relaciones', copy: 'La coordinación es infraestructura, no “buena voluntad”.' },
+  { title: 'Reglas', copy: 'Normas formales e informales: el verdadero “código” del sistema.' },
 ];
 
 const zoomBlock = {
   title: 'Zoom: Incentivos',
-  bullets: [
-    'Qué métricas gobiernan decisiones',
-    'Qué trade-offs se esconden',
-    'Qué comportamientos estamos reforzando',
-  ],
+  bullets: ['Qué métricas gobiernan decisiones', 'Qué trade-offs se esconden', 'Qué comportamientos estamos reforzando'],
   note: 'Ejemplo: cuando solo se mide velocidad, se sacrifica calidad y confianza.',
 };
 
@@ -129,15 +93,43 @@ function App() {
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), []);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
 
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 12);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const elements = document.querySelectorAll('.reveal');
+    if (!elements.length) return undefined;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+          }
+        });
+      },
+      { threshold: 0.2 },
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
   if (isPlayground) {
     return <DesignPlayground />;
   }
 
   return (
     <div className="page">
-      <header className="hero" id="inicio">
+      <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
         <Container>
-          <nav className="hero__topbar">
+          <nav className="navbar__inner" aria-label="Navegación principal">
             <div className="brandmark">ANNiA</div>
             <div className="nav-links">
               {navLinks.map((link) => (
@@ -147,19 +139,25 @@ function App() {
               ))}
             </div>
             <div className="hero__actions">
-              <Button variant="ghost" as="a" href="/playground">
+              <Button variant="ghost" as="a" href="/playground" aria-label="Abrir playground de diseño">
                 Playground
               </Button>
-              <Button variant="secondary">Solicitar información →</Button>
+              <Button variant="secondary" aria-label="Solicitar información del programa">
+                Solicitar información →
+              </Button>
             </div>
           </nav>
+        </Container>
+      </header>
 
-          <div className="hero__content">
+      <header className="hero" id="inicio">
+        <Container>
+          <div className="hero__content reveal">
             <Chip className="hero__badge">Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026</Chip>
             <h1>Systemic Strategy &amp; Leadership for Complex Issues</h1>
             <p>
-              Encuentro ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado,
-              industria y sociedad civil que toman decisiones estratégicas en contextos de alta complejidad.
+              Encuentro ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado, industria y
+              sociedad civil que toman decisiones estratégicas en contextos de alta complejidad.
             </p>
             <p className="hero__meta">Bergen, Noruega · Noviembre 2026 · Presencial · Full-time</p>
             <div className="hero__actions">
@@ -181,18 +179,20 @@ function App() {
         id="metodo"
         title="Trabajar en los sistemas, no solo en los síntomas"
         description="Una forma clara y aplicada de entender qué significa pensar sistémicamente — sin teoría innecesaria."
+        className="reveal"
       />
 
-      <Section id="experiencia" eyebrow="Síntomas vs Sistema" title="Interactivo" tone="mid">
+      <Section id="experiencia" eyebrow="Síntomas vs Sistema" title="Interactivo" tone="mid" className="reveal">
         <div className="interactive">
           <Card variant="glass" as="article">
-            <div className="interactive-tabs">
+            <div className="interactive-tabs" aria-label="Selector de enfoque: síntomas o sistema">
               {tabKeys.map((key) => (
                 <Button
                   key={key}
                   variant="ghost"
                   className={`interactive-tab ${activeTab === key ? 'interactive-tab--active' : ''}`}
                   onClick={() => setActiveTab(key)}
+                  aria-label={key === 'sintomas' ? 'Ver enfoque de síntomas' : 'Ver enfoque de sistema'}
                 >
                   {key === 'sintomas' ? 'Síntomas' : 'Sistema'}
                 </Button>
@@ -207,6 +207,7 @@ function App() {
             </ul>
             <p className="interactive__note">{tabContent.note}</p>
           </Card>
+
           <div className="card-grid">
             {systemBlocks.map((block) => (
               <Card key={block.title} variant="glass" as="article">
@@ -227,7 +228,7 @@ function App() {
         </div>
       </Section>
 
-      <Section id="programa" title="Qué ocurre en este encuentro" tone="mid">
+      <Section id="programa" title="Qué ocurre en este encuentro" tone="mid" className="reveal">
         <div className="card-grid">
           {highlightCards.map((card) => (
             <Card key={card.title} variant="glass" as="article">
@@ -238,7 +239,7 @@ function App() {
         </div>
       </Section>
 
-      <Section id="resultados" title="Resultados para los participantes" tone="light">
+      <Section id="resultados" title="Resultados para los participantes" tone="light" className="reveal">
         <div className="result-grid">
           {outcomes.map((outcome) => (
             <Card key={outcome} variant="elevated" as="article">
@@ -248,7 +249,7 @@ function App() {
         </div>
       </Section>
 
-      <Section id="formato" title="Formato del encuentro" tone="light">
+      <Section id="formato" title="Formato del encuentro" tone="light" className="reveal">
         <div className="card-grid">
           {formatCards.map((card) => (
             <Card key={card.title} variant="elevated" as="article">
@@ -260,16 +261,14 @@ function App() {
         <p className="interactive__note">Cupos limitados · Aplicación requerida · Conversación de encaje disponible</p>
       </Section>
 
-      <Section id="bergen" title="Por qué Bergen, Noruega" tone="light">
+      <Section id="bergen" title="Por qué Bergen, Noruega" tone="light" className="reveal">
         <div className="split">
           <div className="section-grid">
             <p>
-              La reflexión profunda y el aprendizaje sistémico requieren entornos que favorezcan el enfoque, el rigor y
-              la perspectiva de largo plazo.
+              La reflexión profunda y el aprendizaje sistémico requieren entornos que favorezcan el enfoque, el rigor y la perspectiva de largo plazo.
             </p>
             <p>
-              Noruega ofrece un contexto singular donde naturaleza, tecnología y gobernanza conviven de manera avanzada.
-              Bergen no es un escenario decorativo: es parte del método.
+              Noruega ofrece un contexto singular donde naturaleza, tecnología y gobernanza conviven de manera avanzada. Bergen no es un escenario decorativo: es parte del método.
             </p>
             <div className="hero__chips">
               {['Inmersión', 'Enfoque', 'Rigor', 'Naturaleza + tecnología'].map((chip) => (
@@ -283,16 +282,14 @@ function App() {
         </div>
       </Section>
 
-      <Section id="equipo" title="A quién está dirigido" tone="light">
+      <Section id="equipo" title="A quién está dirigido" tone="light" className="reveal">
         <div className="split split--reverse">
           <Card variant="elevated" className="section-grid">
             <p>
-              Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con
-              responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.
+              Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.
             </p>
             <p>
-              Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y
-              capacidad real de acción.
+              Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y capacidad real de acción.
             </p>
           </Card>
           <div className="section-grid">
@@ -305,45 +302,43 @@ function App() {
                 </Card>
               ))}
             </div>
-            <p className="interactive__note">
-              Nota: en el overview PDF se incluyen perfiles ampliados, agenda detallada y logística.
-            </p>
+            <p className="interactive__note">Nota: en el overview PDF se incluyen perfiles ampliados, agenda detallada y logística.</p>
           </div>
         </div>
       </Section>
 
-      <Section id="faq" title="Preguntas frecuentes" tone="light">
+      <Section id="faq" title="Preguntas frecuentes" tone="light" className="reveal">
         <div className="faq-list">
           {faqs.map((question) => (
-            <button key={question} className="faq-item" type="button">
+            <button key={question} className="faq-item" type="button" aria-label={`Ver respuesta: ${question}`}>
               <span>{question}</span>
-              <span>+</span>
+              <span aria-hidden="true">+</span>
             </button>
           ))}
         </div>
       </Section>
 
-      <Section id="contacto" title="Conversemos" tone="light">
+      <Section id="contacto" title="Conversemos" tone="light" className="reveal cta-section">
         <div className="split">
           <div className="section-grid">
-            <p>
-              Si estás evaluando tu participación o la de tu institución, podemos conversar directamente para explorar
-              encaje y próximos pasos.
-            </p>
+            <p>Si estás evaluando tu participación o la de tu institución, podemos conversar directamente para explorar encaje y próximos pasos.</p>
             <div className="contact-actions">
-              <Button variant="primary">WhatsApp</Button>
-              <Button variant="outline">Agendar conversación</Button>
+              <Button variant="primary" aria-label="Contactar por WhatsApp">
+                WhatsApp
+              </Button>
+              <Button variant="outline" aria-label="Agendar una conversación">
+                Agendar conversación
+              </Button>
             </div>
-            <p className="interactive__note">
-              *Próximamente: asistente inteligente para responder preguntas frecuentes sobre el programa.*
-            </p>
+            <p className="interactive__note">*Próximamente: asistente inteligente para responder preguntas frecuentes sobre el programa.*</p>
           </div>
-          <Card variant="elevated" as="form" className="ui-form">
+
+          <Card variant="elevated" as="form" className="ui-form" aria-label="Formulario de solicitud rápida">
             <h4>Solicitud rápida</h4>
-            <input type="text" placeholder="Nombre" />
-            <input type="email" placeholder="Correo" />
-            <input type="text" placeholder="Rol / Organización" />
-            <Button type="button" variant="dark">
+            <input type="text" placeholder="Nombre" aria-label="Nombre" />
+            <input type="email" placeholder="Correo" aria-label="Correo" />
+            <input type="text" placeholder="Rol / Organización" aria-label="Rol u organización" />
+            <Button type="button" variant="dark" aria-label="Enviar solicitud">
               Enviar
             </Button>
             <p className="interactive__note">Al enviar, te contactamos con el overview y próximos pasos.</p>
@@ -351,13 +346,12 @@ function App() {
         </div>
       </Section>
 
-      <footer className="footer">
+      <footer className="footer reveal">
         <Container className="footer__content">
           <div>
             <p>ANNiA + Vida al Centro · Cohorte fundacional 2026</p>
             <p>
-              Systemic Strategy &amp; Leadership for Complex Issues es una iniciativa educativa diseñada para fortalecer
-              capacidades de liderazgo sistémico y estratégico frente a desafíos complejos.
+              Systemic Strategy &amp; Leadership for Complex Issues es una iniciativa educativa diseñada para fortalecer capacidades de liderazgo sistémico y estratégico frente a desafíos complejos.
             </p>
           </div>
           <div className="footer__icons">
