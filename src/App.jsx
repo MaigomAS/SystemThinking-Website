@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Button from './components/ui/Button.jsx';
 import Card from './components/ui/Card.jsx';
 import Chip from './components/ui/Chip.jsx';
@@ -6,6 +6,8 @@ import Container from './components/ui/Container.jsx';
 import Section from './components/ui/Section.jsx';
 import DesignPlayground from './components/DesignPlayground.jsx';
 import HeroRotator from './components/HeroRotator.jsx';
+import OrganizationModal from './components/OrganizationModal.jsx';
+import { organizations } from './data/organizations.js';
 
 const navLinks = ['Programa', 'Método', 'Experiencia', 'Equipo', 'FAQ', 'Contacto'];
 
@@ -36,21 +38,6 @@ const highlightCards = [
   {
     title: 'Decisión y acción en la práctica',
     copy: 'Trabajo aplicado, análisis estratégico, reflexión colectiva y espacios de integración personal sobre lo que implica liderar en contextos complejos reales.',
-  },
-];
-
-const convocanCards = [
-  {
-    title: 'ANNiA',
-    copy: 'Hub colaborativo con base en Noruega para proyectos y encuentros de alto impacto, enfocado en pensamiento sistémico, estrategia y condiciones para el bienestar colectivo.',
-  },
-  {
-    title: 'Vida al Centro',
-    copy: 'Iniciativa latinoamericana con más de 15 años de experiencia en liderazgo, transformación sistémica y aprendizaje aplicado en contextos sociales, organizacionales y territoriales.',
-  },
-  {
-    title: 'Dirección académica',
-    copy: 'Encuentro co-diseñado y facilitado por Vanesa Armendáriz, con trayectoria en iniciativas internacionales de liderazgo sistémico y sostenibilidad.',
   },
 ];
 
@@ -95,12 +82,28 @@ function App() {
   const tabContent = interactiveTabs[activeTab];
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), []);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
+
+  const returnFocusRef = useRef(null);
+
   const whatsappLink = useMemo(
     () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`,
-    [],
-  );
+    [whatsappPhone, whatsappMessage],
+);
+
 
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeOrg, setActiveOrg] = useState(null);
+  const [isOrgModalOpen, setIsOrgModalOpen] = useState(false);
+
+  const handleOpenOrg = (org, focusTarget) => {
+    setActiveOrg(org);
+    setIsOrgModalOpen(true);
+    returnFocusRef.current = focusTarget;
+  };
+
+  const handleCloseOrg = () => {
+    setIsOrgModalOpen(false);
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 12);
@@ -279,10 +282,25 @@ function App() {
           <div className="section-grid">
             <h3>Quiénes convocan</h3>
             <div className="card-grid">
-              {convocanCards.map((card) => (
-                <Card key={card.title} variant="elevated" as="article">
-                  <h4>{card.title}</h4>
-                  <p>{card.copy}</p>
+              {organizations.map((org) => (
+                <Card
+                  key={org.id}
+                  variant="elevated"
+                  as="button"
+                  type="button"
+                  className="convocan-card"
+                  aria-haspopup="dialog"
+                  onClick={(event) => handleOpenOrg(org, event.currentTarget)}
+                >
+                  <div className="convocan-card__header">
+                    <h4>{org.name}</h4>
+                    <span className="convocan-card__tagline">{org.tagline}</span>
+                  </div>
+                  <p>{org.description}</p>
+                  <div className="convocan-card__meta">
+                    <span>{org.url ? 'Sitio disponible' : 'Detalle interno'}</span>
+                    <span>Ver preview →</span>
+                  </div>
                 </Card>
               ))}
             </div>
@@ -351,6 +369,7 @@ function App() {
           </div>
         </Container>
       </footer>
+      <OrganizationModal open={isOrgModalOpen} onClose={handleCloseOrg} org={activeOrg} returnFocusRef={returnFocusRef} />
     </div>
   );
 }
