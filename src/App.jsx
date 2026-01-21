@@ -359,15 +359,44 @@ function App() {
 
       <footer className="footer reveal">
         <Container className="footer__content">
-          <div>
+          <div className="footer__meta">
             <p>ANNiA + Vida al Centro · Cohorte fundacional 2026</p>
             <p>
               Systemic Strategy &amp; Leadership for Complex Issues es una iniciativa educativa diseñada para fortalecer capacidades de liderazgo sistémico y estratégico frente a desafíos complejos.
             </p>
           </div>
-          <div className="footer__icons">
-            <span>Instagram</span>
-            <span>YouTube</span>
+          <div className="footer__icons" aria-label="Redes sociales">
+            <span className="footer__sky" aria-hidden="true" />
+            <a
+              className="footer__icon-link"
+              href="https://www.instagram.com/annia.no?igsh=MTYzcXkwY2hkczg4eA=="
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram de ANNiA"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7Zm5 3.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Zm0 2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6Zm5.5-.8a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span className="sr-only">Instagram</span>
+            </a>
+            <a
+              className="footer__icon-link"
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M21.7 8.1a3 3 0 0 0-2.1-2.1C17.8 5.5 12 5.5 12 5.5s-5.8 0-7.6.5A3 3 0 0 0 2.3 8.1 31.3 31.3 0 0 0 1.9 12c0 1.3.1 2.6.4 3.9a3 3 0 0 0 2.1 2.1c1.8.5 7.6.5 7.6.5s5.8 0 7.6-.5a3 3 0 0 0 2.1-2.1c.3-1.3.4-2.6.4-3.9 0-1.3-.1-2.6-.4-3.9Zm-11 6V9.9l3.6 2.1-3.6 2.1Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span className="sr-only">YouTube</span>
+            </a>
           </div>
         </Container>
       </footer>
