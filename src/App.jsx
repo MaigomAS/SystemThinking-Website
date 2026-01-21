@@ -1,14 +1,13 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import Button from './components/ui/Button.jsx';
 import Card from './components/ui/Card.jsx';
 import Chip from './components/ui/Chip.jsx';
 import Container from './components/ui/Container.jsx';
 import Section from './components/ui/Section.jsx';
 import DesignPlayground from './components/DesignPlayground.jsx';
+import HeroRotator from './components/HeroRotator.jsx';
 
 const navLinks = ['Programa', 'Método', 'Experiencia', 'Equipo', 'FAQ', 'Contacto'];
-
-const heroBadges = ['Presencial · Full-time', '2-20 Noviembre 2026', 'Bergen, Noruega', 'Cupos limitados · Aplicación'];
 
 const outcomes = [
   'Comprender situaciones complejas de naturaleza social, organizacional, tecnológica y territorial; identificar causas raíz y comunicar una visión estratégica clara para la acción.',
@@ -92,7 +91,6 @@ function App() {
   const tabContent = interactiveTabs[activeTab];
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), []);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
-  const heroRef = useRef(null);
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -120,24 +118,6 @@ function App() {
 
     elements.forEach((element) => observer.observe(element));
     return () => observer.disconnect();
-  }, []);
-
-  const handleHeroMove = useCallback((event) => {
-    const hero = heroRef.current;
-    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const rect = hero.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    hero.style.setProperty('--parallax-x', `${x * 20}px`);
-    hero.style.setProperty('--parallax-y', `${y * 14}px`);
-  }, []);
-
-  const handleHeroLeave = useCallback(() => {
-    const hero = heroRef.current;
-    if (hero) {
-      hero.style.setProperty('--parallax-x', '0px');
-      hero.style.setProperty('--parallax-y', '0px');
-    }
   }, []);
 
   if (isPlayground) {
@@ -169,38 +149,7 @@ function App() {
         </Container>
       </header>
 
-      <header
-        className="hero hero--parallax"
-        id="inicio"
-        ref={heroRef}
-        onMouseMove={handleHeroMove}
-        onMouseLeave={handleHeroLeave}
-      >
-        <Container>
-          <div className="hero__content reveal">
-            <Chip className="hero__badge">Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026</Chip>
-            <h1>Systemic Strategy &amp; Leadership for Complex Issues</h1>
-            <p>
-              Encuentro ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado, industria y
-              sociedad civil que toman decisiones estratégicas en contextos de alta complejidad.
-            </p>
-            <p className="hero__meta">Bergen, Noruega · Noviembre 2026 · Presencial · Full-time</p>
-            <div className="hero__actions">
-              <Button variant="primary" className="cta-glow">
-                Solicitar información →
-              </Button>
-              <Button variant="ghost">Descargar overview (PDF)</Button>
-            </div>
-            <div className="hero__chips">
-              {heroBadges.map((badge) => (
-                <Chip key={badge} variant="outline">
-                  {badge}
-                </Chip>
-              ))}
-            </div>
-          </div>
-        </Container>
-      </header>
+      <HeroRotator />
 
       <Section
         id="metodo"
