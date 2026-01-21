@@ -282,6 +282,7 @@ img {
   padding: 120px 0 96px;
 }
 
+/* Sticky glass navbar */
 .navbar {
   position: sticky;
   top: 0;
@@ -453,6 +454,7 @@ img {
   box-shadow: var(--shadow-xs);
 }
 
+/* Scroll reveal */
 .reveal {
   opacity: 0;
   transform: translateY(18px);
