@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Button from './components/ui/Button.jsx';
 import Card from './components/ui/Card.jsx';
 import Chip from './components/ui/Chip.jsx';
@@ -92,6 +92,7 @@ function App() {
   const tabContent = interactiveTabs[activeTab];
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), []);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
+  const heroRef = useRef(null);
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -119,6 +120,24 @@ function App() {
 
     elements.forEach((element) => observer.observe(element));
     return () => observer.disconnect();
+  }, []);
+
+  const handleHeroMove = useCallback((event) => {
+    const hero = heroRef.current;
+    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const rect = hero.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    hero.style.setProperty('--parallax-x', `${x * 20}px`);
+    hero.style.setProperty('--parallax-y', `${y * 14}px`);
+  }, []);
+
+  const handleHeroLeave = useCallback(() => {
+    const hero = heroRef.current;
+    if (hero) {
+      hero.style.setProperty('--parallax-x', '0px');
+      hero.style.setProperty('--parallax-y', '0px');
+    }
   }, []);
 
   if (isPlayground) {
@@ -150,7 +169,13 @@ function App() {
         </Container>
       </header>
 
-      <header className="hero" id="inicio">
+      <header
+        className="hero hero--parallax"
+        id="inicio"
+        ref={heroRef}
+        onMouseMove={handleHeroMove}
+        onMouseLeave={handleHeroLeave}
+      >
         <Container>
           <div className="hero__content reveal">
             <Chip className="hero__badge">Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026</Chip>
@@ -161,7 +186,9 @@ function App() {
             </p>
             <p className="hero__meta">Bergen, Noruega · Noviembre 2026 · Presencial · Full-time</p>
             <div className="hero__actions">
-              <Button variant="primary">Solicitar información →</Button>
+              <Button variant="primary" className="cta-glow">
+                Solicitar información →
+              </Button>
               <Button variant="ghost">Descargar overview (PDF)</Button>
             </div>
             <div className="hero__chips">
