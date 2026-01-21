@@ -14,7 +14,7 @@ export const organizations = [
       'Enfoque en sostenibilidad y bienestar como indicadores clave.',
     ],
     why: 'Eleva el estándar de diseño y ejecución de experiencias premium en entornos complejos.',
-    url: 'https://www.ania.no',
+    url: 'https://annia.no',
     previewImage: anniaPreview,
   },
   {

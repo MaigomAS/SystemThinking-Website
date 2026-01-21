@@ -117,7 +117,7 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
             ))}
           </ul>
           <div className="org-modal__why">
-            <span>Por qué suma</span>
+            <span>Por qué convoca</span>
             <p>{org.why}</p>
           </div>
           <div className="org-modal__actions">
@@ -125,11 +125,7 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
               <Button as="a" href={org.url} target="_blank" rel="noreferrer" variant="primary">
                 Visitar sitio →
               </Button>
-            ) : (
-              <Button variant="secondary" disabled>
-                Sitio en preparación
-              </Button>
-            )}
+            ) : null}
             <Button variant="ghost" onClick={onClose}>
               Cerrar
             </Button>
