@@ -1,3 +1,4 @@
+import { useCallback, useRef, useState } from 'react';
 import Button from './ui/Button.jsx';
 import Card from './ui/Card.jsx';
 import Chip from './ui/Chip.jsx';
@@ -31,7 +32,140 @@ const shadowTokens = [
   { name: 'LG', value: 'var(--shadow-lg)' },
 ];
 
+const heroVariants = [
+  { id: 'editorial', label: 'Hero A · Editorial minimal' },
+  { id: 'orbs', label: 'Hero B · Gradientes y orbes' },
+  { id: 'split', label: 'Hero C · Split con mock abstracto' },
+];
+
+function HeroPreview({ variant }) {
+  const heroRef = useRef(null);
+
+  const handleMove = useCallback((event) => {
+    const hero = heroRef.current;
+    if (!hero || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const rect = hero.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    hero.style.setProperty('--parallax-x', `${x * 18}px`);
+    hero.style.setProperty('--parallax-y', `${y * 12}px`);
+  }, []);
+
+  const handleLeave = useCallback(() => {
+    const hero = heroRef.current;
+    if (hero) {
+      hero.style.setProperty('--parallax-x', '0px');
+      hero.style.setProperty('--parallax-y', '0px');
+    }
+  }, []);
+
+  const content = (() => {
+    switch (variant) {
+      case 'orbs':
+        return (
+          <div className="playground-hero__grid">
+            <div className="playground-hero__content">
+              <Chip className="hero__badge">Encuentro fundacional · Cohorte 2026</Chip>
+              <h1>Una experiencia inmersiva para liderar en sistemas vivos.</h1>
+              <p>
+                Diseñamos un espacio de alta exigencia intelectual y emocional para equipos que necesitan ver el sistema completo,
+                tomar mejores decisiones y activar cambios reales.
+              </p>
+              <div className="hero__actions">
+                <Button variant="primary" className="cta-glow">
+                  Aplicar ahora →
+                </Button>
+                <Button variant="ghost">Agenda una llamada</Button>
+              </div>
+              <div className="hero__chips">
+                {['Presencial', 'Full-time', 'Bergen, Noruega'].map((badge) => (
+                  <Chip key={badge} variant="outline">
+                    {badge}
+                  </Chip>
+                ))}
+              </div>
+            </div>
+            <div className="playground-hero__visual" aria-hidden="true">
+              <div className="hero-orb hero-orb--one" />
+              <div className="hero-orb hero-orb--two" />
+              <div className="hero-orb hero-orb--three" />
+              <div className="hero-orb hero-orb--four" />
+            </div>
+          </div>
+        );
+      case 'split':
+        return (
+          <div className="playground-hero__split">
+            <div className="playground-hero__content">
+              <Chip className="hero__badge">Laboratorio de estrategia sistémica</Chip>
+              <h1>Estrategia, gobernanza y ejecución en un mismo espacio.</h1>
+              <p>
+                Un formato híbrido entre think tank y taller intensivo, con casos reales, trabajo aplicado y una red global de líderes
+                sistémicos.
+              </p>
+              <p className="hero__meta">3 semanas intensivas · Nov 2026 · Cupos limitados</p>
+              <div className="hero__actions">
+                <Button variant="primary" className="cta-glow">
+                  Solicitar información →
+                </Button>
+                <Button variant="secondary">Ver programa completo</Button>
+              </div>
+            </div>
+            <Card variant="glass" className="hero-mock">
+              <div className="hero-mock__header">
+                <span>Simulación</span>
+                <span>Panel estratégico</span>
+              </div>
+              <div className="hero-mock__grid">
+                <div className="hero-mock__block hero-mock__block--primary" />
+                <div className="hero-mock__block hero-mock__block--secondary" />
+                <div className="hero-mock__block hero-mock__block--tertiary" />
+              </div>
+              <div className="hero-mock__lines">
+                {Array.from({ length: 4 }).map((_, index) => (
+                  <span key={index} />
+                ))}
+              </div>
+            </Card>
+          </div>
+        );
+      case 'editorial':
+      default:
+        return (
+          <div className="playground-hero__content playground-hero__content--editorial">
+            <Chip className="hero__badge">Encuentro ejecutivo · 2026</Chip>
+            <h1>Systemic Strategy &amp; Leadership for Complex Issues.</h1>
+            <p className="playground-hero__lead">
+              Un programa editorialmente curado para líderes que quieren intervenir en sistemas complejos con precisión, profundidad y
+              sensibilidad humana.
+            </p>
+            <div className="hero__actions">
+              <Button variant="primary" className="cta-glow">
+                Aplicar al programa →
+              </Button>
+              <Button variant="ghost">Descargar overview</Button>
+            </div>
+            <p className="hero__meta">Bergen, Noruega · Noviembre 2026 · Presencial</p>
+          </div>
+        );
+    }
+  })();
+
+  return (
+    <div
+      className={`playground-hero playground-hero--${variant} hero--parallax`}
+      ref={heroRef}
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+    >
+      <Container>{content}</Container>
+    </div>
+  );
+}
+
 function DesignPlayground() {
+  const [activeHero, setActiveHero] = useState('editorial');
+
   return (
     <div className="playground">
       <Container>
@@ -44,6 +178,23 @@ function DesignPlayground() {
           </p>
         </header>
       </Container>
+
+      <Section tone="dark" title="Hero · Variantes creativas">
+        <div className="hero-variant-selector" role="tablist" aria-label="Selector de variantes de hero">
+          {heroVariants.map((variant) => (
+            <Button
+              key={variant.id}
+              variant={activeHero === variant.id ? 'secondary' : 'ghost'}
+              className={activeHero === variant.id ? 'hero-variant-button is-active' : 'hero-variant-button'}
+              onClick={() => setActiveHero(variant.id)}
+              aria-pressed={activeHero === variant.id}
+            >
+              {variant.label}
+            </Button>
+          ))}
+        </div>
+        <HeroPreview variant={activeHero} />
+      </Section>
 
       <Section tone="mid" title="Paleta & Tokens">
         <div className="token-grid">
