@@ -56,6 +56,10 @@ const convocanCards = [
 
 const faqs = ['¿Es un programa introductorio?', '¿Qué incluye el encuentro?', '¿Cómo es el proceso de aplicación?', '¿Se publica el costo?'];
 
+// Reemplaza el número con el formato internacional sin "+" (ej: 56912345678).
+const whatsappPhone = '4741368586';
+const whatsappMessage = 'Hola, me gustaría conversar sobre el programa y próximos pasos.';
+
 const interactiveTabs = {
   sintomas: {
     title: 'Cuando solo tratamos síntomas, el sistema se defiende',
@@ -91,6 +95,10 @@ function App() {
   const tabContent = interactiveTabs[activeTab];
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), []);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
+  const whatsappLink = useMemo(
+    () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`,
+    [],
+  );
 
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -299,7 +307,14 @@ function App() {
           <div className="section-grid">
             <p>Si estás evaluando tu participación o la de tu institución, podemos conversar directamente para explorar encaje y próximos pasos.</p>
             <div className="contact-actions">
-              <Button variant="primary" aria-label="Contactar por WhatsApp">
+              <Button
+                as="a"
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                variant="primary"
+                aria-label="Contactar por WhatsApp"
+              >
                 WhatsApp
               </Button>
               <Button variant="outline" aria-label="Agendar una conversación">
