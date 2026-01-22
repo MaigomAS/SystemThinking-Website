@@ -82,11 +82,6 @@ function App() {
   const tabContent = interactiveTabs[activeTab];
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), []);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
-  const whatsappLink = useMemo(
-    () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`,
-    [],
-  );
-
   const returnFocusRef = useRef(null);
 
   const whatsappLink = useMemo(
