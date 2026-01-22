@@ -46,7 +46,7 @@ const faqs = ['¿Es un programa introductorio?', '¿Qué incluye el encuentro?',
 // Reemplaza el número con el formato internacional sin "+" (ej: 56912345678).
 const whatsappPhone = '4741368586';
 const whatsappMessage = 'Hola, me gustaría conversar sobre el programa y próximos pasos.';
-
+const calendlyLink = 'https://calendly.com/annia-info/30min';
 const interactiveTabs = {
   sintomas: {
     title: 'Cuando solo tratamos síntomas, el sistema se defiende',
@@ -82,7 +82,6 @@ function App() {
   const tabContent = interactiveTabs[activeTab];
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), []);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
-
   const returnFocusRef = useRef(null);
 
   const whatsappLink = useMemo(
@@ -337,7 +336,14 @@ function App() {
               >
                 WhatsApp
               </Button>
-              <Button variant="outline" aria-label="Agendar una conversación">
+              <Button
+                as="a"
+                href={calendlyLink}
+                target="_blank"
+                rel="noreferrer"
+                variant="outline"
+                aria-label="Agendar una conversación"
+              >
                 Agendar conversación
               </Button>
             </div>
