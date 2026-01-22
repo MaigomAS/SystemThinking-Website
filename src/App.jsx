@@ -12,11 +12,31 @@ import { organizations } from './data/organizations.js';
 const navLinks = ['Programa', 'Método', 'Liderazgo', 'FAQ', 'Contacto'];
 
 const outcomes = [
-  'Comprender situaciones complejas de naturaleza social, organizacional, tecnológica y territorial; identificar causas raíz y comunicar una visión estratégica clara para la acción.',
-  'Identificar puntos de apalancamiento sistémico y definir decisiones estratégicas con impacto estructural.',
-  'Diseñar y participar en ecosistemas de colaboración multisectorial y nuevas formas de gobernanza.',
-  'Dirigir, solicitar y evaluar proyectos sistémicos con equipos especializados.',
-  'Integrarse a una red internacional de líderes con consciencia sistémica para colaboración de largo plazo.',
+  {
+    title: 'Visión sistémica accionable',
+    copy: 'Comprender situaciones complejas de naturaleza social, organizacional, tecnológica y territorial; identificar causas raíz y comunicar una visión estratégica clara para la acción.',
+    tag: 'Claridad estratégica',
+  },
+  {
+    title: 'Palancas con impacto',
+    copy: 'Identificar puntos de apalancamiento sistémico y definir decisiones estratégicas con impacto estructural.',
+    tag: 'Decisión informada',
+  },
+  {
+    title: 'Gobernanza colaborativa',
+    copy: 'Diseñar y participar en ecosistemas de colaboración multisectorial y nuevas formas de gobernanza.',
+    tag: 'Ecosistemas vivos',
+  },
+  {
+    title: 'Dirección de proyectos sistémicos',
+    copy: 'Dirigir, solicitar y evaluar proyectos sistémicos con equipos especializados.',
+    tag: 'Ejecución avanzada',
+  },
+  {
+    title: 'Red global de liderazgo',
+    copy: 'Integrarse a una red internacional de líderes con consciencia sistémica para colaboración de largo plazo.',
+    tag: 'Comunidad de largo plazo',
+  },
 ];
 
 const formatCards = [
@@ -226,22 +246,30 @@ function App() {
       </Section>
 
       <Section id="resultados" title="Resultados para los participantes" tone="light" className="reveal">
-        <div className="result-grid">
-          {outcomes.map((outcome) => (
-            <Card key={outcome} variant="elevated" as="article">
-              <p>{outcome}</p>
-            </Card>
+        <div className="result-flow">
+          {outcomes.map((outcome, index) => (
+            <article key={outcome.title} className="result-step">
+              <div className="result-step__header">
+                <span className="result-step__index">{String(index + 1).padStart(2, '0')}</span>
+                <span className="result-step__tag">{outcome.tag}</span>
+              </div>
+              <h4>{outcome.title}</h4>
+              <p>{outcome.copy}</p>
+              <div className="result-step__meter">
+                <span style={{ '--result-progress': `${(index + 1) * 20}%` }} />
+              </div>
+            </article>
           ))}
         </div>
       </Section>
 
       <Section id="formato" title="Formato del encuentro" tone="light" className="reveal">
-        <div className="card-grid">
+        <div className="format-strip">
           {formatCards.map((card) => (
-            <Card key={card.title} variant="elevated" as="article">
-              <span>{card.title}</span>
-              <strong>{card.value}</strong>
-            </Card>
+            <div key={card.title} className="format-strip__row">
+              <span className="format-strip__label">{card.title}</span>
+              <span className="format-strip__value">{card.value}</span>
+            </div>
           ))}
         </div>
         <p className="interactive__note">Cupos limitados · Aplicación requerida · Conversación de encaje disponible</p>
