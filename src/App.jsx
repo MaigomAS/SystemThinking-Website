@@ -502,15 +502,46 @@ function App() {
             <p className="interactive__note">*Disponible arriba: asistente inteligente para responder preguntas frecuentes sobre el programa.*</p>
           </div>
 
-          <Card variant="elevated" as="form" className="ui-form" aria-label="Formulario de solicitud rápida">
+          <Card
+            variant="elevated"
+            as="form"
+            className="ui-form"
+            aria-label="Formulario de solicitud rápida"
+            action="https://formsubmit.co/info@annia.no"
+            method="POST"
+          >
             <h4>Solicitud rápida</h4>
-            <input type="text" placeholder="Nombre" aria-label="Nombre" />
-            <input type="email" placeholder="Correo" aria-label="Correo" />
-            <input type="text" placeholder="Rol / Organización" aria-label="Rol u organización" />
-            <Button type="button" variant="dark" aria-label="Enviar solicitud">
+            <input type="hidden" name="_subject" value="Nueva solicitud rápida desde ANNiA" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="hidden"
+              name="_autoresponse"
+              value="¡Gracias por tu interés! Recibimos tu solicitud y el equipo de ANNiA te contactará pronto."
+            />
+            <input type="text" name="nombre" placeholder="Nombre" aria-label="Nombre" required />
+            <input type="email" name="email" placeholder="Correo" aria-label="Correo" required />
+            <input
+              type="text"
+              name="rol_organizacion"
+              placeholder="Rol / Organización"
+              aria-label="Rol u organización"
+              required
+            />
+            <select name="interes" aria-label="Tipo de interés" required defaultValue="">
+              <option value="" disabled>
+                Tipo de interés
+              </option>
+              <option value="Participación individual">Participación individual</option>
+              <option value="Inscripción de equipo">Inscripción de equipo</option>
+              <option value="Alianza institucional">Alianza institucional</option>
+              <option value="Prensa u otro">Prensa u otro</option>
+            </select>
+            <Button type="submit" variant="dark" aria-label="Enviar solicitud">
               Enviar
             </Button>
-            <p className="interactive__note">Al enviar, te contactamos con el overview y próximos pasos.</p>
+            <p className="interactive__note">
+              Al enviar, recibirás un correo de confirmación y te contactamos con el overview y próximos pasos.
+            </p>
           </Card>
         </div>
       </Section>
