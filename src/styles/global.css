@@ -335,7 +335,7 @@ img {
 .hero-rotator__image {
   position: absolute;
   inset: 0;
-  background-image: url('../assets/bergen-hero.png');
+  background-image: var(--hero-rotator-image, none);
   background-size: cover;
   background-position: center;
   opacity: 0.18;
