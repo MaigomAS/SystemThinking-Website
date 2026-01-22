@@ -545,6 +545,7 @@ function App() {
             onSubmit={handleQuickRequestSubmit}
           >
             <h4>Solicitud rápida</h4>
+
             <input type="text" name="nombre" placeholder="Nombre" aria-label="Nombre" required />
             <input type="email" name="email" placeholder="Correo" aria-label="Correo" required />
             <input
@@ -554,6 +555,7 @@ function App() {
               aria-label="Rol u organización"
               required
             />
+
             <select name="interes" aria-label="Tipo de interés" required defaultValue="">
               <option value="" disabled>
                 Tipo de interés
@@ -563,18 +565,27 @@ function App() {
               <option value="Alianza institucional">Alianza institucional</option>
               <option value="Prensa u otro">Prensa u otro</option>
             </select>
-            <Button type="submit" variant="dark" aria-label="Enviar solicitud" disabled={quickRequestStatus === 'loading'}>
+
+            <Button
+              type="submit"
+              variant="dark"
+              aria-label="Enviar solicitud"
+              disabled={quickRequestStatus === 'loading'}
+            >
               Enviar
             </Button>
+
             <p className="interactive__note">
               Al enviar, recibirás un correo de confirmación y te contactamos con el overview y próximos pasos.
             </p>
+
             {quickRequestMessage ? (
               <p className="interactive__note" role="status" aria-live="polite">
                 {quickRequestMessage}
               </p>
             ) : null}
           </Card>
+
         </div>
       </Section>
 
