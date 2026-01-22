@@ -123,6 +123,12 @@ function HeroPreview({ variant }) {
               </svg>
               <div className="hero-loop__pulse hero-loop__pulse--one" />
               <div className="hero-loop__pulse hero-loop__pulse--two" />
+
+              <div className="hero-loop__signals">
+                <span className="hero-loop__signal hero-loop__signal--primary">Simulación</span>
+                <span className="hero-loop__signal hero-loop__signal--secondary">Panel estratégico</span>
+              </div>
+
             </div>
             <div className="playground-hero__content">
               <Chip className="hero__badge">Laboratorio de estrategia sistémica</Chip>
@@ -139,22 +145,6 @@ function HeroPreview({ variant }) {
                 <Button variant="secondary">Ver programa completo</Button>
               </div>
             </div>
-            <Card variant="glass" className="hero-mock">
-              <div className="hero-mock__header">
-                <span>Simulación</span>
-                <span>Panel estratégico</span>
-              </div>
-              <div className="hero-mock__grid">
-                <div className="hero-mock__block hero-mock__block--primary" />
-                <div className="hero-mock__block hero-mock__block--secondary" />
-                <div className="hero-mock__block hero-mock__block--tertiary" />
-              </div>
-              <div className="hero-mock__lines">
-                {Array.from({ length: 4 }).map((_, index) => (
-                  <span key={index} />
-                ))}
-              </div>
-            </Card>
           </div>
         );
       case 'editorial':
