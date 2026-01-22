@@ -7,6 +7,16 @@ const parseBody = async (req) => {
     return req.body;
   }
 
+  if (typeof req.body === 'string' && req.body.trim() !== '') {
+    try {
+      return JSON.parse(req.body);
+    } catch (error) {
+      if (req.body.includes('=')) {
+        return Object.fromEntries(new URLSearchParams(req.body));
+      }
+    }
+  }
+
   const contentType = req.headers['content-type'] || '';
   const rawBody = await new Promise((resolve, reject) => {
     let data = '';
@@ -58,7 +68,7 @@ export default async function handler(req, res) {
   }
 
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS } = process.env;
-  const mailTo = process.env.MAIL_TO || SMTP_USER;
+  const mailTo = process.env.MAIL_TO || 'info@annia.no';
   const mailFrom = process.env.MAIL_FROM || SMTP_USER;
 
   if (!SMTP_HOST || !SMTP_PORT || !SMTP_USER || !SMTP_PASS || !mailTo || !mailFrom) {
@@ -100,6 +110,7 @@ export default async function handler(req, res) {
 
     res.status(200).json({ ok: true });
   } catch (error) {
+    console.error('Quick request email error:', error);
     res.status(500).json({ error: 'No se pudo enviar el correo.' });
   }
 }
