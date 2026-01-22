@@ -325,6 +325,8 @@ img {
 
 .hero-rotator__panel .playground-hero {
   position: relative;
+  width: min(1200px, 96%);
+  margin: 0 auto;
 }
 
 .hero-rotator__content {
@@ -1096,6 +1098,11 @@ img {
   z-index: 0;
   pointer-events: none;
   opacity: 0.75;
+  border-radius: inherit;
+}
+
+.playground-hero--split .hero-loop {
+  inset: -8% -6%;
 }
 
 .hero-loop::before {
@@ -1168,13 +1175,31 @@ img {
   height: 220px;
   border-color: rgba(124, 106, 255, 0.2);
   animation-direction: reverse;
+}
+
+.playground-hero--split .hero-loop__pulse--one {
+  top: 4%;
+  right: 6%;
+}
+
+.playground-hero--split .hero-loop__pulse--two {
+  bottom: 8%;
+  left: 8%;
+}
+
 .hero-loop__signals {
   position: absolute;
-  inset: 0;
+  top: 16%;
+  right: 8%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-end;
+  text-align: right;
 }
 
 .hero-loop__signal {
-  position: absolute;
+  position: relative;
   padding: 6px 14px;
   border-radius: var(--radius-pill);
   font-size: var(--font-size-xs);
@@ -1188,17 +1213,13 @@ img {
 }
 
 .hero-loop__signal--primary {
-  top: 18%;
-  right: 18%;
+  transform: translateX(-4px);
 }
 
 .hero-loop__signal--secondary {
-  bottom: 18%;
-  left: 16%;
   border-color: rgba(124, 106, 255, 0.25);
   animation-delay: 1.6s;
-}
-
+  transform: translateX(-18px);
 }
 
 .hero-mock {
@@ -1327,11 +1348,10 @@ img {
 
   .hero-loop__path,
   .hero-loop__node,
-.hero-loop__pulse,
-.hero-loop__signal {
-  animation: none;
-}
-
+  .hero-loop__pulse,
+  .hero-loop__signal {
+    animation: none;
+  }
 
   .hero--parallax::before,
   .hero--parallax::after,
