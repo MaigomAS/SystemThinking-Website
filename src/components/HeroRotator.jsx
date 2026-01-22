@@ -218,13 +218,18 @@ function HeroRotator() {
         {heroVariants.map((variant, index) => {
           const isActive = index === activeIndex;
           const backgroundImage = heroBackgrounds[variant.id];
+          const overlayByVariant = {
+            editorial:
+              'linear-gradient(90deg, rgba(6, 10, 20, 0.82) 0%, rgba(6, 10, 20, 0.62) 40%, rgba(6, 10, 20, 0.28) 70%, rgba(6, 10, 20, 0.08) 100%)',
+            orbs: 'linear-gradient(180deg, rgba(6, 10, 20, 0.35), rgba(6, 10, 20, 0.65))',
+            split: 'linear-gradient(180deg, rgba(6, 10, 20, 0.35), rgba(6, 10, 20, 0.65))',
+          };
           const heroBackgroundStyle = backgroundImage
             ? {
                 '--hero-bg-image': `url(${backgroundImage})`,
                 '--hero-bg-opacity': 0.18,
                 '--hero-bg-scale': 1.15,
-                '--hero-bg-overlay':
-                  'linear-gradient(180deg, rgba(6, 10, 20, 0.35), rgba(6, 10, 20, 0.65))',
+                '--hero-bg-overlay': overlayByVariant[variant.id] ?? overlayByVariant.editorial,
                 '--hero-content-max-width': '520px',
               }
             : undefined;
