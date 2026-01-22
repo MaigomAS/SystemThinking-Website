@@ -323,12 +323,12 @@ function App() {
       </Section>
 
       <Section id="formato" title="Formato del encuentro" tone="light" className="reveal">
-        <div className="card-grid">
+        <div className="format-strip">
           {formatCards.map((card) => (
-            <Card key={card.title} variant="elevated" as="article">
-              <span>{card.title}</span>
-              <strong>{card.value}</strong>
-            </Card>
+            <div key={card.title} className="format-strip__row">
+              <span className="format-strip__label">{card.title}</span>
+              <span className="format-strip__value">{card.value}</span>
+            </div>
           ))}
         </div>
         <p className="interactive__note">Cupos limitados · Aplicación requerida · Conversación de encaje disponible</p>
