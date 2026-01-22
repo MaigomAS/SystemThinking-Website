@@ -37,7 +37,7 @@ const shadowTokens = [
 const heroVariants = [
   { id: 'editorial', label: 'Hero A · Editorial minimal' },
   { id: 'orbs', label: 'Hero B · Gradientes y orbes' },
-  { id: 'split', label: 'Hero C · Split con mock abstracto' },
+  { id: 'split', label: 'Hero C · Split con simulación dinámica' },
 ];
 
 function HeroPreview({ variant }) {
@@ -102,10 +102,9 @@ function HeroPreview({ variant }) {
               <svg className="hero-loop__svg" viewBox="0 0 600 360" role="presentation">
                 <defs>
                   <linearGradient id="loopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                   <stop offset="0%" stopColor="#7ae7ff" stopOpacity="0.8" />
-                   <stop offset="50%" stopColor="#7c6aff" stopOpacity="0.7" />
-                   <stop offset="100%" stopColor="#f58bff" stopOpacity="0.55" />
-
+                    <stop offset="0%" stopColor="#7ae7ff" stopOpacity="0.8" />
+                    <stop offset="50%" stopColor="#7c6aff" stopOpacity="0.7" />
+                    <stop offset="100%" stopColor="#f58bff" stopOpacity="0.55" />
                   </linearGradient>
                 </defs>
                 <path
@@ -128,7 +127,6 @@ function HeroPreview({ variant }) {
                 <span className="hero-loop__signal hero-loop__signal--primary">Simulación</span>
                 <span className="hero-loop__signal hero-loop__signal--secondary">Panel estratégico</span>
               </div>
-
             </div>
             <div className="playground-hero__content">
               <Chip className="hero__badge">Laboratorio de estrategia sistémica</Chip>
