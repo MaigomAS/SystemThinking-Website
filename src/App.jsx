@@ -61,7 +61,64 @@ const highlightCards = [
   },
 ];
 
-const faqs = ['¿Es un programa introductorio?', '¿Qué incluye el encuentro?', '¿Cómo es el proceso de aplicación?', '¿Se publica el costo?'];
+const faqs = [
+  {
+    id: 'intro',
+    question: '¿Es un programa introductorio?',
+    summary: 'Diseñado para líderes con experiencia y retos complejos.',
+    answer: {
+      heading: 'Es un laboratorio avanzado, no una introducción.',
+      paragraphs: [
+        'Partimos de desafíos reales y decisiones estratégicas. El objetivo es profundizar en pensamiento sistémico aplicado y trasladarlo a decisiones concretas.',
+        'El ritmo es intenso y está orientado a ejecutivos, directores y líderes de política pública que ya operan en entornos complejos.',
+      ],
+      bullets: ['Casos reales y simulaciones de gobernanza', 'Trabajo aplicado con mentores', 'Integración de rigor técnico + liderazgo consciente'],
+    },
+    followUps: ['¿Qué tipo de perfil es ideal?', '¿Se requiere experiencia previa?', '¿Cómo se mide el impacto?'],
+  },
+  {
+    id: 'encuentro',
+    question: '¿Qué incluye el encuentro?',
+    summary: 'Inmersión presencial con sesiones estratégicas y trabajo colaborativo.',
+    answer: {
+      heading: 'Tres semanas para pensar, diseñar y decidir mejor.',
+      paragraphs: [
+        'Incluye sesiones de análisis sistémico, estudios de caso, coaching y espacios de integración personal para líderes.',
+        'La experiencia combina teoría aplicada, herramientas avanzadas y construcción de redes de confianza.',
+      ],
+      bullets: ['Workshops intensivos + laboratorios de decisión', 'Mentoría estratégica y feedback personalizado', 'Experiencias en Bergen y espacios de conexión'],
+    },
+    followUps: ['¿Cómo se estructura cada semana?', '¿Qué tan presencial es?', '¿Qué resultados se esperan?'],
+  },
+  {
+    id: 'aplicacion',
+    question: '¿Cómo es el proceso de aplicación?',
+    summary: 'Conversación de encaje, revisión de perfil y confirmación.',
+    answer: {
+      heading: 'Selectivo y personalizado para asegurar fit.',
+      paragraphs: [
+        'Iniciamos con una conversación breve para entender tu desafío, contexto y objetivos.',
+        'Luego revisamos el perfil y confirmamos cupo con tiempo para preparar la experiencia.',
+      ],
+      bullets: ['Formulario corto y conversación estratégica', 'Respuesta en máximo 7 días', 'Acompañamiento previo a la inmersión'],
+    },
+    followUps: ['¿Qué documentos se necesitan?', '¿Hay cupos limitados?', '¿Puedo postular como equipo?'],
+  },
+  {
+    id: 'costo',
+    question: '¿Se publica el costo?',
+    summary: 'Se comparte tras la conversación de encaje.',
+    answer: {
+      heading: 'El valor depende del perfil y tipo de participación.',
+      paragraphs: [
+        'Priorizamos conversaciones directas para entender el impacto esperado y definir condiciones.',
+        'Puedes solicitar un overview con rangos y alternativas de apoyo institucional.',
+      ],
+      bullets: ['Costos compartidos de forma transparente', 'Opciones para equipos y organizaciones', 'Claridad antes de la confirmación final'],
+    },
+    followUps: ['¿Hay becas o apoyos?', '¿Incluye alojamiento?', '¿Cómo se paga?'],
+  },
+];
 
 // Reemplaza el número con el formato internacional sin "+" (ej: 56912345678).
 const whatsappPhone = '4741368586';
@@ -99,10 +156,12 @@ const zoomBlock = {
 
 function App() {
   const [activeTab, setActiveTab] = useState('sintomas');
+  const [activeFaqId, setActiveFaqId] = useState(faqs[0].id);
   const tabContent = interactiveTabs[activeTab];
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), []);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
   const returnFocusRef = useRef(null);
+  const activeFaq = useMemo(() => faqs.find((faq) => faq.id === activeFaqId) ?? faqs[0], [activeFaqId]);
 
   const whatsappLink = useMemo(
     () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`,
@@ -339,13 +398,78 @@ function App() {
       </Section>
 
       <Section id="faq" title="Preguntas frecuentes" tone="light" className="reveal">
-        <div className="faq-list">
-          {faqs.map((question) => (
-            <button key={question} className="faq-item" type="button" aria-label={`Ver respuesta: ${question}`}>
-              <span>{question}</span>
-              <span aria-hidden="true">+</span>
-            </button>
-          ))}
+        <div className="faq-shell">
+          <div className="faq-sidebar" role="tablist" aria-label="Lista de preguntas frecuentes">
+            <div className="faq-sidebar__header">
+              <span className="faq-sidebar__label">Biblioteca dinámica</span>
+              <h3>Explora como si fuera un chat estratégico</h3>
+              <p>Selecciona una pregunta y observa cómo el asistente sintetiza decisiones, contexto y próximos pasos.</p>
+            </div>
+            <div className="faq-sidebar__list">
+              {faqs.map((faq) => (
+                <button
+                  key={faq.id}
+                  className={`faq-sidebar__item ${activeFaqId === faq.id ? 'is-active' : ''}`}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeFaqId === faq.id}
+                  onClick={() => setActiveFaqId(faq.id)}
+                >
+                  <span className="faq-sidebar__title">{faq.question}</span>
+                  <span className="faq-sidebar__meta">{faq.summary}</span>
+                </button>
+              ))}
+            </div>
+            <div className="faq-sidebar__footer">
+              <span>Automatización estilo OpenAI</span>
+              <p>Respuestas guiadas, contexto sintetizado y follow-ups sugeridos para acelerar decisiones.</p>
+            </div>
+          </div>
+
+          <div className="faq-chat" role="tabpanel">
+            <div className="faq-chat__header">
+              <span className="faq-chat__badge">Asistente FAQ</span>
+              <div>
+                <h3>{activeFaq.question}</h3>
+                <p>Tiempo estimado de respuesta: 12 segundos</p>
+              </div>
+            </div>
+
+            <div className="faq-chat__thread">
+              <div className="chat-bubble chat-bubble--user">
+                <p>{activeFaq.question}</p>
+              </div>
+              <div className="chat-bubble chat-bubble--assistant">
+                <h4>{activeFaq.answer.heading}</h4>
+                {activeFaq.answer.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+                <ul>
+                  {activeFaq.answer.bullets.map((bullet) => (
+                    <li key={bullet}>{bullet}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            <div className="faq-chat__actions" aria-label="Siguientes preguntas sugeridas">
+              {activeFaq.followUps.map((followUp) => (
+                <button key={followUp} type="button" className="faq-chat__chip">
+                  {followUp}
+                </button>
+              ))}
+            </div>
+
+            <div className="faq-chat__input" aria-label="Entrada de chat simulada">
+              <span>Escribe tu pregunta…</span>
+              <Button type="button" variant="dark" disabled>
+                Enviar
+              </Button>
+            </div>
+            <a className="faq-chat__handoff" href="#contacto">
+              ¿No encuentras lo que buscas? Habla con un humano →
+            </a>
+          </div>
         </div>
       </Section>
 
@@ -375,7 +499,7 @@ function App() {
                 Agendar conversación
               </Button>
             </div>
-            <p className="interactive__note">*Próximamente: asistente inteligente para responder preguntas frecuentes sobre el programa.*</p>
+            <p className="interactive__note">*Disponible arriba: asistente inteligente para responder preguntas frecuentes sobre el programa.*</p>
           </div>
 
           <Card variant="elevated" as="form" className="ui-form" aria-label="Formulario de solicitud rápida">
