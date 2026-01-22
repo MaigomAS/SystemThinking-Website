@@ -993,7 +993,7 @@ img {
 .playground-hero__content {
   display: grid;
   gap: 18px;
-  max-width: 560px;
+  max-width: var(--hero-content-max-width, 560px);
 }
 
 .playground-hero__content--editorial h1 {
