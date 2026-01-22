@@ -335,13 +335,20 @@ img {
 .hero-rotator__image {
   position: absolute;
   inset: 0;
-  background-image: var(--hero-rotator-image, none);
+  background-image: var(--hero-bg-image, none);
   background-size: cover;
   background-position: center;
-  opacity: 0.18;
-  filter: blur(2px);
-  transform: scale(1.04);
+  opacity: var(--hero-bg-opacity, 0);
+  filter: blur(var(--hero-bg-blur, 2px));
+  transform: scale(var(--hero-bg-scale, 1.04));
   pointer-events: none;
+}
+
+.hero-rotator__image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--hero-bg-overlay, transparent);
 }
 
 
