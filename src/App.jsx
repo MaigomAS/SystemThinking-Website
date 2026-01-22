@@ -166,12 +166,13 @@ function App() {
   const whatsappLink = useMemo(
     () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(whatsappMessage)}`,
     [whatsappPhone, whatsappMessage],
-);
-
+  );
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeOrg, setActiveOrg] = useState(null);
   const [isOrgModalOpen, setIsOrgModalOpen] = useState(false);
+  const [quickRequestStatus, setQuickRequestStatus] = useState('idle');
+  const [quickRequestMessage, setQuickRequestMessage] = useState('');
 
   const handleOpenOrg = (org, focusTarget) => {
     setActiveOrg(org);
@@ -181,6 +182,38 @@ function App() {
 
   const handleCloseOrg = () => {
     setIsOrgModalOpen(false);
+  };
+
+  const handleQuickRequestSubmit = async (event) => {
+    event.preventDefault();
+    setQuickRequestStatus('loading');
+    setQuickRequestMessage('');
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const payload = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/quick-request', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const errorPayload = await response.json().catch(() => ({}));
+        throw new Error(errorPayload?.error || 'No se pudo enviar la solicitud.');
+      }
+
+      setQuickRequestStatus('success');
+      setQuickRequestMessage('Solicitud enviada. Te llegará un correo de confirmación con los próximos pasos.');
+      form.reset();
+    } catch (error) {
+      setQuickRequestStatus('error');
+      setQuickRequestMessage(
+        'No pudimos enviar tu solicitud. Inténtalo nuevamente o escribe directamente a info@annia.no.',
+      );
+    }
   };
 
   useEffect(() => {
@@ -502,15 +535,45 @@ function App() {
             <p className="interactive__note">*Disponible arriba: asistente inteligente para responder preguntas frecuentes sobre el programa.*</p>
           </div>
 
-          <Card variant="elevated" as="form" className="ui-form" aria-label="Formulario de solicitud rápida">
+          <Card
+            variant="elevated"
+            as="form"
+            className="ui-form"
+            aria-label="Formulario de solicitud rápida"
+            method="POST"
+            action="/api/quick-request"
+            onSubmit={handleQuickRequestSubmit}
+          >
             <h4>Solicitud rápida</h4>
-            <input type="text" placeholder="Nombre" aria-label="Nombre" />
-            <input type="email" placeholder="Correo" aria-label="Correo" />
-            <input type="text" placeholder="Rol / Organización" aria-label="Rol u organización" />
-            <Button type="button" variant="dark" aria-label="Enviar solicitud">
+            <input type="text" name="nombre" placeholder="Nombre" aria-label="Nombre" required />
+            <input type="email" name="email" placeholder="Correo" aria-label="Correo" required />
+            <input
+              type="text"
+              name="rol_organizacion"
+              placeholder="Rol / Organización"
+              aria-label="Rol u organización"
+              required
+            />
+            <select name="interes" aria-label="Tipo de interés" required defaultValue="">
+              <option value="" disabled>
+                Tipo de interés
+              </option>
+              <option value="Participación individual">Participación individual</option>
+              <option value="Inscripción de equipo">Inscripción de equipo</option>
+              <option value="Alianza institucional">Alianza institucional</option>
+              <option value="Prensa u otro">Prensa u otro</option>
+            </select>
+            <Button type="submit" variant="dark" aria-label="Enviar solicitud" disabled={quickRequestStatus === 'loading'}>
               Enviar
             </Button>
-            <p className="interactive__note">Al enviar, te contactamos con el overview y próximos pasos.</p>
+            <p className="interactive__note">
+              Al enviar, recibirás un correo de confirmación y te contactamos con el overview y próximos pasos.
+            </p>
+            {quickRequestMessage ? (
+              <p className="interactive__note" role="status" aria-live="polite">
+                {quickRequestMessage}
+              </p>
+            ) : null}
           </Card>
         </div>
       </Section>
