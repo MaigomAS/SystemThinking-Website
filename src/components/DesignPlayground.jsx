@@ -123,10 +123,12 @@ function HeroPreview({ variant }) {
               </svg>
               <div className="hero-loop__pulse hero-loop__pulse--one" />
               <div className="hero-loop__pulse hero-loop__pulse--two" />
+
               <div className="hero-loop__signals">
                 <span className="hero-loop__signal hero-loop__signal--primary">Simulación</span>
                 <span className="hero-loop__signal hero-loop__signal--secondary">Panel estratégico</span>
               </div>
+
             </div>
             <div className="playground-hero__content">
               <Chip className="hero__badge">Laboratorio de estrategia sistémica</Chip>

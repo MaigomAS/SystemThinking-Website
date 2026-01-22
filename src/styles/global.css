@@ -335,7 +335,7 @@ img {
 .hero-rotator__image {
   position: absolute;
   inset: 0;
-  background-image: url('../assets/bergen-hero.png');
+  background-image: var(--hero-rotator-image, none);
   background-size: cover;
   background-position: center;
   opacity: 0.18;
@@ -1136,6 +1136,7 @@ img {
   height: 220px;
   border-color: rgba(124, 106, 255, 0.2);
   animation-direction: reverse;
+
 }
 
 .hero-loop__signals {
@@ -1167,6 +1168,7 @@ img {
   left: 16%;
   border-color: rgba(124, 106, 255, 0.25);
   animation-delay: 1.6s;
+
 }
 
 .hero-mock {
@@ -1265,6 +1267,7 @@ img {
   }
 }
 
+
 @keyframes signalFloat {
   0%,
   100% {
@@ -1276,6 +1279,7 @@ img {
     opacity: 0.95;
   }
 }
+
 
 /* Scroll reveal */
 .reveal {
@@ -1307,8 +1311,11 @@ img {
 
   .hero-loop__path,
   .hero-loop__node,
+
   .hero-loop__pulse,
   .hero-loop__signal {
+  .hero-loop__pulse {
+
     animation: none;
   }
 

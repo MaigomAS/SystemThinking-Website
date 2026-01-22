@@ -3,6 +3,7 @@ import Button from './ui/Button.jsx';
 import Card from './ui/Card.jsx';
 import Chip from './ui/Chip.jsx';
 import Container from './ui/Container.jsx';
+import bergenHero from '../assets/bergen-hero.png';
 
 const ROTATION_INTERVAL = 2500;
 
@@ -13,6 +14,13 @@ const heroVariants = [
   { id: 'orbs', label: 'Hero B · Gradientes y orbes' },
   { id: 'split', label: 'Hero C · Split con mock abstracto' },
 ];
+
+const orbsBackgroundImage = null;
+const heroBackgrounds = {
+  editorial: bergenHero,
+  orbs: orbsBackgroundImage,
+  split: null,
+};
 
 function HeroVariantContent({ variant }) {
   switch (variant) {
@@ -206,6 +214,7 @@ function HeroRotator() {
       <div className="hero-rotator__track" onMouseLeave={handleMouseLeave}>
         {heroVariants.map((variant, index) => {
           const isActive = index === activeIndex;
+          const backgroundImage = heroBackgrounds[variant.id];
           return (
             <div
               key={variant.id}
@@ -214,7 +223,13 @@ function HeroRotator() {
               inert={!isActive}
             >
               <div className={`playground-hero playground-hero--${variant.id} hero--parallax`}>
-                {variant.id === 'editorial' ? <div className="hero-rotator__image" aria-hidden="true" /> : null}
+                {backgroundImage ? (
+                  <div
+                    className="hero-rotator__image"
+                    style={{ '--hero-rotator-image': `url(${backgroundImage})` }}
+                    aria-hidden="true"
+                  />
+                ) : null}
                 <Container className="hero-rotator__content">
                   <HeroVariantContent variant={variant.id} />
                 </Container>
