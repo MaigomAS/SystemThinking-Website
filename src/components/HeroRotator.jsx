@@ -5,6 +5,10 @@ import Chip from './ui/Chip.jsx';
 import Container from './ui/Container.jsx';
 import bergenHero from '../assets/bergen-hero.png';
 
+const hero2Bg = import.meta.glob('../assets/bergen-hero-2.png', { eager: true, query: '?url', import: 'default' })[
+  '../assets/bergen-hero-2.png'
+];
+
 const ROTATION_INTERVAL = 2500;
 
 const heroBadges = ['Presencial · Full-time', '2-20 Noviembre 2026', 'Bergen, Noruega', 'Cupos limitados · Aplicación'];
@@ -15,10 +19,9 @@ const heroVariants = [
   { id: 'split', label: 'Hero C · Split con mock abstracto' },
 ];
 
-const orbsBackgroundImage = null;
 const heroBackgrounds = {
   editorial: bergenHero,
-  orbs: orbsBackgroundImage,
+  orbs: hero2Bg,
   split: null,
 };
 
@@ -215,6 +218,15 @@ function HeroRotator() {
         {heroVariants.map((variant, index) => {
           const isActive = index === activeIndex;
           const backgroundImage = heroBackgrounds[variant.id];
+          const heroBackgroundStyle = backgroundImage
+            ? {
+                '--hero-bg-image': `url(${backgroundImage})`,
+                '--hero-bg-opacity': 0.18,
+                '--hero-bg-scale': 1.15,
+                '--hero-bg-overlay': 'linear-gradient(180deg, rgba(6, 10, 20, 0.35), rgba(6, 10, 20, 0.65))',
+                '--hero-content-max-width': '520px',
+              }
+            : undefined;
           return (
             <div
               key={variant.id}
@@ -222,14 +234,11 @@ function HeroRotator() {
               aria-hidden={!isActive}
               inert={!isActive}
             >
-              <div className={`playground-hero playground-hero--${variant.id} hero--parallax`}>
-                {backgroundImage ? (
-                  <div
-                    className="hero-rotator__image"
-                    style={{ '--hero-rotator-image': `url(${backgroundImage})` }}
-                    aria-hidden="true"
-                  />
-                ) : null}
+              <div
+                className={`playground-hero playground-hero--${variant.id} hero--parallax`}
+                style={heroBackgroundStyle}
+              >
+                <div className="hero-rotator__image" aria-hidden="true" />
                 <Container className="hero-rotator__content">
                   <HeroVariantContent variant={variant.id} />
                 </Container>
