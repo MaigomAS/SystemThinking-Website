@@ -223,7 +223,8 @@ function HeroRotator() {
                 '--hero-bg-image': `url(${backgroundImage})`,
                 '--hero-bg-opacity': 0.18,
                 '--hero-bg-scale': 1.15,
-                '--hero-bg-overlay': 'linear-gradient(180deg, rgba(6, 10, 20, 0.35), rgba(6, 10, 20, 0.65))',
+                '--hero-bg-overlay':
+                  'linear-gradient(180deg, rgba(6, 10, 20, 0.35), rgba(6, 10, 20, 0.65))',
                 '--hero-content-max-width': '520px',
               }
             : undefined;
