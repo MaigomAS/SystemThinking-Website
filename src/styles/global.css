@@ -325,6 +325,8 @@ img {
 
 .hero-rotator__panel .playground-hero {
   position: relative;
+  width: min(1200px, 96%);
+  margin: 0 auto;
 }
 
 .hero-rotator__content {
@@ -1104,6 +1106,11 @@ img {
   opacity: 0.75;
   border-radius: inherit;
 }
+
+.playground-hero--split .hero-loop {
+  inset: -8% -6%;
+}
+
 
 .hero-loop::before {
   content: '';
