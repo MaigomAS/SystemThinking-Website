@@ -58,12 +58,23 @@
       "primary": "Solicitar información →",
       "secondary": "Descargar overview (PDF)"
     },
+    "signals": {
+      "primary": "Simulación",
+      "secondary": "Panel estratégico"
+    },
     "badges": [
       "Presencial · Full-time",
       "2-20 Noviembre 2026",
       "Bergen, Noruega",
       "Cupos limitados · Aplicación"
-    ]
+    ],
+    "aria": {
+      "status": "Hero activo: {{label}}",
+      "dots": "Selector de hero",
+      "editorial": "Editorial",
+      "orbs": "Gradientes",
+      "split": "Simulación"
+    }
   },
   "method": {
     "title": "Trabajar en los sistemas, no solo en los síntomas",

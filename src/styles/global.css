@@ -343,6 +343,42 @@ img {
   margin: 0 auto;
 }
 
+.hero-rotator__dots {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(10, 15, 31, 0.5);
+  border: 1px solid rgba(122, 231, 255, 0.16);
+  backdrop-filter: blur(12px);
+  z-index: 2;
+}
+
+.hero-rotator__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(229, 231, 239, 0.4);
+  cursor: pointer;
+  transition: transform 200ms ease, background 200ms ease, box-shadow 200ms ease;
+}
+
+.hero-rotator__dot.is-active {
+  background: rgba(122, 231, 255, 0.9);
+  box-shadow: 0 0 8px rgba(122, 231, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.hero-rotator__dot:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(122, 231, 255, 0.5);
+}
+
 .hero-rotator__image {
   position: absolute;
   inset: 0;

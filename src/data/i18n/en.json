@@ -58,12 +58,23 @@
       "primary": "Request information →",
       "secondary": "Download overview (PDF)"
     },
+    "signals": {
+      "primary": "Simulation",
+      "secondary": "Strategic panel"
+    },
     "badges": [
       "In-person · Full-time",
       "Nov 2–20, 2026",
       "Bergen, Norway",
       "Limited seats · Application"
-    ]
+    ],
+    "aria": {
+      "status": "Active hero: {{label}}",
+      "dots": "Hero selector",
+      "editorial": "Editorial",
+      "orbs": "Gradients",
+      "split": "Simulation"
+    }
   },
   "method": {
     "title": "Work on systems, not only symptoms",
