@@ -50,61 +50,20 @@
     }
   },
   "heroRotator": {
-    "rotationLabels": {
-      "editorial": "Hero A · Editorial minimal",
-      "orbs": "Hero B · Gradientes y orbes",
-      "split": "Hero C · Split con simulación dinámica"
+    "badge": "Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026",
+    "title": "Systemic Strategy & Leadership for Complex Issues",
+    "lead": "Encuentro ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado, industria y sociedad civil que toman decisiones estratégicas en contextos de alta complejidad.",
+    "meta": "Bergen, Noruega · Noviembre 2026 · Presencial · Full-time",
+    "actions": {
+      "primary": "Solicitar información →",
+      "secondary": "Descargar overview (PDF)"
     },
     "badges": [
       "Presencial · Full-time",
       "2-20 Noviembre 2026",
       "Bergen, Noruega",
       "Cupos limitados · Aplicación"
-    ],
-    "variants": {
-      "orbs": {
-        "badge": "Encuentro fundacional · Cohorte 2026",
-        "title": "Una experiencia inmersiva para liderar en sistemas vivos.",
-        "description": "Diseñamos un espacio de alta exigencia intelectual y emocional para equipos que necesitan ver el sistema completo, tomar mejores decisiones y activar cambios reales.",
-        "actions": {
-          "primary": "Aplicar ahora →",
-          "secondary": "Agenda una llamada"
-        },
-        "chips": [
-          "Presencial",
-          "Full-time",
-          "Bergen, Noruega"
-        ]
-      },
-      "split": {
-        "badge": "Laboratorio de estrategia sistémica",
-        "title": "Estrategia, gobernanza y ejecución en un mismo espacio.",
-        "description": "Un formato híbrido entre think tank y taller intensivo, con casos reales, trabajo aplicado y una red global de líderes sistémicos.",
-        "meta": "3 semanas intensivas · Nov 2026 · Cupos limitados",
-        "actions": {
-          "primary": "Solicitar información →",
-          "secondary": "Ver programa completo"
-        },
-        "signals": {
-          "primary": "Simulación",
-          "secondary": "Panel estratégico"
-        }
-      },
-      "editorial": {
-        "badge": "Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026",
-        "title": "Systemic Strategy & Leadership for Complex Issues",
-        "lead": "Encuentro ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado, industria y sociedad civil que toman decisiones estratégicas en contextos de alta complejidad.",
-        "meta": "Bergen, Noruega · Noviembre 2026 · Presencial · Full-time",
-        "actions": {
-          "primary": "Solicitar información →",
-          "secondary": "Descargar overview (PDF)"
-        }
-      }
-    },
-    "aria": {
-      "reduced": "Hero fijo",
-      "active": "Hero activo: {{label}}"
-    }
+    ]
   },
   "method": {
     "title": "Trabajar en los sistemas, no solo en los síntomas",

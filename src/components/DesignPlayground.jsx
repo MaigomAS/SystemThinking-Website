@@ -175,11 +175,11 @@ function HeroPreview({ variant, content, badges }) {
 function DesignPlayground() {
   const { t } = useLanguage();
   const heroVariants = useMemo(
-    () => [
-      { id: 'editorial', label: t.heroRotator.rotationLabels.editorial },
-      { id: 'orbs', label: t.heroRotator.rotationLabels.orbs },
-      { id: 'split', label: t.heroRotator.rotationLabels.split },
-    ],
+    () =>
+      Object.keys(t.playground.hero.variants).map((id) => ({
+        id,
+        label: t.playground.hero.variants[id].badge ?? id,
+      })),
     [t],
   );
   const [activeHero, setActiveHero] = useState('editorial');
