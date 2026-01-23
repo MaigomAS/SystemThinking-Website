@@ -50,17 +50,10 @@
     }
   },
   "heroRotator": {
-    "badge": "Foundational systemic leadership gathering · Bergen, Norway · November 2026",
-    "title": "Systemic Strategy & Leadership for Complex Issues",
-    "lead": "An international executive immersion (3 weeks) for public, private, industry, and civil society leaders who make strategic decisions in highly complex contexts.",
-    "meta": "Bergen, Norway · November 2026 · In-person · Full-time",
-    "actions": {
-      "primary": "Request information →",
-      "secondary": "Download overview (PDF)"
-    },
-    "signals": {
-      "primary": "Simulation",
-      "secondary": "Strategic panel"
+    "rotationLabels": {
+      "editorial": "Hero A · Editorial minimal",
+      "orbs": "Hero B · Gradients and orbs",
+      "split": "Hero C · Split with live simulation"
     },
     "badges": [
       "In-person · Full-time",
@@ -68,6 +61,46 @@
       "Bergen, Norway",
       "Limited seats · Application"
     ],
+    "variants": {
+      "orbs": {
+        "badge": "Foundational gathering · Cohort 2026",
+        "title": "An immersive experience to lead in living systems.",
+        "description": "We design a high-demand intellectual and emotional space for teams that must see the full system, make better decisions, and activate real change.",
+        "actions": {
+          "primary": "Apply now →",
+          "secondary": "Schedule a call"
+        },
+        "chips": [
+          "In-person",
+          "Full-time",
+          "Bergen, Norway"
+        ]
+      },
+      "split": {
+        "badge": "Systemic strategy laboratory",
+        "title": "Strategy, governance, and execution in one space.",
+        "description": "A hybrid format between a think tank and an intensive workshop, with real cases, applied work, and a global network of systemic leaders.",
+        "meta": "3 intensive weeks · Nov 2026 · Limited seats",
+        "actions": {
+          "primary": "Request information →",
+          "secondary": "View full program"
+        },
+        "signals": {
+          "primary": "Simulation",
+          "secondary": "Strategic panel"
+        }
+      },
+      "editorial": {
+        "badge": "Foundational systemic leadership gathering · Bergen, Norway · November 2026",
+        "title": "Systemic Strategy & Leadership for Complex Issues",
+        "lead": "An international executive immersion (3 weeks) for public, private, industry, and civil society leaders who make strategic decisions in highly complex contexts.",
+        "meta": "Bergen, Norway · November 2026 · In-person · Full-time",
+        "actions": {
+          "primary": "Request information →",
+          "secondary": "Download overview (PDF)"
+        }
+      }
+    },
     "aria": {
       "status": "Active hero: {{label}}",
       "dots": "Hero selector",
