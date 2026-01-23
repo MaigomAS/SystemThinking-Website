@@ -1,11 +1,12 @@
-import { useCallback, useRef, useState } from 'react';
-import { organizations } from '../data/organizations.js';
+import { useCallback, useMemo, useRef, useState } from 'react';
+import { getOrganizations } from '../data/organizations.js';
 import OrganizationModal from './OrganizationModal.jsx';
 import Button from './ui/Button.jsx';
 import Card from './ui/Card.jsx';
 import Chip from './ui/Chip.jsx';
 import Container from './ui/Container.jsx';
 import Section from './ui/Section.jsx';
+import { useLanguage } from '../i18n/LanguageContext.jsx';
 
 const colorTokens = [
   { name: 'Background', value: 'var(--color-bg)' },
@@ -34,13 +35,7 @@ const shadowTokens = [
   { name: 'LG', value: 'var(--shadow-lg)' },
 ];
 
-const heroVariants = [
-  { id: 'editorial', label: 'Hero A · Editorial minimal' },
-  { id: 'orbs', label: 'Hero B · Gradientes y orbes' },
-  { id: 'split', label: 'Hero C · Split con simulación dinámica' },
-];
-
-function HeroPreview({ variant }) {
+function HeroPreview({ variant, content, badges }) {
   const heroRef = useRef(null);
 
   const handleMove = useCallback((event) => {
@@ -61,26 +56,23 @@ function HeroPreview({ variant }) {
     }
   }, []);
 
-  const content = (() => {
+  const contentMarkup = (() => {
     switch (variant) {
       case 'orbs':
         return (
           <div className="playground-hero__grid">
             <div className="playground-hero__content">
-              <Chip className="hero__badge">Encuentro fundacional · Cohorte 2026</Chip>
-              <h1>Una experiencia inmersiva para liderar en sistemas vivos.</h1>
-              <p>
-                Diseñamos un espacio de alta exigencia intelectual y emocional para equipos que necesitan ver el sistema completo,
-                tomar mejores decisiones y activar cambios reales.
-              </p>
+              <Chip className="hero__badge">{content.badge}</Chip>
+              <h1>{content.title}</h1>
+              <p>{content.description}</p>
               <div className="hero__actions">
                 <Button variant="primary" className="cta-glow">
-                  Aplicar ahora →
+                  {content.actions.primary}
                 </Button>
-                <Button variant="ghost">Agenda una llamada</Button>
+                <Button variant="ghost">{content.actions.secondary}</Button>
               </div>
               <div className="hero__chips">
-                {['Presencial', 'Full-time', 'Bergen, Noruega'].map((badge) => (
+                {content.chips.map((badge) => (
                   <Chip key={badge} variant="outline">
                     {badge}
                   </Chip>
@@ -124,23 +116,20 @@ function HeroPreview({ variant }) {
               <div className="hero-loop__pulse hero-loop__pulse--one" />
               <div className="hero-loop__pulse hero-loop__pulse--two" />
               <div className="hero-loop__signals">
-                <span className="hero-loop__signal hero-loop__signal--primary">Simulación</span>
-                <span className="hero-loop__signal hero-loop__signal--secondary">Panel estratégico</span>
+                <span className="hero-loop__signal hero-loop__signal--primary">{content.signals.primary}</span>
+                <span className="hero-loop__signal hero-loop__signal--secondary">{content.signals.secondary}</span>
               </div>
             </div>
             <div className="playground-hero__content">
-              <Chip className="hero__badge">Laboratorio de estrategia sistémica</Chip>
-              <h1>Estrategia, gobernanza y ejecución en un mismo espacio.</h1>
-              <p>
-                Un formato híbrido entre think tank y taller intensivo, con casos reales, trabajo aplicado y una red global de líderes
-                sistémicos.
-              </p>
-              <p className="hero__meta">3 semanas intensivas · Nov 2026 · Cupos limitados</p>
+              <Chip className="hero__badge">{content.badge}</Chip>
+              <h1>{content.title}</h1>
+              <p>{content.description}</p>
+              <p className="hero__meta">{content.meta}</p>
               <div className="hero__actions">
                 <Button variant="primary" className="cta-glow">
-                  Solicitar información →
+                  {content.actions.primary}
                 </Button>
-                <Button variant="secondary">Ver programa completo</Button>
+                <Button variant="secondary">{content.actions.secondary}</Button>
               </div>
             </div>
           </div>
@@ -149,19 +138,23 @@ function HeroPreview({ variant }) {
       default:
         return (
           <div className="playground-hero__content playground-hero__content--editorial">
-            <Chip className="hero__badge">Encuentro ejecutivo · 2026</Chip>
-            <h1>Systemic Strategy &amp; Leadership for Complex Issues.</h1>
-            <p className="playground-hero__lead">
-              Un programa editorialmente curado para líderes que quieren intervenir en sistemas complejos con precisión, profundidad y
-              sensibilidad humana.
-            </p>
+            <Chip className="hero__badge">{content.badge}</Chip>
+            <h1>{content.title}</h1>
+            <p className="playground-hero__lead">{content.lead}</p>
             <div className="hero__actions">
               <Button variant="primary" className="cta-glow">
-                Aplicar al programa →
+                {content.actions.primary}
               </Button>
-              <Button variant="ghost">Descargar overview</Button>
+              <Button variant="ghost">{content.actions.secondary}</Button>
             </div>
-            <p className="hero__meta">Bergen, Noruega · Noviembre 2026 · Presencial</p>
+            <p className="hero__meta">{content.meta}</p>
+            <div className="hero__chips">
+              {badges.map((badge) => (
+                <Chip key={badge} variant="outline">
+                  {badge}
+                </Chip>
+              ))}
+            </div>
           </div>
         );
     }
@@ -174,16 +167,26 @@ function HeroPreview({ variant }) {
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
     >
-      <Container>{content}</Container>
+      <Container>{contentMarkup}</Container>
     </div>
   );
 }
 
 function DesignPlayground() {
+  const { t } = useLanguage();
+  const heroVariants = useMemo(
+    () => [
+      { id: 'editorial', label: t.heroRotator.rotationLabels.editorial },
+      { id: 'orbs', label: t.heroRotator.rotationLabels.orbs },
+      { id: 'split', label: t.heroRotator.rotationLabels.split },
+    ],
+    [t],
+  );
   const [activeHero, setActiveHero] = useState('editorial');
   const [isOrgModalOpen, setIsOrgModalOpen] = useState(false);
   const [activeOrg, setActiveOrg] = useState(null);
   const returnFocusRef = useRef(null);
+  const organizations = useMemo(() => getOrganizations(t.organizations), [t]);
 
   const handleOpenOrg = useCallback((org, trigger) => {
     returnFocusRef.current = trigger;
@@ -195,21 +198,24 @@ function DesignPlayground() {
     setIsOrgModalOpen(false);
   }, []);
 
+  const heroContent = t.playground.hero.variants;
+  const heroBadges = t.heroRotator.badges;
+
   return (
     <div className="playground">
       <Container>
         <header className="ui-section__header">
-          <span className="ui-section__eyebrow">Design System</span>
-          <h2>Playground · Tokens y Componentes</h2>
+          <span className="ui-section__eyebrow">{t.playground.header.eyebrow}</span>
+          <h2>{t.playground.header.title}</h2>
           <p>
-            Una vista rápida para validar paleta, tipografía y componentes base. Edita tokens en{' '}
+            {t.playground.header.description.split('src/styles/tokens.css')[0]}
             <code>src/styles/tokens.css</code>.
           </p>
         </header>
       </Container>
 
-      <Section tone="dark" title="Hero · Variantes creativas">
-        <div className="hero-variant-selector" role="tablist" aria-label="Selector de variantes de hero">
+      <Section tone="dark" title={t.playground.hero.title}>
+        <div className="hero-variant-selector" role="tablist" aria-label={t.playground.hero.aria}>
           {heroVariants.map((variant) => (
             <Button
               key={variant.id}
@@ -222,10 +228,10 @@ function DesignPlayground() {
             </Button>
           ))}
         </div>
-        <HeroPreview variant={activeHero} />
+        <HeroPreview variant={activeHero} content={heroContent[activeHero]} badges={heroBadges} />
       </Section>
 
-      <Section tone="mid" title="Paleta & Tokens">
+      <Section tone="mid" title={t.playground.palette.title}>
         <div className="token-grid">
           {colorTokens.map((token) => (
             <div key={token.name} className="token-card">
@@ -237,31 +243,30 @@ function DesignPlayground() {
         </div>
       </Section>
 
-      <Section tone="dark" title="Tipografía">
+      <Section tone="dark" title={t.playground.typography.title}>
         <div className="typography-stack">
           <div>
-            <span>Display / H1</span>
+            <span>{t.playground.typography.samples.display}</span>
             <h1 style={{ fontSize: 'var(--font-size-4xl)', lineHeight: 'var(--line-height-tight)' }}>
-              Systemic Strategy & Leadership
+              {t.playground.typography.samples.displayText}
             </h1>
           </div>
           <div>
-            <span>Heading / H2</span>
+            <span>{t.playground.typography.samples.heading}</span>
             <h2 style={{ fontSize: 'var(--font-size-3xl)', lineHeight: 'var(--line-height-tight)' }}>
-              Ecosistemas colaborativos con impacto real
+              {t.playground.typography.samples.headingText}
             </h2>
           </div>
           <div>
-            <span>Body</span>
+            <span>{t.playground.typography.samples.body}</span>
             <p style={{ maxWidth: '520px', color: 'var(--color-text-secondary)' }}>
-              Diseñamos experiencias premium para líderes que necesitan claridad estratégica, rigor y ejecución en
-              entornos complejos.
+              {t.playground.typography.samples.bodyText}
             </p>
           </div>
         </div>
       </Section>
 
-      <Section tone="mid" title="Quiénes convocan (demo)">
+      <Section tone="mid" title={t.playground.orgs.title}>
         <div className="org-card-grid">
           {organizations.map((org) => (
             <Card
@@ -278,52 +283,52 @@ function DesignPlayground() {
               </div>
               <p>{org.description}</p>
               <div className="org-card__meta">
-                <span>{org.url ? 'Sitio disponible' : 'Detalle interno'}</span>
-                <span>Ver más →</span>
+                <span>{org.url ? t.playground.orgs.meta.site : t.playground.orgs.meta.internal}</span>
+                <span>{t.playground.orgs.meta.cta}</span>
               </div>
             </Card>
           ))}
         </div>
       </Section>
 
-      <Section tone="mid" title="Componentes base">
+      <Section tone="mid" title={t.playground.components.title}>
         <div className="section-grid">
           <div className="card-grid">
-            <Button variant="primary">Primary</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="ghost">Ghost</Button>
-            <Button variant="outline">Outline</Button>
-            <Button variant="dark">Dark</Button>
+            <Button variant="primary">{t.playground.components.buttons.primary}</Button>
+            <Button variant="secondary">{t.playground.components.buttons.secondary}</Button>
+            <Button variant="ghost">{t.playground.components.buttons.ghost}</Button>
+            <Button variant="outline">{t.playground.components.buttons.outline}</Button>
+            <Button variant="dark">{t.playground.components.buttons.dark}</Button>
             <Button variant="primary" disabled>
-              Disabled
+              {t.playground.components.buttons.disabled}
             </Button>
           </div>
           <div className="card-grid">
-            <Chip>Soft Chip</Chip>
-            <Chip variant="solid">Solid Chip</Chip>
-            <Chip variant="outline">Outline Chip</Chip>
+            <Chip>{t.playground.components.chips.soft}</Chip>
+            <Chip variant="solid">{t.playground.components.chips.solid}</Chip>
+            <Chip variant="outline">{t.playground.components.chips.outline}</Chip>
           </div>
           <div className="card-grid">
             <Card variant="glass" as="article">
-              <h4>Glass Card</h4>
-              <p>Para superficies flotantes con blur sutil y bordes premium.</p>
+              <h4>{t.playground.components.cards.glass.title}</h4>
+              <p>{t.playground.components.cards.glass.copy}</p>
             </Card>
             <Card variant="outline" as="article">
-              <h4>Outline Card</h4>
-              <p>Útil para layouts oscuros con jerarquía suave.</p>
+              <h4>{t.playground.components.cards.outline.title}</h4>
+              <p>{t.playground.components.cards.outline.copy}</p>
             </Card>
             <Card variant="elevated" as="article">
-              <h4>Elevated Card</h4>
-              <p>Superficie clara con sombra suave y padding generoso.</p>
+              <h4>{t.playground.components.cards.elevated.title}</h4>
+              <p>{t.playground.components.cards.elevated.copy}</p>
             </Card>
           </div>
         </div>
       </Section>
 
-      <Section tone="light" title="Radii & Sombras">
+      <Section tone="light" title={t.playground.radii.title}>
         <div className="split">
           <Card variant="elevated" className="section-grid">
-            <h4>Radii</h4>
+            <h4>{t.playground.radii.radiiTitle}</h4>
             <div className="card-grid">
               {radiusTokens.map((token) => (
                 <div key={token.name} className="token-card" style={{ borderRadius: token.value }}>
@@ -334,7 +339,7 @@ function DesignPlayground() {
             </div>
           </Card>
           <Card variant="elevated" className="section-grid">
-            <h4>Sombras</h4>
+            <h4>{t.playground.radii.shadowsTitle}</h4>
             <div className="card-grid">
               {shadowTokens.map((token) => (
                 <div key={token.name} className="token-card" style={{ boxShadow: token.value }}>

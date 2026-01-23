@@ -465,6 +465,38 @@ img {
   color: var(--color-text-primary);
 }
 
+.language-switch {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(122, 231, 255, 0.18);
+  background: rgba(12, 18, 35, 0.6);
+}
+
+.language-switch__button {
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background var(--transition-base), color var(--transition-base), box-shadow var(--transition-base);
+}
+
+.language-switch__button.is-active {
+  color: var(--color-text-primary);
+  background: rgba(122, 231, 255, 0.2);
+  box-shadow: 0 0 0 1px rgba(122, 231, 255, 0.2);
+}
+
+.language-switch__button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(122, 231, 255, 0.35);
+}
+
 .hero__content {
   max-width: 640px;
   display: grid;
