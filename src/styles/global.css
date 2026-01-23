@@ -329,9 +329,18 @@ img {
   margin: 0 auto;
 }
 
+.hero-rotator__panel--editorial .playground-hero {
+  width: min(1360px, 98%);
+}
+
 .hero-rotator__content {
   position: relative;
   z-index: 1;
+}
+
+.hero-rotator__panel--editorial .hero-rotator__content {
+  width: min(1240px, 95%);
+  margin: 0 auto;
 }
 
 .hero-rotator__image {
