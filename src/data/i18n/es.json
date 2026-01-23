@@ -1,0 +1,580 @@
+{
+  "nav": {
+    "links": [
+      {
+        "id": "programa",
+        "label": "Programa"
+      },
+      {
+        "id": "metodo",
+        "label": "Método"
+      },
+      {
+        "id": "liderazgo",
+        "label": "Liderazgo"
+      },
+      {
+        "id": "faq",
+        "label": "FAQ"
+      },
+      {
+        "id": "contacto",
+        "label": "Contacto"
+      }
+    ],
+    "actions": {
+      "playground": "Playground",
+      "cta": "Solicitar información →"
+    },
+    "aria": {
+      "nav": "Navegación principal",
+      "playground": "Abrir playground de diseño",
+      "cta": "Solicitar información del programa"
+    }
+  },
+  "language": {
+    "label": "Idioma",
+    "options": {
+      "es": {
+        "short": "ES",
+        "name": "Español"
+      },
+      "en": {
+        "short": "EN",
+        "name": "English"
+      }
+    },
+    "aria": {
+      "switchToEs": "Cambiar idioma a español",
+      "switchToEn": "Switch language to English"
+    }
+  },
+  "heroRotator": {
+    "rotationLabels": {
+      "editorial": "Hero A · Editorial minimal",
+      "orbs": "Hero B · Gradientes y orbes",
+      "split": "Hero C · Split con simulación dinámica"
+    },
+    "badges": [
+      "Presencial · Full-time",
+      "2-20 Noviembre 2026",
+      "Bergen, Noruega",
+      "Cupos limitados · Aplicación"
+    ],
+    "variants": {
+      "orbs": {
+        "badge": "Encuentro fundacional · Cohorte 2026",
+        "title": "Una experiencia inmersiva para liderar en sistemas vivos.",
+        "description": "Diseñamos un espacio de alta exigencia intelectual y emocional para equipos que necesitan ver el sistema completo, tomar mejores decisiones y activar cambios reales.",
+        "actions": {
+          "primary": "Aplicar ahora →",
+          "secondary": "Agenda una llamada"
+        },
+        "chips": [
+          "Presencial",
+          "Full-time",
+          "Bergen, Noruega"
+        ]
+      },
+      "split": {
+        "badge": "Laboratorio de estrategia sistémica",
+        "title": "Estrategia, gobernanza y ejecución en un mismo espacio.",
+        "description": "Un formato híbrido entre think tank y taller intensivo, con casos reales, trabajo aplicado y una red global de líderes sistémicos.",
+        "meta": "3 semanas intensivas · Nov 2026 · Cupos limitados",
+        "actions": {
+          "primary": "Solicitar información →",
+          "secondary": "Ver programa completo"
+        },
+        "signals": {
+          "primary": "Simulación",
+          "secondary": "Panel estratégico"
+        }
+      },
+      "editorial": {
+        "badge": "Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026",
+        "title": "Systemic Strategy & Leadership for Complex Issues",
+        "lead": "Encuentro ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado, industria y sociedad civil que toman decisiones estratégicas en contextos de alta complejidad.",
+        "meta": "Bergen, Noruega · Noviembre 2026 · Presencial · Full-time",
+        "actions": {
+          "primary": "Solicitar información →",
+          "secondary": "Descargar overview (PDF)"
+        }
+      }
+    },
+    "aria": {
+      "reduced": "Hero fijo",
+      "active": "Hero activo: {{label}}"
+    }
+  },
+  "method": {
+    "title": "Trabajar en los sistemas, no solo en los síntomas",
+    "description": "Una forma clara y aplicada de entender qué significa pensar sistémicamente — sin teoría innecesaria."
+  },
+  "interactive": {
+    "eyebrow": "Síntomas vs Sistema",
+    "title": "Interactivo",
+    "ariaTabs": "Selector de enfoque: síntomas o sistema",
+    "tabs": {
+      "sintomas": {
+        "label": "Síntomas",
+        "title": "Cuando solo tratamos síntomas, el sistema se defiende",
+        "description": "Las soluciones parciales pueden aliviar hoy... y agravar mañana: costos ocultos, efectos colaterales, fatiga organizacional.",
+        "bullets": [
+          "Parchea sin cambiar la estructura",
+          "Produce efectos no deseados",
+          "Refuerza el problema a mediano plazo"
+        ],
+        "note": "El reto no es “hacer más”, es decidir mejor dónde intervenir."
+      },
+      "sistema": {
+        "label": "Sistema",
+        "title": "Trabajar en el sistema: de respuestas a palancas",
+        "description": "El potencial aparece cuando diseñamos colaboración: reglas, incentivos, información y relaciones capaces de transformar cómo decidimos y coordinamos.",
+        "bullets": [
+          "Leer patrones y causalidad",
+          "Identificar palancas reales",
+          "Diseñar gobernanza colaborativa"
+        ],
+        "note": "Ciencia + consciencia: rigor, ética y ejecución adaptativa."
+      }
+    },
+    "systemBlocks": [
+      {
+        "title": "Incentivos",
+        "copy": "Lo que el sistema premia (y castiga) manda."
+      },
+      {
+        "title": "Información",
+        "copy": "Lo que se sabe, cuándo se sabe y quién lo sabe."
+      },
+      {
+        "title": "Relaciones",
+        "copy": "La coordinación es infraestructura, no “buena voluntad”."
+      },
+      {
+        "title": "Reglas",
+        "copy": "Normas formales e informales: el verdadero “código” del sistema."
+      }
+    ],
+    "zoomBlock": {
+      "title": "Zoom: Incentivos",
+      "bullets": [
+        "Qué métricas gobiernan decisiones",
+        "Qué trade-offs se esconden",
+        "Qué comportamientos estamos reforzando"
+      ],
+      "note": "Ejemplo: cuando solo se mide velocidad, se sacrifica calidad y confianza."
+    }
+  },
+  "program": {
+    "title": "Qué ocurre en este encuentro",
+    "cards": [
+      {
+        "title": "Comprensión sistémica aplicada",
+        "copy": "Aprendizaje y comprensión sistémica basada en casos reales, más allá de marcos conceptuales o motivacionales."
+      },
+      {
+        "title": "Estrategia en sistemas vivos",
+        "copy": "Integración equilibrada de dinámica de sistemas, estrategia sistémica y gobernanza, con aprendizajes derivados de prueba y error en proyectos reales."
+      },
+      {
+        "title": "Decisión y acción en la práctica",
+        "copy": "Trabajo aplicado, análisis estratégico, reflexión colectiva y espacios de integración personal sobre lo que implica liderar en contextos complejos reales."
+      }
+    ]
+  },
+  "outcomes": {
+    "title": "Resultados para los participantes",
+    "items": [
+      {
+        "title": "Visión sistémica accionable",
+        "copy": "Comprender situaciones complejas de naturaleza social, organizacional, tecnológica y territorial; identificar causas raíz y comunicar una visión estratégica clara para la acción.",
+        "tag": "Claridad estratégica"
+      },
+      {
+        "title": "Palancas con impacto",
+        "copy": "Identificar puntos de apalancamiento sistémico y definir decisiones estratégicas con impacto estructural.",
+        "tag": "Decisión informada"
+      },
+      {
+        "title": "Gobernanza colaborativa",
+        "copy": "Diseñar y participar en ecosistemas de colaboración multisectorial y nuevas formas de gobernanza.",
+        "tag": "Ecosistemas vivos"
+      },
+      {
+        "title": "Dirección de proyectos sistémicos",
+        "copy": "Dirigir, solicitar y evaluar proyectos sistémicos con equipos especializados.",
+        "tag": "Ejecución avanzada"
+      },
+      {
+        "title": "Red global de liderazgo",
+        "copy": "Integrarse a una red internacional de líderes con consciencia sistémica para colaboración de largo plazo.",
+        "tag": "Comunidad de largo plazo"
+      }
+    ]
+  },
+  "format": {
+    "title": "Formato del encuentro",
+    "cards": [
+      {
+        "title": "Duración",
+        "value": "3 semanas intensivas"
+      },
+      {
+        "title": "Dedicación",
+        "value": "Tiempo completo · presencial"
+      },
+      {
+        "title": "Fechas",
+        "value": "2-20 Nov 2026"
+      },
+      {
+        "title": "Lugar",
+        "value": "Bergen, Noruega"
+      }
+    ],
+    "note": "Cupos limitados · Aplicación requerida · Conversación de encaje disponible"
+  },
+  "bergen": {
+    "title": "Por qué Bergen, Noruega",
+    "paragraphs": [
+      "La reflexión profunda y el aprendizaje sistémico requieren entornos que favorezcan el enfoque, el rigor y la perspectiva de largo plazo.",
+      "Noruega ofrece un contexto singular donde naturaleza, tecnología y gobernanza conviven de manera avanzada. Bergen no es un escenario decorativo: es parte del método."
+    ],
+    "chips": [
+      "Inmersión",
+      "Enfoque",
+      "Rigor",
+      "Naturaleza + tecnología"
+    ]
+  },
+  "leadership": {
+    "title": "Liderazgo",
+    "audience": {
+      "title": "A quién está dirigido",
+      "paragraphs": [
+        "Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.",
+        "Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y capacidad real de acción."
+      ]
+    },
+    "convocan": {
+      "title": "Quiénes convocan",
+      "meta": {
+        "site": "Sitio disponible",
+        "internal": "Detalle interno",
+        "cta": "Ver más →"
+      }
+    }
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "sidebar": {
+      "label": "Biblioteca dinámica",
+      "title": "Explora como si fuera un chat estratégico",
+      "description": "Selecciona una pregunta y observa cómo el asistente sintetiza decisiones, contexto y próximos pasos.",
+      "footerLabel": "Automatización estilo OpenAI",
+      "footerDescription": "Respuestas guiadas, contexto sintetizado y follow-ups sugeridos para acelerar decisiones."
+    },
+    "chat": {
+      "badge": "Asistente FAQ",
+      "responseTime": "Tiempo estimado de respuesta: 12 segundos",
+      "actionsLabel": "Siguientes preguntas sugeridas",
+      "inputPlaceholder": "Escribe tu pregunta…",
+      "sendButton": "Enviar",
+      "handoff": "¿No encuentras lo que buscas? Habla con un humano →"
+    },
+    "items": [
+      {
+        "id": "intro",
+        "question": "¿Es un programa introductorio?",
+        "summary": "Diseñado para líderes con experiencia y retos complejos.",
+        "answer": {
+          "heading": "Es un laboratorio avanzado, no una introducción.",
+          "paragraphs": [
+            "Partimos de desafíos reales y decisiones estratégicas. El objetivo es profundizar en pensamiento sistémico aplicado y trasladarlo a decisiones concretas.",
+            "El ritmo es intenso y está orientado a ejecutivos, directores y líderes de política pública que ya operan en entornos complejos."
+          ],
+          "bullets": [
+            "Casos reales y simulaciones de gobernanza",
+            "Trabajo aplicado con mentores",
+            "Integración de rigor técnico + liderazgo consciente"
+          ]
+        },
+        "followUps": [
+          "¿Qué tipo de perfil es ideal?",
+          "¿Se requiere experiencia previa?",
+          "¿Cómo se mide el impacto?"
+        ]
+      },
+      {
+        "id": "encuentro",
+        "question": "¿Qué incluye el encuentro?",
+        "summary": "Inmersión presencial con sesiones estratégicas y trabajo colaborativo.",
+        "answer": {
+          "heading": "Tres semanas para pensar, diseñar y decidir mejor.",
+          "paragraphs": [
+            "Incluye sesiones de análisis sistémico, estudios de caso, coaching y espacios de integración personal para líderes.",
+            "La experiencia combina teoría aplicada, herramientas avanzadas y construcción de redes de confianza."
+          ],
+          "bullets": [
+            "Workshops intensivos + laboratorios de decisión",
+            "Mentoría estratégica y feedback personalizado",
+            "Experiencias en Bergen y espacios de conexión"
+          ]
+        },
+        "followUps": [
+          "¿Cómo se estructura cada semana?",
+          "¿Qué tan presencial es?",
+          "¿Qué resultados se esperan?"
+        ]
+      },
+      {
+        "id": "aplicacion",
+        "question": "¿Cómo es el proceso de aplicación?",
+        "summary": "Conversación de encaje, revisión de perfil y confirmación.",
+        "answer": {
+          "heading": "Selectivo y personalizado para asegurar fit.",
+          "paragraphs": [
+            "Iniciamos con una conversación breve para entender tu desafío, contexto y objetivos.",
+            "Luego revisamos el perfil y confirmamos cupo con tiempo para preparar la experiencia."
+          ],
+          "bullets": [
+            "Formulario corto y conversación estratégica",
+            "Respuesta en máximo 7 días",
+            "Acompañamiento previo a la inmersión"
+          ]
+        },
+        "followUps": [
+          "¿Qué documentos se necesitan?",
+          "¿Hay cupos limitados?",
+          "¿Puedo postular como equipo?"
+        ]
+      },
+      {
+        "id": "costo",
+        "question": "¿Se publica el costo?",
+        "summary": "Se comparte tras la conversación de encaje.",
+        "answer": {
+          "heading": "El valor depende del perfil y tipo de participación.",
+          "paragraphs": [
+            "Priorizamos conversaciones directas para entender el impacto esperado y definir condiciones.",
+            "Puedes solicitar un overview con rangos y alternativas de apoyo institucional."
+          ],
+          "bullets": [
+            "Costos compartidos de forma transparente",
+            "Opciones para equipos y organizaciones",
+            "Claridad antes de la confirmación final"
+          ]
+        },
+        "followUps": [
+          "¿Hay becas o apoyos?",
+          "¿Incluye alojamiento?",
+          "¿Cómo se paga?"
+        ]
+      }
+    ]
+  },
+  "contact": {
+    "title": "Conversemos",
+    "description": "Si estás evaluando tu participación o la de tu institución, podemos conversar directamente para explorar encaje y próximos pasos.",
+    "buttons": {
+      "whatsapp": "WhatsApp",
+      "calendly": "Agendar conversación"
+    },
+    "note": "*Disponible arriba: asistente inteligente para responder preguntas frecuentes sobre el programa.*",
+    "form": {
+      "title": "Solicitud rápida",
+      "fields": {
+        "name": "Nombre",
+        "email": "Correo",
+        "role": "Rol / Organización",
+        "interest": "Tipo de interés"
+      },
+      "options": [
+        "Participación individual",
+        "Inscripción de equipo",
+        "Alianza institucional",
+        "Prensa u otro"
+      ],
+      "submit": "Enviar",
+      "note": "Al enviar, recibirás un correo de confirmación y te contactamos con el overview y próximos pasos.",
+      "messages": {
+        "success": "Solicitud enviada. Te llegará un correo de confirmación con los próximos pasos.",
+        "error": "No pudimos enviar tu solicitud. Inténtalo nuevamente o escribe directamente a info@annia.no."
+      }
+    },
+    "aria": {
+      "whatsapp": "Contactar por WhatsApp",
+      "calendly": "Agendar una conversación",
+      "form": "Formulario de solicitud rápida",
+      "submit": "Enviar solicitud"
+    },
+    "whatsappMessage": "Hola, me gustaría conversar sobre el programa y próximos pasos."
+  },
+  "footer": {
+    "meta": [
+      "ANNiA + Vida al Centro · Cohorte fundacional 2026",
+      "Systemic Strategy & Leadership for Complex Issues es una iniciativa educativa diseñada para fortalecer capacidades de liderazgo sistémico y estratégico frente a desafíos complejos."
+    ],
+    "aria": {
+      "social": "Redes sociales",
+      "instagram": "Instagram de ANNiA",
+      "youtube": "YouTube"
+    }
+  },
+  "organizationModal": {
+    "close": "Cerrar modal",
+    "previewAlt": "Preview de {{name}}",
+    "previewLabel": "Preview",
+    "eyebrow": "Quiénes convocan",
+    "whyLabel": "Por qué convoca",
+    "visitSite": "Visitar sitio →",
+    "closeButton": "Cerrar"
+  },
+  "organizations": [
+    {
+      "id": "annia",
+      "name": "ANNiA",
+      "tagline": "Innovación nórdica y hospitalidad sistémica.",
+      "description": "Una organización que opera como anfitriona y catalizadora de proyectos con alto impacto, combinando rigor estratégico y una sensibilidad humana muy marcada.",
+      "bullets": [
+        "Ecosistema de partners internacionales con experiencia real en transformación.",
+        "Mentoría y acompañamiento ejecutivo durante todo el proceso.",
+        "Enfoque en sostenibilidad y bienestar como indicadores clave."
+      ],
+      "why": "Eleva el estándar de diseño y ejecución de experiencias premium en entornos complejos."
+    },
+    {
+      "id": "vida",
+      "name": "Vida al Centro",
+      "tagline": "Cultura, comunidad y liderazgo con propósito.",
+      "description": "Una iniciativa que conecta líderes con prácticas de cuidado colectivo, creando espacios de aprendizaje que integran bienestar, acción local y visión global.",
+      "bullets": [
+        "Narrativa humana que convierte la estrategia en movimiento cultural.",
+        "Capacidad de activar comunidades y redes de impacto.",
+        "Metodologías participativas y creativas."
+      ],
+      "why": "Aporta cercanía, inspiración y coherencia entre visión y acción."
+    },
+    {
+      "id": "direccion",
+      "name": "Dirección académica",
+      "tagline": "Curaduría académica de alto nivel.",
+      "description": "Equipo responsable de asegurar profundidad intelectual, selección de contenidos y experiencia de aprendizaje para líderes sistémicos.",
+      "bullets": [
+        "Diseño instruccional con enfoque sistémico.",
+        "Selección de faculty internacional y casos reales.",
+        "Evaluación continua de calidad y relevancia."
+      ],
+      "why": "Garantiza coherencia, profundidad y excelencia académica."
+    }
+  ],
+  "playground": {
+    "header": {
+      "eyebrow": "Design System",
+      "title": "Playground · Tokens y Componentes",
+      "description": "Una vista rápida para validar paleta, tipografía y componentes base. Edita tokens en src/styles/tokens.css."
+    },
+    "hero": {
+      "title": "Hero · Variantes creativas",
+      "aria": "Selector de variantes de hero",
+      "variants": {
+        "orbs": {
+          "badge": "Encuentro fundacional · Cohorte 2026",
+          "title": "Una experiencia inmersiva para liderar en sistemas vivos.",
+          "description": "Diseñamos un espacio de alta exigencia intelectual y emocional para equipos que necesitan ver el sistema completo, tomar mejores decisiones y activar cambios reales.",
+          "actions": {
+            "primary": "Aplicar ahora →",
+            "secondary": "Agenda una llamada"
+          },
+          "chips": [
+            "Presencial",
+            "Full-time",
+            "Bergen, Noruega"
+          ]
+        },
+        "split": {
+          "badge": "Laboratorio de estrategia sistémica",
+          "title": "Estrategia, gobernanza y ejecución en un mismo espacio.",
+          "description": "Un formato híbrido entre think tank y taller intensivo, con casos reales, trabajo aplicado y una red global de líderes sistémicos.",
+          "meta": "3 semanas intensivas · Nov 2026 · Cupos limitados",
+          "actions": {
+            "primary": "Solicitar información →",
+            "secondary": "Ver programa completo"
+          },
+          "signals": {
+            "primary": "Simulación",
+            "secondary": "Panel estratégico"
+          }
+        },
+        "editorial": {
+          "badge": "Encuentro ejecutivo · 2026",
+          "title": "Systemic Strategy & Leadership for Complex Issues.",
+          "lead": "Un programa editorialmente curado para líderes que quieren intervenir en sistemas complejos con precisión, profundidad y sensibilidad humana.",
+          "actions": {
+            "primary": "Aplicar al programa →",
+            "secondary": "Descargar overview"
+          },
+          "meta": "Bergen, Noruega · Noviembre 2026 · Presencial"
+        }
+      }
+    },
+    "palette": {
+      "title": "Paleta & Tokens"
+    },
+    "typography": {
+      "title": "Tipografía",
+      "samples": {
+        "display": "Display / H1",
+        "heading": "Heading / H2",
+        "body": "Body",
+        "displayText": "Systemic Strategy & Leadership",
+        "headingText": "Ecosistemas colaborativos con impacto real",
+        "bodyText": "Diseñamos experiencias premium para líderes que necesitan claridad estratégica, rigor y ejecución en entornos complejos."
+      }
+    },
+    "orgs": {
+      "title": "Quiénes convocan (demo)",
+      "meta": {
+        "site": "Sitio disponible",
+        "internal": "Detalle interno",
+        "cta": "Ver más →"
+      }
+    },
+    "components": {
+      "title": "Componentes base",
+      "buttons": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "ghost": "Ghost",
+        "outline": "Outline",
+        "dark": "Dark",
+        "disabled": "Disabled"
+      },
+      "chips": {
+        "soft": "Soft Chip",
+        "solid": "Solid Chip",
+        "outline": "Outline Chip"
+      },
+      "cards": {
+        "glass": {
+          "title": "Glass Card",
+          "copy": "Para superficies flotantes con blur sutil y bordes premium."
+        },
+        "outline": {
+          "title": "Outline Card",
+          "copy": "Útil para layouts oscuros con jerarquía suave."
+        },
+        "elevated": {
+          "title": "Elevated Card",
+          "copy": "Superficie clara con sombra suave y padding generoso."
+        }
+      }
+    },
+    "radii": {
+      "title": "Radii & Sombras",
+      "radiiTitle": "Radii",
+      "shadowsTitle": "Sombras"
+    }
+  }
+}

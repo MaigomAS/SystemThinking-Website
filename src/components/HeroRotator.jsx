@@ -3,6 +3,7 @@ import Button from './ui/Button.jsx';
 import Chip from './ui/Chip.jsx';
 import Container from './ui/Container.jsx';
 import bergenHero from '../assets/bergen-hero.png';
+import { useLanguage } from '../i18n/LanguageContext.jsx';
 
 const hero2Bg = import.meta.glob('../assets/bergen-hero-2.png', { eager: true, query: '?url', import: 'default' })[
   '../assets/bergen-hero-2.png'
@@ -10,40 +11,29 @@ const hero2Bg = import.meta.glob('../assets/bergen-hero-2.png', { eager: true, q
 
 const ROTATION_INTERVAL = 2500;
 
-const heroBadges = ['Presencial · Full-time', '2-20 Noviembre 2026', 'Bergen, Noruega', 'Cupos limitados · Aplicación'];
-
-const heroVariants = [
-  { id: 'editorial', label: 'Hero A · Editorial minimal' },
-  { id: 'orbs', label: 'Hero B · Gradientes y orbes' },
-  { id: 'split', label: 'Hero C · Split con simulación dinámica' },
-];
-
 const heroBackgrounds = {
   editorial: bergenHero,
   orbs: hero2Bg,
   split: null,
 };
 
-function HeroVariantContent({ variant }) {
+function HeroVariantContent({ variant, content }) {
   switch (variant) {
     case 'orbs':
       return (
         <div className="playground-hero__grid">
           <div className="playground-hero__content">
-            <Chip className="hero__badge">Encuentro fundacional · Cohorte 2026</Chip>
-            <h1>Una experiencia inmersiva para liderar en sistemas vivos.</h1>
-            <p>
-              Diseñamos un espacio de alta exigencia intelectual y emocional para equipos que necesitan ver el sistema completo,
-              tomar mejores decisiones y activar cambios reales.
-            </p>
+            <Chip className="hero__badge">{content.badge}</Chip>
+            <h1>{content.title}</h1>
+            <p>{content.description}</p>
             <div className="hero__actions">
               <Button variant="primary" className="cta-glow">
-                Aplicar ahora →
+                {content.actions.primary}
               </Button>
-              <Button variant="ghost">Agenda una llamada</Button>
+              <Button variant="ghost">{content.actions.secondary}</Button>
             </div>
             <div className="hero__chips">
-              {['Presencial', 'Full-time', 'Bergen, Noruega'].map((badge) => (
+              {content.chips.map((badge) => (
                 <Chip key={badge} variant="outline">
                   {badge}
                 </Chip>
@@ -87,23 +77,20 @@ function HeroVariantContent({ variant }) {
             <div className="hero-loop__pulse hero-loop__pulse--one" />
             <div className="hero-loop__pulse hero-loop__pulse--two" />
             <div className="hero-loop__signals">
-              <span className="hero-loop__signal hero-loop__signal--primary">Simulación</span>
-              <span className="hero-loop__signal hero-loop__signal--secondary">Panel estratégico</span>
+              <span className="hero-loop__signal hero-loop__signal--primary">{content.signals.primary}</span>
+              <span className="hero-loop__signal hero-loop__signal--secondary">{content.signals.secondary}</span>
             </div>
           </div>
           <div className="playground-hero__content">
-            <Chip className="hero__badge">Laboratorio de estrategia sistémica</Chip>
-            <h1>Estrategia, gobernanza y ejecución en un mismo espacio.</h1>
-            <p>
-              Un formato híbrido entre think tank y taller intensivo, con casos reales, trabajo aplicado y una red global de líderes
-              sistémicos.
-            </p>
-            <p className="hero__meta">3 semanas intensivas · Nov 2026 · Cupos limitados</p>
+            <Chip className="hero__badge">{content.badge}</Chip>
+            <h1>{content.title}</h1>
+            <p>{content.description}</p>
+            <p className="hero__meta">{content.meta}</p>
             <div className="hero__actions">
               <Button variant="primary" className="cta-glow">
-                Solicitar información →
+                {content.actions.primary}
               </Button>
-              <Button variant="secondary">Ver programa completo</Button>
+              <Button variant="secondary">{content.actions.secondary}</Button>
             </div>
           </div>
         </div>
@@ -112,21 +99,18 @@ function HeroVariantContent({ variant }) {
     default:
       return (
         <div className="playground-hero__content playground-hero__content--editorial">
-          <Chip className="hero__badge">Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026</Chip>
-          <h1>Systemic Strategy &amp; Leadership for Complex Issues</h1>
-          <p className="playground-hero__lead">
-            Encuentro ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado, industria y sociedad
-            civil que toman decisiones estratégicas en contextos de alta complejidad.
-          </p>
-          <p className="hero__meta">Bergen, Noruega · Noviembre 2026 · Presencial · Full-time</p>
+          <Chip className="hero__badge">{content.badge}</Chip>
+          <h1>{content.title}</h1>
+          <p className="playground-hero__lead">{content.lead}</p>
+          <p className="hero__meta">{content.meta}</p>
           <div className="hero__actions">
             <Button variant="primary" className="cta-glow">
-              Solicitar información →
+              {content.actions.primary}
             </Button>
-            <Button variant="ghost">Descargar overview (PDF)</Button>
+            <Button variant="ghost">{content.actions.secondary}</Button>
           </div>
           <div className="hero__chips">
-            {heroBadges.map((badge) => (
+            {content.badges.map((badge) => (
               <Chip key={badge} variant="outline">
                 {badge}
               </Chip>
@@ -138,6 +122,28 @@ function HeroVariantContent({ variant }) {
 }
 
 function HeroRotator() {
+  const { t } = useLanguage();
+  const heroVariants = useMemo(
+    () => [
+      { id: 'editorial', label: t.heroRotator.rotationLabels.editorial },
+      { id: 'orbs', label: t.heroRotator.rotationLabels.orbs },
+      { id: 'split', label: t.heroRotator.rotationLabels.split },
+    ],
+    [t],
+  );
+
+  const heroContent = useMemo(
+    () => ({
+      editorial: {
+        ...t.heroRotator.variants.editorial,
+        badges: t.heroRotator.badges,
+      },
+      orbs: t.heroRotator.variants.orbs,
+      split: t.heroRotator.variants.split,
+    }),
+    [t],
+  );
+
   const heroRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -171,7 +177,7 @@ function HeroRotator() {
       setActiveIndex((prevIndex) => (prevIndex + 1) % heroVariants.length);
     }, ROTATION_INTERVAL);
     return () => window.clearInterval(interval);
-  }, [isPaused, prefersReducedMotion]);
+  }, [isPaused, prefersReducedMotion, heroVariants.length]);
 
   const handleHeroMove = useCallback(
     (event) => {
@@ -211,7 +217,7 @@ function HeroRotator() {
     setIsPaused(false);
   }, []);
 
-  const activeLabel = useMemo(() => heroVariants[activeIndex]?.label ?? 'Hero', [activeIndex]);
+  const activeLabel = useMemo(() => heroVariants[activeIndex]?.label ?? 'Hero', [activeIndex, heroVariants]);
 
   return (
     <header
@@ -225,7 +231,7 @@ function HeroRotator() {
       onBlurCapture={handleBlurCapture}
     >
       <span className="sr-only" aria-live="polite">
-        {prefersReducedMotion ? 'Hero fijo' : `Hero activo: ${activeLabel}`}
+        {prefersReducedMotion ? t.heroRotator.aria.reduced : t.heroRotator.aria.active.replace('{{label}}', activeLabel)}
       </span>
       <div className="hero-rotator__track" onMouseLeave={handleMouseLeave}>
         {heroVariants.map((variant, index) => {
@@ -266,7 +272,7 @@ function HeroRotator() {
               >
                 <div className="hero-rotator__image" aria-hidden="true" />
                 <Container className="hero-rotator__content">
-                  <HeroVariantContent variant={variant.id} />
+                  <HeroVariantContent variant={variant.id} content={heroContent[variant.id]} />
                 </Container>
               </div>
             </div>

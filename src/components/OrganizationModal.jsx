@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Button from './ui/Button.jsx';
+import { useLanguage } from '../i18n/LanguageContext.jsx';
 
 const focusableSelector = [
   'a[href]',
@@ -11,6 +12,7 @@ const focusableSelector = [
 ].join(',');
 
 function OrganizationModal({ open, onClose, org, returnFocusRef }) {
+  const { t } = useLanguage();
   const panelRef = useRef(null);
   const closeButtonRef = useRef(null);
   const [imageError, setImageError] = useState(false);
@@ -82,21 +84,23 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
         ref={panelRef}
         onMouseDown={(event) => event.stopPropagation()}
       >
-        <button type="button" className="org-modal__close" onClick={onClose} aria-label="Cerrar modal" ref={closeButtonRef}>
+        <button
+          type="button"
+          className="org-modal__close"
+          onClick={onClose}
+          aria-label={t.organizationModal.close}
+          ref={closeButtonRef}
+        >
           ×
         </button>
         <div className="org-modal__preview">
           {hasPreview ? (
-            <img
-              src={org.previewImage}
-              alt={`Preview de ${org.name}`}
-              onError={() => setImageError(true)}
-            />
+            <img src={org.previewImage} alt={t.organizationModal.previewAlt.replace('{{name}}', org.name)} onError={() => setImageError(true)} />
           ) : (
             <div className="org-modal__preview-fallback" aria-hidden="true">
               <div className="org-modal__preview-glow" />
               <div className="org-modal__preview-mock">
-                <span className="org-modal__preview-label">Preview</span>
+                <span className="org-modal__preview-label">{t.organizationModal.previewLabel}</span>
                 <div className="org-modal__preview-bars">
                   <span />
                   <span />
@@ -107,7 +111,7 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
           )}
         </div>
         <div className="org-modal__content">
-          <span className="org-modal__eyebrow">Quiénes convocan</span>
+          <span className="org-modal__eyebrow">{t.organizationModal.eyebrow}</span>
           <h3 id={`org-modal-title-${org.id}`}>{org.name}</h3>
           <p className="org-modal__tagline">{org.tagline}</p>
           <p className="org-modal__description">{org.description}</p>
@@ -117,17 +121,17 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
             ))}
           </ul>
           <div className="org-modal__why">
-            <span>Por qué convoca</span>
+            <span>{t.organizationModal.whyLabel}</span>
             <p>{org.why}</p>
           </div>
           <div className="org-modal__actions">
             {org.url ? (
               <Button as="a" href={org.url} target="_blank" rel="noreferrer" variant="primary">
-                Visitar sitio →
+                {t.organizationModal.visitSite}
               </Button>
             ) : null}
             <Button variant="ghost" onClick={onClose}>
-              Cerrar
+              {t.organizationModal.closeButton}
             </Button>
           </div>
         </div>
