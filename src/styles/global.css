@@ -510,6 +510,10 @@ img {
   color: var(--color-text-primary);
 }
 
+.navbar__actions {
+  align-items: center;
+}
+
 .language-switch {
   display: inline-flex;
   gap: 4px;
@@ -1873,8 +1877,28 @@ img {
 }
 
 @media (max-width: 900px) {
+  .navbar__inner {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    row-gap: 12px;
+  }
+
   .nav-links {
-    display: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 13px;
+    width: 100%;
+    order: 3;
+  }
+
+  .brandmark {
+    order: 1;
+  }
+
+  .navbar__actions {
+    order: 2;
+    gap: 8px;
   }
 
   .split--reverse {

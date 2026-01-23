@@ -132,7 +132,7 @@ function App() {
                 </a>
               ))}
             </div>
-            <div className="hero__actions">
+            <div className="hero__actions navbar__actions">
               <div className="language-switch" role="group" aria-label={t.language.label}>
                 <button
                   type="button"
@@ -151,10 +151,7 @@ function App() {
                   {t.language.options.en.short}
                 </button>
               </div>
-              <Button variant="ghost" as="a" href="/playground" aria-label={t.nav.aria.playground}>
-                {t.nav.actions.playground}
-              </Button>
-              <Button variant="secondary" aria-label={t.nav.aria.cta}>
+              <Button variant="outline" size="sm" aria-label={t.nav.aria.cta}>
                 {t.nav.actions.cta}
               </Button>
             </div>
