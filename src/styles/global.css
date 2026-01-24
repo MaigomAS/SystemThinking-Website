@@ -379,6 +379,15 @@ img {
   box-shadow: 0 0 0 2px rgba(122, 231, 255, 0.5);
 }
 
+.hero-rotator__hint {
+  display: none;
+  margin-top: 12px;
+  text-align: center;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  letter-spacing: 0.02em;
+}
+
 .hero-rotator__image {
   position: absolute;
   inset: 0;
@@ -1899,6 +1908,10 @@ img {
   .navbar__actions {
     order: 2;
     gap: 8px;
+  }
+
+  .hero-rotator__hint {
+    display: block;
   }
 
   .split--reverse {

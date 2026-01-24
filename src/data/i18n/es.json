@@ -104,6 +104,7 @@
     "aria": {
       "status": "Hero activo: {{label}}",
       "dots": "Selector de hero",
+      "swipeHint": "Desliza para explorar",
       "editorial": "Editorial",
       "orbs": "Gradientes",
       "split": "Simulación"

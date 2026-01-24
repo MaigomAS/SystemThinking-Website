@@ -250,6 +250,9 @@ function HeroRotator() {
           />
         ))}
       </div>
+      <p className="hero-rotator__hint" aria-hidden="true">
+        {t.heroRotator.aria.swipeHint}
+      </p>
     </header>
   );
 }
