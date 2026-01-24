@@ -486,7 +486,7 @@ function App() {
                   {t.language.options.en.short}
                 </button>
               </div>
-              <Button variant="outline" size="sm" aria-label={t.nav.aria.cta}>
+              <Button as="a" href="#contacto" variant="primary" size="sm" aria-label={t.nav.aria.cta}>
                 {t.nav.actions.cta}
               </Button>
             </div>
