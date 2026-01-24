@@ -2260,8 +2260,8 @@ img {
   .ecall-steps {
     grid-template-columns: 1fr;
   }
+.ecall-room__control-label {
+  display: none;
+}
 
-  .ecall-room__control-label {
-    display: none;
-  }
 }

@@ -15,6 +15,7 @@ function ECallPage() {
   const [isCoverVisible, setIsCoverVisible] = useState(true);
   const [isCoverLeaving, setIsCoverLeaving] = useState(false);
   const [showControls, setShowControls] = useState(true);
+
   const whatsappLink = useMemo(
     () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(t.ecall.whatsappMessage)}`,
     [t.ecall.whatsappMessage],
@@ -107,7 +108,8 @@ function ECallPage() {
                     </span>
                   ))}
                 </div>
-                <p className="ecall-hero__powered">{t.ecall.card.subtle}</p>
+<p className="ecall-hero__powered">{t.ecall.card.subtle}</p>
+
               </Card>
             </div>
           </Container>
@@ -123,53 +125,62 @@ function ECallPage() {
                 </div>
                 <span className="ecall-room__status">{t.ecall.room.status}</span>
               </div>
-              <div
-                className="ecall-room__frame"
-                ref={frameRef}
-                onMouseEnter={() => setShowControls(true)}
-                onMouseLeave={() => setShowControls(false)}
-              >
-                <div className={`ecall-room__controls ${showControls ? '' : 'is-hidden'}`.trim()}>
-                  <button type="button" className="ecall-room__control-button" onClick={handleFullscreen}>
-                    <span className="ecall-room__control-icon" aria-hidden="true">
-                      <svg viewBox="0 0 24 24">
-                        <path d="M8 3H5a2 2 0 0 0-2 2v3" />
-                        <path d="M16 3h3a2 2 0 0 1 2 2v3" />
-                        <path d="M8 21H5a2 2 0 0 1-2-2v-3" />
-                        <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
-                      </svg>
-                    </span>
-                    <span className="ecall-room__control-label">{t.ecall.actions.fullscreen}</span>
-                  </button>
-                </div>
-                {!isLoaded ? (
-                  <div className="ecall-room__loader">
-                    <span className="ecall-room__spinner" aria-hidden="true" />
-                    <span>{t.ecall.room.loading}</span>
-                  </div>
-                ) : null}
-                {isCoverVisible ? (
-                  <div className={`ecall-room__cover ${isCoverLeaving ? 'is-leaving' : ''}`.trim()}>
-                    <div className="ecall-room__cover-card">
-                      <h3>{t.ecall.room.readyTitle}</h3>
-                      <p>{t.ecall.room.readyCopy}</p>
-                      <Button type="button" variant="primary" onClick={handleEnterRoom}>
-                        {t.ecall.actions.join}
-                      </Button>
-                    </div>
-                  </div>
-                ) : null}
-                <iframe
-                  title={t.ecall.room.iframeTitle}
-                  src={roomUrl}
-                  allow="camera; microphone; fullscreen; speaker; display-capture"
-                  loading="lazy"
-                  onLoad={() => setIsLoaded(true)}
+<div
+  className="ecall-room__frame"
+  ref={frameRef}
+  onMouseEnter={() => setShowControls(true)}
+  onMouseLeave={() => setShowControls(false)}
+>
+  <div className={`ecall-room__controls ${showControls ? '' : 'is-hidden'}`.trim()}>
+    <button type="button" className="ecall-room__control-button" onClick={handleFullscreen}>
+      <span className="ecall-room__control-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+          <path d="M16 3h3a2 2 0 0 1 2 2v3" />
+          <path d="M8 21H5a2 2 0 0 1-2-2v-3" />
+          <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+        </svg>
+      </span>
+      <span className="ecall-room__control-label">
+        {t.ecall.actions.fullscreen}
+      </span>
+    </button>
+  </div>
+
+  {!isLoaded ? (
+    <div className="ecall-room__loader">
+      <span className="ecall-room__spinner" aria-hidden="true" />
+      <span>{t.ecall.room.loading}</span>
+    </div>
+  ) : null}
+
+  {isCoverVisible ? (
+    <div className={`ecall-room__cover ${isCoverLeaving ? 'is-leaving' : ''}`.trim()}>
+      <div className="ecall-room__cover-card">
+        <h3>{t.ecall.room.readyTitle}</h3>
+        <p>{t.ecall.room.readyCopy}</p>
+        <Button type="button" variant="primary" onClick={handleEnterRoom}>
+          {t.ecall.actions.join}
+        </Button>
+      </div>
+    </div>
+  ) : null}
+
+  <iframe
+    title={t.ecall.room.iframeTitle}
+    src={roomUrl}
+    allow="camera; microphone; fullscreen; speaker; display-capture"
+    loading="lazy"
+    onLoad={() => setIsLoaded(true)}
+  />
+</div>
+
                 />
               </div>
               <div className="ecall-room__footer">
                 <span>{t.ecall.room.brandNote}</span>
-                <span className="ecall-room__powered">{t.ecall.room.subtle}</span>
+<span className="ecall-room__powered">{t.ecall.room.subtle}</span>
+
               </div>
             </Card>
             <div className="ecall-room__sidebar">

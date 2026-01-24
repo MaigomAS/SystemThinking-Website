@@ -51,6 +51,7 @@
   },
   "ecall": {
     "eyebrow": "E-Call",
+
     "title": "Sesiones estratégicas en una ventana propia",
     "description": "Un espacio diseñado para workshops, storming de ideas y decisiones críticas en tiempo real, con una capa visual 100% ANNiA.",
     "note": "Creamos tensión creativa y foco: la conversación al centro, el resto en silencio.",
@@ -59,6 +60,7 @@
       "back": "Volver a ANNiA",
       "join": "Unirme ahora",
       "fullscreen": "Ampliar"
+
     },
     "aria": {
       "nav": "Navegación E-Call",
@@ -68,17 +70,22 @@
     },
     "card": {
       "title": "Sala de trabajo ANNiA",
+
       "description": "Una ventana limpia para workshops de alto impacto, con guía, agenda y próximos pasos claros.",
+
       "badges": [
         "Privado y seguro",
         "Agenda compartida",
         "Moderación ANNiA"
       ],
+
       "subtle": "Diseñado para sesiones intensivas y decisiones compartidas."
+
     },
     "room": {
       "eyebrow": "Ventana en vivo",
       "title": "E-Call, sin distracciones",
+
       "subtitle": "Experiencia integrada con identidad ANNiA y enfoque total en el equipo.",
       "cardTitle": "Ventana de sesión",
       "cardCopy": "Audio, video y chat dentro de una capa visual propia para workshops y storming de ideas.",
@@ -89,6 +96,7 @@
       "readyCopy": "Cuando se te solicite, permite cámara y micrófono para una sesión fluida.",
       "brandNote": "La conversación sucede aquí. El resto queda en segundo plano.",
       "subtle": "Modo sesión ampliada disponible."
+
     },
     "prep": {
       "title": "Antes de entrar",
@@ -106,6 +114,7 @@
     "steps": {
       "eyebrow": "Experiencia ANNiA",
       "title": "Cómo se vive la e-call",
+
       "subtitle": "Diseñamos la sesión para elevar la tensión creativa y sostener la claridad.",
       "items": [
         {
@@ -119,6 +128,7 @@
         {
           "title": "Cierre accionable",
           "copy": "Terminamos con acuerdos claros, responsables y un resumen que alimenta el trabajo posterior."
+
         }
       ]
     },

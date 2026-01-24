@@ -68,17 +68,20 @@
     },
     "card": {
       "title": "ANNiA working room",
-      "description": "A clean window for high-impact workshops, with guidance, agenda, and clear next steps.",
+      "description": "A clean window for system decisions, with guidance, agenda, and clear next steps.",
       "badges": [
         "Private & secure",
         "Shared agenda",
         "ANNiA moderation"
       ],
+
       "subtle": "Built for intense sessions and shared decisions."
+
     },
     "room": {
       "eyebrow": "Live window",
       "title": "E-Call, no distractions",
+
       "subtitle": "An integrated experience with ANNiA identity and full team focus.",
       "cardTitle": "Session window",
       "cardCopy": "Audio, video, and chat wrapped in a custom layer for workshops and idea storming.",
@@ -89,6 +92,7 @@
       "readyCopy": "Allow camera and microphone when prompted for a smooth session.",
       "brandNote": "The conversation happens here. Everything else stays in the background.",
       "subtle": "Full-size session mode available."
+
     },
     "prep": {
       "title": "Before you enter",
@@ -106,6 +110,7 @@
     "steps": {
       "eyebrow": "ANNiA experience",
       "title": "How the e-call feels",
+
       "subtitle": "Designed to raise creative tension and sustain clarity.",
       "items": [
         {
@@ -119,6 +124,7 @@
         {
           "title": "Actionable close",
           "copy": "We end with clear agreements, owners, and a summary that fuels the work after."
+
         }
       ]
     },
