@@ -49,6 +49,76 @@
       "switchToEn": "Switch language to English"
     }
   },
+  "ecall": {
+    "eyebrow": "E-Call",
+    "title": "Your strategic session inside a branded window",
+    "description": "We use Whereby as the base technology so the room feels ANNiA: same aesthetics, same guidance, zero distractions.",
+    "note": "The experience is designed so the conversation leads, not the platform.",
+    "actions": {
+      "enter": "Enter the room",
+      "back": "Back to ANNiA"
+    },
+    "aria": {
+      "nav": "E-Call navigation",
+      "enter": "Enter ANNiA video room",
+      "back": "Back to the main page",
+      "whatsapp": "Message us on WhatsApp"
+    },
+    "card": {
+      "title": "ANNiA working room",
+      "description": "A clean window for system decisions, with guidance, agenda, and clear next steps.",
+      "badges": [
+        "Private & secure",
+        "Shared agenda",
+        "ANNiA moderation"
+      ],
+      "powered": "Base technology: Whereby"
+    },
+    "room": {
+      "eyebrow": "Live window",
+      "title": "E-Call, no distractions",
+      "subtitle": "An integrated experience that feels like our own platform.",
+      "cardTitle": "Session window",
+      "cardCopy": "Audio, video, and chat wrapped in an ANNiA-owned interface.",
+      "status": "Available now",
+      "iframeTitle": "ANNiA video call room",
+      "brandNote": "The conversation happens here. The technology stays in the background.",
+      "powered": "Whereby as base technology"
+    },
+    "prep": {
+      "title": "Before you enter",
+      "items": [
+        "Have the session goal and key participants ready.",
+        "Use headphones to reduce background noise.",
+        "Share your screen only when needed."
+      ]
+    },
+    "support": {
+      "title": "Need help accessing the room?",
+      "copy": "Our team will guide you in and unblock anything within minutes.",
+      "button": "Message on WhatsApp"
+    },
+    "steps": {
+      "eyebrow": "ANNiA experience",
+      "title": "How the e-call feels",
+      "subtitle": "Designed so it looks owned, not borrowed.",
+      "items": [
+        {
+          "title": "Owned identity",
+          "copy": "The environment keeps our palette, typography, and tone; Whereby only enables the connection."
+        },
+        {
+          "title": "Session guidance",
+          "copy": "Agenda, roles, and next steps are visible to keep decisions on track."
+        },
+        {
+          "title": "Actionable close",
+          "copy": "We finish with clear agreements and a summary that feeds the work after."
+        }
+      ]
+    },
+    "whatsappMessage": "Hi, I need support entering the ANNiA e-call."
+  },
   "heroRotator": {
     "rotationLabels": {
       "editorial": "Hero A · Editorial minimal",

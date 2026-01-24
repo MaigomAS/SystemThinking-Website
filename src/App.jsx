@@ -5,6 +5,7 @@ import Chip from './components/ui/Chip.jsx';
 import Container from './components/ui/Container.jsx';
 import Section from './components/ui/Section.jsx';
 import DesignPlayground from './components/DesignPlayground.jsx';
+import ECallPage from './components/ECallPage.jsx';
 import HeroRotator from './components/HeroRotator.jsx';
 import OrganizationModal from './components/OrganizationModal.jsx';
 import sectionOrder from './data/sections.json';
@@ -30,6 +31,7 @@ function App() {
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), [interactiveTabs]);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
+  const isECall = typeof window !== 'undefined' && window.location.pathname === '/e-call';
   const returnFocusRef = useRef(null);
   const activeFaq = useMemo(() => faqs.find((faq) => faq.id === activeFaqId) ?? faqs[0], [activeFaqId, faqs]);
 
@@ -118,6 +120,10 @@ function App() {
 
   if (isPlayground) {
     return <DesignPlayground />;
+  }
+
+  if (isECall) {
+    return <ECallPage />;
   }
 
   const sectionRenderers = {
