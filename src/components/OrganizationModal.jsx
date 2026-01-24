@@ -95,7 +95,15 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
         </button>
         <div className="org-modal__preview">
           {hasPreview ? (
-            <img src={org.previewImage} alt={t.organizationModal.previewAlt.replace('{{name}}', org.name)} onError={() => setImageError(true)} />
+            <img
+              src={org.previewImage}
+              alt={t.organizationModal.previewAlt.replace('{{name}}', org.name)}
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="800"
+              onError={() => setImageError(true)}
+            />
           ) : (
             <div className="org-modal__preview-fallback" aria-hidden="true">
               <div className="org-modal__preview-glow" />

@@ -1,0 +1,38 @@
+[
+  {
+    "id": "metodo",
+    "type": "method"
+  },
+  {
+    "id": "experiencia",
+    "type": "interactive"
+  },
+  {
+    "id": "programa",
+    "type": "program"
+  },
+  {
+    "id": "resultados",
+    "type": "outcomes"
+  },
+  {
+    "id": "formato",
+    "type": "format"
+  },
+  {
+    "id": "bergen",
+    "type": "bergen"
+  },
+  {
+    "id": "liderazgo",
+    "type": "leadership"
+  },
+  {
+    "id": "faq",
+    "type": "faq"
+  },
+  {
+    "id": "contacto",
+    "type": "contact"
+  }
+]

@@ -7,6 +7,7 @@ import Section from './components/ui/Section.jsx';
 import DesignPlayground from './components/DesignPlayground.jsx';
 import HeroRotator from './components/HeroRotator.jsx';
 import OrganizationModal from './components/OrganizationModal.jsx';
+import sectionOrder from './data/sections.json';
 import { getOrganizations } from './data/organizations.js';
 import { useLanguage } from './i18n/LanguageContext.jsx';
 
@@ -119,59 +120,25 @@ function App() {
     return <DesignPlayground />;
   }
 
-  return (
-    <div className="page">
-      <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
-        <Container>
-          <nav className="navbar__inner" aria-label={t.nav.aria.nav}>
-            <div className="brandmark">ANNiA</div>
-            <div className="nav-links">
-              {navLinks.map((link) => (
-                <a key={link.id} href={`#${link.id}`}>
-                  {link.label}
-                </a>
-              ))}
-            </div>
-            <div className="hero__actions">
-              <div className="language-switch" role="group" aria-label={t.language.label}>
-                <button
-                  type="button"
-                  className={`language-switch__button ${language === 'es' ? 'is-active' : ''}`}
-                  onClick={() => setLanguage('es')}
-                  aria-label={t.language.aria.switchToEs}
-                >
-                  {t.language.options.es.short}
-                </button>
-                <button
-                  type="button"
-                  className={`language-switch__button ${language === 'en' ? 'is-active' : ''}`}
-                  onClick={() => setLanguage('en')}
-                  aria-label={t.language.aria.switchToEn}
-                >
-                  {t.language.options.en.short}
-                </button>
-              </div>
-              <Button variant="ghost" as="a" href="/playground" aria-label={t.nav.aria.playground}>
-                {t.nav.actions.playground}
-              </Button>
-              <Button variant="secondary" aria-label={t.nav.aria.cta}>
-                {t.nav.actions.cta}
-              </Button>
-            </div>
-          </nav>
-        </Container>
-      </header>
-
-      <HeroRotator />
-
+  const sectionRenderers = {
+    method: (section) => (
       <Section
-        id="metodo"
+        key={section.id}
+        id={section.id}
         title={t.method.title}
         description={t.method.description}
         className="reveal"
       />
-
-      <Section id="experiencia" eyebrow={t.interactive.eyebrow} title={t.interactive.title} tone="mid" className="reveal">
+    ),
+    interactive: (section) => (
+      <Section
+        key={section.id}
+        id={section.id}
+        eyebrow={t.interactive.eyebrow}
+        title={t.interactive.title}
+        tone="mid"
+        className="reveal"
+      >
         <div className="interactive">
           <Card variant="glass" as="article">
             <div className="interactive-tabs" aria-label={t.interactive.ariaTabs}>
@@ -216,8 +183,9 @@ function App() {
           </div>
         </div>
       </Section>
-
-      <Section id="programa" title={t.program.title} tone="mid" className="reveal">
+    ),
+    program: (section) => (
+      <Section key={section.id} id={section.id} title={t.program.title} tone="mid" className="reveal">
         <div className="card-grid">
           {highlightCards.map((card) => (
             <Card key={card.title} variant="glass" as="article">
@@ -227,8 +195,9 @@ function App() {
           ))}
         </div>
       </Section>
-
-      <Section id="resultados" title={t.outcomes.title} tone="light" className="reveal">
+    ),
+    outcomes: (section) => (
+      <Section key={section.id} id={section.id} title={t.outcomes.title} tone="light" className="reveal">
         <div className="result-flow">
           {outcomes.map((outcome, index) => (
             <article key={outcome.title} className="result-step">
@@ -245,8 +214,9 @@ function App() {
           ))}
         </div>
       </Section>
-
-      <Section id="formato" title={t.format.title} tone="light" className="reveal">
+    ),
+    format: (section) => (
+      <Section key={section.id} id={section.id} title={t.format.title} tone="light" className="reveal">
         <div className="format-strip">
           {formatCards.map((card) => (
             <div key={card.title} className="format-strip__row">
@@ -257,8 +227,9 @@ function App() {
         </div>
         <p className="interactive__note">{t.format.note}</p>
       </Section>
-
-      <Section id="bergen" title={t.bergen.title} tone="light" className="reveal">
+    ),
+    bergen: (section) => (
+      <Section key={section.id} id={section.id} title={t.bergen.title} tone="light" className="reveal">
         <div className="split">
           <div className="section-grid">
             {t.bergen.paragraphs.map((paragraph) => (
@@ -275,8 +246,9 @@ function App() {
           <div className="gradient-card" />
         </div>
       </Section>
-
-      <Section id="liderazgo" title={t.leadership.title} tone="light" className="reveal">
+    ),
+    leadership: (section) => (
+      <Section key={section.id} id={section.id} title={t.leadership.title} tone="light" className="reveal">
         <div className="split split--reverse split--equipo">
           <div className="section-grid">
             <h3>{t.leadership.audience.title}</h3>
@@ -314,8 +286,9 @@ function App() {
           </div>
         </div>
       </Section>
-
-      <Section id="faq" title={t.faq.title} tone="light" className="reveal">
+    ),
+    faq: (section) => (
+      <Section key={section.id} id={section.id} title={t.faq.title} tone="light" className="reveal">
         <div className="faq-shell">
           <div className="faq-sidebar" role="tablist" aria-label={t.faq.title}>
             <div className="faq-sidebar__header">
@@ -390,8 +363,9 @@ function App() {
           </div>
         </div>
       </Section>
-
-      <Section id="contacto" title={t.contact.title} tone="light" className="reveal cta-section">
+    ),
+    contact: (section) => (
+      <Section key={section.id} id={section.id} title={t.contact.title} tone="light" className="reveal cta-section">
         <div className="split">
           <div className="section-grid">
             <p>{t.contact.description}</p>
@@ -477,6 +451,52 @@ function App() {
           </Card>
         </div>
       </Section>
+    ),
+  };
+
+  return (
+    <div className="page">
+      <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
+        <Container>
+          <nav className="navbar__inner" aria-label={t.nav.aria.nav}>
+            <div className="brandmark">ANNiA</div>
+            <div className="nav-links">
+              {navLinks.map((link) => (
+                <a key={link.id} href={`#${link.id}`}>
+                  {link.label}
+                </a>
+              ))}
+            </div>
+            <div className="hero__actions navbar__actions">
+              <div className="language-switch" role="group" aria-label={t.language.label}>
+                <button
+                  type="button"
+                  className={`language-switch__button ${language === 'es' ? 'is-active' : ''}`}
+                  onClick={() => setLanguage('es')}
+                  aria-label={t.language.aria.switchToEs}
+                >
+                  {t.language.options.es.short}
+                </button>
+                <button
+                  type="button"
+                  className={`language-switch__button ${language === 'en' ? 'is-active' : ''}`}
+                  onClick={() => setLanguage('en')}
+                  aria-label={t.language.aria.switchToEn}
+                >
+                  {t.language.options.en.short}
+                </button>
+              </div>
+              <Button as="a" href="#contacto" variant="primary" size="sm" aria-label={t.nav.aria.cta}>
+                {t.nav.actions.cta}
+              </Button>
+            </div>
+          </nav>
+        </Container>
+      </header>
+
+      <HeroRotator />
+
+      {sectionOrder.map((section) => sectionRenderers[section.type]?.(section))}
 
       <footer className="footer reveal">
         <Container className="footer__content">

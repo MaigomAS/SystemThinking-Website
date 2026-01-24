@@ -102,8 +102,12 @@
       }
     },
     "aria": {
-      "reduced": "Static hero",
-      "active": "Active hero: {{label}}"
+      "status": "Active hero: {{label}}",
+      "dots": "Hero selector",
+      "swipeHint": "Swipe to explore",
+      "editorial": "Editorial",
+      "orbs": "Gradients",
+      "split": "Simulation"
     }
   },
   "method": {

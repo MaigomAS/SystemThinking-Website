@@ -102,8 +102,12 @@
       }
     },
     "aria": {
-      "reduced": "Hero fijo",
-      "active": "Hero activo: {{label}}"
+      "status": "Hero activo: {{label}}",
+      "dots": "Selector de hero",
+      "swipeHint": "Desliza para explorar",
+      "editorial": "Editorial",
+      "orbs": "Gradientes",
+      "split": "Simulación"
     }
   },
   "method": {
