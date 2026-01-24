@@ -49,6 +49,81 @@
       "switchToEn": "Switch language to English"
     }
   },
+  "ecall": {
+    "eyebrow": "E-Call",
+    "title": "Strategic sessions inside a branded window",
+    "description": "A space designed for workshops, idea storming, and real-time decisions, wrapped in an ANNiA-owned interface.",
+    "note": "We build creative tension and focus: the conversation leads, everything else fades.",
+    "actions": {
+      "enter": "Enter the room",
+      "back": "Back to ANNiA",
+      "join": "Join now",
+      "fullscreen": "Full size"
+    },
+    "aria": {
+      "nav": "E-Call navigation",
+      "enter": "Enter ANNiA video room",
+      "back": "Back to the main page",
+      "whatsapp": "Message us on WhatsApp"
+    },
+    "card": {
+      "title": "ANNiA working room",
+      "description": "A clean window for high-impact workshops, with guidance, agenda, and clear next steps.",
+      "badges": [
+        "Private & secure",
+        "Shared agenda",
+        "ANNiA moderation"
+      ],
+      "subtle": "Built for intense sessions and shared decisions."
+    },
+    "room": {
+      "eyebrow": "Live window",
+      "title": "E-Call, no distractions",
+      "subtitle": "An integrated experience with ANNiA identity and full team focus.",
+      "cardTitle": "Session window",
+      "cardCopy": "Audio, video, and chat wrapped in a custom layer for workshops and idea storming.",
+      "status": "Available now",
+      "iframeTitle": "ANNiA video call room",
+      "loading": "Preparing the room…",
+      "readyTitle": "Ready to join?",
+      "readyCopy": "Allow camera and microphone when prompted for a smooth session.",
+      "brandNote": "The conversation happens here. Everything else stays in the background.",
+      "subtle": "Full-size session mode available."
+    },
+    "prep": {
+      "title": "Before you enter",
+      "items": [
+        "Have the session goal and key participants ready.",
+        "Use headphones to reduce background noise.",
+        "Share your screen only when needed."
+      ]
+    },
+    "support": {
+      "title": "Need help accessing the room?",
+      "copy": "Our team will guide you in and unblock anything within minutes.",
+      "button": "Message on WhatsApp"
+    },
+    "steps": {
+      "eyebrow": "ANNiA experience",
+      "title": "How the e-call feels",
+      "subtitle": "Designed to raise creative tension and sustain clarity.",
+      "items": [
+        {
+          "title": "Owned identity",
+          "copy": "The environment keeps our palette, typography, and tone so teams feel at home."
+        },
+        {
+          "title": "Idea storming",
+          "copy": "Guided dynamics to unlock ideas, surface tension, and prioritize action."
+        },
+        {
+          "title": "Actionable close",
+          "copy": "We end with clear agreements, owners, and a summary that fuels the work after."
+        }
+      ]
+    },
+    "whatsappMessage": "Hi, I need support entering the ANNiA e-call."
+  },
   "heroRotator": {
     "rotationLabels": {
       "editorial": "Hero A · Editorial minimal",
