@@ -564,6 +564,10 @@
       "title": "Playground · Tokens y Componentes",
       "description": "Una vista rápida para validar paleta, tipografía y componentes base. Edita tokens en src/styles/tokens.css."
     },
+    "recommendation": {
+      "title": "Primer scroll recomendado · Modelo A",
+      "description": "Hero editorial único para el programa ejecutivo en Bergen, seguido por una banda de resultados tomada de la página principal."
+    },
     "hero": {
       "title": "Hero · Variantes creativas",
       "aria": "Selector de variantes de hero",
