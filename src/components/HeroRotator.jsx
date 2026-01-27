@@ -18,6 +18,7 @@ const heroBackgrounds = {
 function HeroRotator() {
   const { t } = useLanguage();
   const heroRef = useRef(null);
+  const touchStartRef = useRef({ x: 0, y: 0 });
   const [activeIndex, setActiveIndex] = useState(0);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
@@ -29,6 +30,8 @@ function HeroRotator() {
     ],
     [t],
   );
+
+  const totalHeroes = heroVariants.length;
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -65,6 +68,33 @@ function HeroRotator() {
       hero.style.setProperty('--parallax-y', '0px');
     }
   }, []);
+
+  const handlePrevious = useCallback(() => {
+    setActiveIndex((previousIndex) => (previousIndex - 1 + totalHeroes) % totalHeroes);
+  }, [totalHeroes]);
+
+  const handleNext = useCallback(() => {
+    setActiveIndex((previousIndex) => (previousIndex + 1) % totalHeroes);
+  }, [totalHeroes]);
+
+  const handleTouchStart = useCallback((event) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    touchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  }, []);
+
+  const handleTouchEnd = useCallback((event) => {
+    const touch = event.changedTouches[0];
+    if (!touch) return;
+    const deltaX = touch.clientX - touchStartRef.current.x;
+    const deltaY = touch.clientY - touchStartRef.current.y;
+    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY)) return;
+    if (deltaX > 0) {
+      handlePrevious();
+    } else {
+      handleNext();
+    }
+  }, [handleNext, handlePrevious]);
 
   const heroContent = useMemo(
     () => ({
@@ -198,6 +228,8 @@ function HeroRotator() {
       ref={heroRef}
       onMouseMove={handleHeroMove}
       onMouseLeave={handleHeroLeave}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <span className="sr-only" aria-live="polite">
         {t.heroRotator.aria.status.replace('{{label}}', heroVariants[activeIndex].label)}
@@ -246,17 +278,29 @@ function HeroRotator() {
           );
         })}
       </div>
-      <div className="hero-rotator__dots" role="tablist" aria-label={t.heroRotator.aria.dots}>
-        {heroVariants.map((variant, index) => (
-          <button
-            key={variant.id}
-            type="button"
-            className={`hero-rotator__dot ${index === activeIndex ? 'is-active' : ''}`}
-            aria-label={variant.label}
-            aria-pressed={index === activeIndex}
-            onClick={() => setActiveIndex(index)}
-          />
-        ))}
+      <div className="hero-rotator__controls" role="group" aria-label={t.heroRotator.aria.controls}>
+        <button type="button" className="hero-rotator__arrow" onClick={handlePrevious} aria-label={t.heroRotator.aria.previous}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" />
+          </svg>
+        </button>
+        <div className="hero-rotator__dots" role="tablist" aria-label={t.heroRotator.aria.dots}>
+          {heroVariants.map((variant, index) => (
+            <button
+              key={variant.id}
+              type="button"
+              className={`hero-rotator__dot ${index === activeIndex ? 'is-active' : ''}`}
+              aria-label={variant.label}
+              aria-pressed={index === activeIndex}
+              onClick={() => setActiveIndex(index)}
+            />
+          ))}
+        </div>
+        <button type="button" className="hero-rotator__arrow" onClick={handleNext} aria-label={t.heroRotator.aria.next}>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M9 6l6 6-6 6" />
+          </svg>
+        </button>
       </div>
       <p className="hero-rotator__hint" aria-hidden="true">
         {t.heroRotator.aria.swipeHint}

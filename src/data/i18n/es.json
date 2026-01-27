@@ -190,6 +190,9 @@
     },
     "aria": {
       "status": "Hero activo: {{label}}",
+      "controls": "Navegación del hero",
+      "previous": "Hero anterior",
+      "next": "Siguiente hero",
       "dots": "Selector de hero",
       "swipeHint": "Desliza para explorar",
       "editorial": "Editorial",
