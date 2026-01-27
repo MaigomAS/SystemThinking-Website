@@ -1124,6 +1124,16 @@ img {
   letter-spacing: -0.025em;
 }
 
+.playground-hero__content--editorial h1 span {
+  display: block;
+}
+
+.playground-hero__content--editorial h1 .hero__title-sub {
+  font-size: 0.75em;
+  letter-spacing: -0.01em;
+  margin-top: 0.35rem;
+}
+
 .playground-hero__lead {
   color: var(--color-text-secondary);
   font-size: var(--font-size-lg);

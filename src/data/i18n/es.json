@@ -149,8 +149,8 @@
     "variants": {
       "orbs": {
         "badge": "Encuentro fundacional · Cohorte 2026",
-        "title": "Una experiencia inmersiva para liderar en sistemas vivos.",
-        "description": "Diseñamos un espacio de alta exigencia intelectual y emocional para equipos que necesitan ver el sistema completo, tomar mejores decisiones y activar cambios reales.",
+        "title": "Una experiencia inmersiva para liderar en sistemas vivos",
+        "description": "Diseñamos un espacio para liderar ante retos de alta exigencia intelectual y emocional. Enfocado en equipos que necesitan ver el sistema completo, tomar mejores decisiones y activar cambios reales.",
         "actions": {
           "primary": "Aplicar ahora →",
           "secondary": "Agenda una llamada"
@@ -176,9 +176,9 @@
         }
       },
       "editorial": {
-        "badge": "Encuentro fundacional de liderazgo sistémico · Bergen, Noruega · Noviembre 2026",
-        "title": "Systemic Strategy & Leadership for Complex Issues",
-        "lead": "Encuentro ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado, industria y sociedad civil que toman decisiones estratégicas en contextos de alta complejidad.",
+        "badge": "Systemic Strategy & Leadership for Complex Issues",
+        "title": "Encuentro fundacional de liderazgo sistémico\nBergen, Noruega · Noviembre 2026",
+        "lead": "Programa ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado, industria y sociedad civil que toman decisiones estratégicas en contextos de alta complejidad.",
         "meta": "Bergen, Noruega · Noviembre 2026 · Presencial · Full-time",
         "actions": {
           "primary": "Solicitar información →",
@@ -570,8 +570,8 @@
       "variants": {
         "orbs": {
           "badge": "Encuentro fundacional · Cohorte 2026",
-          "title": "Una experiencia inmersiva para liderar en sistemas vivos.",
-          "description": "Diseñamos un espacio de alta exigencia intelectual y emocional para equipos que necesitan ver el sistema completo, tomar mejores decisiones y activar cambios reales.",
+          "title": "Una experiencia inmersiva para liderar en sistemas vivos",
+          "description": "Diseñamos un espacio para liderar ante retos de alta exigencia intelectual y emocional. Enfocado en equipos que necesitan ver el sistema completo, tomar mejores decisiones y activar cambios reales.",
           "actions": {
             "primary": "Aplicar ahora →",
             "secondary": "Agenda una llamada"
