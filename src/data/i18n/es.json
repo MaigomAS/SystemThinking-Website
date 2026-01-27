@@ -51,12 +51,16 @@
   },
   "ecall": {
     "eyebrow": "E-Call",
-    "title": "Tu sesión estratégica en una ventana propia",
-    "description": "Integramos Whereby como tecnología base para que la sala se sienta ANNiA: misma estética, misma guía, cero distracciones.",
-    "note": "La experiencia está pensada para que la conversación sea protagonista, no la plataforma.",
+
+    "title": "Sesiones estratégicas en una ventana propia",
+    "description": "Un espacio diseñado para workshops, storming de ideas y decisiones críticas en tiempo real, con una capa visual 100% ANNiA.",
+    "note": "Creamos tensión creativa y foco: la conversación al centro, el resto en silencio.",
     "actions": {
       "enter": "Entrar a la sala",
-      "back": "Volver a ANNiA"
+      "back": "Volver a ANNiA",
+      "join": "Unirme ahora",
+      "fullscreen": "Ampliar"
+
     },
     "aria": {
       "nav": "Navegación E-Call",
@@ -66,24 +70,33 @@
     },
     "card": {
       "title": "Sala de trabajo ANNiA",
-      "description": "Una ventana limpia para decisiones de sistemas, con guía, agenda y próximos pasos claros.",
+
+      "description": "Una ventana limpia para workshops de alto impacto, con guía, agenda y próximos pasos claros.",
+
       "badges": [
         "Privado y seguro",
         "Agenda compartida",
         "Moderación ANNiA"
       ],
-      "powered": "Tecnología base: Whereby"
+
+      "subtle": "Diseñado para sesiones intensivas y decisiones compartidas."
+
     },
     "room": {
       "eyebrow": "Ventana en vivo",
       "title": "E-Call, sin distracciones",
-      "subtitle": "Experiencia integrada a nuestra plataforma, con identidad ANNiA.",
+
+      "subtitle": "Experiencia integrada con identidad ANNiA y enfoque total en el equipo.",
       "cardTitle": "Ventana de sesión",
-      "cardCopy": "Audio, video y chat dentro de una capa visual propia.",
+      "cardCopy": "Audio, video y chat dentro de una capa visual propia para workshops y storming de ideas.",
       "status": "Disponible ahora",
       "iframeTitle": "Sala de videollamada ANNiA",
-      "brandNote": "La conversación sucede aquí. La tecnología queda en segundo plano.",
-      "powered": "Whereby como base tecnológica"
+      "loading": "Preparando la sala…",
+      "readyTitle": "¿Listo para entrar?",
+      "readyCopy": "Cuando se te solicite, permite cámara y micrófono para una sesión fluida.",
+      "brandNote": "La conversación sucede aquí. El resto queda en segundo plano.",
+      "subtle": "Modo sesión ampliada disponible."
+
     },
     "prep": {
       "title": "Antes de entrar",
@@ -101,19 +114,21 @@
     "steps": {
       "eyebrow": "Experiencia ANNiA",
       "title": "Cómo se vive la e-call",
-      "subtitle": "Diseñamos la sesión para que parezca propia, no prestada.",
+
+      "subtitle": "Diseñamos la sesión para elevar la tensión creativa y sostener la claridad.",
       "items": [
         {
           "title": "Identidad propia",
-          "copy": "El entorno mantiene nuestra paleta, tipografía y tono; Whereby solo habilita la conexión."
+          "copy": "El entorno mantiene nuestra paleta, tipografía y tono para que el equipo se sienta en casa."
         },
         {
-          "title": "Guía de sesión",
-          "copy": "Agenda, roles y próximos pasos visibles para mantener foco en decisiones."
+          "title": "Storming de ideas",
+          "copy": "Dinámicas guiadas para desbloquear ideas, visualizar tensiones y priorizar acciones."
         },
         {
           "title": "Cierre accionable",
-          "copy": "Terminamos con acuerdos claros y un resumen que alimenta el trabajo posterior."
+          "copy": "Terminamos con acuerdos claros, responsables y un resumen que alimenta el trabajo posterior."
+
         }
       ]
     },

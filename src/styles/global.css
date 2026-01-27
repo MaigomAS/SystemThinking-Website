@@ -2024,6 +2024,124 @@ img {
   aspect-ratio: 16 / 9;
 }
 
+.ecall-room__controls {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  z-index: 6;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.ecall-room__controls.is-hidden {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.ecall-room__control-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(10, 16, 30, 0.7);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.ecall-room__control-button:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.ecall-room__control-icon {
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ecall-room__control-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: rgba(255, 255, 255, 0.9);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.ecall-room__loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  color: rgba(255, 255, 255, 0.8);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.12));
+  z-index: 4;
+}
+
+.ecall-room__spinner {
+  width: 26px;
+  height: 26px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  animation: ecall-spin 0.9s linear infinite;
+}
+
+.ecall-room__cover {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(5, 10, 16, 0.62);
+  backdrop-filter: blur(10px);
+  animation: ecall-cover-in 0.35s ease forwards;
+}
+
+.ecall-room__cover.is-leaving {
+  animation: ecall-cover-out 0.3s ease forwards;
+}
+
+.ecall-room__cover-card {
+  text-align: center;
+  padding: 26px 26px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.25);
+  width: min(780px, 92vw);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.4);
+}
+
+.ecall-room__cover-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.6rem;
+}
+
+.ecall-room__cover-card p {
+  margin: 0 auto 18px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.45;
+  max-width: 54ch;
+}
+
 .ecall-room__frame iframe {
   border: 0;
   width: 100%;
@@ -2072,6 +2190,30 @@ img {
   padding: 20px;
 }
 
+@keyframes ecall-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ecall-cover-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ecall-cover-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 @media (max-width: 900px) {
   .navbar__inner {
     flex-wrap: wrap;
@@ -2118,4 +2260,8 @@ img {
   .ecall-steps {
     grid-template-columns: 1fr;
   }
+.ecall-room__control-label {
+  display: none;
+}
+
 }

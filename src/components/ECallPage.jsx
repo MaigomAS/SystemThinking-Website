@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import Button from './ui/Button.jsx';
 import Card from './ui/Card.jsx';
 import Container from './ui/Container.jsx';
@@ -6,14 +6,38 @@ import Section from './ui/Section.jsx';
 import { useLanguage } from '../i18n/LanguageContext.jsx';
 
 const whatsappPhone = '4741368586';
-const wherebyRoom = 'https://whereby.com/annia-no?embed=1';
+const roomUrl = 'https://whereby.com/annia-no?embed=1';
 
 function ECallPage() {
   const { t, language, setLanguage } = useLanguage();
+  const frameRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isCoverVisible, setIsCoverVisible] = useState(true);
+  const [isCoverLeaving, setIsCoverLeaving] = useState(false);
+  const [showControls, setShowControls] = useState(true);
+
   const whatsappLink = useMemo(
     () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(t.ecall.whatsappMessage)}`,
     [t.ecall.whatsappMessage],
   );
+
+  const handleEnterRoom = () => {
+    setIsCoverLeaving(true);
+    setTimeout(() => {
+      setIsCoverVisible(false);
+      setIsCoverLeaving(false);
+    }, 320);
+    frameRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
+  const handleFullscreen = async () => {
+    if (!frameRef.current || !frameRef.current.requestFullscreen) return;
+    try {
+      await frameRef.current.requestFullscreen();
+    } catch (error) {
+      // no-op: fullscreen may be blocked by the browser
+    }
+  };
 
   return (
     <div className="page ecall-page">
@@ -84,7 +108,8 @@ function ECallPage() {
                     </span>
                   ))}
                 </div>
-                <p className="ecall-hero__powered">{t.ecall.card.powered}</p>
+<p className="ecall-hero__powered">{t.ecall.card.subtle}</p>
+
               </Card>
             </div>
           </Container>
@@ -100,17 +125,60 @@ function ECallPage() {
                 </div>
                 <span className="ecall-room__status">{t.ecall.room.status}</span>
               </div>
-              <div className="ecall-room__frame">
-                <iframe
-                  title={t.ecall.room.iframeTitle}
-                  src={wherebyRoom}
-                  allow="camera; microphone; fullscreen; speaker; display-capture"
-                  loading="lazy"
-                />
-              </div>
+<div
+  className="ecall-room__frame"
+  ref={frameRef}
+  onMouseEnter={() => setShowControls(true)}
+  onMouseLeave={() => setShowControls(false)}
+>
+  <div className={`ecall-room__controls ${showControls ? '' : 'is-hidden'}`.trim()}>
+    <button type="button" className="ecall-room__control-button" onClick={handleFullscreen}>
+      <span className="ecall-room__control-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24">
+          <path d="M8 3H5a2 2 0 0 0-2 2v3" />
+          <path d="M16 3h3a2 2 0 0 1 2 2v3" />
+          <path d="M8 21H5a2 2 0 0 1-2-2v-3" />
+          <path d="M16 21h3a2 2 0 0 0 2-2v-3" />
+        </svg>
+      </span>
+      <span className="ecall-room__control-label">
+        {t.ecall.actions.fullscreen}
+      </span>
+    </button>
+  </div>
+
+  {!isLoaded ? (
+    <div className="ecall-room__loader">
+      <span className="ecall-room__spinner" aria-hidden="true" />
+      <span>{t.ecall.room.loading}</span>
+    </div>
+  ) : null}
+
+  {isCoverVisible ? (
+    <div className={`ecall-room__cover ${isCoverLeaving ? 'is-leaving' : ''}`.trim()}>
+      <div className="ecall-room__cover-card">
+        <h3>{t.ecall.room.readyTitle}</h3>
+        <p>{t.ecall.room.readyCopy}</p>
+        <Button type="button" variant="primary" onClick={handleEnterRoom}>
+          {t.ecall.actions.join}
+        </Button>
+      </div>
+    </div>
+  ) : null}
+
+  <iframe
+    title={t.ecall.room.iframeTitle}
+    src={roomUrl}
+    allow="camera; microphone; fullscreen; speaker; display-capture"
+    loading="lazy"
+    onLoad={() => setIsLoaded(true)}
+  />
+</div>
+
               <div className="ecall-room__footer">
                 <span>{t.ecall.room.brandNote}</span>
-                <span className="ecall-room__powered">{t.ecall.room.powered}</span>
+<span className="ecall-room__powered">{t.ecall.room.subtle}</span>
+
               </div>
             </Card>
             <div className="ecall-room__sidebar">
