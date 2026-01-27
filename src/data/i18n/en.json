@@ -184,6 +184,9 @@
     },
     "aria": {
       "status": "Active hero: {{label}}",
+      "controls": "Hero navigation",
+      "previous": "Previous hero",
+      "next": "Next hero",
       "dots": "Hero selector",
       "swipeHint": "Swipe to explore",
       "editorial": "Editorial",
