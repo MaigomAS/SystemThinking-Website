@@ -119,7 +119,7 @@ function HeroRotator() {
               <h1>{content.title}</h1>
               <p>{content.description}</p>
               <div className="hero__actions">
-                <Button variant="primary" className="cta-glow">
+                <Button as="a" href="#contacto" variant="primary" className="cta-glow">
                   {content.actions.primary}
                 </Button>
                 <Button variant="ghost">{content.actions.secondary}</Button>
@@ -179,7 +179,7 @@ function HeroRotator() {
               <p>{content.description}</p>
               <p className="hero__meta">{content.meta}</p>
               <div className="hero__actions">
-                <Button variant="primary" className="cta-glow">
+                <Button as="a" href="#contacto" variant="primary" className="cta-glow">
                   {content.actions.primary}
                 </Button>
                 <Button variant="secondary">{content.actions.secondary}</Button>
@@ -204,7 +204,7 @@ function HeroRotator() {
             <p className="playground-hero__lead">{content.lead}</p>
             <p className="hero__meta">{content.meta}</p>
             <div className="hero__actions">
-              <Button variant="primary" className="cta-glow">
+              <Button as="a" href="#contacto" variant="primary" className="cta-glow">
                 {content.actions.primary}
               </Button>
               <Button variant="ghost">{content.actions.secondary}</Button>

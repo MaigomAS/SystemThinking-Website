@@ -2298,13 +2298,13 @@ img {
   }
 
   .hero-rotator__content {
-    padding-bottom: 72px;
+    padding-bottom: 96px;
   }
 
   .hero-rotator__controls {
     position: absolute;
     left: 50%;
-    bottom: 24px;
+    bottom: 40px;
     transform: translateX(-50%);
   }
 
