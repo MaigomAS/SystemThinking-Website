@@ -25,6 +25,7 @@ function App() {
   const interactiveTabs = t.interactive.tabs;
   const systemBlocks = t.interactive.systemBlocks;
   const zoomBlock = t.interactive.zoomBlock;
+  const detailBlocks = t.interactive.detailBlocks;
   const organizations = useMemo(() => getOrganizations(t.organizations), [t]);
 
   const [activeTab, setActiveTab] = useState('sintomas');
@@ -186,6 +187,27 @@ function App() {
               </ul>
               <p className="interactive__note">{zoomBlock.note}</p>
             </Card>
+          </div>
+          <div className="interactive-details">
+            {detailBlocks.map((block) => (
+              <Card key={block.title} variant="glass" as="article" className="interactive-detail">
+                <div className="interactive-detail__image" role="img" aria-label={block.imageAlt}>
+                  <span>{block.imageHint}</span>
+                </div>
+                <div className="interactive-detail__content">
+                  <p className="interactive-detail__eyebrow">{block.title}</p>
+                  <h4>{block.lead}</h4>
+                  <p className="interactive-detail__label">{block.whyTitle}</p>
+                  <ul>
+                    {block.whyBullets.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  <p className="interactive-detail__label">{block.impactTitle}</p>
+                  <p className="interactive__note">{block.impactCopy}</p>
+                </div>
+              </Card>
+            ))}
           </div>
         </div>
       </Section>

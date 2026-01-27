@@ -710,6 +710,48 @@ img {
   font-size: var(--font-size-sm);
 }
 
+.interactive-details {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column: 1 / -1;
+}
+
+.interactive-detail {
+  display: grid;
+  gap: 16px;
+}
+
+.interactive-detail__image {
+  display: grid;
+  place-items: center;
+  min-height: 160px;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px dashed rgba(122, 231, 255, 0.35);
+  background: rgba(15, 25, 45, 0.3);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.interactive-detail__content {
+  display: grid;
+  gap: 12px;
+}
+
+.interactive-detail__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: rgba(122, 231, 255, 0.8);
+}
+
+.interactive-detail__label {
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
 .card-grid {
   display: grid;
   gap: 18px;

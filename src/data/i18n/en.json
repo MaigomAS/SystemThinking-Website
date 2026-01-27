@@ -245,14 +245,72 @@
       }
     ],
     "zoomBlock": {
-      "title": "Zoom: Incentives",
+      "title": "Incentives that align the system",
       "bullets": [
-        "Which metrics govern decisions",
-        "Which trade-offs are hidden",
-        "Which behaviors we are reinforcing"
+        "Surface the metrics that truly steer decisions",
+        "Make trade-offs and hidden costs explicit",
+        "Redesign incentives for sustainable performance and trust"
       ],
-      "note": "Example: when only speed is measured, quality and trust are sacrificed."
-    }
+      "note": "In an executive program, this means elevating impact without compromising collaboration."
+    },
+    "detailBlocks": [
+      {
+        "title": "Incentives",
+        "lead": "Align metrics with strategic behavior.",
+        "whyTitle": "Why it applies",
+        "whyBullets": [
+          "Reveals short-term bias in current KPIs",
+          "Avoids rewards that punish collaboration or quality",
+          "Enables redesign with total cost visibility"
+        ],
+        "impactTitle": "Executive impact",
+        "impactCopy": "Decisions that elevate sustainable performance without eroding trust.",
+        "imageAlt": "Executive team reviewing metrics on a dashboard",
+        "imageHint": "Suggested image: executive session with visible indicators."
+      },
+      {
+        "title": "Information",
+        "lead": "Decide with clear timing, context, and ownership.",
+        "whyTitle": "Why it applies",
+        "whyBullets": [
+          "Reduces asymmetries that slow coordination",
+          "Speeds decisions without sacrificing quality",
+          "Clarifies who needs what, and when"
+        ],
+        "impactTitle": "Executive impact",
+        "impactCopy": "Evidence-based governance aligned to business tempo.",
+        "imageAlt": "Team analyzing strategic data on a screen",
+        "imageHint": "Suggested image: data dashboard or room with screens."
+      },
+      {
+        "title": "Relationships",
+        "lead": "Design collaboration as infrastructure.",
+        "whyTitle": "Why it applies",
+        "whyBullets": [
+          "Clarifies critical interdependencies across areas",
+          "Reduces friction in complex projects",
+          "Activates trust networks for joint execution"
+        ],
+        "impactTitle": "Executive impact",
+        "impactCopy": "Integrated execution with shared accountability.",
+        "imageAlt": "Team collaborating around a stakeholder map",
+        "imageHint": "Suggested image: cross-functional workshop with post-its."
+      },
+      {
+        "title": "Rules",
+        "lead": "Turn culture into operational governance.",
+        "whyTitle": "Why it applies",
+        "whyBullets": [
+          "Sets non-negotiable standards",
+          "Reduces ambiguity in critical decisions",
+          "Protects ethics, reputation, and compliance"
+        ],
+        "impactTitle": "Executive impact",
+        "impactCopy": "Operational consistency in complex, high-pressure contexts.",
+        "imageAlt": "Boardroom reviewing guidelines and agreements",
+        "imageHint": "Suggested image: executive table with documents or agreements."
+      }
+    ]
   },
   "program": {
     "title": "What happens in this gathering",

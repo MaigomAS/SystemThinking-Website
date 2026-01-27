@@ -251,14 +251,72 @@
       }
     ],
     "zoomBlock": {
-      "title": "Zoom: Incentivos",
+      "title": "Incentivos que alinean el sistema",
       "bullets": [
-        "Qué métricas gobiernan decisiones",
-        "Qué trade-offs se esconden",
-        "Qué comportamientos estamos reforzando"
+        "Detectar las métricas que realmente dirigen decisiones",
+        "Hacer visibles los trade-offs y costos ocultos",
+        "Rediseñar incentivos para desempeño sostenible y confianza"
       ],
-      "note": "Ejemplo: cuando solo se mide velocidad, se sacrifica calidad y confianza."
-    }
+      "note": "En un programa ejecutivo, esto se traduce en decisiones que elevan impacto sin comprometer la colaboración."
+    },
+    "detailBlocks": [
+      {
+        "title": "Incentivos",
+        "lead": "Alinea métricas con comportamiento estratégico.",
+        "whyTitle": "Por qué aplica",
+        "whyBullets": [
+          "Expone sesgos de corto plazo en los KPIs actuales",
+          "Evita premios que castigan colaboración o calidad",
+          "Permite rediseñar métricas con costo total visible"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impactCopy": "Decisiones que elevan desempeño sostenible sin comprometer confianza.",
+        "imageAlt": "Equipo ejecutivo revisando métricas en un tablero",
+        "imageHint": "Imagen sugerida: sesión ejecutiva con indicadores visibles."
+      },
+      {
+        "title": "Información",
+        "lead": "Decidir con timing, contexto y ownership claros.",
+        "whyTitle": "Por qué aplica",
+        "whyBullets": [
+          "Reduce asimetrías que frenan coordinación",
+          "Acelera decisiones sin perder calidad",
+          "Define quién debe saber qué, y cuándo"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impactCopy": "Gobernanza basada en evidencia y alineada al ritmo del negocio.",
+        "imageAlt": "Equipo analizando datos estratégicos en una pantalla",
+        "imageHint": "Imagen sugerida: tablero de datos o sala con pantallas."
+      },
+      {
+        "title": "Relaciones",
+        "lead": "Diseña colaboración como infraestructura.",
+        "whyTitle": "Por qué aplica",
+        "whyBullets": [
+          "Clarifica interdependencias críticas entre áreas",
+          "Reduce fricción en proyectos complejos",
+          "Activa redes de confianza para ejecutar en conjunto"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impactCopy": "Ejecución integrada con accountability compartida.",
+        "imageAlt": "Equipo colaborando en un mapa de stakeholders",
+        "imageHint": "Imagen sugerida: workshop interáreas con mapa o post-its."
+      },
+      {
+        "title": "Reglas",
+        "lead": "Convierte cultura en gobernanza operable.",
+        "whyTitle": "Por qué aplica",
+        "whyBullets": [
+          "Establece estándares no negociables",
+          "Reduce ambigüedad en decisiones críticas",
+          "Protege ética, reputación y cumplimiento"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impactCopy": "Consistencia operativa en entornos complejos y de alta presión.",
+        "imageAlt": "Mesa directiva revisando lineamientos y acuerdos",
+        "imageHint": "Imagen sugerida: mesa ejecutiva con documentos o acuerdos."
+      }
+    ]
   },
   "program": {
     "title": "Qué ocurre en este encuentro",
