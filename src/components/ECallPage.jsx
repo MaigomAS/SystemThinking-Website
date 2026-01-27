@@ -175,8 +175,6 @@ function ECallPage() {
   />
 </div>
 
-                />
-              </div>
               <div className="ecall-room__footer">
                 <span>{t.ecall.room.brandNote}</span>
 <span className="ecall-room__powered">{t.ecall.room.subtle}</span>
