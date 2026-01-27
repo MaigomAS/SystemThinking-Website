@@ -221,6 +221,33 @@ function HeroRotator() {
     }
   };
 
+  const renderControls = () => (
+    <div className="hero-rotator__controls" role="group" aria-label={t.heroRotator.aria.controls}>
+      <button type="button" className="hero-rotator__arrow" onClick={handlePrevious} aria-label={t.heroRotator.aria.previous}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15 6l-6 6 6 6" />
+        </svg>
+      </button>
+      <div className="hero-rotator__dots" role="tablist" aria-label={t.heroRotator.aria.dots}>
+        {heroVariants.map((variant, index) => (
+          <button
+            key={variant.id}
+            type="button"
+            className={`hero-rotator__dot ${index === activeIndex ? 'is-active' : ''}`}
+            aria-label={variant.label}
+            aria-pressed={index === activeIndex}
+            onClick={() => setActiveIndex(index)}
+          />
+        ))}
+      </div>
+      <button type="button" className="hero-rotator__arrow" onClick={handleNext} aria-label={t.heroRotator.aria.next}>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 6l6 6-6 6" />
+        </svg>
+      </button>
+    </div>
+  );
+
   return (
     <header
       className="hero hero-rotator hero--parallax"
@@ -272,35 +299,14 @@ function HeroRotator() {
             >
               <div className={`playground-hero playground-hero--${variant.id} hero--parallax`} style={heroBackgroundStyle}>
                 <div className="hero-rotator__image" aria-hidden="true" />
-                <Container className="hero-rotator__content">{panelContent}</Container>
+                <Container className="hero-rotator__content">
+                  <div className="hero-rotator__content-inner">{panelContent}</div>
+                  {renderControls()}
+                </Container>
               </div>
             </div>
           );
         })}
-      </div>
-      <div className="hero-rotator__controls" role="group" aria-label={t.heroRotator.aria.controls}>
-        <button type="button" className="hero-rotator__arrow" onClick={handlePrevious} aria-label={t.heroRotator.aria.previous}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M15 6l-6 6 6 6" />
-          </svg>
-        </button>
-        <div className="hero-rotator__dots" role="tablist" aria-label={t.heroRotator.aria.dots}>
-          {heroVariants.map((variant, index) => (
-            <button
-              key={variant.id}
-              type="button"
-              className={`hero-rotator__dot ${index === activeIndex ? 'is-active' : ''}`}
-              aria-label={variant.label}
-              aria-pressed={index === activeIndex}
-              onClick={() => setActiveIndex(index)}
-            />
-          ))}
-        </div>
-        <button type="button" className="hero-rotator__arrow" onClick={handleNext} aria-label={t.heroRotator.aria.next}>
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 6l6 6-6 6" />
-          </svg>
-        </button>
       </div>
       <p className="hero-rotator__hint" aria-hidden="true">
         {t.heroRotator.aria.swipeHint}
