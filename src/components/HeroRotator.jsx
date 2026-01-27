@@ -162,7 +162,15 @@ function HeroRotator() {
         return (
           <div className="playground-hero__content playground-hero__content--editorial">
             <Chip className="hero__badge">{content.badge}</Chip>
-            <h1>{content.title}</h1>
+            <h1>
+              {String(content.title)
+                .split('\n')
+                .map((line, index) => (
+                  <span key={`${line}-${index}`} className={index === 0 ? undefined : 'hero__title-sub'}>
+                    {line}
+                  </span>
+                ))}
+            </h1>
             <p className="playground-hero__lead">{content.lead}</p>
             <p className="hero__meta">{content.meta}</p>
             <div className="hero__actions">
