@@ -331,16 +331,28 @@
   },
   "bergen": {
     "title": "Por qué Bergen, Noruega",
-    "paragraphs": [
-      "La reflexión profunda y el aprendizaje sistémico requieren entornos que favorezcan el enfoque, el rigor y la perspectiva de largo plazo.",
-      "Noruega ofrece un contexto singular donde naturaleza, tecnología y gobernanza conviven de manera avanzada. Bergen no es un escenario decorativo: es parte del método."
-    ],
-    "chips": [
-      "Inmersión",
-      "Enfoque",
-      "Rigor",
-      "Naturaleza + tecnología"
-    ]
+    "badge": "Contexto del método",
+    "copy": "La reflexión profunda y el aprendizaje sistémico requieren entornos que favorezcan el enfoque, el rigor y la perspectiva de largo plazo. Noruega ofrece un contexto singular donde naturaleza, tecnología y gobernanza conviven de manera avanzada. Bergen no es un escenario decorativo: es parte del método.",
+    "imageAlt": "Vista editorial de Bergen, Noruega",
+    "actions": {
+      "video": "Ver video",
+      "videoAria": "Ver video sobre Bergen"
+    },
+    "videoModal": {
+      "ariaLabel": "Video sobre Bergen, Noruega",
+      "closeAria": "Cerrar video",
+      "title": "Video sobre Bergen, Noruega"
+    },
+    "experiences": {
+      "eyebrow": "Extiende la inmersión",
+      "title": "Experiencias opcionales en Bergen y fiordos",
+      "description": "No son el programa. Son el espacio donde las conversaciones continúan.",
+      "detailLink": "Ver detalle",
+      "aria": {
+        "prev": "Ver experiencias anteriores",
+        "next": "Ver siguientes experiencias"
+      }
+    }
   },
   "leadership": {
     "title": "Liderazgo",

@@ -12,9 +12,68 @@ import OrganizationModal from './components/OrganizationModal.jsx';
 import sectionOrder from './data/sections.json';
 import { getOrganizations } from './data/organizations.js';
 import { useLanguage } from './i18n/LanguageContext.jsx';
+import bergenStatementImage from './assets/bergen-hero.png';
 
 const whatsappPhone = '4741368586';
 const calendlyLink = 'https://calendly.com/annia-info/30min';
+const bergenVideoId = 'dQw4w9WgXcQ';
+
+const EXPERIENCES = {
+  es: [
+    {
+      title: 'Sauna & fiordo',
+      badge: 'Experiencia social',
+      lead: 'Reset físico y mental',
+      description: 'Contraste térmico nórdico para claridad, presencia y energía sostenida.',
+      image: null,
+    },
+    {
+      title: 'Almuerzo en huerto (Hardanger)',
+      badge: 'Tour opcional',
+      lead: 'Conversaciones sin prisa',
+      description: 'Recorrido lento para conversar con perspectiva y pausa consciente.',
+      sourceUrl:
+        'https://www.getyourguide.es/bergen-l1132/bergen-tour-por-el-fiordo-hardanger-con-almuerzo-y-cascadas-t1126812/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
+      image: null,
+    },
+    {
+      title: 'Voss + cascadas',
+      badge: 'Tour opcional',
+      lead: 'Escala y perspectiva',
+      description: 'Panoramas abiertos para reencuadrar desafíos y prioridades estratégicas.',
+      sourceUrl:
+        'https://www.getyourguide.es/bergen-l1132/bergen-hardangerfjord-telecabina-de-voss-y-3-grandes-cascadas-t348716/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
+      image: null,
+    },
+  ],
+  en: [
+    {
+      title: 'Sauna & fjord',
+      badge: 'Social experience',
+      lead: 'Physical and mental reset',
+      description: 'Nordic thermal contrast for clarity, presence, and sustained energy.',
+      image: null,
+    },
+    {
+      title: 'Orchard lunch (Hardanger)',
+      badge: 'Optional tour',
+      lead: 'Unhurried conversations',
+      description: 'A slower pace that invites perspective, focus, and quiet dialogue.',
+      sourceUrl:
+        'https://www.getyourguide.es/bergen-l1132/bergen-tour-por-el-fiordo-hardanger-con-almuerzo-y-cascadas-t1126812/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
+      image: null,
+    },
+    {
+      title: 'Voss + waterfalls',
+      badge: 'Optional tour',
+      lead: 'Scale and perspective',
+      description: 'Open panoramas to reframe strategic priorities and decisions.',
+      sourceUrl:
+        'https://www.getyourguide.es/bergen-l1132/bergen-hardangerfjord-telecabina-de-voss-y-3-grandes-cascadas-t348716/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
+      image: null,
+    },
+  ],
+};
 
 const LEVER_ITEMS = [
   {
@@ -89,6 +148,7 @@ function App() {
   const [activeTab, setActiveTab] = useState('sintomas');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
   const [activeLeverIndex, setActiveLeverIndex] = useState(null);
+  const [isBergenVideoOpen, setIsBergenVideoOpen] = useState(false);
   const isLeverOpen = activeLeverIndex !== null;
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), [interactiveTabs]);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
@@ -97,6 +157,8 @@ function App() {
   const lastTriggerRef = useRef(null);
   const leverTitleRef = useRef(null);
   const activeFaq = useMemo(() => faqs.find((faq) => faq.id === activeFaqId) ?? faqs[0], [activeFaqId, faqs]);
+  const experienceItems = useMemo(() => EXPERIENCES[language] ?? EXPERIENCES.es, [language]);
+  const experienceTrackRef = useRef(null);
 
   const whatsappLink = useMemo(
     () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(t.contact.whatsappMessage)}`,
@@ -130,6 +192,19 @@ function App() {
       if (prev === null) return prev;
       return (prev - 1 + LEVER_ITEMS.length) % LEVER_ITEMS.length;
     });
+  };
+
+  const getScrollBehavior = () => {
+    if (typeof window === 'undefined') return 'auto';
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+  };
+
+  const handleOpenBergenVideo = () => {
+    setIsBergenVideoOpen(true);
+  };
+
+  const handleCloseBergenVideo = () => {
+    setIsBergenVideoOpen(false);
   };
 
   const handleOpenOrg = (org, focusTarget) => {
@@ -178,6 +253,27 @@ function App() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isBergenVideoOpen) return undefined;
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsBergenVideoOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isBergenVideoOpen]);
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return undefined;
+    if (!isBergenVideoOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isBergenVideoOpen]);
 
   useEffect(() => {
     const elements = document.querySelectorAll('.reveal');
@@ -357,20 +453,93 @@ function App() {
     ),
     bergen: (section) => (
       <Section key={section.id} id={section.id} title={t.bergen.title} tone="light" className="reveal">
-        <div className="split">
-          <div className="section-grid">
-            {t.bergen.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-            <div className="hero__chips">
-              {t.bergen.chips.map((chip) => (
-                <Chip key={chip} variant="solid">
-                  {chip}
-                </Chip>
-              ))}
+        <div className="bergen-statement">
+          <div className="bergen-statement__content">
+            <span className="bergen-statement__badge">{t.bergen.badge}</span>
+            <p className="bergen-statement__copy">{t.bergen.copy}</p>
+            <div className="bergen-statement__actions">
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                aria-label={t.bergen.actions.videoAria}
+                onClick={handleOpenBergenVideo}
+              >
+                {t.bergen.actions.video}
+              </Button>
             </div>
           </div>
-          <div className="gradient-card" />
+          <div className="bergen-statement__media">
+            <img src={bergenStatementImage} alt={t.bergen.imageAlt} className="bergen-statement__image" />
+          </div>
+        </div>
+
+        <div className="bergen-experiences">
+          <div className="bergen-experiences__divider" aria-hidden="true" />
+          <div className="bergen-experiences__header">
+            <span className="bergen-experiences__eyebrow">{t.bergen.experiences.eyebrow}</span>
+            <h3>{t.bergen.experiences.title}</h3>
+            <p>{t.bergen.experiences.description}</p>
+          </div>
+          <div className="bergen-experiences__carousel">
+            <button
+              type="button"
+              className="bergen-experiences__nav bergen-experiences__nav--prev"
+              aria-label={t.bergen.experiences.aria.prev}
+              onClick={() => {
+                if (!experienceTrackRef.current) return;
+                experienceTrackRef.current.scrollBy({
+                  left: -experienceTrackRef.current.clientWidth * 0.8,
+                  behavior: getScrollBehavior(),
+                });
+              }}
+            >
+              ←
+            </button>
+            <div className="bergen-experiences__track" ref={experienceTrackRef}>
+              {experienceItems.map((experience) => (
+                <article key={experience.title} className="bergen-experience-card">
+                  <div className="bergen-experience-card__media">
+                    {experience.image ? (
+                      <img src={experience.image} alt="" loading="lazy" />
+                    ) : (
+                      <span className="bergen-experience-card__placeholder" aria-hidden="true" />
+                    )}
+                  </div>
+                  <div className="bergen-experience-card__body">
+                    <span className="bergen-experience-card__badge">{experience.badge}</span>
+                    <h4>{experience.title}</h4>
+                    <p className="bergen-experience-card__lead">{experience.lead}</p>
+                    <p className="bergen-experience-card__description">{experience.description}</p>
+                    {experience.sourceUrl ? (
+                      <a
+                        className="bergen-experience-card__link"
+                        href={experience.sourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {t.bergen.experiences.detailLink}
+                      </a>
+                    ) : null}
+                  </div>
+                </article>
+              ))}
+            </div>
+            <button
+              type="button"
+              className="bergen-experiences__nav bergen-experiences__nav--next"
+              aria-label={t.bergen.experiences.aria.next}
+              onClick={() => {
+                if (!experienceTrackRef.current) return;
+                experienceTrackRef.current.scrollBy({
+                  left: experienceTrackRef.current.clientWidth * 0.8,
+                  behavior: getScrollBehavior(),
+                });
+              }}
+            >
+              →
+            </button>
+          </div>
         </div>
       </Section>
     ),
@@ -665,6 +834,38 @@ function App() {
   const overlayPortal =
     leverOverlay && typeof document !== 'undefined' ? createPortal(leverOverlay, document.body) : null;
 
+  const bergenVideoOverlay = isBergenVideoOpen ? (
+    <div
+      className="bergen-video-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t.bergen.videoModal.ariaLabel}
+      onClick={handleCloseBergenVideo}
+    >
+      <div className="bergen-video-overlay__panel" onClick={(event) => event.stopPropagation()}>
+        <button
+          type="button"
+          className="bergen-video-overlay__close"
+          aria-label={t.bergen.videoModal.closeAria}
+          onClick={handleCloseBergenVideo}
+        >
+          ×
+        </button>
+        <div className="bergen-video-overlay__frame">
+          <iframe
+            title={t.bergen.videoModal.title}
+            src={`https://www.youtube.com/embed/${bergenVideoId}?autoplay=1&rel=0`}
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      </div>
+    </div>
+  ) : null;
+
+  const bergenVideoPortal =
+    bergenVideoOverlay && typeof document !== 'undefined' ? createPortal(bergenVideoOverlay, document.body) : null;
+
   return (
     <div className="page" aria-hidden={isLeverOpen}>
       <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
@@ -710,6 +911,7 @@ function App() {
       {sectionOrder.map((section) => sectionRenderers[section.type]?.(section))}
 
       {overlayPortal}
+      {bergenVideoPortal}
 
       <footer className="footer reveal">
         <Container className="footer__content">
