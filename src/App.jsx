@@ -291,6 +291,7 @@ function App() {
           </Card>
 
           <div className="card-grid">
+            <p className="interactive__hint">Da click en cada bloque para explorar más.</p>
             {systemBlocks.map((block, index) => (
               <Card
                 key={block.title}
@@ -304,9 +305,6 @@ function App() {
                   <h4>{block.title}</h4>
                   <p>{block.copy}</p>
                 </div>
-                <span className="lever-card__cta" aria-hidden="true">
-                  Explorar
-                </span>
               </Card>
             ))}
           </div>
@@ -603,6 +601,7 @@ function App() {
           ) : (
             <div className="lever-overlay__placeholder" aria-hidden="true" />
           )}
+          <div className="lever-overlay__caption">Palanca: {LEVER_ITEMS[activeLeverIndex].title}</div>
         </div>
         <div className="lever-overlay__body">
           <p className="lever-overlay__lead">{LEVER_ITEMS[activeLeverIndex].lead}</p>

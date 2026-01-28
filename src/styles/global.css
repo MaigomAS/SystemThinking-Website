@@ -710,6 +710,16 @@ img {
   font-size: var(--font-size-sm);
 }
 
+.interactive__hint {
+  grid-column: 1 / -1;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  padding: 10px 14px;
+  border-radius: var(--radius-md);
+  background: rgba(122, 231, 255, 0.08);
+  border: 1px dashed rgba(122, 231, 255, 0.2);
+}
+
 .lever-card {
   text-align: left;
   display: flex;
@@ -722,18 +732,6 @@ img {
 .lever-card__body {
   display: grid;
   gap: 8px;
-}
-
-.lever-card__cta {
-  font-size: var(--font-size-xs);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--color-text-muted);
-}
-
-.lever-card:hover .lever-card__cta,
-.lever-card:focus-visible .lever-card__cta {
-  color: var(--color-white);
 }
 
 .lever-card:focus-visible {
@@ -770,8 +768,8 @@ img {
 
 .lever-overlay__header {
   position: absolute;
-  top: 18px;
-  right: 18px;
+  top: 12px;
+  right: 12px;
   z-index: 2;
 }
 
@@ -794,6 +792,7 @@ img {
 }
 
 .lever-overlay__media {
+  position: relative;
   height: 100%;
   padding: 32px 24px 32px 32px;
 }
@@ -813,8 +812,24 @@ img {
   border: 1px solid rgba(122, 231, 255, 0.18);
 }
 
+.lever-overlay__caption {
+  position: absolute;
+  left: 44px;
+  right: 36px;
+  bottom: 44px;
+  padding: 10px 16px;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  background: rgba(8, 12, 24, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+}
+
 .lever-overlay__body {
-  padding: 36px 36px 32px 12px;
+  padding: 56px 36px 32px 12px;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -1065,6 +1080,12 @@ img {
   .lever-overlay__body {
     padding: 12px 24px 24px;
     overflow: auto;
+  }
+
+  .lever-overlay__caption {
+    left: 36px;
+    right: 36px;
+    bottom: 36px;
   }
 
   .lever-overlay__nav--prev {
