@@ -250,15 +250,66 @@
         "copy": "Normas formales e informales: el verdadero “código” del sistema."
       }
     ],
-    "zoomBlock": {
-      "title": "Zoom: Incentivos",
-      "bullets": [
-        "Qué métricas gobiernan decisiones",
-        "Qué trade-offs se esconden",
-        "Qué comportamientos estamos reforzando"
-      ],
-      "note": "Ejemplo: cuando solo se mide velocidad, se sacrifica calidad y confianza."
-    }
+    "exploreLabel": "Explorar",
+    "detailNav": {
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "close": "Cerrar"
+    },
+    "systemDetails": [
+      {
+        "title": "Incentivos",
+        "headline": "Alinea métricas con comportamiento estratégico.",
+        "whyTitle": "Por qué aplica",
+        "whyBullets": [
+          "Expone sesgos de corto plazo en los KPIs actuales",
+          "Evita premios que castigan colaboración o calidad",
+          "Permite rediseñar métricas con costo total visible"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impactCopy": "Decisiones que elevan desempeño sostenible sin comprometer confianza.",
+        "imageAlt": "Visual de incentivos estratégicos"
+      },
+      {
+        "title": "Información",
+        "headline": "Decidir con timing, contexto y ownership claros.",
+        "whyTitle": "Por qué aplica",
+        "whyBullets": [
+          "Reduce asimetrías que frenan coordinación",
+          "Acelera decisiones sin perder calidad",
+          "Define quién debe saber qué, y cuándo"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impactCopy": "Gobernanza basada en evidencia y alineada al ritmo del negocio.",
+        "imageAlt": "Visual de información compartida"
+      },
+      {
+        "title": "Relaciones",
+        "headline": "Diseña colaboración como infraestructura.",
+        "whyTitle": "Por qué aplica",
+        "whyBullets": [
+          "Clarifica interdependencias críticas entre áreas",
+          "Reduce fricción en proyectos complejos",
+          "Activa redes de confianza para ejecutar en conjunto"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impactCopy": "Ejecución integrada con accountability compartida.",
+        "imageAlt": "Visual de relaciones colaborativas"
+      },
+      {
+        "title": "Reglas",
+        "headline": "Convierte cultura en gobernanza operable.",
+        "whyTitle": "Por qué aplica",
+        "whyBullets": [
+          "Establece estándares no negociables",
+          "Reduce ambigüedad en decisiones críticas",
+          "Protege ética, reputación y cumplimiento"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impactCopy": "Consistencia operativa en entornos complejos y de alta presión.",
+        "imageAlt": "Visual de reglas y gobernanza"
+      }
+    ]
   },
   "program": {
     "title": "Qué ocurre en este encuentro",

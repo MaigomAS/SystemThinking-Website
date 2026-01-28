@@ -244,15 +244,66 @@
         "copy": "Formal and informal norms: the system's true “code”."
       }
     ],
-    "zoomBlock": {
-      "title": "Zoom: Incentives",
-      "bullets": [
-        "Which metrics govern decisions",
-        "Which trade-offs are hidden",
-        "Which behaviors we are reinforcing"
-      ],
-      "note": "Example: when only speed is measured, quality and trust are sacrificed."
-    }
+    "exploreLabel": "Explore",
+    "detailNav": {
+      "previous": "Previous",
+      "next": "Next",
+      "close": "Close"
+    },
+    "systemDetails": [
+      {
+        "title": "Incentives",
+        "headline": "Align metrics with strategic behavior.",
+        "whyTitle": "Why it matters",
+        "whyBullets": [
+          "Surfaces short-term bias in current KPIs",
+          "Avoids rewards that punish collaboration or quality",
+          "Enables metric redesign with total cost visibility"
+        ],
+        "impactTitle": "Executive impact",
+        "impactCopy": "Decisions that elevate sustainable performance without compromising trust.",
+        "imageAlt": "Visual of strategic incentives"
+      },
+      {
+        "title": "Information",
+        "headline": "Decide with clear timing, context, and ownership.",
+        "whyTitle": "Why it matters",
+        "whyBullets": [
+          "Reduces asymmetries that stall coordination",
+          "Accelerates decisions without losing quality",
+          "Defines who needs to know what, and when"
+        ],
+        "impactTitle": "Executive impact",
+        "impactCopy": "Evidence-based governance aligned to the business tempo.",
+        "imageAlt": "Visual of shared information"
+      },
+      {
+        "title": "Relationships",
+        "headline": "Design collaboration as infrastructure.",
+        "whyTitle": "Why it matters",
+        "whyBullets": [
+          "Clarifies critical interdependencies across areas",
+          "Reduces friction in complex projects",
+          "Activates trust networks to execute together"
+        ],
+        "impactTitle": "Executive impact",
+        "impactCopy": "Integrated execution with shared accountability.",
+        "imageAlt": "Visual of collaborative relationships"
+      },
+      {
+        "title": "Rules",
+        "headline": "Turn culture into operable governance.",
+        "whyTitle": "Why it matters",
+        "whyBullets": [
+          "Establishes non-negotiable standards",
+          "Reduces ambiguity in critical decisions",
+          "Protects ethics, reputation, and compliance"
+        ],
+        "impactTitle": "Executive impact",
+        "impactCopy": "Operational consistency in complex, high-pressure environments.",
+        "imageAlt": "Visual of rules and governance"
+      }
+    ]
   },
   "program": {
     "title": "What happens in this gathering",
