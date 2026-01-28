@@ -144,7 +144,7 @@ function HeroRotator() {
         return (
           <div className="playground-hero__split">
             <div className="hero-loop" aria-hidden="true">
-              <svg className="hero-loop__svg" viewBox="0 0 600 360" role="presentation">
+              <svg className="hero-loop__svg" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet" role="presentation">
                 <defs>
                   <linearGradient id="loopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stopColor="#7ae7ff" stopOpacity="0.8" />
@@ -201,6 +201,7 @@ function HeroRotator() {
                   </span>
                 ))}
             </h1>
+            {content.subtitle && <p className="hero__subtitle">{content.subtitle}</p>}
             <p className="playground-hero__lead">{content.lead}</p>
             <p className="hero__meta">{content.meta}</p>
             <div className="hero__actions">
@@ -302,13 +303,13 @@ function HeroRotator() {
                 <div className="hero-rotator__image" aria-hidden="true" />
                 <Container className="hero-rotator__content">
                   <div className="hero-rotator__content-inner">{panelContent}</div>
-                  {renderControls()}
                 </Container>
               </div>
             </div>
           );
         })}
       </div>
+      {renderControls()}
       <p className="hero-rotator__hint" aria-hidden="true">
         {t.heroRotator.aria.swipeHint}
       </p>
