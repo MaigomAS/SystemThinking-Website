@@ -349,7 +349,7 @@ function App() {
         id={section.id}
         title={t.method.title}
         description={t.method.description}
-        className="reveal"
+        className="reveal method-section"
       />
     ),
     interactive: (section) => (

@@ -69,6 +69,10 @@ img {
   scroll-margin-top: 110px;
 }
 
+.ui-section.method-section {
+  padding: 56px 0;
+}
+
 .ui-section--dark {
   background: var(--color-bg);
 }
@@ -394,7 +398,7 @@ img {
 .hero-rotator__controls {
   position: absolute;
   left: 50%;
-  bottom: -24px;
+  bottom: 16px;
   transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
