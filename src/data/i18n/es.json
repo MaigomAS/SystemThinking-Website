@@ -14,6 +14,10 @@
         "label": "Liderazgo"
       },
       {
+        "id": "investment",
+        "label": "Inversión"
+      },
+      {
         "id": "faq",
         "label": "FAQ"
       },
@@ -306,6 +310,33 @@
         "tag": "Comunidad de largo plazo"
       }
     ]
+  },
+  "investment": {
+    "eyebrow": "Inversión",
+    "title": "Inversión y acceso anticipado",
+    "description": "Transparencia de inversión para líderes que buscan una experiencia presencial con cupos limitados y selección rigurosa.",
+    "recommendedLabel": "Recomendado",
+    "tiers": [
+      {
+        "title": "Acceso anticipado",
+        "price": "USD 2,950",
+        "recommended": true,
+        "details": [
+          "Cuota de aplicación: sin costo (durante acceso anticipado)",
+          "Válido hasta el 1 de mayo"
+        ]
+      },
+      {
+        "title": "Estándar",
+        "price": "USD 3,500",
+        "recommended": false,
+        "details": [
+          "A partir del 2 de mayo"
+        ]
+      }
+    ],
+    "cta": "Aplicar a acceso anticipado",
+    "microcopy": "Cupos limitados · Selección basada en aplicación · Experiencia presencial"
   },
   "format": {
     "title": "Formato del encuentro",

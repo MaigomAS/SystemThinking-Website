@@ -342,6 +342,46 @@ function App() {
         </div>
       </Section>
     ),
+    investment: (section) => (
+      <Section
+        key={section.id}
+        id={section.id}
+        eyebrow={t.investment.eyebrow}
+        title={t.investment.title}
+        description={t.investment.description}
+        tone="light"
+        className="reveal"
+      >
+        <div className="investment">
+          <div className="investment__grid">
+            {t.investment.tiers.map((tier) => (
+              <Card
+                key={tier.title}
+                variant="outline"
+                className={`investment-card ${tier.recommended ? 'investment-card--recommended' : ''}`}
+              >
+                <div className="investment-card__header">
+                  <h3>{tier.title}</h3>
+                  {tier.recommended ? <span className="investment-card__tag">{t.investment.recommendedLabel}</span> : null}
+                </div>
+                <p className="investment-card__price">{tier.price}</p>
+                <ul>
+                  {tier.details.map((detail) => (
+                    <li key={detail}>{detail}</li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </div>
+          <div className="investment__cta">
+            <Button as="a" href="#contacto" variant="primary">
+              {t.investment.cta}
+            </Button>
+            <p className="investment__microcopy">{t.investment.microcopy}</p>
+          </div>
+        </div>
+      </Section>
+    ),
     format: (section) => (
       <Section key={section.id} id={section.id} title={t.format.title} tone="light" className="reveal">
         <div className="format-strip">

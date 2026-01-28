@@ -969,6 +969,66 @@ img {
   color: var(--color-text-on-light);
 }
 
+.investment {
+  display: grid;
+  gap: 32px;
+}
+
+.investment__grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.investment-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(27, 48, 67, 0.14);
+  color: var(--color-text-on-light);
+  display: grid;
+  gap: 12px;
+}
+
+.investment-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.investment-card__tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(27, 48, 67, 0.18);
+  color: var(--color-text-on-light);
+  background: rgba(27, 48, 67, 0.06);
+}
+
+.investment-card__price {
+  font-size: clamp(1.6rem, 2.5vw, 2.1rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.investment-card--recommended {
+  border-color: rgba(92, 255, 198, 0.6);
+  box-shadow: 0 16px 32px rgba(19, 26, 50, 0.12);
+}
+
+.investment__cta {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+
+.investment__microcopy {
+  font-size: var(--font-size-xs);
+  color: #5a6783;
+  letter-spacing: 0.02em;
+}
+
 .result-flow {
   position: relative;
   display: grid;

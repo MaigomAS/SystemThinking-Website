@@ -14,6 +14,10 @@
         "label": "Leadership"
       },
       {
+        "id": "investment",
+        "label": "Investment"
+      },
+      {
         "id": "faq",
         "label": "FAQ"
       },
@@ -300,6 +304,33 @@
         "tag": "Long-term community"
       }
     ]
+  },
+  "investment": {
+    "eyebrow": "Investment",
+    "title": "Investment & Early Access",
+    "description": "Clear investment framing for leaders seeking an in-person experience with limited seats and selective admission.",
+    "recommendedLabel": "Recommended",
+    "tiers": [
+      {
+        "title": "Early Access",
+        "price": "USD 2,950",
+        "recommended": true,
+        "details": [
+          "Application fee: Free (during Early Access)",
+          "Valid until May 1"
+        ]
+      },
+      {
+        "title": "Standard",
+        "price": "USD 3,500",
+        "recommended": false,
+        "details": [
+          "Starting May 2"
+        ]
+      }
+    ],
+    "cta": "Apply for Early Access",
+    "microcopy": "Limited seats · Selection-based · In-person experience"
   },
   "format": {
     "title": "Gathering format",
