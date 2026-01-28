@@ -283,6 +283,7 @@ function HeroRotator() {
                 '--hero-bg-scale': 1.15,
                 '--hero-bg-clarity': variant.id === 'editorial' ? 0.82 : 0.65,
                 '--hero-bg-clarity-blur': variant.id === 'editorial' ? '0.2px' : '0.3px',
+                '--hero-bg-position': variant.id === 'editorial' ? 'center 30%' : 'center',
                 '--hero-bg-overlay': overlayByVariant[variant.id] ?? overlayByVariant.editorial,
                 '--hero-bg-clarity-mask': clarityMaskByVariant[variant.id],
                 '--hero-content-max-width': '520px',
