@@ -82,6 +82,25 @@ img {
   color: var(--color-text-on-light);
 }
 
+.ui-section--light.interactive-section {
+  overflow: hidden;
+}
+
+.ui-section--light.interactive-section > .ui-container {
+  position: relative;
+  z-index: 1;
+}
+
+.ui-section--light.interactive-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(122, 231, 255, 0.18), transparent 55%),
+    radial-gradient(circle at 80% 20%, rgba(124, 106, 255, 0.16), transparent 48%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
 .ui-section__header {
   display: grid;
   gap: 12px;
@@ -705,6 +724,21 @@ img {
   font-weight: 600;
 }
 
+.ui-section--light .interactive-tabs {
+  background: rgba(124, 106, 255, 0.08);
+  border-color: rgba(124, 106, 255, 0.18);
+}
+
+.ui-section--light .interactive-tab {
+  color: #4b556f;
+}
+
+.ui-section--light .interactive-tab--active {
+  background: linear-gradient(120deg, rgba(122, 231, 255, 0.9), rgba(124, 106, 255, 0.9));
+  color: var(--color-white);
+  box-shadow: 0 10px 20px rgba(59, 76, 153, 0.18);
+}
+
 .interactive__note {
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
@@ -720,6 +754,21 @@ img {
   border: 1px dashed rgba(122, 231, 255, 0.2);
 }
 
+.ui-section--light .interactive__note {
+  color: #5f6a85;
+}
+
+.ui-section--light .interactive__hint {
+  color: #47506a;
+  background: rgba(124, 106, 255, 0.08);
+  border-color: rgba(124, 106, 255, 0.18);
+}
+
+.interactive-panel {
+  background: linear-gradient(160deg, #ffffff, #f1f4ff);
+  border-color: #e1e6f5;
+}
+
 .lever-card {
   text-align: left;
   display: flex;
@@ -727,6 +776,23 @@ img {
   gap: 18px;
   min-height: 180px;
   cursor: pointer;
+}
+
+.interactive-lever {
+  position: relative;
+  border-color: #e1e6f5;
+  background: #ffffff;
+  box-shadow: 0 20px 40px rgba(30, 41, 77, 0.08);
+}
+
+.interactive-lever::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border-top: 3px solid transparent;
+  border-image: linear-gradient(120deg, rgba(122, 231, 255, 0.9), rgba(124, 106, 255, 0.9)) 1;
+  pointer-events: none;
 }
 
 .lever-card__body {
