@@ -275,6 +275,7 @@ function HeroRotator() {
             editorial:
               'radial-gradient(120% 140% at 8% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 38%, rgba(0, 0, 0, 0.7) 62%, rgba(0, 0, 0, 1) 82%)',
           };
+          const contentMaxWidth = variant.id === 'editorial' ? '640px' : '520px';
           const heroBackgroundStyle = backgroundImage
             ? {
                 '--hero-bg-image': `url(${backgroundImage})`,
@@ -284,7 +285,7 @@ function HeroRotator() {
                 '--hero-bg-clarity-blur': variant.id === 'editorial' ? '0.2px' : '0.3px',
                 '--hero-bg-overlay': overlayByVariant[variant.id] ?? overlayByVariant.editorial,
                 '--hero-bg-clarity-mask': clarityMaskByVariant[variant.id],
-                '--hero-content-max-width': '520px',
+                '--hero-content-max-width': contentMaxWidth,
               }
             : undefined;
 

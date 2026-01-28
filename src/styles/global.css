@@ -327,7 +327,7 @@ img {
   position: relative;
   width: min(1200px, 96%);
   margin: 0 auto;
-  min-height: clamp(440px, 70vh, 600px);
+  min-height: clamp(520px, 70vh, 640px);
   display: flex;
   align-items: flex-start;
 }
@@ -1734,7 +1734,7 @@ img {
 }
 
 .playground-hero__content--editorial h1 {
-  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+  font-size: clamp(2.4rem, 4.2vw, 3.4rem);
   letter-spacing: -0.025em;
 }
 
