@@ -420,7 +420,7 @@ function App() {
       </Section>
     ),
     outcomes: (section) => (
-      <Section key={section.id} id={section.id} title={t.outcomes.title} tone="light" className="reveal">
+      <Section key={section.id} id={section.id} title={t.outcomes.title} tone="light" className="reveal outcomes-section">
         <div className="result-flow">
           {outcomes.map((outcome, index) => (
             <article key={outcome.title} className="result-step">
