@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Button from './components/ui/Button.jsx';
 import Card from './components/ui/Card.jsx';
 import Chip from './components/ui/Chip.jsx';
@@ -223,6 +224,7 @@ function App() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('lever-overlay-open');
     window.addEventListener('keydown', handleKeyDown);
     requestAnimationFrame(() => {
       leverTitleRef.current?.focus();
@@ -230,6 +232,7 @@ function App() {
 
     return () => {
       document.body.style.overflow = previousOverflow;
+      document.body.classList.remove('lever-overlay-open');
       window.removeEventListener('keydown', handleKeyDown);
       lastTriggerRef.current?.focus();
     };
@@ -308,89 +311,6 @@ function App() {
             ))}
           </div>
         </div>
-        {isLeverOpen && (
-          <div
-            className="lever-overlay"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="lever-overlay-title"
-            onClick={handleCloseLever}
-          >
-            <div className="lever-overlay__panel" onClick={(event) => event.stopPropagation()}>
-              <header className="lever-overlay__header">
-                <button type="button" className="lever-overlay__close" onClick={handleCloseLever} aria-label="Cerrar">
-                  ×
-                </button>
-              </header>
-              <div className="lever-overlay__media">
-                {LEVER_ITEMS[activeLeverIndex].image ? (
-                  <img
-                    src={LEVER_ITEMS[activeLeverIndex].image}
-                    alt=""
-                    className="lever-overlay__image"
-                  />
-                ) : (
-                  <div className="lever-overlay__placeholder" aria-hidden="true" />
-                )}
-              </div>
-              <div className="lever-overlay__body">
-                <p className="lever-overlay__lead">{LEVER_ITEMS[activeLeverIndex].lead}</p>
-                <h3 id="lever-overlay-title" tabIndex="-1" ref={leverTitleRef}>
-                  {LEVER_ITEMS[activeLeverIndex].title}
-                </h3>
-                <div className="lever-overlay__section">
-                  <h4>{LEVER_ITEMS[activeLeverIndex].whyTitle}</h4>
-                  <ul>
-                    {LEVER_ITEMS[activeLeverIndex].why.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="lever-overlay__section">
-                  <h4>{LEVER_ITEMS[activeLeverIndex].impactTitle}</h4>
-                  <p>{LEVER_ITEMS[activeLeverIndex].impact}</p>
-                </div>
-                <div className="lever-overlay__chips" aria-label="Palancas">
-                  {LEVER_ITEMS.map((item, index) => (
-                    <button
-                      key={item.key}
-                      type="button"
-                      className={`lever-overlay__chip ${index === activeLeverIndex ? 'is-active' : ''}`}
-                      onClick={() => setActiveLeverIndex(index)}
-                    >
-                      {item.title}
-                    </button>
-                  ))}
-                  <span className="lever-overlay__count" aria-hidden="true">
-                    {`${activeLeverIndex + 1}/${LEVER_ITEMS.length}`}
-                  </span>
-                </div>
-              </div>
-            </div>
-            <button
-              type="button"
-              className="lever-overlay__nav lever-overlay__nav--prev"
-              onClick={(event) => {
-                event.stopPropagation();
-                handlePreviousLever();
-              }}
-              aria-label="Anterior"
-            >
-              ←
-            </button>
-            <button
-              type="button"
-              className="lever-overlay__nav lever-overlay__nav--next"
-              onClick={(event) => {
-                event.stopPropagation();
-                handleNextLever();
-              }}
-              aria-label="Siguiente"
-            >
-              →
-            </button>
-          </div>
-        )}
       </Section>
     ),
     program: (section) => (
@@ -663,8 +583,91 @@ function App() {
     ),
   };
 
+  const leverOverlay = isLeverOpen ? (
+    <div
+      className="lever-overlay"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="lever-overlay-title"
+      onClick={handleCloseLever}
+    >
+      <div className="lever-overlay__panel" onClick={(event) => event.stopPropagation()}>
+        <header className="lever-overlay__header">
+          <button type="button" className="lever-overlay__close" onClick={handleCloseLever} aria-label="Cerrar">
+            ×
+          </button>
+        </header>
+        <div className="lever-overlay__media">
+          {LEVER_ITEMS[activeLeverIndex].image ? (
+            <img src={LEVER_ITEMS[activeLeverIndex].image} alt="" className="lever-overlay__image" />
+          ) : (
+            <div className="lever-overlay__placeholder" aria-hidden="true" />
+          )}
+        </div>
+        <div className="lever-overlay__body">
+          <p className="lever-overlay__lead">{LEVER_ITEMS[activeLeverIndex].lead}</p>
+          <h3 id="lever-overlay-title" tabIndex="-1" ref={leverTitleRef}>
+            {LEVER_ITEMS[activeLeverIndex].title}
+          </h3>
+          <div className="lever-overlay__section">
+            <h4>{LEVER_ITEMS[activeLeverIndex].whyTitle}</h4>
+            <ul>
+              {LEVER_ITEMS[activeLeverIndex].why.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="lever-overlay__section">
+            <h4>{LEVER_ITEMS[activeLeverIndex].impactTitle}</h4>
+            <p>{LEVER_ITEMS[activeLeverIndex].impact}</p>
+          </div>
+          <div className="lever-overlay__chips" aria-label="Palancas">
+            {LEVER_ITEMS.map((item, index) => (
+              <button
+                key={item.key}
+                type="button"
+                className={`lever-overlay__chip ${index === activeLeverIndex ? 'is-active' : ''}`}
+                onClick={() => setActiveLeverIndex(index)}
+              >
+                {item.title}
+              </button>
+            ))}
+            <span className="lever-overlay__count" aria-hidden="true">
+              {`${activeLeverIndex + 1}/${LEVER_ITEMS.length}`}
+            </span>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        className="lever-overlay__nav lever-overlay__nav--prev"
+        onClick={(event) => {
+          event.stopPropagation();
+          handlePreviousLever();
+        }}
+        aria-label="Anterior"
+      >
+        ←
+      </button>
+      <button
+        type="button"
+        className="lever-overlay__nav lever-overlay__nav--next"
+        onClick={(event) => {
+          event.stopPropagation();
+          handleNextLever();
+        }}
+        aria-label="Siguiente"
+      >
+        →
+      </button>
+    </div>
+  ) : null;
+
+  const overlayPortal =
+    leverOverlay && typeof document !== 'undefined' ? createPortal(leverOverlay, document.body) : null;
+
   return (
-    <div className="page">
+    <div className="page" aria-hidden={isLeverOpen}>
       <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
         <Container>
           <nav className="navbar__inner" aria-label={t.nav.aria.nav}>
@@ -706,6 +709,8 @@ function App() {
       <HeroRotator />
 
       {sectionOrder.map((section) => sectionRenderers[section.type]?.(section))}
+
+      {overlayPortal}
 
       <footer className="footer reveal">
         <Container className="footer__content">
