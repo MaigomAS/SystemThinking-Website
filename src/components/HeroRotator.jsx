@@ -279,10 +279,10 @@ function HeroRotator() {
           const heroBackgroundStyle = backgroundImage
             ? {
                 '--hero-bg-image': `url(${backgroundImage})`,
-                '--hero-bg-opacity': 0.34,
-                '--hero-bg-scale': 1.15,
+                '--hero-bg-opacity': 0.36,
+                '--hero-bg-scale': variant.id === 'editorial' ? 1.03 : 1.15,
                 '--hero-bg-blur': variant.id === 'editorial' ? '0px' : '2px',
-                '--hero-bg-clarity': variant.id === 'editorial' ? 0.82 : 0.65,
+                '--hero-bg-clarity': variant.id === 'editorial' ? 0.94 : 0.65,
                 '--hero-bg-clarity-blur': variant.id === 'editorial' ? '0px' : '0.3px',
                 '--hero-bg-position': variant.id === 'editorial' ? 'center 30%' : 'center',
                 '--hero-bg-overlay': overlayByVariant[variant.id] ?? overlayByVariant.editorial,
