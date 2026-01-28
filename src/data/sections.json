@@ -16,6 +16,10 @@
     "type": "outcomes"
   },
   {
+    "id": "investment",
+    "type": "investment"
+  },
+  {
     "id": "formato",
     "type": "format"
   },
