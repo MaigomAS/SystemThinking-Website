@@ -325,16 +325,28 @@
   },
   "bergen": {
     "title": "Why Bergen, Norway",
-    "paragraphs": [
-      "Deep reflection and systemic learning require environments that support focus, rigor, and long-term perspective.",
-      "Norway offers a unique context where nature, technology, and governance coexist at an advanced level. Bergen is not a decorative stage: it is part of the method."
-    ],
-    "chips": [
-      "Immersion",
-      "Focus",
-      "Rigor",
-      "Nature + technology"
-    ]
+    "badge": "Method context",
+    "copy": "Deep reflection and systemic learning require environments that favor focus, rigor, and long-term perspective. Norway offers a unique context where nature, technology, and governance coexist at an advanced level. Bergen is not a decorative stage: it is part of the method.",
+    "imageAlt": "Editorial view of Bergen, Norway",
+    "actions": {
+      "video": "Watch video",
+      "videoAria": "Watch video about Bergen"
+    },
+    "videoModal": {
+      "ariaLabel": "Video about Bergen, Norway",
+      "closeAria": "Close video",
+      "title": "Video about Bergen, Norway"
+    },
+    "experiences": {
+      "eyebrow": "Extend the immersion",
+      "title": "Optional experiences in Bergen and the fjords",
+      "description": "They are not the program. They are the space where the conversations continue.",
+      "detailLink": "View details",
+      "aria": {
+        "prev": "View previous experiences",
+        "next": "View next experiences"
+      }
+    }
   },
   "leadership": {
     "title": "Leadership",

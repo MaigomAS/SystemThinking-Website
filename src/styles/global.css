@@ -1125,6 +1125,262 @@ img {
   box-shadow: var(--shadow-md);
 }
 
+.bergen-statement {
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  align-items: center;
+}
+
+.bergen-statement__content {
+  display: grid;
+  gap: 18px;
+}
+
+.bergen-statement__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: rgba(16, 24, 43, 0.08);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.bergen-statement__copy {
+  font-size: clamp(1.02rem, 2vw, 1.15rem);
+  color: #465066;
+  line-height: 1.7;
+}
+
+.bergen-statement__actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.bergen-statement__media {
+  display: grid;
+  justify-items: center;
+}
+
+.bergen-statement__image {
+  width: min(520px, 100%);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 24px 50px rgba(15, 23, 42, 0.15);
+  object-fit: cover;
+}
+
+.bergen-experiences {
+  margin-top: 48px;
+  display: grid;
+  gap: 24px;
+}
+
+.bergen-experiences__divider {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(15, 23, 42, 0), rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0));
+}
+
+.bergen-experiences__header {
+  display: grid;
+  gap: 10px;
+  max-width: 620px;
+}
+
+.bergen-experiences__eyebrow {
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.bergen-experiences__header h3 {
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  color: var(--color-text-on-light);
+}
+
+.bergen-experiences__header p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.bergen-experiences__carousel {
+  position: relative;
+}
+
+.bergen-experiences__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 48px) / 3);
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 8px 6px 18px;
+  scroll-behavior: smooth;
+}
+
+.bergen-experiences__track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.bergen-experiences__track::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.15);
+  border-radius: var(--radius-pill);
+}
+
+.bergen-experience-card {
+  scroll-snap-align: start;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: var(--shadow-xs);
+  display: grid;
+  gap: 18px;
+  padding: 18px;
+  min-height: 100%;
+}
+
+.bergen-experience-card__media {
+  width: 100%;
+  height: 130px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.04);
+}
+
+.bergen-experience-card__media img,
+.bergen-experience-card__placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bergen-experience-card__placeholder {
+  display: block;
+  background: linear-gradient(135deg, rgba(123, 123, 255, 0.14), rgba(122, 231, 255, 0.12));
+}
+
+.bergen-experience-card__body {
+  display: grid;
+  gap: 8px;
+}
+
+.bergen-experience-card__badge {
+  width: fit-content;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(92, 255, 198, 0.16);
+  color: var(--color-text-on-light);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.bergen-experience-card__lead {
+  font-weight: 600;
+  color: var(--color-text-on-light);
+}
+
+.bergen-experience-card__description {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.bergen-experience-card__link {
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-on-light);
+}
+
+.bergen-experiences__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(15, 23, 42, 0.2);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-on-light);
+  display: grid;
+  place-items: center;
+  box-shadow: var(--shadow-xs);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.bergen-experiences__nav:hover {
+  transform: translateY(-50%) scale(1.03);
+  border-color: rgba(15, 23, 42, 0.4);
+}
+
+.bergen-experiences__nav--prev {
+  left: -12px;
+}
+
+.bergen-experiences__nav--next {
+  right: -12px;
+}
+
+.bergen-video-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(9, 14, 26, 0.72);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 999;
+  transition: opacity var(--transition-base);
+}
+
+.bergen-video-overlay__panel {
+  position: relative;
+  width: min(960px, 92vw);
+  background: #0d1426;
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  box-shadow: 0 30px 80px rgba(8, 12, 22, 0.55);
+  border: 1px solid rgba(122, 231, 255, 0.15);
+  transition: transform var(--transition-base);
+}
+
+.bergen-video-overlay__close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.bergen-video-overlay__frame {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #0a0f1f;
+}
+
+.bergen-video-overlay__frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
 .faq-shell {
   display: grid;
   gap: 28px;
@@ -2591,4 +2847,27 @@ img {
   display: none;
 }
 
+}
+
+@media (max-width: 900px) {
+  .bergen-experiences__track {
+    grid-auto-columns: minmax(240px, 80%);
+  }
+
+  .bergen-experiences__nav {
+    display: none;
+  }
+
+  .bergen-statement__image {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bergen-video-overlay,
+  .bergen-video-overlay__panel,
+  .bergen-experiences__track {
+    scroll-behavior: auto;
+    transition: none;
+  }
 }
