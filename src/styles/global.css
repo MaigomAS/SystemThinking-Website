@@ -82,6 +82,10 @@ img {
   color: var(--color-text-on-light);
 }
 
+.outcomes-section {
+  padding: 62px 0;
+}
+
 .ui-section--light.interactive-section {
   overflow: hidden;
 }
@@ -322,7 +326,7 @@ img {
   position: relative;
   padding: clamp(24px, 5vh, 48px) 0 clamp(32px, 6vh, 64px);
   height: clamp(504px, 63vh, 684px);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .hero-rotator__track {
@@ -388,9 +392,10 @@ img {
 }
 
 .hero-rotator__controls {
-  position: relative;
-  align-self: center;
-  margin-top: 16px;
+  position: absolute;
+  left: 50%;
+  bottom: -24px;
+  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -3059,7 +3064,7 @@ img {
   }
 
   .hero-rotator__controls {
-    margin-top: 12px;
+    bottom: -18px;
     padding: 6px 10px;
   }
 

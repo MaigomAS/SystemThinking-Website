@@ -268,21 +268,21 @@ function HeroRotator() {
           const backgroundImage = heroBackgrounds[variant.id];
           const overlayByVariant = {
             editorial:
-              'linear-gradient(90deg, rgba(6, 10, 20, 0.78) 0%, rgba(6, 10, 20, 0.6) 40%, rgba(6, 10, 20, 0.18) 72%, rgba(6, 10, 20, 0.04) 100%)',
+              'linear-gradient(90deg, rgba(6, 10, 20, 0.72) 0%, rgba(6, 10, 20, 0.56) 40%, rgba(6, 10, 20, 0.18) 72%, rgba(6, 10, 20, 0.04) 100%)',
             orbs: 'linear-gradient(180deg, rgba(6, 10, 20, 0.35), rgba(6, 10, 20, 0.65))',
             split: 'linear-gradient(180deg, rgba(6, 10, 20, 0.35), rgba(6, 10, 20, 0.65))',
           };
           const clarityMaskByVariant = {
             editorial:
-              'radial-gradient(120% 140% at 8% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 38%, rgba(0, 0, 0, 0.7) 62%, rgba(0, 0, 0, 1) 82%)',
+              'radial-gradient(120% 140% at 8% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.15) 36%, rgba(0, 0, 0, 0.55) 60%, rgba(0, 0, 0, 0.9) 82%)',
           };
           const heroBackgroundStyle = backgroundImage
             ? {
                 '--hero-bg-image': `url(${backgroundImage})`,
-                '--hero-bg-opacity': 0.36,
-                '--hero-bg-scale': variant.id === 'editorial' ? 1.03 : 1.15,
+                '--hero-bg-opacity': 0.42,
+                '--hero-bg-scale': variant.id === 'editorial' ? 1 : 1.15,
                 '--hero-bg-blur': variant.id === 'editorial' ? '0px' : '2px',
-                '--hero-bg-clarity': variant.id === 'editorial' ? 0.94 : 0.65,
+                '--hero-bg-clarity': variant.id === 'editorial' ? 1 : 0.65,
                 '--hero-bg-clarity-blur': variant.id === 'editorial' ? '0px' : '0.3px',
                 '--hero-bg-position': variant.id === 'editorial' ? 'center 30%' : 'center',
                 '--hero-bg-overlay': overlayByVariant[variant.id] ?? overlayByVariant.editorial,
