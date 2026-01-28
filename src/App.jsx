@@ -358,11 +358,11 @@ function App() {
         id={section.id}
         eyebrow={t.interactive.eyebrow}
         title={t.interactive.title}
-        tone="mid"
-        className="reveal"
+        tone="light"
+        className="reveal interactive-section"
       >
         <div className="interactive">
-          <Card variant="glass" as="article">
+          <Card variant="elevated" as="article" className="interactive-panel">
             <div className="interactive-tabs" aria-label={t.interactive.ariaTabs}>
               {tabKeys.map((key) => (
                 <Button
@@ -391,10 +391,10 @@ function App() {
             {systemBlocks.map((block, index) => (
               <Card
                 key={block.title}
-                variant="glass"
+                variant="elevated"
                 as="button"
                 type="button"
-                className="lever-card"
+                className="lever-card interactive-lever"
                 onClick={(event) => handleOpenLever(index, event)}
               >
                 <div className="lever-card__body">
