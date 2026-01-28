@@ -321,7 +321,7 @@ img {
 .hero-rotator {
   position: relative;
   padding: clamp(24px, 5vh, 48px) 0 clamp(32px, 6vh, 64px);
-  height: clamp(560px, 70vh, 760px);
+  height: clamp(504px, 63vh, 684px);
   overflow: hidden;
 }
 
@@ -374,7 +374,7 @@ img {
   justify-content: center;
   gap: 24px;
   height: 100%;
-  padding: clamp(24px, 5vh, 56px) 0 clamp(48px, 9vh, 112px);
+  padding: clamp(24px, 5vh, 56px) 0 clamp(40px, 8vh, 96px);
 }
 
 .hero-rotator__panel--editorial .hero-rotator__content {
@@ -388,10 +388,9 @@ img {
 }
 
 .hero-rotator__controls {
-  position: absolute;
-  left: 50%;
-  bottom: 22px;
-  transform: translateX(-50%);
+  position: relative;
+  align-self: center;
+  margin-top: 16px;
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -479,7 +478,7 @@ img {
 
 @media (max-width: 900px) {
   .hero-rotator {
-    height: clamp(520px, 72vh, 700px);
+    height: clamp(468px, 65vh, 630px);
     padding: clamp(18px, 4vh, 36px) 0 clamp(24px, 6vh, 48px);
   }
 }
@@ -3051,16 +3050,16 @@ img {
 
 @media (max-width: 600px) {
   .hero-rotator {
-    height: clamp(480px, 82vh, 640px);
+    height: clamp(432px, 74vh, 576px);
   }
 
   .hero-rotator__content {
     gap: 18px;
-    padding: clamp(18px, 5vh, 40px) 0 clamp(64px, 12vh, 104px);
+    padding: clamp(18px, 5vh, 40px) 0 clamp(56px, 11vh, 94px);
   }
 
   .hero-rotator__controls {
-    bottom: 16px;
+    margin-top: 12px;
     padding: 6px 10px;
   }
 
