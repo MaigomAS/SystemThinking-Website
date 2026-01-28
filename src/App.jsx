@@ -8,6 +8,10 @@ import DesignPlayground from './components/DesignPlayground.jsx';
 import ECallPage from './components/ECallPage.jsx';
 import HeroRotator from './components/HeroRotator.jsx';
 import OrganizationModal from './components/OrganizationModal.jsx';
+import incentivosImage from './assets/bergen-hero-2.png';
+import informacionImage from './assets/bergen-hero.png';
+import relacionesImage from './assets/annia-preview.png';
+import reglasImage from './assets/vida-preview.png';
 import sectionOrder from './data/sections.json';
 import { getOrganizations } from './data/organizations.js';
 import { useLanguage } from './i18n/LanguageContext.jsx';
@@ -24,16 +28,30 @@ function App() {
   const faqs = t.faq.items;
   const interactiveTabs = t.interactive.tabs;
   const systemBlocks = t.interactive.systemBlocks;
-  const zoomBlock = t.interactive.zoomBlock;
+  const systemDetails = t.interactive.systemDetails ?? [];
   const organizations = useMemo(() => getOrganizations(t.organizations), [t]);
 
   const [activeTab, setActiveTab] = useState('sintomas');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
+  const [activeSystemIndex, setActiveSystemIndex] = useState(null);
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), [interactiveTabs]);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
   const isECall = typeof window !== 'undefined' && window.location.pathname === '/e-call';
   const returnFocusRef = useRef(null);
   const activeFaq = useMemo(() => faqs.find((faq) => faq.id === activeFaqId) ?? faqs[0], [activeFaqId, faqs]);
+  const systemImages = useMemo(
+    () => [incentivosImage, informacionImage, relacionesImage, reglasImage],
+    [],
+  );
+  const interactiveDetails = useMemo(
+    () =>
+      systemDetails.map((detail, index) => ({
+        ...detail,
+        image: systemImages[index] ?? systemImages[0],
+      })),
+    [systemDetails, systemImages],
+  );
+  const activeSystem = activeSystemIndex !== null ? interactiveDetails[activeSystemIndex] : null;
 
   const whatsappLink = useMemo(
     () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(t.contact.whatsappMessage)}`,
@@ -118,6 +136,20 @@ function App() {
     setActiveFaqId(faqs[0].id);
   }, [activeFaqId, faqs]);
 
+  useEffect(() => {
+    if (activeSystemIndex === null) return;
+    if (activeSystemIndex < interactiveDetails.length) return;
+    setActiveSystemIndex(null);
+  }, [activeSystemIndex, interactiveDetails.length]);
+
+  const handleSystemNavigate = (direction) => {
+    if (!interactiveDetails.length) return;
+    setActiveSystemIndex((current) => {
+      const currentIndex = current ?? 0;
+      return (currentIndex + direction + interactiveDetails.length) % interactiveDetails.length;
+    });
+  };
+
   if (isPlayground) {
     return <DesignPlayground />;
   }
@@ -170,22 +202,85 @@ function App() {
             <p className="interactive__note">{interactiveTabs[activeTab].note}</p>
           </Card>
 
-          <div className="card-grid">
-            {systemBlocks.map((block) => (
-              <Card key={block.title} variant="glass" as="article">
-                <h4>{block.title}</h4>
+          <div className="card-grid interactive-grid">
+            {systemBlocks.map((block, index) => (
+              <Card
+                key={block.title}
+                variant="glass"
+                as="button"
+                type="button"
+                className={`interactive-card ${activeSystemIndex === index ? 'interactive-card--active' : ''}`}
+                onClick={() => setActiveSystemIndex(index)}
+                aria-expanded={activeSystemIndex === index}
+                aria-controls="interactive-detail"
+              >
+                <div className="interactive-card__header">
+                  <h4>{block.title}</h4>
+                  <span className="interactive-card__cta">{t.interactive.exploreLabel}</span>
+                </div>
                 <p>{block.copy}</p>
               </Card>
             ))}
-            <Card variant="glass" as="article" className="section-grid" style={{ gridColumn: 'span 2' }}>
-              <h4>{zoomBlock.title}</h4>
-              <ul>
-                {zoomBlock.bullets.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <p className="interactive__note">{zoomBlock.note}</p>
-            </Card>
+            {activeSystem && (
+              <Card
+                variant="glass"
+                as="article"
+                className="interactive-detail"
+                id="interactive-detail"
+                role="region"
+                aria-live="polite"
+              >
+                <div className="interactive-detail__header">
+                  <div>
+                    <span className="interactive-detail__eyebrow">{activeSystem.title}</span>
+                    <h3>{activeSystem.headline}</h3>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="interactive-detail__close"
+                    onClick={() => setActiveSystemIndex(null)}
+                  >
+                    {t.interactive.detailNav.close}
+                  </Button>
+                </div>
+                <div className="interactive-detail__body">
+                  <div className="interactive-detail__content">
+                    <h4>{activeSystem.whyTitle}</h4>
+                    <ul>
+                      {activeSystem.whyBullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                    <div className="interactive-detail__impact">
+                      <h4>{activeSystem.impactTitle}</h4>
+                      <p>{activeSystem.impactCopy}</p>
+                    </div>
+                  </div>
+                  <div className="interactive-detail__media">
+                    <img src={activeSystem.image} alt={activeSystem.imageAlt} loading="lazy" />
+                  </div>
+                </div>
+                <div className="interactive-detail__footer">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="interactive-detail__nav"
+                    onClick={() => handleSystemNavigate(-1)}
+                  >
+                    {t.interactive.detailNav.previous}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="interactive-detail__nav"
+                    onClick={() => handleSystemNavigate(1)}
+                  >
+                    {t.interactive.detailNav.next}
+                  </Button>
+                </div>
+              </Card>
+            )}
           </div>
         </div>
       </Section>
