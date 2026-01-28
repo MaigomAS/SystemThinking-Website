@@ -139,7 +139,16 @@ function HeroPreview({ variant, content, badges }) {
         return (
           <div className="playground-hero__content playground-hero__content--editorial">
             <Chip className="hero__badge">{content.badge}</Chip>
-            <h1>{content.title}</h1>
+            <h1>
+              {String(content.title)
+                .split('\n')
+                .map((line, index) => (
+                  <span key={`${line}-${index}`} className="hero__title-line">
+                    {line}
+                  </span>
+                ))}
+            </h1>
+            {content.subtitle ? <p className="hero__subtitle">{content.subtitle}</p> : null}
             <p className="playground-hero__lead">{content.lead}</p>
             <div className="hero__actions">
               <Button variant="primary" className="cta-glow">

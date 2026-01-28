@@ -196,11 +196,12 @@ function HeroRotator() {
               {String(content.title)
                 .split('\n')
                 .map((line, index) => (
-                  <span key={`${line}-${index}`} className={index === 0 ? undefined : 'hero__title-sub'}>
+                  <span key={`${line}-${index}`} className="hero__title-line">
                     {line}
                   </span>
                 ))}
             </h1>
+            <p className="hero__subtitle">{content.subtitle}</p>
             <p className="playground-hero__lead">{content.lead}</p>
             <p className="hero__meta">{content.meta}</p>
             <div className="hero__actions">
@@ -280,8 +281,10 @@ function HeroRotator() {
                 '--hero-bg-image': `url(${backgroundImage})`,
                 '--hero-bg-opacity': 0.34,
                 '--hero-bg-scale': 1.15,
+                '--hero-bg-blur': variant.id === 'editorial' ? '0px' : '2px',
                 '--hero-bg-clarity': variant.id === 'editorial' ? 0.82 : 0.65,
-                '--hero-bg-clarity-blur': variant.id === 'editorial' ? '0.2px' : '0.3px',
+                '--hero-bg-clarity-blur': variant.id === 'editorial' ? '0px' : '0.3px',
+                '--hero-bg-position': variant.id === 'editorial' ? 'center 30%' : 'center',
                 '--hero-bg-overlay': overlayByVariant[variant.id] ?? overlayByVariant.editorial,
                 '--hero-bg-clarity-mask': clarityMaskByVariant[variant.id],
                 '--hero-content-max-width': '520px',
@@ -301,13 +304,13 @@ function HeroRotator() {
                 <div className="hero-rotator__image" aria-hidden="true" />
                 <Container className="hero-rotator__content">
                   <div className="hero-rotator__content-inner">{panelContent}</div>
-                  {renderControls()}
                 </Container>
               </div>
             </div>
           );
         })}
       </div>
+      {renderControls()}
       <p className="hero-rotator__hint" aria-hidden="true">
         {t.heroRotator.aria.swipeHint}
       </p>
