@@ -196,11 +196,12 @@ function HeroRotator() {
               {String(content.title)
                 .split('\n')
                 .map((line, index) => (
-                  <span key={`${line}-${index}`} className={index === 0 ? undefined : 'hero__title-sub'}>
+                  <span key={`${line}-${index}`} className="hero__title-line">
                     {line}
                   </span>
                 ))}
             </h1>
+            <p className="hero__subtitle">{content.subtitle}</p>
             <p className="playground-hero__lead">{content.lead}</p>
             <p className="hero__meta">{content.meta}</p>
             <div className="hero__actions">
@@ -301,13 +302,13 @@ function HeroRotator() {
                 <div className="hero-rotator__image" aria-hidden="true" />
                 <Container className="hero-rotator__content">
                   <div className="hero-rotator__content-inner">{panelContent}</div>
-                  {renderControls()}
                 </Container>
               </div>
             </div>
           );
         })}
       </div>
+      {renderControls()}
       <p className="hero-rotator__hint" aria-hidden="true">
         {t.heroRotator.aria.swipeHint}
       </p>

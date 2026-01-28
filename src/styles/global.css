@@ -301,10 +301,14 @@ img {
 
 .hero-rotator {
   position: relative;
+  padding: 0;
+  height: clamp(520px, 62vh, 680px);
+  overflow: hidden;
 }
 
 .hero-rotator__track {
   display: grid;
+  height: 100%;
 }
 
 .hero-rotator__panel {
@@ -312,6 +316,7 @@ img {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 600ms ease, transform 600ms ease;
+  height: 100%;
 }
 
 .hero-rotator__panel.is-active {
@@ -327,9 +332,11 @@ img {
   position: relative;
   width: min(1200px, 96%);
   margin: 0 auto;
-  min-height: clamp(440px, 70vh, 600px);
+  min-height: 100%;
+  height: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: stretch;
+  padding: 0;
 }
 
 .hero-rotator__panel--editorial .playground-hero {
@@ -341,7 +348,10 @@ img {
   z-index: 1;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 24px;
+  height: 100%;
+  padding: clamp(32px, 6vh, 72px) 0 clamp(72px, 10vh, 120px);
 }
 
 .hero-rotator__panel--editorial .hero-rotator__content {
@@ -351,9 +361,14 @@ img {
 
 .hero-rotator__content-inner {
   display: block;
+  width: 100%;
 }
 
 .hero-rotator__controls {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -362,8 +377,7 @@ img {
   background: rgba(10, 15, 31, 0.5);
   border: 1px solid rgba(122, 231, 255, 0.16);
   backdrop-filter: blur(12px);
-  z-index: 2;
-  align-self: center;
+  z-index: 4;
 }
 
 .hero-rotator__dots {
@@ -429,11 +443,21 @@ img {
 
 .hero-rotator__hint {
   display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8px;
   margin-top: 12px;
   text-align: center;
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
   letter-spacing: 0.02em;
+}
+
+@media (max-width: 900px) {
+  .hero-rotator {
+    height: clamp(520px, 72vh, 720px);
+  }
 }
 
 .hero-rotator__image {
@@ -1725,6 +1749,7 @@ img {
   gap: 36px;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  height: 100%;
 }
 
 .playground-hero__content {
@@ -1734,18 +1759,23 @@ img {
 }
 
 .playground-hero__content--editorial h1 {
-  font-size: clamp(2.6rem, 4.5vw, 3.8rem);
-  letter-spacing: -0.025em;
+  display: grid;
+  gap: 0.35rem;
+  font-size: clamp(44px, 5vw, 64px);
+  letter-spacing: -0.028em;
+  line-height: 1.08;
 }
 
-.playground-hero__content--editorial h1 span {
+.playground-hero__content--editorial .hero__title-line {
   display: block;
 }
 
-.playground-hero__content--editorial h1 .hero__title-sub {
-  font-size: 0.75em;
-  letter-spacing: -0.01em;
-  margin-top: 0.35rem;
+.playground-hero__content--editorial .hero__subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(224, 236, 255, 0.78);
+  white-space: nowrap;
 }
 
 .playground-hero__lead {
@@ -1810,6 +1840,7 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   position: relative;
   z-index: 1;
+  height: 100%;
 }
 
 .hero-loop {
@@ -1819,10 +1850,14 @@ img {
   pointer-events: none;
   opacity: 0.75;
   border-radius: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .playground-hero--split .hero-loop {
-  inset: -8% -6%;
+  inset: 0;
+  padding: 6%;
 }
 
 
@@ -1837,8 +1872,10 @@ img {
 }
 
 .hero-loop__svg {
-  width: 100%;
-  height: 100%;
+  width: min(760px, 95%);
+  height: auto;
+  aspect-ratio: 5 / 3;
+  max-height: 100%;
 }
 
 .hero-loop__path {
@@ -1876,8 +1913,8 @@ img {
 
 .hero-loop__pulse {
   position: absolute;
-  width: 260px;
-  height: 260px;
+  width: clamp(180px, 32vw, 260px);
+  height: clamp(180px, 32vw, 260px);
   border-radius: 999px;
   border: 1px dashed rgba(122, 231, 255, 0.2);
   animation: loopSpin 24s linear infinite;
@@ -1892,8 +1929,8 @@ img {
 .hero-loop__pulse--two {
   bottom: 10%;
   left: 12%;
-  width: 220px;
-  height: 220px;
+  width: clamp(150px, 28vw, 220px);
+  height: clamp(150px, 28vw, 220px);
   border-color: rgba(124, 106, 255, 0.2);
   animation-direction: reverse;
 }
@@ -2872,14 +2909,21 @@ img {
   }
 
   .hero-rotator__content {
-    padding-bottom: 96px;
+    padding: clamp(24px, 5vh, 56px) 0 clamp(96px, 16vh, 140px);
   }
 
   .hero-rotator__controls {
-    position: absolute;
-    left: 50%;
-    bottom: 40px;
-    transform: translateX(-50%);
+    bottom: 22px;
+  }
+
+  .playground-hero__content--editorial h1 {
+    font-size: clamp(36px, 7vw, 52px);
+    line-height: 1.12;
+  }
+
+  .playground-hero__content--editorial .hero__subtitle {
+    font-size: clamp(14px, 3.6vw, 18px);
+    letter-spacing: 0.06em;
   }
 
   .hero-rotator__hint {
