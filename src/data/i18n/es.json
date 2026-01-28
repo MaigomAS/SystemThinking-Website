@@ -206,7 +206,7 @@
   },
   "interactive": {
     "eyebrow": "Síntomas vs Sistema",
-    "title": "Interactivo",
+    "title": "Dónde intervenir",
     "ariaTabs": "Selector de enfoque: síntomas o sistema",
     "tabs": {
       "sintomas": {

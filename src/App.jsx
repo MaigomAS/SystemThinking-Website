@@ -15,6 +15,65 @@ import { useLanguage } from './i18n/LanguageContext.jsx';
 const whatsappPhone = '4741368586';
 const calendlyLink = 'https://calendly.com/annia-info/30min';
 
+const LEVER_ITEMS = [
+  {
+    key: 'incentivos',
+    title: 'Incentivos',
+    lead: 'Lo que el sistema premia (y castiga) manda.',
+    whyTitle: 'Por qué aplica',
+    why: [
+      'Alinea comportamiento con prioridades reales (no declaradas)',
+      'Hace visibles trade-offs entre velocidad, calidad y riesgo',
+      'Evita optimización local que daña el todo',
+    ],
+    impactTitle: 'Impacto ejecutivo',
+    impact: 'Decisiones coherentes con estrategia, sin desgaste organizacional.',
+    image: null,
+  },
+  {
+    key: 'informacion',
+    title: 'Información',
+    lead: 'Decidir con timing, contexto y ownership claros.',
+    whyTitle: 'Por qué aplica',
+    why: [
+      'Reduce asimetrías que frenan coordinación',
+      'Acelera decisiones sin perder calidad',
+      'Define quién debe saber qué, y cuándo',
+    ],
+    impactTitle: 'Impacto ejecutivo',
+    impact: 'Gobernanza basada en evidencia y alineada al ritmo del negocio.',
+    image: null,
+  },
+  {
+    key: 'relaciones',
+    title: 'Relaciones',
+    lead: 'Diseña colaboración como infraestructura.',
+    whyTitle: 'Por qué aplica',
+    why: [
+      'Clarifica interdependencias críticas entre áreas',
+      'Reduce fricción en proyectos complejos',
+      'Activa redes de confianza para ejecutar en conjunto',
+    ],
+    impactTitle: 'Impacto ejecutivo',
+    impact: 'Ejecución integrada con accountability compartida.',
+    image: null,
+  },
+  {
+    key: 'reglas',
+    title: 'Reglas',
+    lead: 'Convierte cultura en gobernanza operable.',
+    whyTitle: 'Por qué aplica',
+    why: [
+      'Establece estándares no negociables',
+      'Reduce ambigüedad en decisiones críticas',
+      'Protege ética, reputación y cumplimiento',
+    ],
+    impactTitle: 'Impacto ejecutivo',
+    impact: 'Consistencia operativa en entornos complejos y de alta presión.',
+    image: null,
+  },
+];
+
 function App() {
   const { t, language, setLanguage } = useLanguage();
   const navLinks = t.nav.links;
@@ -24,15 +83,18 @@ function App() {
   const faqs = t.faq.items;
   const interactiveTabs = t.interactive.tabs;
   const systemBlocks = t.interactive.systemBlocks;
-  const zoomBlock = t.interactive.zoomBlock;
   const organizations = useMemo(() => getOrganizations(t.organizations), [t]);
 
   const [activeTab, setActiveTab] = useState('sintomas');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
+  const [activeLeverIndex, setActiveLeverIndex] = useState(null);
+  const isLeverOpen = activeLeverIndex !== null;
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), [interactiveTabs]);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
   const isECall = typeof window !== 'undefined' && window.location.pathname === '/e-call';
   const returnFocusRef = useRef(null);
+  const lastTriggerRef = useRef(null);
+  const leverTitleRef = useRef(null);
   const activeFaq = useMemo(() => faqs.find((faq) => faq.id === activeFaqId) ?? faqs[0], [activeFaqId, faqs]);
 
   const whatsappLink = useMemo(
@@ -45,6 +107,29 @@ function App() {
   const [isOrgModalOpen, setIsOrgModalOpen] = useState(false);
   const [quickRequestStatus, setQuickRequestStatus] = useState('idle');
   const [quickRequestMessage, setQuickRequestMessage] = useState('');
+
+  const handleOpenLever = (index, event) => {
+    setActiveLeverIndex(index);
+    lastTriggerRef.current = event.currentTarget;
+  };
+
+  const handleCloseLever = () => {
+    setActiveLeverIndex(null);
+  };
+
+  const handleNextLever = () => {
+    setActiveLeverIndex((prev) => {
+      if (prev === null) return prev;
+      return (prev + 1) % LEVER_ITEMS.length;
+    });
+  };
+
+  const handlePreviousLever = () => {
+    setActiveLeverIndex((prev) => {
+      if (prev === null) return prev;
+      return (prev - 1 + LEVER_ITEMS.length) % LEVER_ITEMS.length;
+    });
+  };
 
   const handleOpenOrg = (org, focusTarget) => {
     setActiveOrg(org);
@@ -118,6 +203,38 @@ function App() {
     setActiveFaqId(faqs[0].id);
   }, [activeFaqId, faqs]);
 
+  useEffect(() => {
+    if (!isLeverOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        handleCloseLever();
+      }
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        handleNextLever();
+      }
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        handlePreviousLever();
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+    requestAnimationFrame(() => {
+      leverTitleRef.current?.focus();
+    });
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      lastTriggerRef.current?.focus();
+    };
+  }, [isLeverOpen]);
+
   if (isPlayground) {
     return <DesignPlayground />;
   }
@@ -171,23 +288,109 @@ function App() {
           </Card>
 
           <div className="card-grid">
-            {systemBlocks.map((block) => (
-              <Card key={block.title} variant="glass" as="article">
-                <h4>{block.title}</h4>
-                <p>{block.copy}</p>
+            {systemBlocks.map((block, index) => (
+              <Card
+                key={block.title}
+                variant="glass"
+                as="button"
+                type="button"
+                className="lever-card"
+                onClick={(event) => handleOpenLever(index, event)}
+              >
+                <div className="lever-card__body">
+                  <h4>{block.title}</h4>
+                  <p>{block.copy}</p>
+                </div>
+                <span className="lever-card__cta" aria-hidden="true">
+                  Explorar
+                </span>
               </Card>
             ))}
-            <Card variant="glass" as="article" className="section-grid" style={{ gridColumn: 'span 2' }}>
-              <h4>{zoomBlock.title}</h4>
-              <ul>
-                {zoomBlock.bullets.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <p className="interactive__note">{zoomBlock.note}</p>
-            </Card>
           </div>
         </div>
+        {isLeverOpen && (
+          <div
+            className="lever-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="lever-overlay-title"
+            onClick={handleCloseLever}
+          >
+            <div className="lever-overlay__panel" onClick={(event) => event.stopPropagation()}>
+              <header className="lever-overlay__header">
+                <button type="button" className="lever-overlay__close" onClick={handleCloseLever} aria-label="Cerrar">
+                  ×
+                </button>
+              </header>
+              <div className="lever-overlay__media">
+                {LEVER_ITEMS[activeLeverIndex].image ? (
+                  <img
+                    src={LEVER_ITEMS[activeLeverIndex].image}
+                    alt=""
+                    className="lever-overlay__image"
+                  />
+                ) : (
+                  <div className="lever-overlay__placeholder" aria-hidden="true" />
+                )}
+              </div>
+              <div className="lever-overlay__body">
+                <p className="lever-overlay__lead">{LEVER_ITEMS[activeLeverIndex].lead}</p>
+                <h3 id="lever-overlay-title" tabIndex="-1" ref={leverTitleRef}>
+                  {LEVER_ITEMS[activeLeverIndex].title}
+                </h3>
+                <div className="lever-overlay__section">
+                  <h4>{LEVER_ITEMS[activeLeverIndex].whyTitle}</h4>
+                  <ul>
+                    {LEVER_ITEMS[activeLeverIndex].why.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="lever-overlay__section">
+                  <h4>{LEVER_ITEMS[activeLeverIndex].impactTitle}</h4>
+                  <p>{LEVER_ITEMS[activeLeverIndex].impact}</p>
+                </div>
+                <div className="lever-overlay__chips" aria-label="Palancas">
+                  {LEVER_ITEMS.map((item, index) => (
+                    <button
+                      key={item.key}
+                      type="button"
+                      className={`lever-overlay__chip ${index === activeLeverIndex ? 'is-active' : ''}`}
+                      onClick={() => setActiveLeverIndex(index)}
+                    >
+                      {item.title}
+                    </button>
+                  ))}
+                  <span className="lever-overlay__count" aria-hidden="true">
+                    {`${activeLeverIndex + 1}/${LEVER_ITEMS.length}`}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              className="lever-overlay__nav lever-overlay__nav--prev"
+              onClick={(event) => {
+                event.stopPropagation();
+                handlePreviousLever();
+              }}
+              aria-label="Anterior"
+            >
+              ←
+            </button>
+            <button
+              type="button"
+              className="lever-overlay__nav lever-overlay__nav--next"
+              onClick={(event) => {
+                event.stopPropagation();
+                handleNextLever();
+              }}
+              aria-label="Siguiente"
+            >
+              →
+            </button>
+          </div>
+        )}
       </Section>
     ),
     program: (section) => (
