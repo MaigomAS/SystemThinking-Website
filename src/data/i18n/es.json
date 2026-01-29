@@ -282,15 +282,19 @@
   },
   "outcomes": {
     "title": "Resultados para los participantes",
+    "controls": {
+      "previous": "Ver bloque anterior",
+      "next": "Ver bloque siguiente"
+    },
     "items": [
       {
         "title": "Visión sistémica accionable",
         "copy": "Comprender situaciones complejas de naturaleza social, organizacional, tecnológica y territorial; identificar causas raíz y comunicar una visión estratégica clara para la acción.",
-        "tag": "Claridad estratégica"
+        "tag": "Claridad"
       },
       {
-        "title": "Palancas con impacto",
-        "copy": "Identificar puntos de apalancamiento sistémico y definir decisiones estratégicas con impacto estructural.",
+        "title": "Acciones con impacto",
+        "copy": "Identificar puntos clave de efectos sistémicos y definir decisiones estratégicas para resultados estructurales.",
         "tag": "Decisión informada"
       },
       {
