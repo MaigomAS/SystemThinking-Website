@@ -103,12 +103,13 @@ function HeroLoop({ signals, reducedMotion }) {
 
   const wavePaths = useMemo(() => {
     if (!width || !height) return [];
-    const amplitudeBase = minDim * 0.08;
+    const amplitudeBase = minDim * 0.1;
     return [
-      buildWavePath(amplitudeBase * 0.9, 0.58, 0),
-      buildWavePath(amplitudeBase * 1.1, 0.46, Math.PI / 2),
-      buildWavePath(amplitudeBase * 0.7, 0.66, Math.PI * 1.2),
-      buildWavePath(amplitudeBase * 0.5, 0.4, Math.PI * 1.8),
+      buildWavePath(amplitudeBase * 0.95, 0.6, 0),
+      buildWavePath(amplitudeBase * 1.15, 0.5, Math.PI / 2),
+      buildWavePath(amplitudeBase * 0.8, 0.7, Math.PI * 1.2),
+      buildWavePath(amplitudeBase * 0.6, 0.42, Math.PI * 1.8),
+      buildWavePath(amplitudeBase * 0.5, 0.32, Math.PI * 2.4),
     ];
   }, [buildWavePath, minDim, width, height]);
 

@@ -91,7 +91,6 @@ function HeroPreview({ variant, content, badges }) {
       case 'split':
         return (
           <div className="playground-hero__split">
-            <HeroLoop signals={content.signals} />
             <div className="playground-hero__content">
               <Chip className="hero__badge">{content.badge}</Chip>
               <h1>{content.title}</h1>
@@ -148,6 +147,7 @@ function HeroPreview({ variant, content, badges }) {
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
     >
+      {variant === 'split' ? <HeroLoop signals={content.signals} /> : null}
       <Container>{contentMarkup}</Container>
     </div>
   );

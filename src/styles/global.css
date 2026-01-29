@@ -1983,6 +1983,13 @@ img {
   opacity: 0.28;
 }
 
+.hero-loop__path--wave-5 {
+  stroke-width: 1.2;
+  stroke-dasharray: 500;
+  animation-duration: 44s;
+  opacity: 0.22;
+}
+
 .hero-loop__spark {
   fill: rgba(186, 210, 255, 0.8);
   filter: drop-shadow(0 0 10px rgba(122, 231, 255, 0.25));

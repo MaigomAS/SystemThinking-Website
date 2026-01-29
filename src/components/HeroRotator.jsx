@@ -144,7 +144,6 @@ function HeroRotator() {
       case 'split':
         return (
           <div className="playground-hero__split">
-            <HeroLoop signals={content.signals} reducedMotion={prefersReducedMotion} />
             <div className="playground-hero__content">
               <Chip className="hero__badge">{content.badge}</Chip>
               <h1>{content.title}</h1>
@@ -238,6 +237,7 @@ function HeroRotator() {
         {heroVariants.map((variant, index) => {
           const isActive = index === activeIndex;
           const backgroundImage = heroBackgrounds[variant.id];
+          const isSplit = variant.id === 'split';
           const overlayByVariant = {
             editorial:
               'linear-gradient(90deg, rgba(6, 10, 20, 0.72) 0%, rgba(6, 10, 20, 0.56) 40%, rgba(6, 10, 20, 0.18) 72%, rgba(6, 10, 20, 0.04) 100%)',
@@ -264,6 +264,7 @@ function HeroRotator() {
             >
               <div className={`playground-hero playground-hero--${variant.id} hero--parallax`} style={heroBackgroundStyle}>
                 <div className="hero-rotator__image" aria-hidden="true" />
+                {isSplit ? <HeroLoop signals={heroContent.split.signals} reducedMotion={prefersReducedMotion} /> : null}
                 <Container className="hero-rotator__content">
                   <div className="hero-rotator__content-inner">{panelContent}</div>
                 </Container>
