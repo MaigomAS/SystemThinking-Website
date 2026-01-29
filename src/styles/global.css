@@ -2392,11 +2392,13 @@ img {
 }
 
 .voices__grid {
-  margin-top: 32px;
+  margin: 32px auto 0;
   display: grid;
   gap: 28px;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   align-items: start;
+  justify-content: center;
+  max-width: 920px;
 }
 
 .voices__card {
@@ -2408,6 +2410,8 @@ img {
   padding: 0;
   text-align: center;
   color: inherit;
+  width: 100%;
+  max-width: 240px;
 }
 
 .voices__card:focus-visible {
@@ -2721,7 +2725,7 @@ img {
 
 @media (max-width: 640px) {
   .voices__grid {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   }
 
   .voices-modal__panel {

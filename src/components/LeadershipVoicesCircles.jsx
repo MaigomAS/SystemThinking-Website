@@ -85,22 +85,6 @@ const VOICES = [
     learning: 'Las relaciones sostenidas son un activo estructural, no un “extra” relacional.',
     imageSrc: null,
   },
-  {
-    id: 'voice-4',
-    name: 'Isabela Troncoso',
-    handle: '@isabela.troncoso',
-    role: 'Líder de Transformación',
-    sector: 'Salud',
-    initials: 'IT',
-    tags: ['Cultura', 'Procesos', 'Calidad clínica'],
-    insightTitle: 'Hacer operable la cultura en decisiones clínicas',
-    context:
-      'Las prioridades de calidad y seguridad se interpretaban distinto en cada unidad.',
-    lever: 'Definimos reglas no negociables y protocolos claros para decisiones de alto riesgo.',
-    impact: 'Las unidades clínicas compartieron un estándar común y bajaron los incidentes críticos.',
-    learning: 'Una cultura clara protege al equipo cuando las decisiones son complejas.',
-    imageSrc: null,
-  },
 ];
 
 function LeadershipVoicesCircles() {
