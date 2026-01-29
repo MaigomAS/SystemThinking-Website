@@ -3433,6 +3433,14 @@ img {
 @media (max-width: 600px) {
   .hero-rotator {
     min-height: calc(100svh - var(--nav-h, 88px));
+    height: calc(100svh - var(--nav-h, 88px));
+  }
+
+  .hero-rotator__track,
+  .hero-rotator__panel,
+  .hero-rotator__panel .playground-hero {
+    height: 100%;
+    min-height: 100%;
   }
 
   .hero-rotator__content {
