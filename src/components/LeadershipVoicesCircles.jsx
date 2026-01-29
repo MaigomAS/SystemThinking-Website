@@ -22,6 +22,7 @@ const COPY = {
       impact: 'Qué cambió',
       learning: 'Aprendizaje ejecutivo',
     },
+    linkedInLabel: 'Ver perfil de LinkedIn',
   },
   en: {
     eyebrow: 'Experiences that transform',
@@ -41,6 +42,7 @@ const COPY = {
       impact: 'What changed',
       learning: 'Executive learning',
     },
+    linkedInLabel: 'View LinkedIn profile',
   },
 };
 
@@ -51,7 +53,7 @@ const VOICES = {
     {
       id: 'voice-elisa-estrada',
       name: 'Elisa Estrada',
-      handle: 'linkedin.com/in/elisaestradat',
+      linkedInUrl: 'https://www.linkedin.com/in/elisaestradat/?originalSubdomain=mx',
       role: 'Head of the Minister of Women Affairs, Apodaca, México',
       sector: 'Gobierno local',
       initials: 'EE',
@@ -105,7 +107,7 @@ const VOICES = {
     {
       id: 'voice-elisa-estrada',
       name: 'Elisa Estrada',
-      handle: 'linkedin.com/in/elisaestradat',
+      linkedInUrl: 'https://www.linkedin.com/in/elisaestradat/?originalSubdomain=mx',
       role: 'Head of the Minister of Women Affairs, Apodaca, Mexico',
       sector: 'Local government',
       initials: 'EE',
@@ -284,7 +286,6 @@ function LeadershipVoicesCircles() {
                     <p className="voices-modal__name" id={`voice-title-${activeVoice.id}`}>
                       {activeVoice.name}
                     </p>
-                    <span className="voices-modal__handle">{activeVoice.handle}</span>
                     <p className="voices-modal__role">{activeVoice.role}</p>
                     <p className="voices-modal__sector">{activeVoice.sector}</p>
                   </div>
@@ -351,8 +352,30 @@ function LeadershipVoicesCircles() {
                 <span className="voices__cta">{content.cta}</span>
               </div>
               <div className="voices__meta">
-                <span className="voices__name">{voice.name}</span>
-                <span className="voices__handle">{voice.handle}</span>
+                <span className="voices__name-row">
+                  <span className="voices__name">{voice.name}</span>
+                  {voice.linkedInUrl ? (
+                    <a
+                      className="voices__linkedin"
+                      href={voice.linkedInUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${content.linkedInLabel}: ${voice.name}`}
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                        role="img"
+                      >
+                        <path
+                          d="M4.98 3.5C4.98 4.88 3.9 6 2.5 6S0 4.88 0 3.5 1.08 1 2.5 1 4.98 2.12 4.98 3.5zM0.5 8.5h4V23h-4zM8.5 8.5h3.8v1.98h.05c.53-1 1.82-2.06 3.74-2.06 4 0 4.74 2.63 4.74 6.06V23h-4v-6.54c0-1.56-.03-3.56-2.17-3.56-2.17 0-2.5 1.7-2.5 3.45V23h-4z"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </a>
+                  ) : null}
+                </span>
                 <span className="voices__role">
                   {voice.role} · {voice.sector}
                 </span>

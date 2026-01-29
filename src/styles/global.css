@@ -2604,15 +2604,41 @@ img {
   gap: 4px;
 }
 
+.voices__name-row {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
 .voices__name {
   font-weight: 600;
 }
 
-.voices__handle {
-  font-size: var(--font-size-xs);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
+.voices__linkedin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: rgba(48, 83, 221, 0.9);
+  background: rgba(48, 83, 221, 0.12);
+  border: 1px solid rgba(48, 83, 221, 0.25);
+  transition: transform 200ms ease, color 200ms ease, background 200ms ease;
+}
+
+.voices__linkedin svg {
+  width: 14px;
+  height: 14px;
+}
+
+.voices__linkedin:hover,
+.voices__linkedin:focus-visible {
+  color: rgba(48, 83, 221, 1);
+  background: rgba(48, 83, 221, 0.2);
+  transform: translateY(-1px);
+  outline: none;
 }
 
 .voices__role {
@@ -2662,9 +2688,9 @@ img {
   padding: 48px 36px;
   display: grid;
   gap: 20px;
-  background: radial-gradient(circle at top, rgba(122, 231, 255, 0.2), transparent 60%),
-    linear-gradient(170deg, rgba(17, 24, 44, 0.95), rgba(9, 13, 24, 0.95));
-  border-right: 1px solid rgba(122, 231, 255, 0.12);
+  background: radial-gradient(circle at top, rgba(122, 231, 255, 0.25), transparent 60%),
+    linear-gradient(170deg, rgba(22, 30, 54, 0.92), rgba(14, 20, 40, 0.92));
+  border-right: 1px solid rgba(122, 231, 255, 0.16);
 }
 
 .voices-modal__badge {
@@ -2715,22 +2741,18 @@ img {
 }
 
 .voices-modal__tags {
-  display: grid;
-  gap: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .voices-modal__tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: var(--font-size-sm);
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.voices-modal__tag::before {
-  content: '•';
-  color: rgba(122, 231, 255, 0.9);
-  font-size: 1rem;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-xs);
+  border: 1px solid rgba(122, 231, 255, 0.25);
+  color: rgba(255, 255, 255, 0.78);
+  background: rgba(122, 231, 255, 0.12);
 }
 
 .voices-modal__body {
