@@ -49,7 +49,7 @@
       }
     },
     "aria": {
-      "switchToEs": "Cambiar idioma a español",
+      "switchToEs": "Switch language to Spanish",
       "switchToEn": "Switch language to English"
     }
   },
@@ -72,7 +72,7 @@
     },
     "card": {
       "title": "ANNiA working room",
-      "description": "A clean window for system decisions, with guidance, agenda, and clear next steps.",
+      "description": "A clean window for high-impact workshops, with guidance, agenda, and clear next steps.",
       "badges": [
         "Private & secure",
         "Shared agenda",
@@ -176,14 +176,14 @@
         }
       },
       "editorial": {
-        "badge": "Foundational systemic leadership gathering · Bergen, Norway · November 2026",
-        "title": "Systemic Strategy & Leadership\nfor Complex Issues",
+        "badge": "Systemic Strategy & Leadership for Complex Issues",
+        "title": "Foundational gathering\nof systemic leadership",
         "subtitle": "Bergen, Norway · November 2026",
         "lead": "An international executive immersion (3 weeks) for public, private, industry, and civil society leaders who make strategic decisions in highly complex contexts.",
         "meta": "Bergen, Norway · November 2026 · In-person · Full-time",
         "actions": {
           "primary": "Request information →",
-          "secondary": "Download overview (PDF)"
+          "secondary": "Request the full program"
         }
       }
     },
@@ -200,8 +200,8 @@
     }
   },
   "method": {
-    "title": "Work on systems, not only symptoms",
-    "description": "A clear, applied way to understand what it means to think systemically — without unnecessary theory."
+    "title": "Work on systems and activate their potential",
+    "description": "A clear, applied way to understand systems thinking and act strategically."
   },
   "interactive": {
     "eyebrow": "Symptoms vs System",
@@ -664,7 +664,7 @@
           "lead": "An editorially curated program for leaders who want to intervene in complex systems with precision, depth, and human sensitivity.",
           "actions": {
             "primary": "Apply to the program →",
-            "secondary": "Download overview"
+            "secondary": "Request the full program"
           },
           "meta": "Bergen, Norway · November 2026 · In-person"
         }
