@@ -278,6 +278,10 @@
   },
   "outcomes": {
     "title": "Outcomes for participants",
+    "controls": {
+      "previous": "View previous card",
+      "next": "View next card"
+    },
     "items": [
       {
         "title": "Actionable systemic vision",
