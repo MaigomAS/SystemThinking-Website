@@ -58,7 +58,12 @@ const VOICES = {
       role: 'Head of the Minister of Women Affairs, Apodaca, México',
       sector: 'Gobierno local',
       initials: 'EE',
-      tags: ['Ecosistema de cuidados', 'Política pública', 'Vida al centro'],
+      details: [
+        'Head of the Minister of Women Affairs, Apodaca, México',
+        'Gobierno local',
+        'Ecosistema de cuidados',
+        'Política pública',
+      ],
       insightTitle: 'Decidir en sistemas vivos requiere corresponsabilidad real',
       context:
         'Los desafíos sociales, económicos y ambientales exigen decisiones que conecten a gobierno, industria y sociedad civil para evitar soluciones aisladas.',
@@ -77,7 +82,7 @@ const VOICES = {
       role: 'Head de Producto',
       sector: 'Fintech',
       initials: 'SL',
-      tags: ['Decisiones', 'Riesgo', 'Experiencia'],
+      details: ['Head de Producto · Fintech', 'Decisiones críticas', 'Riesgo', 'Experiencia'],
       insightTitle: 'Alinear decisiones críticas sin perder foco en el cliente',
       context:
         'El equipo tenía insights dispersos y las prioridades cambiaban cada sprint, afectando la confianza del usuario final.',
@@ -93,7 +98,7 @@ const VOICES = {
       role: 'Chief Sustainability Officer',
       sector: 'Energía renovable',
       initials: 'AV',
-      tags: ['Stakeholders', 'Política pública', 'Transición'],
+      details: ['Chief Sustainability Officer · Energía renovable', 'Stakeholders', 'Política pública'],
       insightTitle: 'Convertir relaciones en infraestructura de cambio',
       context:
         'La transición energética requería coordinar actores públicos y privados con tiempos y prioridades distintas.',
@@ -111,7 +116,12 @@ const VOICES = {
       role: 'Head of the Minister of Women Affairs, Apodaca, Mexico',
       sector: 'Local government',
       initials: 'EE',
-      tags: ['Care ecosystems', 'Public policy', 'Life-centered leadership'],
+      details: [
+        'Head of the Minister of Women Affairs, Apodaca, Mexico',
+        'Local government',
+        'Care ecosystems',
+        'Public policy',
+      ],
       insightTitle: 'Decisions in living systems require shared responsibility',
       context:
         'Social, economic, and environmental challenges demand decisions that connect government, industry, and civil society to avoid isolated responses.',
@@ -130,7 +140,7 @@ const VOICES = {
       role: 'Head of Product',
       sector: 'Fintech',
       initials: 'SL',
-      tags: ['Decision-making', 'Risk', 'Experience'],
+      details: ['Head of Product · Fintech', 'Decision-making', 'Risk', 'Experience'],
       insightTitle: 'Aligning critical decisions without losing customer focus',
       context:
         'Insights were scattered and priorities shifted every sprint, undermining end-user trust.',
@@ -146,7 +156,7 @@ const VOICES = {
       role: 'Chief Sustainability Officer',
       sector: 'Renewable energy',
       initials: 'AV',
-      tags: ['Stakeholders', 'Public policy', 'Transition'],
+      details: ['Chief Sustainability Officer · Renewable energy', 'Stakeholders', 'Public policy'],
       insightTitle: 'Turning relationships into change infrastructure',
       context:
         'The energy transition required coordinating public and private actors with different timelines and priorities.',
@@ -289,13 +299,13 @@ function LeadershipVoicesCircles() {
                     <p className="voices-modal__role">{activeVoice.role}</p>
                     <p className="voices-modal__sector">{activeVoice.sector}</p>
                   </div>
-                  <div className="voices-modal__tags">
-                    {activeVoice.tags.map((tag) => (
-                      <span key={tag} className="voices-modal__tag">
-                        {tag}
-                      </span>
+                  <ul className="voices-modal__details">
+                    {activeVoice.details.map((detail) => (
+                      <li key={detail} className="voices-modal__detail">
+                        {detail}
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </aside>
                 <div className="voices-modal__body">
                   <h3 className="voices-modal__headline">{activeVoice.insightTitle}</h3>
