@@ -32,23 +32,61 @@ const COPY = {
   },
 };
 
+const resolveVoiceValue = (value, language) => {
+  if (value && typeof value === 'object' && !Array.isArray(value)) {
+    return value[language] ?? value.es ?? Object.values(value)[0];
+  }
+  return value;
+};
+
+const resolveVoiceTags = (value, language) => {
+  if (Array.isArray(value)) return value;
+  if (value && typeof value === 'object') {
+    return value[language] ?? value.es ?? Object.values(value)[0] ?? [];
+  }
+  return [];
+};
+
 // When real images are available, import them here and set imageSrc per voice.
 // Example: import voice1 from '../assets/leadership/voice-1.jpg';
 const VOICES = [
   {
     id: 'voice-1',
-    name: 'Marta Escobar',
-    handle: '@marta.sistemas',
-    role: 'Directora de Operaciones',
-    sector: 'Agroindustria',
-    initials: 'ME',
-    tags: ['Cadenas de suministro', 'Gobernanza', 'Escala'],
-    insightTitle: 'Coordinar el ritmo sin perder flexibilidad',
-    context:
-      'La organización había crecido rápido y los equipos locales estaban tomando decisiones contradictorias sobre inventario y logística.',
-    lever: 'Rediseñamos los incentivos para que las metas regionales compartieran un objetivo sistémico común.',
-    impact: 'El lead time se redujo y la visibilidad del flujo completo aumentó sin frenar la velocidad de ejecución.',
-    learning: 'Cuando el sistema premia coordinación, la autonomía deja de ser ruido y se vuelve capacidad.',
+    name: 'Elisa Estrada',
+    handle: '@elisa.estrada',
+    role: {
+      es: 'Líder gubernamental',
+      en: 'Government leader',
+    },
+    sector: {
+      es: 'Política pública y derechos de las mujeres',
+      en: 'Public policy & women’s rights',
+    },
+    initials: 'EE',
+    tags: {
+      es: ['Gobernanza', 'Cuidados', 'Política pública'],
+      en: ['Governance', 'Care systems', 'Public policy'],
+    },
+    insightTitle: {
+      es: 'Poner la vida al centro de la estrategia sistémica',
+      en: 'Centering life in systemic strategy',
+    },
+    context: {
+      es: 'Como titular de la Secretaría de la Mujer en Apodaca, impulsó el primer ecosistema municipal de cuidados en Latinoamérica para coordinar actores públicos y sociales.',
+      en: 'As Head of the Ministry of Women Affairs in Apodaca, she launched Latin America’s first municipal care ecosystem, aligning public and social actors.',
+    },
+    lever: {
+      es: 'Aplicar pensamiento sistémico para comprender causas estructurales, anticipar efectos no deseados y coordinar decisiones interinstitucionales.',
+      en: 'Use systemic thinking to reveal structural causes, anticipate unintended effects, and align cross-sector decision-making.',
+    },
+    impact: {
+      es: 'Las decisiones dejan de ser aisladas y se orientan a transformaciones sostenibles que reducen desigualdades y fortalecen el bienestar.',
+      en: 'Decisions shift from isolated fixes to sustainable transformations that reduce inequities and strengthen wellbeing.',
+    },
+    learning: {
+      es: 'Poner la vida al centro implica corresponsabilidad: cuidar personas, territorio y tejido social como base del desarrollo.',
+      en: 'Centering life requires co-responsibility: caring for people, territory, and social ties as the foundation for development.',
+    },
     // TODO: When assets are available, import image files and set imageSrc here.
     imageSrc: null,
   },
@@ -94,10 +132,28 @@ function LeadershipVoicesCircles() {
   const closeButtonRef = useRef(null);
   const bodyOverflowRef = useRef('');
 
+  const localizedVoices = useMemo(
+    () =>
+      VOICES.map((voice) => ({
+        ...voice,
+        name: resolveVoiceValue(voice.name, language),
+        handle: resolveVoiceValue(voice.handle, language),
+        role: resolveVoiceValue(voice.role, language),
+        sector: resolveVoiceValue(voice.sector, language),
+        tags: resolveVoiceTags(voice.tags, language),
+        insightTitle: resolveVoiceValue(voice.insightTitle, language),
+        context: resolveVoiceValue(voice.context, language),
+        lever: resolveVoiceValue(voice.lever, language),
+        impact: resolveVoiceValue(voice.impact, language),
+        learning: resolveVoiceValue(voice.learning, language),
+      })),
+    [language],
+  );
+
   const activeVoice = useMemo(() => {
     if (activeIndex === null) return null;
-    return VOICES[activeIndex];
-  }, [activeIndex]);
+    return localizedVoices[activeIndex];
+  }, [activeIndex, localizedVoices]);
 
   const handleOpen = (index, event) => {
     setActiveIndex(index);
@@ -263,7 +319,7 @@ function LeadershipVoicesCircles() {
           <p className="voices__subtitle">{content.subtitle}</p>
         </div>
         <div className="voices__grid">
-          {VOICES.map((voice, index) => (
+          {localizedVoices.map((voice, index) => (
             <button
               key={voice.id}
               type="button"
