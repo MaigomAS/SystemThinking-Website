@@ -8,6 +8,7 @@ import Section from './components/ui/Section.jsx';
 import DesignPlayground from './components/DesignPlayground.jsx';
 import ECallPage from './components/ECallPage.jsx';
 import HeroRotator from './components/HeroRotator.jsx';
+import LeadershipVoicesCircles from './components/LeadershipVoicesCircles.jsx';
 import OrganizationModal from './components/OrganizationModal.jsx';
 import sectionOrder from './data/sections.json';
 import { getOrganizations } from './data/organizations.js';
@@ -144,6 +145,10 @@ function App() {
   const interactiveTabs = t.interactive.tabs;
   const systemBlocks = t.interactive.systemBlocks;
   const organizations = useMemo(() => getOrganizations(t.organizations), [t]);
+  const leadershipOrganizations = useMemo(
+    () => organizations.filter((org) => org.id !== 'direccion'),
+    [organizations],
+  );
 
   const [activeTab, setActiveTab] = useState('sintomas');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
@@ -584,44 +589,47 @@ function App() {
       </Section>
     ),
     leadership: (section) => (
-      <Section key={section.id} id={section.id} title={t.leadership.title} tone="light" className="reveal">
-        <div className="split split--reverse split--equipo">
-          <div className="section-grid">
-            <h3>{t.leadership.audience.title}</h3>
-            <Card variant="elevated" className="section-grid equipo-card">
-              {t.leadership.audience.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </Card>
-          </div>
-          <div className="section-grid">
-            <h3>{t.leadership.convocan.title}</h3>
-            <div className="card-grid">
-              {organizations.map((org) => (
-                <Card
-                  key={org.id}
-                  variant="elevated"
-                  as="button"
-                  type="button"
-                  className="convocan-card"
-                  aria-haspopup="dialog"
-                  onClick={(event) => handleOpenOrg(org, event.currentTarget)}
-                >
-                  <div className="convocan-card__header">
-                    <h4>{org.name}</h4>
-                    <span className="convocan-card__tagline">{org.tagline}</span>
-                  </div>
-                  <p>{org.description}</p>
-                  <div className="convocan-card__meta">
-                    <span>{org.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}</span>
-                    <span>{t.leadership.convocan.meta.cta}</span>
-                  </div>
-                </Card>
-              ))}
+      <>
+        <Section key={section.id} id={section.id} title={t.leadership.title} tone="light" className="reveal">
+          <div className="split split--reverse split--equipo">
+            <div className="section-grid">
+              <h3>{t.leadership.audience.title}</h3>
+              <Card variant="elevated" className="section-grid equipo-card">
+                {t.leadership.audience.paragraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
+              </Card>
+            </div>
+            <div className="section-grid">
+              <h3>{t.leadership.convocan.title}</h3>
+              <div className="card-grid">
+                {leadershipOrganizations.map((org) => (
+                  <Card
+                    key={org.id}
+                    variant="elevated"
+                    as="button"
+                    type="button"
+                    className="convocan-card"
+                    aria-haspopup="dialog"
+                    onClick={(event) => handleOpenOrg(org, event.currentTarget)}
+                  >
+                    <div className="convocan-card__header">
+                      <h4>{org.name}</h4>
+                      <span className="convocan-card__tagline">{org.tagline}</span>
+                    </div>
+                    <p>{org.description}</p>
+                    <div className="convocan-card__meta">
+                      <span>{org.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}</span>
+                      <span>{t.leadership.convocan.meta.cta}</span>
+                    </div>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </Section>
+        </Section>
+        <LeadershipVoicesCircles />
+      </>
     ),
     faq: (section) => (
       <Section key={section.id} id={section.id} title={t.faq.title} tone="light" className="reveal">
