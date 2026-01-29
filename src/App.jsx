@@ -154,6 +154,7 @@ function App() {
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
   const [activeLeverIndex, setActiveLeverIndex] = useState(null);
   const [isBergenVideoOpen, setIsBergenVideoOpen] = useState(false);
+  const [isInvestmentFormOpen, setIsInvestmentFormOpen] = useState(false);
   const isLeverOpen = activeLeverIndex !== null;
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), [interactiveTabs]);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
@@ -161,6 +162,8 @@ function App() {
   const returnFocusRef = useRef(null);
   const lastTriggerRef = useRef(null);
   const leverTitleRef = useRef(null);
+  const investmentModalTitleRef = useRef(null);
+  const investmentTriggerRef = useRef(null);
   const activeFaq = useMemo(() => faqs.find((faq) => faq.id === activeFaqId) ?? faqs[0], [activeFaqId, faqs]);
   const experienceItems = useMemo(() => EXPERIENCES[language] ?? EXPERIENCES.es, [language]);
   const experienceTrackRef = useRef(null);
@@ -210,6 +213,15 @@ function App() {
 
   const handleCloseBergenVideo = () => {
     setIsBergenVideoOpen(false);
+  };
+
+  const handleOpenInvestmentForm = (event) => {
+    setIsInvestmentFormOpen(true);
+    investmentTriggerRef.current = event.currentTarget;
+  };
+
+  const handleCloseInvestmentForm = () => {
+    setIsInvestmentFormOpen(false);
   };
 
   const handleOpenOrg = (org, focusTarget) => {
@@ -281,6 +293,38 @@ function App() {
   }, [isBergenVideoOpen]);
 
   useEffect(() => {
+    if (!isInvestmentFormOpen) return undefined;
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        handleCloseInvestmentForm();
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isInvestmentFormOpen]);
+
+  useEffect(() => {
+    if (typeof document === 'undefined') return undefined;
+    if (!isInvestmentFormOpen) return undefined;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isInvestmentFormOpen]);
+
+  useEffect(() => {
+    if (isInvestmentFormOpen) return;
+    investmentTriggerRef.current?.focus?.();
+  }, [isInvestmentFormOpen]);
+
+  useEffect(() => {
+    if (!isInvestmentFormOpen) return;
+    investmentModalTitleRef.current?.focus?.();
+  }, [isInvestmentFormOpen]);
+
+  useEffect(() => {
     const elements = document.querySelectorAll('.reveal');
     if (!elements.length) return undefined;
 
@@ -304,6 +348,64 @@ function App() {
     if (faqs.some((faq) => faq.id === activeFaqId)) return;
     setActiveFaqId(faqs[0].id);
   }, [activeFaqId, faqs]);
+
+  const QuickRequestForm = ({ className = '' }) => (
+    <Card
+      variant="elevated"
+      as="form"
+      className={`ui-form ${className}`.trim()}
+      aria-label={t.contact.aria.form}
+      method="POST"
+      action="/api/quick-request"
+      onSubmit={handleQuickRequestSubmit}
+    >
+      <h4>{t.contact.form.title}</h4>
+
+      <input type="text" name="nombre" placeholder={t.contact.form.fields.name} aria-label={t.contact.form.fields.name} required />
+      <input
+        type="email"
+        name="email"
+        placeholder={t.contact.form.fields.email}
+        aria-label={t.contact.form.fields.email}
+        required
+      />
+      <input
+        type="text"
+        name="rol_organizacion"
+        placeholder={t.contact.form.fields.role}
+        aria-label={t.contact.form.fields.role}
+        required
+      />
+
+      <select name="interes" aria-label={t.contact.form.fields.interest} required defaultValue="">
+        <option value="" disabled>
+          {t.contact.form.fields.interest}
+        </option>
+        {t.contact.form.options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+
+      <Button
+        type="submit"
+        variant="dark"
+        aria-label={t.contact.aria.submit}
+        disabled={quickRequestStatus === 'loading'}
+      >
+        {t.contact.form.submit}
+      </Button>
+
+      <p className="interactive__note">{t.contact.form.note}</p>
+
+      {quickRequestMessage ? (
+        <p className="interactive__note" role="status" aria-live="polite">
+          {quickRequestMessage}
+        </p>
+      ) : null}
+    </Card>
+  );
 
   useEffect(() => {
     if (!isLeverOpen) return undefined;
@@ -475,7 +577,7 @@ function App() {
             ))}
           </div>
           <div className="investment__cta">
-            <Button as="a" href="#contacto" variant="primary">
+            <Button type="button" variant="primary" onClick={handleOpenInvestmentForm}>
               {t.investment.cta}
             </Button>
             <p className="investment__microcopy">{t.investment.microcopy}</p>
@@ -738,61 +840,7 @@ function App() {
             <p className="interactive__note">{t.contact.note}</p>
           </div>
 
-          <Card
-            variant="elevated"
-            as="form"
-            className="ui-form"
-            aria-label={t.contact.aria.form}
-            method="POST"
-            action="/api/quick-request"
-            onSubmit={handleQuickRequestSubmit}
-          >
-            <h4>{t.contact.form.title}</h4>
-
-            <input type="text" name="nombre" placeholder={t.contact.form.fields.name} aria-label={t.contact.form.fields.name} required />
-            <input
-              type="email"
-              name="email"
-              placeholder={t.contact.form.fields.email}
-              aria-label={t.contact.form.fields.email}
-              required
-            />
-            <input
-              type="text"
-              name="rol_organizacion"
-              placeholder={t.contact.form.fields.role}
-              aria-label={t.contact.form.fields.role}
-              required
-            />
-
-            <select name="interes" aria-label={t.contact.form.fields.interest} required defaultValue="">
-              <option value="" disabled>
-                {t.contact.form.fields.interest}
-              </option>
-              {t.contact.form.options.map((option) => (
-                <option key={option} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-
-            <Button
-              type="submit"
-              variant="dark"
-              aria-label={t.contact.aria.submit}
-              disabled={quickRequestStatus === 'loading'}
-            >
-              {t.contact.form.submit}
-            </Button>
-
-            <p className="interactive__note">{t.contact.form.note}</p>
-
-            {quickRequestMessage ? (
-              <p className="interactive__note" role="status" aria-live="polite">
-                {quickRequestMessage}
-              </p>
-            ) : null}
-          </Card>
+          <QuickRequestForm />
         </div>
       </Section>
     ),
@@ -882,6 +930,39 @@ function App() {
   const overlayPortal =
     leverOverlay && typeof document !== 'undefined' ? createPortal(leverOverlay, document.body) : null;
 
+  const investmentFormOverlay = isInvestmentFormOpen ? (
+    <div
+      className="investment-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="investment-modal-title"
+      onClick={handleCloseInvestmentForm}
+    >
+      <div className="investment-modal__panel" onClick={(event) => event.stopPropagation()}>
+        <button
+          type="button"
+          className="investment-modal__close"
+          aria-label="Cerrar"
+          onClick={handleCloseInvestmentForm}
+        >
+          ×
+        </button>
+        <div className="investment-modal__intro">
+          <span className="investment-modal__eyebrow">{t.investment.eyebrow}</span>
+          <h3 id="investment-modal-title" tabIndex="-1" ref={investmentModalTitleRef}>
+            {t.contact.form.title}
+          </h3>
+          <p>{t.investment.description}</p>
+          <div className="investment-modal__accent" aria-hidden="true" />
+        </div>
+        <QuickRequestForm className="investment-modal__form" />
+      </div>
+    </div>
+  ) : null;
+
+  const investmentFormPortal =
+    investmentFormOverlay && typeof document !== 'undefined' ? createPortal(investmentFormOverlay, document.body) : null;
+
   const bergenVideoOverlay = isBergenVideoOpen ? (
     <div
       className="bergen-video-overlay"
@@ -915,7 +996,7 @@ function App() {
     bergenVideoOverlay && typeof document !== 'undefined' ? createPortal(bergenVideoOverlay, document.body) : null;
 
   return (
-    <div className="page" aria-hidden={isLeverOpen}>
+    <div className="page" aria-hidden={isLeverOpen || isInvestmentFormOpen || isBergenVideoOpen}>
       <header className={`navbar ${isScrolled ? 'navbar--scrolled' : ''}`}>
         <Container>
           <nav className="navbar__inner" aria-label={t.nav.aria.nav}>
@@ -959,6 +1040,7 @@ function App() {
       {sectionOrder.map((section) => sectionRenderers[section.type]?.(section))}
 
       {overlayPortal}
+      {investmentFormPortal}
       {bergenVideoPortal}
 
       <footer className="footer reveal">
