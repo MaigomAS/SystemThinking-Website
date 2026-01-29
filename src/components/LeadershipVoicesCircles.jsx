@@ -2,6 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useLanguage } from '../i18n/LanguageContext.jsx';
 import Section from './ui/Section.jsx';
+import elisaPortrait from '../assets/leadership/voice-1.jpg';
+import sofiaPortrait from '../assets/leadership/voice-2.jpg';
+import andresPortrait from '../assets/leadership/voice-3.jpg';
 
 const COPY = {
   es: {
@@ -46,8 +49,6 @@ const COPY = {
   },
 };
 
-// When real images are available, import them here and set imageSrc per voice.
-// Example: import voice1 from '../assets/leadership/voice-1.jpg';
 const VOICES = {
   es: [
     {
@@ -67,8 +68,7 @@ const VOICES = {
         'Las intervenciones pasan de ser reactivas a ser estratégicas, con capacidad de sostener bienestar, equidad y estabilidad social.',
       learning:
         'Poner la vida al centro es evaluar cada decisión por su impacto en la dignidad, el cuidado y el futuro colectivo.',
-      // TODO: When assets are available, import image files and set imageSrc here.
-      imageSrc: null,
+      imageSrc: elisaPortrait,
     },
     {
       id: 'voice-2',
@@ -84,7 +84,7 @@ const VOICES = {
       lever: 'Clarificamos la arquitectura de información y quién debía decidir cada cambio crítico.',
       impact: 'Se redujeron re-trabajos y el roadmap ganó coherencia con la propuesta de valor.',
       learning: 'El timing correcto de la información evita que la estrategia se convierta en improvisación.',
-      imageSrc: null,
+      imageSrc: sofiaPortrait,
     },
     {
       id: 'voice-3',
@@ -100,7 +100,7 @@ const VOICES = {
       lever: 'Creamos un mapa de relaciones críticas y diseñamos rituales de coordinación recurrentes.',
       impact: 'Los acuerdos estratégicos se aceleraron y el pipeline de proyectos ganó tracción.',
       learning: 'Las relaciones sostenidas son un activo estructural, no un “extra” relacional.',
-      imageSrc: null,
+      imageSrc: andresPortrait,
     },
   ],
   en: [
@@ -121,7 +121,7 @@ const VOICES = {
         'Interventions move from reactive fixes to strategic changes that protect wellbeing, equity, and social stability.',
       learning:
         'Putting life at the center means judging every decision by its impact on dignity, care, and our collective future.',
-      imageSrc: null,
+      imageSrc: elisaPortrait,
     },
     {
       id: 'voice-2',
@@ -137,7 +137,7 @@ const VOICES = {
       lever: 'We clarified the information architecture and who should decide each critical change.',
       impact: 'Rework dropped and the roadmap gained coherence with the value proposition.',
       learning: 'Right-timed information keeps strategy from turning into improvisation.',
-      imageSrc: null,
+      imageSrc: sofiaPortrait,
     },
     {
       id: 'voice-3',
@@ -153,7 +153,7 @@ const VOICES = {
       lever: 'We mapped critical relationships and designed recurring coordination rituals.',
       impact: 'Strategic agreements accelerated and the project pipeline gained traction.',
       learning: 'Sustained relationships are a structural asset, not a relational extra.',
-      imageSrc: null,
+      imageSrc: andresPortrait,
     },
   ],
 };
