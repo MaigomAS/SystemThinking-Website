@@ -280,10 +280,7 @@ function HeroRotator() {
             ? {
                 '--hero-bg-image': `url(${backgroundImage})`,
                 '--hero-bg-opacity': 0.42,
-                '--hero-bg-scale': variant.id === 'editorial' ? 1 : 1.15,
-                '--hero-bg-blur': variant.id === 'editorial' ? '0px' : '2px',
                 '--hero-bg-clarity': variant.id === 'editorial' ? 1 : 0.65,
-                '--hero-bg-clarity-blur': variant.id === 'editorial' ? '0px' : '0.3px',
                 '--hero-bg-position': variant.id === 'editorial' ? 'center 30%' : 'center',
                 '--hero-bg-overlay': overlayByVariant[variant.id] ?? overlayByVariant.editorial,
                 '--hero-bg-clarity-mask': clarityMaskByVariant[variant.id],
@@ -305,12 +302,12 @@ function HeroRotator() {
                 <Container className="hero-rotator__content">
                   <div className="hero-rotator__content-inner">{panelContent}</div>
                 </Container>
+                {isActive ? renderControls() : null}
               </div>
             </div>
           );
         })}
       </div>
-      {renderControls()}
       <p className="hero-rotator__hint" aria-hidden="true">
         {t.heroRotator.aria.swipeHint}
       </p>
