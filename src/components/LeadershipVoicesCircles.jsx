@@ -69,22 +69,6 @@ const VOICES = {
       imageSrc: null,
     },
     {
-      id: 'voice-1',
-      name: 'Marta Escobar',
-      handle: '@marta.sistemas',
-      role: 'Directora de Operaciones',
-      sector: 'Agroindustria',
-      initials: 'ME',
-      tags: ['Cadenas de suministro', 'Gobernanza', 'Escala'],
-      insightTitle: 'Coordinar el ritmo sin perder flexibilidad',
-      context:
-        'La organización había crecido rápido y los equipos locales estaban tomando decisiones contradictorias sobre inventario y logística.',
-      lever: 'Rediseñamos los incentivos para que las metas regionales compartieran un objetivo sistémico común.',
-      impact: 'El lead time se redujo y la visibilidad del flujo completo aumentó sin frenar la velocidad de ejecución.',
-      learning: 'Cuando el sistema premia coordinación, la autonomía deja de ser ruido y se vuelve capacidad.',
-      imageSrc: null,
-    },
-    {
       id: 'voice-2',
       name: 'Sofía Lema',
       handle: '@sofia.lema',
@@ -135,22 +119,6 @@ const VOICES = {
         'Interventions move from reactive fixes to strategic changes that protect wellbeing, equity, and social stability.',
       learning:
         'Putting life at the center means judging every decision by its impact on dignity, care, and our collective future.',
-      imageSrc: null,
-    },
-    {
-      id: 'voice-1',
-      name: 'Marta Escobar',
-      handle: '@marta.sistemas',
-      role: 'Director of Operations',
-      sector: 'Agroindustry',
-      initials: 'ME',
-      tags: ['Supply chains', 'Governance', 'Scale'],
-      insightTitle: 'Coordinating pace without losing flexibility',
-      context:
-        'The organization had grown quickly and local teams were making conflicting decisions about inventory and logistics.',
-      lever: 'We redesigned incentives so regional targets shared a common systemic objective.',
-      impact: 'Lead times dropped and end-to-end flow visibility increased without slowing execution.',
-      learning: 'When the system rewards coordination, autonomy becomes capability instead of noise.',
       imageSrc: null,
     },
     {

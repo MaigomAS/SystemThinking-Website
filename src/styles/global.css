@@ -2715,18 +2715,22 @@ img {
 }
 
 .voices-modal__tags {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 8px;
 }
 
 .voices-modal__tag {
-  padding: 6px 12px;
-  border-radius: var(--radius-pill);
-  font-size: var(--font-size-xs);
-  border: 1px solid rgba(122, 231, 255, 0.24);
-  color: var(--color-white);
-  background: rgba(122, 231, 255, 0.08);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--font-size-sm);
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.voices-modal__tag::before {
+  content: '•';
+  color: rgba(122, 231, 255, 0.9);
+  font-size: 1rem;
 }
 
 .voices-modal__body {
