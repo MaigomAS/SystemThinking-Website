@@ -558,6 +558,7 @@
     "close": "Close modal",
     "previewAlt": "Preview of {{name}}",
     "previewLabel": "Preview",
+    "videoLabel": "Play video",
     "eyebrow": "Convening organizations",
     "whyLabel": "Why they convene",
     "visitSite": "Visit site →",
@@ -579,12 +580,26 @@
     {
       "id": "vida",
       "name": "Vida al Centro",
-      "tagline": "Culture, community, and purpose-driven leadership.",
-      "description": "An initiative that connects leaders with collective care practices, creating learning spaces that integrate wellbeing, local action, and global vision.",
+      "tagline": "Science, governance, and conscious leadership.",
+      "description": "An institute focused on connecting leaders to address the most important socio-ecological challenges of our time through a new generation of systemic governance.",
       "bullets": [
         "A human narrative that turns strategy into cultural movement.",
         "Ability to activate communities and impact networks.",
         "Participatory and creative methodologies."
+      ],
+      "videos": [
+        {
+          "label": "Option 1",
+          "url": "https://www.youtube.com/watch?v=1TkAzMZYMuA&source_ve_path=Mjg2NjY"
+        },
+        {
+          "label": "Option 2",
+          "url": "https://youtu.be/33nxxFa6618"
+        },
+        {
+          "label": "Option 3",
+          "url": "https://youtu.be/Vhpwe7ydbvk"
+        }
       ],
       "why": "Brings proximity, inspiration, and coherence between vision and action."
     },
