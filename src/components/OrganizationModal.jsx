@@ -16,10 +16,12 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
   const panelRef = useRef(null);
   const closeButtonRef = useRef(null);
   const [imageError, setImageError] = useState(false);
+  const [selectedVideoIndex, setSelectedVideoIndex] = useState(0);
 
   useEffect(() => {
     setImageError(false);
-  }, [org?.previewImage]);
+    setSelectedVideoIndex(0);
+  }, [org?.id]);
 
   useEffect(() => {
     if (!open) return undefined;
@@ -73,6 +75,11 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
   if (!open || !org) return null;
 
   const hasPreview = Boolean(org.previewImage) && !imageError;
+  const videoOptions = Array.isArray(org.videos) ? org.videos : [];
+  const hasVideos = videoOptions.length > 0;
+  const selectedVideo = videoOptions[selectedVideoIndex] ?? videoOptions[0];
+  const videoId = selectedVideo?.url ? getYouTubeId(selectedVideo.url) : null;
+  const videoSrc = videoId ? `https://www.youtube.com/embed/${videoId}` : null;
 
   return (
     <div className="org-modal__overlay" role="presentation" onMouseDown={onClose}>
@@ -94,7 +101,33 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
           ×
         </button>
         <div className="org-modal__preview">
-          {hasPreview ? (
+          {hasVideos && videoSrc ? (
+            <div className="org-modal__video">
+              <label className="org-modal__video-label" htmlFor={`org-modal-video-${org.id}`}>
+                {t.organizationModal.videoLabel}
+              </label>
+              <select
+                id={`org-modal-video-${org.id}`}
+                className="org-modal__video-select"
+                value={selectedVideoIndex}
+                onChange={(event) => setSelectedVideoIndex(Number(event.target.value))}
+              >
+                {videoOptions.map((video, index) => (
+                  <option key={video.url ?? `${org.id}-${index}`} value={index}>
+                    {video.label ?? `${t.organizationModal.videoLabel} ${index + 1}`}
+                  </option>
+                ))}
+              </select>
+              <div className="org-modal__video-frame">
+                <iframe
+                  src={videoSrc}
+                  title={`${org.name} video`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </div>
+          ) : hasPreview ? (
             <img
               src={org.previewImage}
               alt={t.organizationModal.previewAlt.replace('{{name}}', org.name)}
@@ -149,3 +182,18 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
 }
 
 export default OrganizationModal;
+
+function getYouTubeId(url) {
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname === 'youtu.be') {
+      return parsed.pathname.replace('/', '');
+    }
+    if (parsed.hostname.includes('youtube.com')) {
+      return parsed.searchParams.get('v');
+    }
+  } catch (error) {
+    return null;
+  }
+  return null;
+}

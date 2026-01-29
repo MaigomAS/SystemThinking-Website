@@ -566,6 +566,7 @@
     "close": "Cerrar modal",
     "previewAlt": "Preview de {{name}}",
     "previewLabel": "Preview",
+    "videoLabel": "Reproducir video",
     "eyebrow": "Quiénes convocan",
     "whyLabel": "Por qué convoca",
     "visitSite": "Visitar sitio →",
@@ -587,12 +588,26 @@
     {
       "id": "vida",
       "name": "Vida al Centro",
-      "tagline": "Cultura, comunidad y liderazgo con propósito.",
-      "description": "Una iniciativa que conecta líderes con prácticas de cuidado colectivo, creando espacios de aprendizaje que integran bienestar, acción local y visión global.",
+      "tagline": "Ciencia, Gobernanza y Liderazgo consciente.",
+      "description": "Instituto enfocado a conectar con líderes para atender los retos socioecológicos más importantes de nuestro tiempo a partir de una nueva generación de gobernanza sistémica.",
       "bullets": [
         "Narrativa humana que convierte la estrategia en movimiento cultural.",
         "Capacidad de activar comunidades y redes de impacto.",
         "Metodologías participativas y creativas."
+      ],
+      "videos": [
+        {
+          "label": "Opción 1",
+          "url": "https://www.youtube.com/watch?v=1TkAzMZYMuA&source_ve_path=Mjg2NjY"
+        },
+        {
+          "label": "Opción 2",
+          "url": "https://youtu.be/33nxxFa6618"
+        },
+        {
+          "label": "Opción 3",
+          "url": "https://youtu.be/Vhpwe7ydbvk"
+        }
       ],
       "why": "Aporta cercanía, inspiración y coherencia entre visión y acción."
     },
