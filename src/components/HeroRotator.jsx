@@ -4,6 +4,7 @@ import Chip from './ui/Chip.jsx';
 import Container from './ui/Container.jsx';
 import bergenHero from '../assets/bergen-hero.png';
 import { useLanguage } from '../i18n/LanguageContext.jsx';
+import HeroLoop from './HeroLoop.jsx';
 
 const hero2Bg = import.meta.glob('../assets/bergen-hero-2.png', { eager: true, query: '?url', import: 'default' })[
   '../assets/bergen-hero-2.png'
@@ -143,36 +144,6 @@ function HeroRotator() {
       case 'split':
         return (
           <div className="playground-hero__split">
-            <div className="hero-loop" aria-hidden="true">
-              <svg className="hero-loop__svg" viewBox="0 0 600 360" role="presentation">
-                <defs>
-                  <linearGradient id="loopGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#7ae7ff" stopOpacity="0.8" />
-                    <stop offset="50%" stopColor="#7c6aff" stopOpacity="0.7" />
-                    <stop offset="100%" stopColor="#f58bff" stopOpacity="0.55" />
-                  </linearGradient>
-                </defs>
-                <path
-                  className="hero-loop__path hero-loop__path--primary"
-                  d="M60 210 C 120 80, 250 40, 320 120 C 380 190, 460 260, 560 200"
-                />
-                <path
-                  className="hero-loop__path hero-loop__path--secondary"
-                  d="M40 140 C 140 210, 210 320, 330 250 C 430 190, 480 80, 580 120"
-                />
-                <circle className="hero-loop__node hero-loop__node--tech" cx="120" cy="110" r="9" />
-                <circle className="hero-loop__node hero-loop__node--human" cx="300" cy="200" r="12" />
-                <circle className="hero-loop__node hero-loop__node--system" cx="470" cy="140" r="10" />
-                <circle className="hero-loop__node hero-loop__node--tech" cx="520" cy="250" r="8" />
-                <circle className="hero-loop__node hero-loop__node--human" cx="210" cy="260" r="7" />
-              </svg>
-              <div className="hero-loop__pulse hero-loop__pulse--one" />
-              <div className="hero-loop__pulse hero-loop__pulse--two" />
-              <div className="hero-loop__signals">
-                <span className="hero-loop__signal hero-loop__signal--primary">{content.signals.primary}</span>
-                <span className="hero-loop__signal hero-loop__signal--secondary">{content.signals.secondary}</span>
-              </div>
-            </div>
             <div className="playground-hero__content">
               <Chip className="hero__badge">{content.badge}</Chip>
               <h1>{content.title}</h1>
@@ -266,6 +237,7 @@ function HeroRotator() {
         {heroVariants.map((variant, index) => {
           const isActive = index === activeIndex;
           const backgroundImage = heroBackgrounds[variant.id];
+          const isSplit = variant.id === 'split';
           const overlayByVariant = {
             editorial:
               'linear-gradient(90deg, rgba(6, 10, 20, 0.72) 0%, rgba(6, 10, 20, 0.56) 40%, rgba(6, 10, 20, 0.18) 72%, rgba(6, 10, 20, 0.04) 100%)',
@@ -292,6 +264,7 @@ function HeroRotator() {
             >
               <div className={`playground-hero playground-hero--${variant.id} hero--parallax`} style={heroBackgroundStyle}>
                 <div className="hero-rotator__image" aria-hidden="true" />
+                {isSplit ? <HeroLoop signals={heroContent.split.signals} reducedMotion={prefersReducedMotion} /> : null}
                 <Container className="hero-rotator__content">
                   <div className="hero-rotator__content-inner">{panelContent}</div>
                 </Container>
