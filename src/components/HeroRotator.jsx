@@ -16,6 +16,8 @@ const heroBackgrounds = {
   split: null,
 };
 
+const calendlyLink = 'https://calendly.com/annia-info/30min';
+
 function HeroRotator() {
   const { t } = useLanguage();
   const heroRef = useRef(null);
@@ -123,7 +125,15 @@ function HeroRotator() {
                 <Button as="a" href="#contacto" variant="primary" className="cta-glow">
                   {content.actions.primary}
                 </Button>
-                <Button variant="ghost">{content.actions.secondary}</Button>
+                <Button
+                  as="a"
+                  href={calendlyLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  variant="ghost"
+                >
+                  {content.actions.secondary}
+                </Button>
               </div>
               <div className="hero__chips">
                 {content.chips.map((badge) => (
