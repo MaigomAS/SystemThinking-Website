@@ -6,16 +6,15 @@ import Section from './ui/Section.jsx';
 const COPY = {
   es: {
     eyebrow: 'Experiencias que transforman',
-    title: 'Voces que aplican pensamiento sistémico en el mundo real',
+    title: 'Líderes que aplican pensamiento sistémico en el mundo real',
     subtitle: 'Haz clic en un perfil para ver el mini-caso (no es recomendación del programa).',
-    disclaimer: '*Perspectivas independientes. No constituyen endorsement del programa.',
+    disclaimer: '',
     cta: 'Saber más',
-    modalDisclaimer:
-      'Perspectiva independiente sobre pensamiento sistémico. No constituye recomendación del programa.',
+    modalDisclaimer: '',
     modalActions: {
       close: 'Cerrar modal',
-      previous: 'Ver voz anterior',
-      next: 'Ver siguiente voz',
+      previous: 'Ver líder anterior',
+      next: 'Ver siguiente líder',
     },
   },
   en: {
@@ -244,7 +243,9 @@ function LeadershipVoicesCircles() {
                     <h4>Aprendizaje ejecutivo</h4>
                     <p>{activeVoice.learning}</p>
                   </div>
-                  <p className="voices-modal__disclaimer">{content.modalDisclaimer}</p>
+                  {content.modalDisclaimer ? (
+                    <p className="voices-modal__disclaimer">{content.modalDisclaimer}</p>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -288,7 +289,9 @@ function LeadershipVoicesCircles() {
             </button>
           ))}
         </div>
-        <p className="voices__disclaimer">{content.disclaimer}</p>
+        {content.disclaimer ? (
+          <p className="voices__disclaimer">{content.disclaimer}</p>
+        ) : null}
       </Section>
       {modal}
     </>

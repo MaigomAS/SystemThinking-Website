@@ -172,7 +172,7 @@
         "meta": "3 semanas intensivas · Nov 2026 · Cupos limitados",
         "actions": {
           "primary": "Solicitar información →",
-          "secondary": "Ver programa completo"
+          "secondary": "Solicita el programa completo"
         },
         "signals": {
           "primary": "Simulación",
@@ -187,7 +187,7 @@
         "meta": "Bergen, Noruega · Noviembre 2026 · Presencial · Full-time",
         "actions": {
           "primary": "Solicitar información →",
-          "secondary": "Descargar overview (PDF)"
+          "secondary": "Solicita el programa completo"
         }
       }
     },
@@ -634,10 +634,10 @@
           "title": "Estrategia, gobernanza y ejecución en un mismo espacio.",
           "description": "Un formato híbrido entre think tank y taller intensivo, con casos reales, trabajo aplicado y una red global de líderes sistémicos.",
           "meta": "3 semanas intensivas · Nov 2026 · Cupos limitados",
-          "actions": {
-            "primary": "Solicitar información →",
-            "secondary": "Ver programa completo"
-          },
+        "actions": {
+          "primary": "Solicitar información →",
+          "secondary": "Solicita el programa completo"
+        },
           "signals": {
             "primary": "Simulación",
             "secondary": "Panel estratégico"
@@ -647,10 +647,10 @@
           "badge": "Encuentro ejecutivo · 2026",
           "title": "Systemic Strategy & Leadership for Complex Issues.",
           "lead": "Un programa editorialmente curado para líderes que quieren intervenir en sistemas complejos con precisión, profundidad y sensibilidad humana.",
-          "actions": {
-            "primary": "Aplicar al programa →",
-            "secondary": "Descargar overview"
-          },
+        "actions": {
+          "primary": "Aplicar al programa →",
+          "secondary": "Solicita el programa completo"
+        },
           "meta": "Bergen, Noruega · Noviembre 2026 · Presencial"
         }
       }
