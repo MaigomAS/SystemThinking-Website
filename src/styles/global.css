@@ -323,15 +323,17 @@ img {
 }
 
 .hero-rotator {
+  --hero-stage-pad: clamp(24px, 4vh, 56px);
   position: relative;
-  padding: clamp(24px, 5vh, 48px) 0 clamp(32px, 6vh, 64px);
-  height: clamp(504px, 63vh, 684px);
+  padding-top: var(--hero-stage-pad);
+  padding-bottom: calc(var(--hero-stage-pad) - 12px);
+  min-height: calc(100svh - var(--nav-h, 88px));
   overflow: visible;
 }
 
 .hero-rotator__track {
   display: grid;
-  height: 100%;
+  min-height: 100%;
 }
 
 .hero-rotator__panel {
@@ -339,7 +341,7 @@ img {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 600ms ease, transform 600ms ease;
-  height: 100%;
+  min-height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -358,12 +360,11 @@ img {
   position: relative;
   width: min(1200px, 96%);
   margin: 0 auto;
-  min-height: 100%;
-  height: 100%;
-  max-height: 100%;
+  min-height: clamp(520px, 72svh, 760px);
   display: flex;
+  flex-direction: column;
   align-items: stretch;
-  padding: 0;
+  padding: 0 0 var(--space-6);
 }
 
 .hero-rotator__panel--editorial .playground-hero {
@@ -378,6 +379,7 @@ img {
   justify-content: center;
   gap: 24px;
   height: 100%;
+  flex: 1;
   padding: clamp(24px, 5vh, 56px) 0 clamp(40px, 8vh, 96px);
 }
 
@@ -392,14 +394,12 @@ img {
 }
 
 .hero-rotator__controls {
-  position: absolute;
-  left: 50%;
-  bottom: -24px;
-  transform: translateX(-50%);
   display: inline-flex;
   align-items: center;
+  align-self: center;
+  margin-top: auto;
   gap: 12px;
-  padding: 8px 12px;
+  padding: 12px 0 18px;
   border-radius: 999px;
   background: rgba(10, 15, 31, 0.5);
   border: 1px solid rgba(122, 231, 255, 0.16);
@@ -483,8 +483,7 @@ img {
 
 @media (max-width: 900px) {
   .hero-rotator {
-    height: clamp(468px, 65vh, 630px);
-    padding: clamp(18px, 4vh, 36px) 0 clamp(24px, 6vh, 48px);
+    min-height: calc(100svh - var(--nav-h, 88px));
   }
 }
 
@@ -494,41 +493,10 @@ img {
   background-image: var(--hero-bg-image, none);
   background-size: cover;
   background-position: var(--hero-bg-position, center);
-  opacity: var(--hero-bg-opacity, 0);
-  filter: blur(var(--hero-bg-blur, 2px));
-  transform: scale(var(--hero-bg-scale, 1.04));
+  filter: none;
+  transform: none;
+  backdrop-filter: none;
   pointer-events: none;
-}
-
-.hero-rotator__image::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: var(--hero-bg-image, none);
-  background-size: cover;
-  background-position: center;
-  opacity: var(--hero-bg-clarity, 0);
-  filter: blur(var(--hero-bg-clarity-blur, 0.4px));
-  mask-image: var(
-    --hero-bg-clarity-mask,
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.15) 40%,
-      rgba(0, 0, 0, 0.75) 70%,
-      rgba(0, 0, 0, 1) 100%
-    )
-  );
-  -webkit-mask-image: var(
-    --hero-bg-clarity-mask,
-    linear-gradient(
-      90deg,
-      rgba(0, 0, 0, 0) 0%,
-      rgba(0, 0, 0, 0.15) 40%,
-      rgba(0, 0, 0, 0.75) 70%,
-      rgba(0, 0, 0, 1) 100%
-    )
-  );
 }
 
 .hero-rotator__image::after {
@@ -545,6 +513,10 @@ img {
   overflow: hidden;
   --parallax-x: 0px;
   --parallax-y: 0px;
+}
+
+.hero-rotator.hero--parallax {
+  overflow: visible;
 }
 
 .hero--parallax::before,
@@ -2995,7 +2967,7 @@ img {
   }
 
   .hero-rotator__controls {
-    bottom: 22px;
+    margin-top: auto;
   }
 
   .playground-hero__content--editorial h1 {
@@ -3055,7 +3027,7 @@ img {
 
 @media (max-width: 600px) {
   .hero-rotator {
-    height: clamp(432px, 74vh, 576px);
+    min-height: calc(100svh - var(--nav-h, 88px));
   }
 
   .hero-rotator__content {
@@ -3064,7 +3036,6 @@ img {
   }
 
   .hero-rotator__controls {
-    bottom: -18px;
     padding: 6px 10px;
   }
 
