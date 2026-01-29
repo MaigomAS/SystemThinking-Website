@@ -78,23 +78,54 @@ function HeroLoop({ signals, reducedMotion }) {
     return [...baseNodes, ...generated];
   }, [baseNodes, nodeCount]);
 
-  const primaryPath = useMemo(() => {
-    if (!width || !height) return '';
-    return [
-      `M ${width * 0.08} ${height * 0.58}`,
-      `C ${width * 0.22} ${height * 0.22}, ${width * 0.46} ${height * 0.1}, ${width * 0.6} ${height * 0.34}`,
-      `C ${width * 0.72} ${height * 0.5}, ${width * 0.82} ${height * 0.78}, ${width * 0.92} ${height * 0.56}`,
-    ].join(' ');
+  const buildWavePath = useMemo(() => {
+    if (!width || !height) return () => '';
+    const points = clamp(Math.round(width / 140), 6, 12);
+    return (amplitude, offsetY, phase) => {
+      const step = width / (points - 1);
+      const pathParts = [];
+      for (let index = 0; index < points; index += 1) {
+        const x = step * index;
+        const progress = (index / (points - 1)) * Math.PI * 2;
+        const y = height * offsetY + Math.sin(progress + phase) * amplitude;
+        if (index === 0) {
+          pathParts.push(`M ${x} ${y}`);
+        } else {
+          const prevX = x - step / 2;
+          const prevProgress = ((index - 0.5) / (points - 1)) * Math.PI * 2;
+          const controlY = height * offsetY + Math.sin(prevProgress + phase) * amplitude;
+          pathParts.push(`Q ${prevX} ${controlY} ${x} ${y}`);
+        }
+      }
+      return pathParts.join(' ');
+    };
   }, [width, height]);
 
-  const secondaryPath = useMemo(() => {
-    if (!width || !height) return '';
+  const wavePaths = useMemo(() => {
+    if (!width || !height) return [];
+    const amplitudeBase = minDim * 0.08;
     return [
-      `M ${width * 0.06} ${height * 0.36}`,
-      `C ${width * 0.2} ${height * 0.62}, ${width * 0.36} ${height * 0.94}, ${width * 0.56} ${height * 0.7}`,
-      `C ${width * 0.72} ${height * 0.5}, ${width * 0.84} ${height * 0.2}, ${width * 0.94} ${height * 0.32}`,
-    ].join(' ');
-  }, [width, height]);
+      buildWavePath(amplitudeBase * 0.9, 0.58, 0),
+      buildWavePath(amplitudeBase * 1.1, 0.46, Math.PI / 2),
+      buildWavePath(amplitudeBase * 0.7, 0.66, Math.PI * 1.2),
+      buildWavePath(amplitudeBase * 0.5, 0.4, Math.PI * 1.8),
+    ];
+  }, [buildWavePath, minDim, width, height]);
+
+  const sparkCount = clamp(Math.round(area / 52000), 14, 36);
+  const sparks = useMemo(
+    () =>
+      Array.from({ length: sparkCount }, (_, index) => {
+        const seed = Math.sin(index * 2.17) * 10000;
+        const x = (seed - Math.floor(seed)) * 0.92 + 0.04;
+        const ySeed = Math.sin((index + 3) * 3.11) * 10000;
+        const y = (ySeed - Math.floor(ySeed)) * 0.74 + 0.13;
+        const radius = clamp(minDim * (0.004 + (index % 5) * 0.0012), 2.2, 5.5);
+        const opacity = 0.25 + (index % 4) * 0.12;
+        return { x, y, radius, opacity };
+      }),
+    [sparkCount, minDim],
+  );
 
   const pulseOneSize = clamp(minDim * 0.38, 160, 280);
   const pulseTwoSize = clamp(minDim * 0.32, 140, 240);
@@ -124,8 +155,23 @@ function HeroLoop({ signals, reducedMotion }) {
             <stop offset="100%" stopColor="#f58bff" stopOpacity="0.55" />
           </linearGradient>
         </defs>
-        <path className="hero-loop__path hero-loop__path--primary" d={primaryPath} />
-        <path className="hero-loop__path hero-loop__path--secondary" d={secondaryPath} />
+        {wavePaths.map((path, index) => (
+          <path
+            key={`wave-${index}`}
+            className={`hero-loop__path hero-loop__path--wave hero-loop__path--wave-${index + 1}`}
+            d={path}
+          />
+        ))}
+        {sparks.map((spark, index) => (
+          <circle
+            key={`spark-${index}`}
+            className="hero-loop__spark"
+            cx={width * spark.x}
+            cy={height * spark.y}
+            r={spark.radius}
+            style={{ opacity: spark.opacity }}
+          />
+        ))}
         {nodes.map((node, index) => {
           const radius = clamp(minDim * 0.018 * node.scale, 6, 14);
           return (

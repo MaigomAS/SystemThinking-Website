@@ -1947,18 +1947,45 @@ img {
 .hero-loop__path {
   fill: none;
   stroke: var(--hero-loop-gradient);
-  stroke-width: 2;
+  stroke-width: 2.2;
   stroke-linecap: round;
-  stroke-dasharray: 520;
-  animation: loopFlow 18s linear infinite;
+  stroke-dasharray: 680;
+  animation: loopFlow 26s linear infinite;
+  opacity: 0.55;
+}
+
+.hero-loop__path--wave {
+  filter: drop-shadow(0 0 12px rgba(124, 106, 255, 0.2));
+}
+
+.hero-loop__path--wave-1 {
+  stroke-width: 2.6;
   opacity: 0.7;
 }
 
-.hero-loop__path--secondary {
-  stroke-width: 1.5;
-  stroke-dasharray: 460;
-  animation-duration: 22s;
-  opacity: 0.45;
+.hero-loop__path--wave-2 {
+  stroke-width: 2.2;
+  animation-duration: 32s;
+  opacity: 0.5;
+}
+
+.hero-loop__path--wave-3 {
+  stroke-width: 1.8;
+  stroke-dasharray: 620;
+  animation-duration: 36s;
+  opacity: 0.35;
+}
+
+.hero-loop__path--wave-4 {
+  stroke-width: 1.4;
+  stroke-dasharray: 540;
+  animation-duration: 40s;
+  opacity: 0.28;
+}
+
+.hero-loop__spark {
+  fill: rgba(186, 210, 255, 0.8);
+  filter: drop-shadow(0 0 10px rgba(122, 231, 255, 0.25));
 }
 
 .hero-loop__node {
@@ -2022,6 +2049,13 @@ img {
   align-items: flex-end;
   text-align: right;
   z-index: 3;
+}
+
+.hero-loop--reduced .hero-loop__path,
+.hero-loop--reduced .hero-loop__node,
+.hero-loop--reduced .hero-loop__pulse,
+.hero-loop--reduced .hero-loop__signal {
+  animation: none;
 }
 
 .hero-loop__signal {
