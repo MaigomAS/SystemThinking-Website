@@ -14,6 +14,9 @@ import sectionOrder from './data/sections.json';
 import { getOrganizations } from './data/organizations.js';
 import { useLanguage } from './i18n/LanguageContext.jsx';
 import bergenStatementImage from './assets/bergen-hero.png';
+import experienceSaunaImage from './assets/experience-sauna.png';
+import experienceHardangerImage from './assets/experience-hardanger.png';
+import experienceVossImage from './assets/experience-voss.png';
 
 const whatsappPhone = '4741368586';
 const calendlyLink = 'https://calendly.com/annia-info/30min';
@@ -26,7 +29,7 @@ const EXPERIENCES = {
       badge: 'Experiencia social',
       lead: 'Reset físico y mental',
       description: 'Contraste térmico nórdico para claridad, presencia y energía sostenida.',
-      image: null,
+      image: experienceSaunaImage,
     },
     {
       title: 'Almuerzo en huerto (Hardanger)',
@@ -35,7 +38,7 @@ const EXPERIENCES = {
       description: 'Recorrido lento para conversar con perspectiva y pausa consciente.',
       sourceUrl:
         'https://www.getyourguide.es/bergen-l1132/bergen-tour-por-el-fiordo-hardanger-con-almuerzo-y-cascadas-t1126812/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
-      image: null,
+      image: experienceHardangerImage,
     },
     {
       title: 'Voss + cascadas',
@@ -44,7 +47,7 @@ const EXPERIENCES = {
       description: 'Panoramas abiertos para reencuadrar desafíos y prioridades estratégicas.',
       sourceUrl:
         'https://www.getyourguide.es/bergen-l1132/bergen-hardangerfjord-telecabina-de-voss-y-3-grandes-cascadas-t348716/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
-      image: null,
+      image: experienceVossImage,
     },
   ],
   en: [
@@ -53,7 +56,7 @@ const EXPERIENCES = {
       badge: 'Social experience',
       lead: 'Physical and mental reset',
       description: 'Nordic thermal contrast for clarity, presence, and sustained energy.',
-      image: null,
+      image: experienceSaunaImage,
     },
     {
       title: 'Orchard lunch (Hardanger)',
@@ -62,7 +65,7 @@ const EXPERIENCES = {
       description: 'A slower pace that invites perspective, focus, and quiet dialogue.',
       sourceUrl:
         'https://www.getyourguide.es/bergen-l1132/bergen-tour-por-el-fiordo-hardanger-con-almuerzo-y-cascadas-t1126812/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
-      image: null,
+      image: experienceHardangerImage,
     },
     {
       title: 'Voss + waterfalls',
@@ -71,7 +74,7 @@ const EXPERIENCES = {
       description: 'Open panoramas to reframe strategic priorities and decisions.',
       sourceUrl:
         'https://www.getyourguide.es/bergen-l1132/bergen-hardangerfjord-telecabina-de-voss-y-3-grandes-cascadas-t348716/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
-      image: null,
+      image: experienceVossImage,
     },
   ],
 };
