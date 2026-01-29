@@ -1917,8 +1917,11 @@ img {
   background: radial-gradient(circle at 20% 30%, rgba(122, 231, 255, 0.15), transparent 55%),
     radial-gradient(circle at 70% 65%, rgba(245, 139, 255, 0.12), transparent 60%),
     linear-gradient(120deg, rgba(255, 255, 255, 0.04), transparent 60%);
+  background-size: 140% 140%;
+  background-position: 0% 0%;
   opacity: 0.85;
   z-index: 1;
+  animation: loopGlowShift 18s ease-in-out infinite;
 }
 
 .hero-loop::after {
@@ -1993,22 +1996,27 @@ img {
 .hero-loop__spark {
   fill: rgba(186, 210, 255, 0.8);
   filter: drop-shadow(0 0 10px rgba(122, 231, 255, 0.25));
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sparkDrift var(--spark-duration, 18s) ease-in-out infinite, sparkTwinkle 6s ease-in-out infinite;
+  animation-delay: var(--spark-delay, 0s);
 }
 
 .hero-loop__node {
   fill: rgba(122, 231, 255, 0.9);
   opacity: 0.9;
   animation: nodePulse 6s ease-in-out infinite;
+  animation-delay: var(--node-delay, 0s);
 }
 
 .hero-loop__node--human {
   fill: rgba(245, 139, 255, 0.85);
-  animation-delay: 1.2s;
+  animation-delay: calc(var(--node-delay, 0s) + 1.2s);
 }
 
 .hero-loop__node--system {
   fill: rgba(44, 213, 196, 0.8);
-  animation-delay: 0.6s;
+  animation-delay: calc(var(--node-delay, 0s) + 0.6s);
 }
 
 .hero-loop__pulse {
@@ -2061,7 +2069,9 @@ img {
 .hero-loop--reduced .hero-loop__path,
 .hero-loop--reduced .hero-loop__node,
 .hero-loop--reduced .hero-loop__pulse,
-.hero-loop--reduced .hero-loop__signal {
+.hero-loop--reduced .hero-loop__signal,
+.hero-loop--reduced .hero-loop__spark,
+.hero-loop--reduced::before {
   animation: none;
 }
 
@@ -2167,11 +2177,11 @@ img {
 @keyframes nodePulse {
   0%,
   100% {
-    transform: scale(0.9);
+    transform: scale(calc(var(--node-scale, 1) * 0.9));
     opacity: 0.6;
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(calc(var(--node-scale, 1) * 1.2));
     opacity: 0.95;
   }
 }
@@ -2182,6 +2192,46 @@ img {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes loopGlowShift {
+  0%,
+  100% {
+    background-position: 0% 20%;
+  }
+  50% {
+    background-position: 100% 80%;
+  }
+}
+
+@keyframes sparkDrift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(var(--spark-drift-x, 0px), var(--spark-drift-y, 0px)) scale(1.15);
+  }
+}
+
+@keyframes sparkTwinkle {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.85;
+  }
+}
+
+@keyframes signalFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
   }
 }
 

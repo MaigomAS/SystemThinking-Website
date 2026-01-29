@@ -123,7 +123,21 @@ function HeroLoop({ signals, reducedMotion }) {
         const y = (ySeed - Math.floor(ySeed)) * 0.74 + 0.13;
         const radius = clamp(minDim * (0.004 + (index % 5) * 0.0012), 2.2, 5.5);
         const opacity = 0.25 + (index % 4) * 0.12;
-        return { x, y, radius, opacity };
+        const driftSeed = Math.sin((index + 1) * 1.7) * 10000;
+        const driftX = ((driftSeed - Math.floor(driftSeed)) * 2 - 1) * minDim * 0.04;
+        const driftY = Math.cos((index + 2) * 1.3) * minDim * 0.05;
+        const driftDelay = (index % 8) * 0.6;
+        const driftDuration = 16 + (index % 6) * 2;
+        return {
+          x,
+          y,
+          radius,
+          opacity,
+          driftX,
+          driftY,
+          driftDelay,
+          driftDuration,
+        };
       }),
     [sparkCount, minDim],
   );
@@ -170,7 +184,13 @@ function HeroLoop({ signals, reducedMotion }) {
             cx={width * spark.x}
             cy={height * spark.y}
             r={spark.radius}
-            style={{ opacity: spark.opacity }}
+            style={{
+              opacity: spark.opacity,
+              '--spark-drift-x': `${spark.driftX}px`,
+              '--spark-drift-y': `${spark.driftY}px`,
+              '--spark-delay': `${spark.driftDelay}s`,
+              '--spark-duration': `${spark.driftDuration}s`,
+            }}
           />
         ))}
         {nodes.map((node, index) => {
@@ -182,6 +202,10 @@ function HeroLoop({ signals, reducedMotion }) {
               cx={width * node.x}
               cy={height * node.y}
               r={radius}
+              style={{
+                '--node-delay': `${index * 0.35}s`,
+                '--node-scale': node.scale,
+              }}
             />
           );
         })}
