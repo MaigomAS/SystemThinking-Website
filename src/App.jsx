@@ -939,16 +939,18 @@ function App() {
       onClick={handleCloseInvestmentForm}
     >
       <div className="investment-modal__panel" onClick={(event) => event.stopPropagation()}>
-        <button
-          type="button"
-          className="investment-modal__close"
-          aria-label="Cerrar"
-          onClick={handleCloseInvestmentForm}
-        >
-          ×
-        </button>
         <div className="investment-modal__intro">
-          <span className="investment-modal__eyebrow">{t.investment.eyebrow}</span>
+          <div className="investment-modal__header">
+            <span className="investment-modal__eyebrow">{t.investment.eyebrow}</span>
+            <button
+              type="button"
+              className="investment-modal__close"
+              aria-label="Cerrar"
+              onClick={handleCloseInvestmentForm}
+            >
+              ×
+            </button>
+          </div>
           <h3 id="investment-modal-title" tabIndex="-1" ref={investmentModalTitleRef}>
             {t.contact.form.title}
           </h3>
