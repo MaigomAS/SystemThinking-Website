@@ -181,6 +181,8 @@ function DesignPlayground() {
 
   const heroContent = t.playground.hero.variants;
   const heroBadges = t.heroRotator.badges;
+  const recommendationHero = t.heroRotator.variants.editorial;
+  const recommendationRibbon = t.outcomes.items;
 
   return (
     <div className="playground">
@@ -194,6 +196,23 @@ function DesignPlayground() {
           </p>
         </header>
       </Container>
+
+      <Section
+        tone="dark"
+        title={t.playground.recommendation.title}
+        description={t.playground.recommendation.description}
+        className="playground-recommendation"
+      >
+        <HeroPreview variant="editorial" content={recommendationHero} badges={heroBadges} />
+        <div className="recommendation-ribbon" role="list">
+          {recommendationRibbon.map((item) => (
+            <div key={item.tag} className="recommendation-ribbon__item" role="listitem">
+              <span className="recommendation-ribbon__tag">{item.tag}</span>
+              <span className="recommendation-ribbon__title">{item.title}</span>
+            </div>
+          ))}
+        </div>
+      </Section>
 
       <Section tone="dark" title={t.playground.hero.title}>
         <div className="hero-variant-selector" role="tablist" aria-label={t.playground.hero.aria}>

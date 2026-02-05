@@ -626,6 +626,10 @@
       "title": "Playground · Tokens and Components",
       "description": "A quick view to validate palette, typography, and base components. Edit tokens in src/styles/tokens.css."
     },
+    "recommendation": {
+      "title": "Recommended first scroll · Model A",
+      "description": "Single editorial hero for the Bergen executive program, followed by an outcomes ribbon drawn from the main page."
+    },
     "hero": {
       "title": "Hero · Creative variants",
       "aria": "Hero variant selector",
