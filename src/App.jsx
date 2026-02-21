@@ -478,10 +478,10 @@ function App() {
               <span className="method-map__intersection method-map__intersection--organization">
                 {t.interactive.intersections.organization}
               </span>
-              <div className="method-map__center" aria-hidden="true">
-                <span>✦</span>
-                <small>{t.interactive.centerLabel}</small>
-              </div>
+            </div>
+            <div className="method-map__legend" aria-hidden="true">
+              <span>✦</span>
+              <small>{t.interactive.centerLabel}</small>
             </div>
           </div>
         </div>
