@@ -55,7 +55,6 @@
   },
   "ecall": {
     "eyebrow": "E-Call",
-
     "title": "Sesiones estratégicas en una ventana propia",
     "description": "Un espacio diseñado para workshops, storming de ideas y decisiones críticas en tiempo real, con una capa visual 100% ANNiA.",
     "note": "Creamos tensión creativa y foco: la conversación al centro, el resto en silencio.",
@@ -64,7 +63,6 @@
       "back": "Volver a ANNiA",
       "join": "Unirme ahora",
       "fullscreen": "Ampliar"
-
     },
     "aria": {
       "nav": "Navegación E-Call",
@@ -74,22 +72,17 @@
     },
     "card": {
       "title": "Sala de trabajo ANNiA",
-
       "description": "Una ventana limpia para workshops de alto impacto, con guía, agenda y próximos pasos claros.",
-
       "badges": [
         "Privado y seguro",
         "Agenda compartida",
         "Moderación ANNiA"
       ],
-
       "subtle": "Diseñado para sesiones intensivas y decisiones compartidas."
-
     },
     "room": {
       "eyebrow": "Ventana en vivo",
       "title": "E-Call, sin distracciones",
-
       "subtitle": "Experiencia integrada con identidad ANNiA y enfoque total en el equipo.",
       "cardTitle": "Ventana de sesión",
       "cardCopy": "Audio, video y chat dentro de una capa visual propia para workshops y storming de ideas.",
@@ -100,7 +93,6 @@
       "readyCopy": "Cuando se te solicite, permite cámara y micrófono para una sesión fluida.",
       "brandNote": "La conversación sucede aquí. El resto queda en segundo plano.",
       "subtle": "Modo sesión ampliada disponible."
-
     },
     "prep": {
       "title": "Antes de entrar",
@@ -118,7 +110,6 @@
     "steps": {
       "eyebrow": "Experiencia ANNiA",
       "title": "Cómo se vive la e-call",
-
       "subtitle": "Diseñamos la sesión para elevar la tensión creativa y sostener la claridad.",
       "items": [
         {
@@ -132,7 +123,6 @@
         {
           "title": "Cierre accionable",
           "copy": "Terminamos con acuerdos claros, responsables y un resumen que alimenta el trabajo posterior."
-
         }
       ]
     },
@@ -208,59 +198,114 @@
     "description": "Una forma clara y aplicada de entender sistémicamente y actuar estratégicamente"
   },
   "interactive": {
-    "eyebrow": "Síntomas vs Sistema",
-    "title": "Dónde intervenir",
-    "ariaTabs": "Selector de enfoque: síntomas o sistema",
+    "eyebrow": "Invertir mejor, no hacer más",
+    "title": "Liderar en incertidumbre",
+    "ariaTabs": "Selector de capacidades del método",
+    "hint": "Haz clic en cada círculo para explorar implicancias ejecutivas.",
+    "diagramAria": "Mapa de intersecciones entre pensamiento sistémico, estrategia sistémica y gobernanza",
+    "intersections": {
+      "map": "Buen mapa",
+      "intentions": "Buenas intenciones",
+      "organization": "Buena organización"
+    },
+    "centerLabel": "Transformación",
     "tabs": {
-      "sintomas": {
-        "label": "Síntomas",
-        "title": "Cuando solo tratamos síntomas, el sistema se defiende",
-        "description": "Las soluciones parciales pueden aliviar hoy... y agravar mañana: costos ocultos, efectos colaterales, fatiga organizacional.",
+      "entender": {
+        "label": "Entendiendo sistémicamente",
+        "title": "Entender la estructura antes de acelerar la respuesta",
+        "description": "Los líderes de este programa aprenden a leer patrones, causalidades e interdependencias para intervenir con precisión en contextos ambiguos.",
         "bullets": [
-          "Parchea sin cambiar la estructura",
-          "Produce efectos no deseados",
-          "Refuerza el problema a mediano plazo"
+          "Entender nuestras estructuras a profundidad",
+          "Develar los sitios de transformación",
+          "Anticipar efectos de segundo orden"
         ],
-        "note": "El reto no es “hacer más”, es decidir mejor dónde intervenir."
+        "note": "El reto no es “hacer más”, es decidir mejor dónde invertir para activar potencial."
       },
-      "sistema": {
-        "label": "Sistema",
-        "title": "Trabajar en el sistema: de respuestas a palancas",
-        "description": "El potencial aparece cuando diseñamos colaboración: reglas, incentivos, información y relaciones capaces de transformar cómo decidimos y coordinamos.",
+      "decidir": {
+        "label": "Decidiendo estratégicamente",
+        "title": "Decidir dónde intervenir con claridad estratégica",
+        "description": "La metodología conecta evidencia, propósito y gobernanza para elegir rutas de inversión que muevan el sistema completo.",
         "bullets": [
-          "Leer patrones y causalidad",
-          "Identificar palancas reales",
-          "Diseñar gobernanza colaborativa"
+          "Ver con claridad rutas estratégicas",
+          "Priorizar palancas con mayor impacto sistémico",
+          "Alinear decisiones con riesgos y capacidades reales"
         ],
-        "note": "Ciencia + consciencia: rigor, ética y ejecución adaptativa."
+        "note": "Una mejor decisión hoy evita múltiples correcciones costosas mañana."
+      },
+      "evolucionar": {
+        "label": "Evolucionando capacidades",
+        "title": "Evolucionar organización y liderazgo en conjunto",
+        "description": "No se trata solo de diseñar estrategia, sino de transitarla con otros y convertirla en capacidades sostenibles.",
+        "bullets": [
+          "Transitar estratégicamente con otros",
+          "Evolucionar nuestras organizaciones y capacidades",
+          "Consolidar una ejecución colaborativa y adaptativa"
+        ],
+        "note": "La transformación ocurre cuando intención, mapa y organización convergen en acción."
       }
     },
     "systemBlocks": [
       {
-        "title": "Incentivos",
-        "copy": "Lo que el sistema premia (y castiga) manda."
+        "title": "Pensamiento sistémico",
+        "copy": "Lectura profunda de dinámicas, causas y consecuencias."
       },
       {
-        "title": "Información",
-        "copy": "Lo que se sabe, cuándo se sabe y quién lo sabe."
+        "title": "Estrategia sistémica",
+        "copy": "Rutas de inversión para mover el todo, no solo una parte."
       },
       {
-        "title": "Relaciones",
-        "copy": "La coordinación es infraestructura, no “buena voluntad”."
-      },
-      {
-        "title": "Reglas",
-        "copy": "Normas formales e informales: el verdadero “código” del sistema."
+        "title": "Gobernanza",
+        "copy": "Acuerdos, roles y ritmos para ejecutar con consistencia."
       }
     ],
-    "zoomBlock": {
-      "title": "Zoom: Incentivos",
-      "bullets": [
-        "Qué métricas gobiernan decisiones",
-        "Qué trade-offs se esconden",
-        "Qué comportamientos estamos reforzando"
-      ],
-      "note": "Ejemplo: cuando solo se mide velocidad, se sacrifica calidad y confianza."
+    "levers": [
+      {
+        "key": "pensamiento",
+        "title": "Pensamiento sistémico",
+        "lead": "Permite distinguir causas estructurales de síntomas visibles.",
+        "whyTitle": "Por qué aplica",
+        "why": [
+          "Ordena complejidad en mapas accionables",
+          "Hace explícitas interdependencias críticas",
+          "Reduce decisiones reactivas de corto plazo"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impact": "Dirección estratégica con mayor claridad y menos fricción política.",
+        "image": null
+      },
+      {
+        "key": "estrategia",
+        "title": "Estrategia sistémica",
+        "lead": "Convierte análisis en decisiones de inversión con foco y secuencia.",
+        "whyTitle": "Por qué aplica",
+        "why": [
+          "Prioriza palancas con retorno sistémico",
+          "Conecta propósito con ejecución gradual",
+          "Protege recursos evitando dispersión"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impact": "Mejores decisiones de portafolio y avances visibles en menos ciclos.",
+        "image": null
+      },
+      {
+        "key": "gobernanza",
+        "title": "Gobernanza",
+        "lead": "Alinea actores, decisiones y accountability para sostener el cambio.",
+        "whyTitle": "Por qué aplica",
+        "why": [
+          "Define reglas y roles para coordinar en incertidumbre",
+          "Fortalece confianza entre niveles de decisión",
+          "Sostiene adaptabilidad sin perder rumbo"
+        ],
+        "impactTitle": "Impacto ejecutivo",
+        "impact": "Transformación institucional consistente, medible y escalable.",
+        "image": null
+      }
+    ],
+    "intersectionInsights": {
+      "map": "Una lectura compartida del sistema para decidir con foco y coherencia.",
+      "intentions": "Propósito claro convertido en colaboración y confianza entre actores.",
+      "organization": "Estructuras de coordinación que sostienen estrategia en ejecución."
     }
   },
   "program": {
@@ -653,10 +698,10 @@
           "title": "Estrategia, gobernanza y ejecución en un mismo espacio.",
           "description": "Un formato híbrido entre think tank y taller intensivo, con casos reales, trabajo aplicado y una red global de líderes sistémicos.",
           "meta": "3 semanas intensivas · Nov 2026 · Cupos limitados",
-        "actions": {
-          "primary": "Solicitar información →",
-          "secondary": "Solicita el programa completo"
-        },
+          "actions": {
+            "primary": "Solicitar información →",
+            "secondary": "Solicita el programa completo"
+          },
           "signals": {
             "primary": "Simulación",
             "secondary": "Panel estratégico"
@@ -666,10 +711,10 @@
           "badge": "Encuentro ejecutivo · 2026",
           "title": "Systemic Strategy & Leadership for Complex Issues.",
           "lead": "Un programa editorialmente curado para líderes que quieren intervenir en sistemas complejos con precisión, profundidad y sensibilidad humana.",
-        "actions": {
-          "primary": "Aplicar al programa →",
-          "secondary": "Solicita el programa completo"
-        },
+          "actions": {
+            "primary": "Aplicar al programa →",
+            "secondary": "Solicita el programa completo"
+          },
           "meta": "Bergen, Noruega · Noviembre 2026 · Presencial"
         }
       }
