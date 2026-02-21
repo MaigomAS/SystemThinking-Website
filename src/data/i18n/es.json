@@ -55,7 +55,6 @@
   },
   "ecall": {
     "eyebrow": "E-Call",
-
     "title": "Sesiones estratégicas en una ventana propia",
     "description": "Un espacio diseñado para workshops, storming de ideas y decisiones críticas en tiempo real, con una capa visual 100% ANNiA.",
     "note": "Creamos tensión creativa y foco: la conversación al centro, el resto en silencio.",
@@ -64,7 +63,6 @@
       "back": "Volver a ANNiA",
       "join": "Unirme ahora",
       "fullscreen": "Ampliar"
-
     },
     "aria": {
       "nav": "Navegación E-Call",
@@ -74,22 +72,17 @@
     },
     "card": {
       "title": "Sala de trabajo ANNiA",
-
       "description": "Una ventana limpia para workshops de alto impacto, con guía, agenda y próximos pasos claros.",
-
       "badges": [
         "Privado y seguro",
         "Agenda compartida",
         "Moderación ANNiA"
       ],
-
       "subtle": "Diseñado para sesiones intensivas y decisiones compartidas."
-
     },
     "room": {
       "eyebrow": "Ventana en vivo",
       "title": "E-Call, sin distracciones",
-
       "subtitle": "Experiencia integrada con identidad ANNiA y enfoque total en el equipo.",
       "cardTitle": "Ventana de sesión",
       "cardCopy": "Audio, video y chat dentro de una capa visual propia para workshops y storming de ideas.",
@@ -100,7 +93,6 @@
       "readyCopy": "Cuando se te solicite, permite cámara y micrófono para una sesión fluida.",
       "brandNote": "La conversación sucede aquí. El resto queda en segundo plano.",
       "subtle": "Modo sesión ampliada disponible."
-
     },
     "prep": {
       "title": "Antes de entrar",
@@ -118,7 +110,6 @@
     "steps": {
       "eyebrow": "Experiencia ANNiA",
       "title": "Cómo se vive la e-call",
-
       "subtitle": "Diseñamos la sesión para elevar la tensión creativa y sostener la claridad.",
       "items": [
         {
@@ -132,7 +123,6 @@
         {
           "title": "Cierre accionable",
           "copy": "Terminamos con acuerdos claros, responsables y un resumen que alimenta el trabajo posterior."
-
         }
       ]
     },
@@ -311,7 +301,12 @@
         "impact": "Transformación institucional consistente, medible y escalable.",
         "image": null
       }
-    ]
+    ],
+    "intersectionInsights": {
+      "map": "Una lectura compartida del sistema para decidir con foco y coherencia.",
+      "intentions": "Propósito claro convertido en colaboración y confianza entre actores.",
+      "organization": "Estructuras de coordinación que sostienen estrategia en ejecución."
+    }
   },
   "program": {
     "title": "Qué ocurre en este encuentro",
@@ -703,10 +698,10 @@
           "title": "Estrategia, gobernanza y ejecución en un mismo espacio.",
           "description": "Un formato híbrido entre think tank y taller intensivo, con casos reales, trabajo aplicado y una red global de líderes sistémicos.",
           "meta": "3 semanas intensivas · Nov 2026 · Cupos limitados",
-        "actions": {
-          "primary": "Solicitar información →",
-          "secondary": "Solicita el programa completo"
-        },
+          "actions": {
+            "primary": "Solicitar información →",
+            "secondary": "Solicita el programa completo"
+          },
           "signals": {
             "primary": "Simulación",
             "secondary": "Panel estratégico"
@@ -716,10 +711,10 @@
           "badge": "Encuentro ejecutivo · 2026",
           "title": "Systemic Strategy & Leadership for Complex Issues.",
           "lead": "Un programa editorialmente curado para líderes que quieren intervenir en sistemas complejos con precisión, profundidad y sensibilidad humana.",
-        "actions": {
-          "primary": "Aplicar al programa →",
-          "secondary": "Solicita el programa completo"
-        },
+          "actions": {
+            "primary": "Aplicar al programa →",
+            "secondary": "Solicita el programa completo"
+          },
           "meta": "Bergen, Noruega · Noviembre 2026 · Presencial"
         }
       }

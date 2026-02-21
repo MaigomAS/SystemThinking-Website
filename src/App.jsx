@@ -89,6 +89,7 @@ function App() {
   const interactiveTabs = t.interactive.tabs;
   const systemBlocks = t.interactive.systemBlocks;
   const leverItems = t.interactive.levers;
+  const intersectionInsights = t.interactive.intersectionInsights;
   const organizations = useMemo(() => getOrganizations(t.organizations), [t]);
   const leadershipOrganizations = useMemo(
     () => organizations.filter((org) => org.id !== 'direccion'),
@@ -98,10 +99,12 @@ function App() {
   const [activeTab, setActiveTab] = useState('entender');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
   const [activeLeverIndex, setActiveLeverIndex] = useState(null);
+  const [activeIntersection, setActiveIntersection] = useState('map');
   const [isBergenVideoOpen, setIsBergenVideoOpen] = useState(false);
   const [isInvestmentFormOpen, setIsInvestmentFormOpen] = useState(false);
   const isLeverOpen = activeLeverIndex !== null;
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), [interactiveTabs]);
+  const intersectionKeys = useMemo(() => Object.keys(intersectionInsights ?? {}), [intersectionInsights]);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
   const isECall = typeof window !== 'undefined' && window.location.pathname === '/e-call';
   const returnFocusRef = useRef(null);
@@ -154,6 +157,12 @@ function App() {
       setActiveTab(Object.keys(interactiveTabs)[0]);
     }
   }, [activeTab, interactiveTabs]);
+
+  useEffect(() => {
+    if (!intersectionInsights?.[activeIntersection]) {
+      setActiveIntersection(intersectionKeys[0] ?? 'map');
+    }
+  }, [activeIntersection, intersectionInsights, intersectionKeys]);
 
   const scrollOutcomes = (direction) => {
     const container = outcomesFlowRef.current;
@@ -459,7 +468,7 @@ function App() {
 
           <div className="method-map">
             <p className="interactive__hint">{t.interactive.hint}</p>
-            <div className="method-map__canvas" role="img" aria-label={t.interactive.diagramAria}>
+            <div className="method-map__canvas" aria-label={t.interactive.diagramAria}>
               {systemBlocks.map((block, index) => (
                 <button
                   key={block.title}
@@ -471,14 +480,38 @@ function App() {
                   <p>{block.copy}</p>
                 </button>
               ))}
-              <span className="method-map__intersection method-map__intersection--map">{t.interactive.intersections.map}</span>
-              <span className="method-map__intersection method-map__intersection--intentions">
+              <button
+                type="button"
+                className={`method-map__intersection method-map__intersection--map ${
+                  activeIntersection === 'map' ? 'is-active' : ''
+                }`}
+                onClick={() => setActiveIntersection('map')}
+              >
+                {t.interactive.intersections.map}
+              </button>
+              <button
+                type="button"
+                className={`method-map__intersection method-map__intersection--intentions ${
+                  activeIntersection === 'intentions' ? 'is-active' : ''
+                }`}
+                onClick={() => setActiveIntersection('intentions')}
+              >
                 {t.interactive.intersections.intentions}
-              </span>
-              <span className="method-map__intersection method-map__intersection--organization">
+              </button>
+              <button
+                type="button"
+                className={`method-map__intersection method-map__intersection--organization ${
+                  activeIntersection === 'organization' ? 'is-active' : ''
+                }`}
+                onClick={() => setActiveIntersection('organization')}
+              >
                 {t.interactive.intersections.organization}
+              </button>
+              <span className="method-map__core" aria-hidden="true">
+                ✦
               </span>
             </div>
+            <p className="method-map__callout">{intersectionInsights?.[activeIntersection]}</p>
             <div className="method-map__legend" aria-hidden="true">
               <span>✦</span>
               <small>{t.interactive.centerLabel}</small>
