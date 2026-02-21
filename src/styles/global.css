@@ -774,6 +774,133 @@ img {
   border-color: #e1e6f5;
 }
 
+
+.method-map {
+  display: grid;
+  gap: 16px;
+}
+
+.method-map__canvas {
+  position: relative;
+  min-height: 420px;
+  border-radius: var(--radius-xl);
+  padding: 20px;
+  border: 1px solid rgba(124, 106, 255, 0.2);
+  background: radial-gradient(circle at 24% 25%, rgba(204, 88, 255, 0.42), transparent 45%),
+    radial-gradient(circle at 73% 25%, rgba(255, 216, 70, 0.4), transparent 46%),
+    radial-gradient(circle at 50% 70%, rgba(84, 222, 214, 0.42), transparent 48%),
+    linear-gradient(145deg, #1a2446, #22315d);
+  overflow: hidden;
+}
+
+.method-circle {
+  position: absolute;
+  width: min(240px, 42vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px dotted rgba(255, 255, 255, 0.7);
+  background: transparent;
+  color: var(--color-white);
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 6px;
+  text-align: center;
+  padding: 24px;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.method-circle h4 {
+  margin: 0;
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.method-circle p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.method-circle:hover,
+.method-circle:focus-visible {
+  transform: scale(1.03);
+  box-shadow: 0 0 0 4px rgba(122, 231, 255, 0.25);
+  outline: none;
+}
+
+.method-circle--1 {
+  top: 14px;
+  left: 8px;
+}
+
+.method-circle--2 {
+  top: 14px;
+  right: 8px;
+}
+
+.method-circle--3 {
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.method-circle--3:hover,
+.method-circle--3:focus-visible {
+  transform: translateX(-50%) scale(1.03);
+}
+
+.method-map__intersection {
+  position: absolute;
+  color: rgba(240, 248, 255, 0.95);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.method-map__intersection--map {
+  top: 126px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.method-map__intersection--intentions {
+  left: 168px;
+  bottom: 148px;
+}
+
+.method-map__intersection--organization {
+  right: 146px;
+  bottom: 148px;
+}
+
+.method-map__center {
+  position: absolute;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(226, 240, 255, 0.65));
+  color: #3f2f8f;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  box-shadow: 0 12px 28px rgba(13, 18, 33, 0.42);
+}
+
+.method-map__center span {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.method-map__center small {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
 .lever-card {
   text-align: left;
   display: flex;
@@ -3785,5 +3912,79 @@ img {
   .bergen-experiences__track {
     scroll-behavior: auto;
     transition: none;
+  }
+}
+
+
+@media (max-width: 960px) {
+  .method-map__canvas {
+    min-height: 380px;
+  }
+
+  .method-circle {
+    width: min(210px, 48vw);
+  }
+
+  .method-map__intersection--intentions {
+    left: 112px;
+    bottom: 130px;
+  }
+
+  .method-map__intersection--organization {
+    right: 104px;
+    bottom: 130px;
+  }
+}
+
+@media (max-width: 680px) {
+  .method-map__canvas {
+    min-height: 460px;
+    padding: 18px 10px;
+  }
+
+  .method-circle {
+    width: 200px;
+    padding: 18px;
+  }
+
+  .method-circle--1 {
+    top: 22px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .method-circle--2 {
+    top: 146px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .method-circle--3 {
+    bottom: 18px;
+  }
+
+  .method-circle--1:hover,
+  .method-circle--1:focus-visible,
+  .method-circle--2:hover,
+  .method-circle--2:focus-visible {
+    transform: translateX(-50%) scale(1.02);
+  }
+
+  .method-map__intersection--map {
+    top: 126px;
+  }
+
+  .method-map__intersection--intentions {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 166px;
+  }
+
+  .method-map__intersection--organization {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    bottom: 92px;
   }
 }

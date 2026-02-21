@@ -79,65 +79,6 @@ const EXPERIENCES = {
   ],
 };
 
-const LEVER_ITEMS = [
-  {
-    key: 'incentivos',
-    title: 'Incentivos',
-    lead: 'Lo que el sistema premia (y castiga) manda.',
-    whyTitle: 'Por qué aplica',
-    why: [
-      'Alinea comportamiento con prioridades reales (no declaradas)',
-      'Hace visibles trade-offs entre velocidad, calidad y riesgo',
-      'Evita optimización local que daña el todo',
-    ],
-    impactTitle: 'Impacto ejecutivo',
-    impact: 'Decisiones coherentes con estrategia, sin desgaste organizacional.',
-    image: null,
-  },
-  {
-    key: 'informacion',
-    title: 'Información',
-    lead: 'Decidir con timing, contexto y ownership claros.',
-    whyTitle: 'Por qué aplica',
-    why: [
-      'Reduce asimetrías que frenan coordinación',
-      'Acelera decisiones sin perder calidad',
-      'Define quién debe saber qué, y cuándo',
-    ],
-    impactTitle: 'Impacto ejecutivo',
-    impact: 'Gobernanza basada en evidencia y alineada al ritmo del negocio.',
-    image: null,
-  },
-  {
-    key: 'relaciones',
-    title: 'Relaciones',
-    lead: 'Diseña colaboración como infraestructura.',
-    whyTitle: 'Por qué aplica',
-    why: [
-      'Clarifica interdependencias críticas entre áreas',
-      'Reduce fricción en proyectos complejos',
-      'Activa redes de confianza para ejecutar en conjunto',
-    ],
-    impactTitle: 'Impacto ejecutivo',
-    impact: 'Ejecución integrada con accountability compartida.',
-    image: null,
-  },
-  {
-    key: 'reglas',
-    title: 'Reglas',
-    lead: 'Convierte cultura en gobernanza operable.',
-    whyTitle: 'Por qué aplica',
-    why: [
-      'Establece estándares no negociables',
-      'Reduce ambigüedad en decisiones críticas',
-      'Protege ética, reputación y cumplimiento',
-    ],
-    impactTitle: 'Impacto ejecutivo',
-    impact: 'Consistencia operativa en entornos complejos y de alta presión.',
-    image: null,
-  },
-];
-
 function App() {
   const { t, language, setLanguage } = useLanguage();
   const navLinks = t.nav.links;
@@ -147,13 +88,14 @@ function App() {
   const faqs = t.faq.items;
   const interactiveTabs = t.interactive.tabs;
   const systemBlocks = t.interactive.systemBlocks;
+  const leverItems = t.interactive.levers;
   const organizations = useMemo(() => getOrganizations(t.organizations), [t]);
   const leadershipOrganizations = useMemo(
     () => organizations.filter((org) => org.id !== 'direccion'),
     [organizations],
   );
 
-  const [activeTab, setActiveTab] = useState('sintomas');
+  const [activeTab, setActiveTab] = useState('entender');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
   const [activeLeverIndex, setActiveLeverIndex] = useState(null);
   const [isBergenVideoOpen, setIsBergenVideoOpen] = useState(false);
@@ -194,17 +136,24 @@ function App() {
 
   const handleNextLever = () => {
     setActiveLeverIndex((prev) => {
-      if (prev === null) return prev;
-      return (prev + 1) % LEVER_ITEMS.length;
+      if (prev === null || !leverItems.length) return prev;
+      return (prev + 1) % leverItems.length;
     });
   };
 
   const handlePreviousLever = () => {
     setActiveLeverIndex((prev) => {
-      if (prev === null) return prev;
-      return (prev - 1 + LEVER_ITEMS.length) % LEVER_ITEMS.length;
+      if (prev === null || !leverItems.length) return prev;
+      return (prev - 1 + leverItems.length) % leverItems.length;
     });
   };
+
+
+  useEffect(() => {
+    if (!interactiveTabs[activeTab]) {
+      setActiveTab(Object.keys(interactiveTabs)[0]);
+    }
+  }, [activeTab, interactiveTabs]);
 
   const scrollOutcomes = (direction) => {
     const container = outcomesFlowRef.current;
@@ -508,23 +457,32 @@ function App() {
             <p className="interactive__note">{interactiveTabs[activeTab].note}</p>
           </Card>
 
-          <div className="card-grid">
-            <p className="interactive__hint">Da click en cada bloque para explorar más.</p>
-            {systemBlocks.map((block, index) => (
-              <Card
-                key={block.title}
-                variant="elevated"
-                as="button"
-                type="button"
-                className="lever-card interactive-lever"
-                onClick={(event) => handleOpenLever(index, event)}
-              >
-                <div className="lever-card__body">
+          <div className="method-map">
+            <p className="interactive__hint">{t.interactive.hint}</p>
+            <div className="method-map__canvas" role="img" aria-label={t.interactive.diagramAria}>
+              {systemBlocks.map((block, index) => (
+                <button
+                  key={block.title}
+                  type="button"
+                  className={`method-circle method-circle--${index + 1}`}
+                  onClick={(event) => handleOpenLever(index, event)}
+                >
                   <h4>{block.title}</h4>
                   <p>{block.copy}</p>
-                </div>
-              </Card>
-            ))}
+                </button>
+              ))}
+              <span className="method-map__intersection method-map__intersection--map">{t.interactive.intersections.map}</span>
+              <span className="method-map__intersection method-map__intersection--intentions">
+                {t.interactive.intersections.intentions}
+              </span>
+              <span className="method-map__intersection method-map__intersection--organization">
+                {t.interactive.intersections.organization}
+              </span>
+              <div className="method-map__center" aria-hidden="true">
+                <span>✦</span>
+                <small>{t.interactive.centerLabel}</small>
+              </div>
+            </div>
           </div>
         </div>
       </Section>
@@ -896,32 +854,32 @@ function App() {
           </button>
         </header>
         <div className="lever-overlay__media">
-          {LEVER_ITEMS[activeLeverIndex].image ? (
-            <img src={LEVER_ITEMS[activeLeverIndex].image} alt="" className="lever-overlay__image" />
+          {leverItems[activeLeverIndex].image ? (
+            <img src={leverItems[activeLeverIndex].image} alt="" className="lever-overlay__image" />
           ) : (
             <div className="lever-overlay__placeholder" aria-hidden="true" />
           )}
-          <div className="lever-overlay__caption">Palanca: {LEVER_ITEMS[activeLeverIndex].title}</div>
+          <div className="lever-overlay__caption">Palanca: {leverItems[activeLeverIndex].title}</div>
         </div>
         <div className="lever-overlay__body">
-          <p className="lever-overlay__lead">{LEVER_ITEMS[activeLeverIndex].lead}</p>
+          <p className="lever-overlay__lead">{leverItems[activeLeverIndex].lead}</p>
           <h3 id="lever-overlay-title" tabIndex="-1" ref={leverTitleRef}>
-            {LEVER_ITEMS[activeLeverIndex].title}
+            {leverItems[activeLeverIndex].title}
           </h3>
           <div className="lever-overlay__section">
-            <h4>{LEVER_ITEMS[activeLeverIndex].whyTitle}</h4>
+            <h4>{leverItems[activeLeverIndex].whyTitle}</h4>
             <ul>
-              {LEVER_ITEMS[activeLeverIndex].why.map((item) => (
+              {leverItems[activeLeverIndex].why.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
           <div className="lever-overlay__section">
-            <h4>{LEVER_ITEMS[activeLeverIndex].impactTitle}</h4>
-            <p>{LEVER_ITEMS[activeLeverIndex].impact}</p>
+            <h4>{leverItems[activeLeverIndex].impactTitle}</h4>
+            <p>{leverItems[activeLeverIndex].impact}</p>
           </div>
           <div className="lever-overlay__chips" aria-label="Palancas">
-            {LEVER_ITEMS.map((item, index) => (
+            {leverItems.map((item, index) => (
               <button
                 key={item.key}
                 type="button"
@@ -932,7 +890,7 @@ function App() {
               </button>
             ))}
             <span className="lever-overlay__count" aria-hidden="true">
-              {`${activeLeverIndex + 1}/${LEVER_ITEMS.length}`}
+              {`${activeLeverIndex + 1}/${leverItems.length}`}
             </span>
           </div>
         </div>
