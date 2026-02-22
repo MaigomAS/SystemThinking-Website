@@ -869,14 +869,14 @@ img {
 }
 
 .method-map__intersection-glow--intentions {
-  left: calc(50% - var(--circle-size) * 0.17);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.88);
+  left: calc(50% - var(--circle-size) * 0.23);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.9);
   transform: translate(-50%, -50%);
 }
 
 .method-map__intersection-glow--organization {
-  left: calc(50% + var(--circle-size) * 0.17);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.88);
+  left: calc(50% + var(--circle-size) * 0.23);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.9);
   transform: translate(-50%, -50%);
 }
 
@@ -889,6 +889,28 @@ img {
   line-height: 1;
   color: #f4f8ff;
   text-shadow: 0 6px 18px rgba(11, 18, 36, 0.45);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.method-map__core.is-active {
+  animation: transformPulse 1s ease-in-out infinite;
+}
+
+@keyframes transformPulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    text-shadow: 0 6px 18px rgba(11, 18, 36, 0.45);
+  }
+  50% {
+    opacity: 0.55;
+    transform: translate(-50%, -50%) scale(1.12);
+    text-shadow: 0 10px 24px rgba(122, 231, 255, 0.55);
+  }
 }
 
 .method-map__controls {
@@ -934,6 +956,13 @@ img {
   margin: 2px auto 0;
   color: #4b4fa7;
   font-weight: 700;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--transition-base), color var(--transition-base);
+}
+
+.method-map__legend.is-active {
+  border-bottom-color: rgba(75, 79, 167, 0.75);
+  color: #343993;
 }
 
 .method-map__legend span {
@@ -4018,5 +4047,13 @@ img {
 
   .method-map__core {
     font-size: 1.2rem;
+  }
+
+  .method-map__intersection-glow--intentions {
+    left: calc(50% - var(--circle-size) * 0.21);
+  }
+
+  .method-map__intersection-glow--organization {
+    left: calc(50% + var(--circle-size) * 0.21);
   }
 }

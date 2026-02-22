@@ -106,6 +106,7 @@ function App() {
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
   const [activeLeverIndex, setActiveLeverIndex] = useState(null);
   const [activeIntersection, setActiveIntersection] = useState('map');
+  const [isTransformationActive, setIsTransformationActive] = useState(false);
   const [isBergenVideoOpen, setIsBergenVideoOpen] = useState(false);
   const [isInvestmentFormOpen, setIsInvestmentFormOpen] = useState(false);
   const isLeverOpen = activeLeverIndex !== null;
@@ -495,9 +496,17 @@ function App() {
                 className={`method-map__intersection-glow method-map__intersection-glow--${activeIntersection}`}
                 aria-hidden="true"
               />
-              <span className="method-map__core" aria-hidden="true">
+              <button
+                type="button"
+                className={`method-map__core ${isTransformationActive ? 'is-active' : ''}`}
+                aria-label={t.interactive.centerLabel}
+                onMouseEnter={() => setIsTransformationActive(true)}
+                onMouseLeave={() => setIsTransformationActive(false)}
+                onFocus={() => setIsTransformationActive(true)}
+                onBlur={() => setIsTransformationActive(false)}
+              >
                 ✦
-              </span>
+              </button>
             </div>
             <div className="method-map__controls" role="group" aria-label={t.interactive.diagramAria}>
               <button
@@ -535,7 +544,7 @@ function App() {
               </button>
             </div>
             <p className="method-map__callout">{intersectionInsights?.[activeIntersection]}</p>
-            <div className="method-map__legend" aria-hidden="true">
+            <div className={`method-map__legend ${isTransformationActive ? 'is-active' : ''}`} aria-hidden="true">
               <span>✦</span>
               <small>{t.interactive.centerLabel}</small>
             </div>
