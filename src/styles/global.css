@@ -853,29 +853,31 @@ img {
 
 .method-map__intersection-glow {
   position: absolute;
-  width: 84px;
-  height: 44px;
-  border-radius: 999px;
-  background: rgba(122, 231, 255, 0.23);
-  border: 1px solid rgba(122, 231, 255, 0.8);
-  box-shadow: 0 8px 20px rgba(2, 14, 42, 0.38);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122, 231, 255, 0.34), rgba(122, 231, 255, 0.14));
+  border: 1px solid rgba(122, 231, 255, 0.82);
+  box-shadow: 0 10px 26px rgba(2, 14, 42, 0.36);
   transition: all var(--transition-base);
 }
 
 .method-map__intersection-glow--map {
   left: 50%;
-  top: calc(var(--top-offset) + var(--circle-size) * 0.47);
-  transform: translateX(-50%);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.5);
+  transform: translate(-50%, -50%);
 }
 
 .method-map__intersection-glow--intentions {
-  left: calc(50% - var(--circle-size) * 0.2);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.82);
+  left: calc(50% - var(--circle-size) * 0.17);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.88);
+  transform: translate(-50%, -50%);
 }
 
 .method-map__intersection-glow--organization {
-  left: calc(50% + var(--circle-size) * 0.09);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.82);
+  left: calc(50% + var(--circle-size) * 0.17);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.88);
+  transform: translate(-50%, -50%);
 }
 
 .method-map__core {
@@ -4007,6 +4009,11 @@ img {
   .method-map__intersection {
     font-size: 0.82rem;
     padding: 9px 10px;
+  }
+
+  .method-map__intersection-glow {
+    width: 48px;
+    height: 48px;
   }
 
   .method-map__core {
