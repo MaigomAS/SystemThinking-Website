@@ -17,6 +17,9 @@ import bergenStatementImage from './assets/bergen-hero.png';
 import experienceSaunaImage from './assets/experience-sauna.png';
 import experienceHardangerImage from './assets/experience-hardanger.png';
 import experienceVossImage from './assets/experience-voss.png';
+import leverPensamientoImage from './assets/levers/pensamiento-sistemico.svg';
+import leverEstrategiaImage from './assets/levers/estrategia-sistemica.svg';
+import leverGobernanzaImage from './assets/levers/gobernanza.svg';
 
 const whatsappPhone = '4741368586';
 const calendlyLink = 'https://calendly.com/annia-info/30min';
@@ -85,6 +88,12 @@ const INTERSECTION_TO_CIRCLES = {
   organization: [2, 3],
 };
 
+const LEVER_IMAGES = {
+  pensamiento: leverPensamientoImage,
+  estrategia: leverEstrategiaImage,
+  gobernanza: leverGobernanzaImage,
+};
+
 function App() {
   const { t, language, setLanguage } = useLanguage();
   const navLinks = t.nav.links;
@@ -94,7 +103,14 @@ function App() {
   const faqs = t.faq.items;
   const interactiveTabs = t.interactive.tabs;
   const systemBlocks = t.interactive.systemBlocks;
-  const leverItems = t.interactive.levers;
+  const leverItems = useMemo(
+    () =>
+      (t.interactive.levers ?? []).map((lever) => ({
+        ...lever,
+        image: LEVER_IMAGES[lever.key] ?? lever.image ?? null,
+      })),
+    [t.interactive.levers],
+  );
   const intersectionInsights = t.interactive.intersectionInsights;
   const organizations = useMemo(() => getOrganizations(t.organizations), [t]);
   const leadershipOrganizations = useMemo(
@@ -893,7 +909,11 @@ function App() {
         </header>
         <div className="lever-overlay__media">
           {leverItems[activeLeverIndex].image ? (
-            <img src={leverItems[activeLeverIndex].image} alt="" className="lever-overlay__image" />
+            <img
+              src={leverItems[activeLeverIndex].image}
+              alt={leverItems[activeLeverIndex].imageAlt ?? ''}
+              className="lever-overlay__image"
+            />
           ) : (
             <div className="lever-overlay__placeholder" aria-hidden="true" />
           )}
