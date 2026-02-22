@@ -2735,22 +2735,36 @@ img {
   gap: 12px;
 }
 
+.convocan-card__brand {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+}
+
+.convocan-card__brand-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6a748b;
+}
+
 .convocan-card__logo-slot {
-  width: 56px;
-  height: 56px;
+  width: 62px;
+  height: 62px;
   border-radius: 14px;
-  border: 1px dashed rgba(90, 120, 200, 0.45);
-  background: rgba(255, 255, 255, 0.78);
+  border: 1px dashed rgba(90, 120, 200, 0.42);
+  background: rgba(255, 255, 255, 0.9);
   display: grid;
   place-items: center;
   overflow: hidden;
   flex-shrink: 0;
+  padding: 8px;
 }
 
 .convocan-card__logo-slot img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .convocan-card__logo-slot span {

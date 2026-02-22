@@ -748,12 +748,15 @@ function App() {
                   >
                     <div className="convocan-card__top">
                       <span className="convocan-card__role">{t.leadership.convocan.roles.host}</span>
-                      <div className="convocan-card__logo-slot" aria-label={`Logo de ${leadHostOrganization.name}`}>
-                        {leadHostOrganization.previewImage ? (
-                          <img src={leadHostOrganization.previewImage} alt="" loading="lazy" />
-                        ) : (
-                          <span>{leadHostOrganization.name.slice(0, 2)}</span>
-                        )}
+                      <div className="convocan-card__brand" aria-hidden="true">
+                        <span className="convocan-card__brand-label">{t.leadership.convocan.brandLabel}</span>
+                        <div className="convocan-card__logo-slot">
+                          {leadHostOrganization.previewImage ? (
+                            <img src={leadHostOrganization.previewImage} alt="" loading="lazy" />
+                          ) : (
+                            <span>{leadHostOrganization.name.slice(0, 3).toUpperCase()}</span>
+                          )}
+                        </div>
                       </div>
                     </div>
                     <div className="convocan-card__header">
@@ -782,8 +785,11 @@ function App() {
                     >
                       <div className="convocan-card__top">
                         <span className="convocan-card__role">{t.leadership.convocan.roles.partner}</span>
-                        <div className="convocan-card__logo-slot" aria-label={`Logo de ${org.name}`}>
-                          {org.previewImage ? <img src={org.previewImage} alt="" loading="lazy" /> : <span>{org.name.slice(0, 2)}</span>}
+                        <div className="convocan-card__brand" aria-hidden="true">
+                          <span className="convocan-card__brand-label">{t.leadership.convocan.brandLabel}</span>
+                          <div className="convocan-card__logo-slot">
+                            {org.previewImage ? <img src={org.previewImage} alt="" loading="lazy" /> : <span>{org.name.slice(0, 3).toUpperCase()}</span>}
+                          </div>
                         </div>
                       </div>
                       <div className="convocan-card__header">

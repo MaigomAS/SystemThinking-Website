@@ -452,7 +452,8 @@
       "roles": {
         "host": "Creator and host",
         "partner": "Convening partner"
-      }
+      },
+      "brandLabel": "Logo area"
     }
   },
   "faq": {

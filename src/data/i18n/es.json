@@ -452,7 +452,8 @@
       "roles": {
         "host": "Creador y host",
         "partner": "Partner convocante"
-      }
+      },
+      "brandLabel": "Espacio logo"
     }
   },
   "faq": {
