@@ -774,6 +774,22 @@ img {
   border-color: #e1e6f5;
 }
 
+.interactive-panel > h3 {
+  margin-top: 18px;
+}
+
+.interactive-panel > p {
+  margin-top: 8px;
+}
+
+.interactive-panel > ul {
+  margin-top: 18px;
+}
+
+.interactive-panel > .interactive__note {
+  margin-top: 18px;
+}
+
 
 .method-map {
   display: grid;
@@ -849,6 +865,8 @@ img {
 .method-circle--3 {
   left: calc(50% - var(--circle-size) * 0.5);
   top: calc(var(--top-offset) + var(--circle-size) * 0.56);
+  align-content: start;
+  padding-top: calc(var(--circle-size) * 0.36);
 }
 
 .method-map__intersection-glow {
@@ -4022,6 +4040,10 @@ img {
 
   .method-circle {
     padding: 18px;
+  }
+
+  .method-circle--3 {
+    padding-top: calc(var(--circle-size) * 0.4);
   }
 
   .method-circle h4 {
