@@ -869,23 +869,23 @@ img {
 }
 
 .method-map__intersection-glow--intentions {
-  left: calc(50% - var(--circle-size) * 0.23);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.9);
+  left: calc(50% - var(--circle-size) * 0.26);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.84);
   transform: translate(-50%, -50%);
 }
 
 .method-map__intersection-glow--organization {
-  left: calc(50% + var(--circle-size) * 0.23);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.9);
+  left: calc(50% + var(--circle-size) * 0.26);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.84);
   transform: translate(-50%, -50%);
 }
 
 .method-map__core {
   position: absolute;
   left: 50%;
-  top: calc(var(--top-offset) + var(--circle-size) * 0.68);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.67);
   transform: translate(-50%, -50%);
-  font-size: clamp(1.3rem, 2vw, 1.7rem);
+  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
   line-height: 1;
   color: #f4f8ff;
   text-shadow: 0 6px 18px rgba(11, 18, 36, 0.45);
@@ -4050,10 +4050,12 @@ img {
   }
 
   .method-map__intersection-glow--intentions {
-    left: calc(50% - var(--circle-size) * 0.21);
+    left: calc(50% - var(--circle-size) * 0.24);
+    top: calc(var(--top-offset) + var(--circle-size) * 0.83);
   }
 
   .method-map__intersection-glow--organization {
-    left: calc(50% + var(--circle-size) * 0.21);
+    left: calc(50% + var(--circle-size) * 0.24);
+    top: calc(var(--top-offset) + var(--circle-size) * 0.83);
   }
 }
