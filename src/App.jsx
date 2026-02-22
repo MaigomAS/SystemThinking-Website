@@ -101,6 +101,14 @@ function App() {
     () => organizations.filter((org) => org.id !== 'direccion'),
     [organizations],
   );
+  const leadHostOrganization = useMemo(
+    () => leadershipOrganizations.find((org) => org.id === 'annia') ?? leadershipOrganizations[0],
+    [leadershipOrganizations],
+  );
+  const partnerOrganizations = useMemo(
+    () => leadershipOrganizations.filter((org) => org.id !== leadHostOrganization?.id),
+    [leadershipOrganizations, leadHostOrganization],
+  );
 
   const [activeTab, setActiveTab] = useState('entender');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
@@ -724,40 +732,67 @@ function App() {
     leadership: (section) => (
       <>
         <Section key={section.id} id={section.id} title={t.leadership.title} tone="light" className="reveal">
-          <div className="split split--reverse split--equipo">
-            <div className="section-grid">
+          <div className="leadership-layout">
+            <div className="section-grid leadership-section leadership-section--convocan">
+              <h3>{t.leadership.convocan.title}</h3>
+              <div className="leadership-role-grid">
+                {leadHostOrganization ? (
+                  <Card
+                    key={leadHostOrganization.id}
+                    variant="elevated"
+                    as="button"
+                    type="button"
+                    className="convocan-card convocan-card--lead"
+                    aria-haspopup="dialog"
+                    onClick={(event) => handleOpenOrg(leadHostOrganization, event.currentTarget)}
+                  >
+                    <span className="convocan-card__role">{t.leadership.convocan.roles.host}</span>
+                    <div className="convocan-card__header">
+                      <h4>{leadHostOrganization.name}</h4>
+                      <span className="convocan-card__tagline">{leadHostOrganization.tagline}</span>
+                    </div>
+                    <p>{leadHostOrganization.description}</p>
+                    <div className="convocan-card__meta">
+                      <span>
+                        {leadHostOrganization.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}
+                      </span>
+                      <span>{t.leadership.convocan.meta.cta}</span>
+                    </div>
+                  </Card>
+                ) : null}
+                <div className="card-grid card-grid--partners">
+                  {partnerOrganizations.map((org) => (
+                    <Card
+                      key={org.id}
+                      variant="elevated"
+                      as="button"
+                      type="button"
+                      className="convocan-card"
+                      aria-haspopup="dialog"
+                      onClick={(event) => handleOpenOrg(org, event.currentTarget)}
+                    >
+                      <span className="convocan-card__role">{t.leadership.convocan.roles.partner}</span>
+                      <div className="convocan-card__header">
+                        <h4>{org.name}</h4>
+                        <span className="convocan-card__tagline">{org.tagline}</span>
+                      </div>
+                      <p>{org.description}</p>
+                      <div className="convocan-card__meta">
+                        <span>{org.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}</span>
+                        <span>{t.leadership.convocan.meta.cta}</span>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="section-grid leadership-section leadership-section--audience">
               <h3>{t.leadership.audience.title}</h3>
               <Card variant="elevated" className="section-grid equipo-card">
                 {t.leadership.audience.paragraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </Card>
-            </div>
-            <div className="section-grid">
-              <h3>{t.leadership.convocan.title}</h3>
-              <div className="card-grid">
-                {leadershipOrganizations.map((org) => (
-                  <Card
-                    key={org.id}
-                    variant="elevated"
-                    as="button"
-                    type="button"
-                    className="convocan-card"
-                    aria-haspopup="dialog"
-                    onClick={(event) => handleOpenOrg(org, event.currentTarget)}
-                  >
-                    <div className="convocan-card__header">
-                      <h4>{org.name}</h4>
-                      <span className="convocan-card__tagline">{org.tagline}</span>
-                    </div>
-                    <p>{org.description}</p>
-                    <div className="convocan-card__meta">
-                      <span>{org.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}</span>
-                      <span>{t.leadership.convocan.meta.cta}</span>
-                    </div>
-                  </Card>
-                ))}
-              </div>
             </div>
           </div>
         </Section>

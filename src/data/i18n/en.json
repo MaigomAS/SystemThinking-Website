@@ -448,6 +448,10 @@
         "site": "Website available",
         "internal": "Internal detail",
         "cta": "View more →"
+      },
+      "roles": {
+        "host": "Creator and host",
+        "partner": "Convening partner"
       }
     }
   },

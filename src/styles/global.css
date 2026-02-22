@@ -1477,6 +1477,30 @@ img {
   margin-top: 4px;
 }
 
+
+.leadership-layout {
+  display: grid;
+  gap: 32px;
+}
+
+.leadership-section {
+  display: grid;
+  gap: 18px;
+}
+
+.leadership-section--audience {
+  max-width: 780px;
+}
+
+.leadership-role-grid {
+  display: grid;
+  gap: 18px;
+}
+
+.card-grid--partners {
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
 .gradient-card {
   height: 230px;
   border-radius: var(--radius-xl);
@@ -1971,6 +1995,14 @@ img {
 }
 
 @media (max-width: 900px) {
+  .leadership-layout {
+    gap: 24px;
+  }
+
+  .leadership-section--audience {
+    max-width: none;
+  }
+
   .faq-shell {
     grid-template-columns: 1fr;
   }
@@ -2674,6 +2706,25 @@ img {
   text-align: left;
   display: grid;
   gap: 12px;
+}
+
+.convocan-card--lead {
+  border: 1px solid rgba(124, 106, 255, 0.28);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(240, 244, 255, 0.92));
+}
+
+.convocan-card__role {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(90, 120, 200, 0.14);
+  color: #3f4d6b;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 700;
 }
 
 .convocan-card__header {

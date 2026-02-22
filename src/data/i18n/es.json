@@ -448,6 +448,10 @@
         "site": "Sitio disponible",
         "internal": "Detalle interno",
         "cta": "Ver más →"
+      },
+      "roles": {
+        "host": "Creador y host",
+        "partner": "Partner convocante"
       }
     }
   },
