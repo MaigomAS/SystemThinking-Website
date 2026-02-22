@@ -122,7 +122,6 @@ function App() {
   const activeFaq = useMemo(() => faqs.find((faq) => faq.id === activeFaqId) ?? faqs[0], [activeFaqId, faqs]);
   const experienceItems = useMemo(() => EXPERIENCES[language] ?? EXPERIENCES.es, [language]);
   const experienceTrackRef = useRef(null);
-  const outcomesFlowRef = useRef(null);
 
   const whatsappLink = useMemo(
     () => `https://wa.me/${whatsappPhone}?text=${encodeURIComponent(t.contact.whatsappMessage)}`,
@@ -170,17 +169,6 @@ function App() {
       setActiveIntersection(intersectionKeys[0] ?? 'map');
     }
   }, [activeIntersection, intersectionInsights, intersectionKeys]);
-
-  const scrollOutcomes = (direction) => {
-    const container = outcomesFlowRef.current;
-    if (!container) return;
-    const card = container.querySelector('.result-step');
-    const styles = window.getComputedStyle(container);
-    const gapValue = parseFloat(styles.columnGap || styles.gap || '0');
-    const cardWidth = card?.getBoundingClientRect().width ?? 0;
-    const scrollAmount = cardWidth + gapValue || container.clientWidth;
-    container.scrollBy({ left: direction * scrollAmount, behavior: getScrollBehavior() });
-  };
 
   const getScrollBehavior = () => {
     if (typeof window === 'undefined') return 'auto';
@@ -571,29 +559,9 @@ function App() {
     ),
     outcomes: (section) => (
       <Section key={section.id} id={section.id} title={t.outcomes.title} tone="light" className="reveal outcomes-section">
-        <div className="result-flow__controls">
-          <button
-            type="button"
-            className="result-flow__button"
-            onClick={() => scrollOutcomes(-1)}
-            aria-label={t.outcomes.controls.previous}
-          >
-            <span aria-hidden="true">←</span>
-            <span className="sr-only">{t.outcomes.controls.previous}</span>
-          </button>
-          <button
-            type="button"
-            className="result-flow__button"
-            onClick={() => scrollOutcomes(1)}
-            aria-label={t.outcomes.controls.next}
-          >
-            <span aria-hidden="true">→</span>
-            <span className="sr-only">{t.outcomes.controls.next}</span>
-          </button>
-        </div>
-        <div className="result-flow" ref={outcomesFlowRef}>
+        <div className="result-flow" role="list">
           {outcomes.map((outcome, index) => (
-            <article key={outcome.title} className="result-step">
+            <article key={outcome.title} className="result-step" role="listitem">
               <div className="result-step__header">
                 <span className="result-step__index">{String(index + 1).padStart(2, '0')}</span>
                 <span className="result-step__tag">{outcome.tag}</span>
