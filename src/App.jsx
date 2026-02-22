@@ -79,6 +79,12 @@ const EXPERIENCES = {
   ],
 };
 
+const INTERSECTION_TO_CIRCLES = {
+  map: [1, 2],
+  intentions: [1, 3],
+  organization: [2, 3],
+};
+
 function App() {
   const { t, language, setLanguage } = useLanguage();
   const navLinks = t.nav.links;
@@ -469,23 +475,39 @@ function App() {
           <div className="method-map">
             <p className="interactive__hint">{t.interactive.hint}</p>
             <div className="method-map__canvas" aria-label={t.interactive.diagramAria}>
-              {systemBlocks.map((block, index) => (
-                <button
-                  key={block.title}
-                  type="button"
-                  className={`method-circle method-circle--${index + 1}`}
-                  onClick={(event) => handleOpenLever(index, event)}
-                >
-                  <h4>{block.title}</h4>
-                  <p>{block.copy}</p>
-                </button>
-              ))}
+              {systemBlocks.map((block, index) => {
+                const circleIndex = index + 1;
+                const isHighlighted = INTERSECTION_TO_CIRCLES[activeIntersection]?.includes(circleIndex);
+
+                return (
+                  <button
+                    key={block.title}
+                    type="button"
+                    className={`method-circle method-circle--${circleIndex} ${isHighlighted ? 'method-circle--highlight' : ''}`}
+                    onClick={(event) => handleOpenLever(index, event)}
+                  >
+                    <h4>{block.title}</h4>
+                    <p>{block.copy}</p>
+                  </button>
+                );
+              })}
+              <span
+                className={`method-map__intersection-glow method-map__intersection-glow--${activeIntersection}`}
+                aria-hidden="true"
+              />
+              <span className="method-map__core" aria-hidden="true">
+                ✦
+              </span>
+            </div>
+            <div className="method-map__controls" role="group" aria-label={t.interactive.diagramAria}>
               <button
                 type="button"
                 className={`method-map__intersection method-map__intersection--map ${
                   activeIntersection === 'map' ? 'is-active' : ''
                 }`}
                 onClick={() => setActiveIntersection('map')}
+                onMouseEnter={() => setActiveIntersection('map')}
+                onFocus={() => setActiveIntersection('map')}
               >
                 {t.interactive.intersections.map}
               </button>
@@ -495,6 +517,8 @@ function App() {
                   activeIntersection === 'intentions' ? 'is-active' : ''
                 }`}
                 onClick={() => setActiveIntersection('intentions')}
+                onMouseEnter={() => setActiveIntersection('intentions')}
+                onFocus={() => setActiveIntersection('intentions')}
               >
                 {t.interactive.intersections.intentions}
               </button>
@@ -504,12 +528,11 @@ function App() {
                   activeIntersection === 'organization' ? 'is-active' : ''
                 }`}
                 onClick={() => setActiveIntersection('organization')}
+                onMouseEnter={() => setActiveIntersection('organization')}
+                onFocus={() => setActiveIntersection('organization')}
               >
                 {t.interactive.intersections.organization}
               </button>
-              <span className="method-map__core" aria-hidden="true">
-                ✦
-              </span>
             </div>
             <p className="method-map__callout">{intersectionInsights?.[activeIntersection]}</p>
             <div className="method-map__legend" aria-hidden="true">

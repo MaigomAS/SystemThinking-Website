@@ -809,7 +809,7 @@ img {
   gap: 8px;
   text-align: center;
   padding: 30px;
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base), background var(--transition-base);
 }
 
 .method-circle h4 {
@@ -827,9 +827,12 @@ img {
 }
 
 .method-circle:hover,
-.method-circle:focus-visible {
+.method-circle:focus-visible,
+.method-circle--highlight {
   transform: scale(1.02);
   box-shadow: 0 0 0 4px rgba(122, 231, 255, 0.25);
+  border-color: rgba(188, 242, 255, 0.95);
+  background: radial-gradient(circle, rgba(130, 214, 255, 0.13), transparent 62%);
   outline: none;
 }
 
@@ -848,52 +851,31 @@ img {
   top: calc(var(--top-offset) + var(--circle-size) * 0.56);
 }
 
-.method-map__intersection {
+.method-map__intersection-glow {
   position: absolute;
-  color: rgba(247, 252, 255, 0.98);
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  background: rgba(16, 22, 45, 0.45);
-  border: 1px solid rgba(180, 221, 255, 0.35);
+  width: 84px;
+  height: 44px;
   border-radius: 999px;
-  padding: 5px 10px;
-  transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+  background: rgba(122, 231, 255, 0.23);
+  border: 1px solid rgba(122, 231, 255, 0.8);
+  box-shadow: 0 8px 20px rgba(2, 14, 42, 0.38);
+  transition: all var(--transition-base);
 }
 
-button.method-map__intersection {
-  cursor: pointer;
-}
-
-button.method-map__intersection:hover,
-button.method-map__intersection:focus-visible,
-button.method-map__intersection.is-active {
-  background: rgba(122, 231, 255, 0.24);
-  border-color: rgba(122, 231, 255, 0.82);
-  transform: translateY(-1px);
-  outline: none;
-}
-
-.method-map__intersection--map {
-  top: calc(var(--top-offset) + var(--circle-size) * 0.46);
+.method-map__intersection-glow--map {
   left: 50%;
+  top: calc(var(--top-offset) + var(--circle-size) * 0.47);
   transform: translateX(-50%);
 }
 
-button.method-map__intersection--map:hover,
-button.method-map__intersection--map:focus-visible,
-button.method-map__intersection--map.is-active {
-  transform: translateX(-50%) translateY(-1px);
+.method-map__intersection-glow--intentions {
+  left: calc(50% - var(--circle-size) * 0.2);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.82);
 }
 
-.method-map__intersection--intentions {
-  left: calc(50% - var(--circle-size) * 0.28);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.86);
-}
-
-.method-map__intersection--organization {
-  left: calc(50% + var(--circle-size) * 0.14);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.86);
+.method-map__intersection-glow--organization {
+  left: calc(50% + var(--circle-size) * 0.09);
+  top: calc(var(--top-offset) + var(--circle-size) * 0.82);
 }
 
 .method-map__core {
@@ -905,6 +887,34 @@ button.method-map__intersection--map.is-active {
   line-height: 1;
   color: #f4f8ff;
   text-shadow: 0 6px 18px rgba(11, 18, 36, 0.45);
+}
+
+.method-map__controls {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.method-map__intersection {
+  color: rgba(236, 248, 255, 0.98);
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: rgba(23, 42, 88, 0.82);
+  border: 1px solid rgba(146, 221, 255, 0.38);
+  border-radius: 14px;
+  padding: 10px 12px;
+  transition: transform var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+  cursor: pointer;
+}
+
+.method-map__intersection:hover,
+.method-map__intersection:focus-visible,
+.method-map__intersection.is-active {
+  background: rgba(27, 124, 168, 0.9);
+  border-color: rgba(122, 231, 255, 0.92);
+  transform: translateY(-1px);
+  outline: none;
 }
 
 .method-map__callout {
@@ -3960,8 +3970,13 @@ button.method-map__intersection--map.is-active {
     max-width: 180px;
   }
 
+  .method-map__controls {
+    grid-template-columns: repeat(3, minmax(100px, 1fr));
+  }
+
   .method-map__intersection {
-    font-size: 0.8rem;
+    font-size: 0.82rem;
+    padding: 9px 10px;
   }
 }
 
@@ -3985,17 +4000,13 @@ button.method-map__intersection--map.is-active {
     display: none;
   }
 
+  .method-map__controls {
+    grid-template-columns: 1fr;
+  }
+
   .method-map__intersection {
-    font-size: 0.74rem;
-    padding: 4px 8px;
-  }
-
-  .method-map__intersection--intentions {
-    left: calc(50% - var(--circle-size) * 0.24);
-  }
-
-  .method-map__intersection--organization {
-    left: calc(50% + var(--circle-size) * 0.11);
+    font-size: 0.82rem;
+    padding: 9px 10px;
   }
 
   .method-map__core {
