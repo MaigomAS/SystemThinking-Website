@@ -78,14 +78,11 @@
         "Shared agenda",
         "ANNiA moderation"
       ],
-
       "subtle": "Built for intense sessions and shared decisions."
-
     },
     "room": {
       "eyebrow": "Live window",
       "title": "E-Call, no distractions",
-
       "subtitle": "An integrated experience with ANNiA identity and full team focus.",
       "cardTitle": "Session window",
       "cardCopy": "Audio, video, and chat wrapped in a custom layer for workshops and idea storming.",
@@ -96,7 +93,6 @@
       "readyCopy": "Allow camera and microphone when prompted for a smooth session.",
       "brandNote": "The conversation happens here. Everything else stays in the background.",
       "subtle": "Full-size session mode available."
-
     },
     "prep": {
       "title": "Before you enter",
@@ -114,7 +110,6 @@
     "steps": {
       "eyebrow": "ANNiA experience",
       "title": "How the e-call feels",
-
       "subtitle": "Designed to raise creative tension and sustain clarity.",
       "items": [
         {
@@ -128,7 +123,6 @@
         {
           "title": "Actionable close",
           "copy": "We end with clear agreements, owners, and a summary that fuels the work after."
-
         }
       ]
     },
@@ -204,59 +198,114 @@
     "description": "A clear, applied way to understand systems thinking and act strategically."
   },
   "interactive": {
-    "eyebrow": "Symptoms vs System",
-    "title": "Where to intervene",
-    "ariaTabs": "Focus selector: symptoms or system",
+    "eyebrow": "Invest better, not just more",
+    "title": "Leading through uncertainty",
+    "ariaTabs": "Method capability selector",
+    "hint": "Click each circle to explore executive implications.",
+    "diagramAria": "Intersection map between systemic thinking, systemic strategy, and governance",
+    "intersections": {
+      "map": "Good map",
+      "intentions": "Good intentions",
+      "organization": "Good organization"
+    },
+    "centerLabel": "Transformation",
     "tabs": {
-      "sintomas": {
-        "label": "Symptoms",
-        "title": "When we only treat symptoms, the system pushes back",
-        "description": "Partial fixes may ease today... and worsen tomorrow: hidden costs, side effects, organizational fatigue.",
+      "entender": {
+        "label": "Understanding systemically",
+        "title": "Understand structure before accelerating response",
+        "description": "Leaders in this program learn to read patterns, causality, and interdependence to intervene with precision in ambiguous contexts.",
         "bullets": [
-          "Patches without changing structure",
-          "Creates unintended effects",
-          "Reinforces the problem mid-term"
+          "Understand our structures in depth",
+          "Reveal the true sites of transformation",
+          "Anticipate second-order effects"
         ],
-        "note": "The challenge is not to do more, but to decide where to intervene."
+        "note": "The challenge is not to do more, but to decide where to invest to unlock potential."
       },
-      "sistema": {
-        "label": "System",
-        "title": "Work in the system: from responses to leverage",
-        "description": "Potential appears when we design collaboration: rules, incentives, information, and relationships that transform how we decide and coordinate.",
+      "decidir": {
+        "label": "Deciding strategically",
+        "title": "Decide where to intervene with strategic clarity",
+        "description": "The methodology connects evidence, purpose, and governance to choose investment paths that move the whole system.",
         "bullets": [
-          "Read patterns and causality",
-          "Identify real leverage points",
-          "Design collaborative governance"
+          "See strategic routes with clarity",
+          "Prioritize leverage points with the highest systemic impact",
+          "Align decisions with real risks and capabilities"
         ],
-        "note": "Science + awareness: rigor, ethics, and adaptive execution."
+        "note": "A better decision today prevents multiple costly corrections tomorrow."
+      },
+      "evolucionar": {
+        "label": "Evolving capabilities",
+        "title": "Evolve organization and leadership together",
+        "description": "It is not only about designing strategy, but about navigating it with others and converting it into lasting capabilities.",
+        "bullets": [
+          "Navigate strategically with others",
+          "Evolve our organizations and capabilities",
+          "Consolidate collaborative, adaptive execution"
+        ],
+        "note": "Transformation happens when intention, map, and organization converge in action."
       }
     },
     "systemBlocks": [
       {
-        "title": "Incentives",
-        "copy": "What the system rewards (and punishes) rules."
+        "title": "Systemic thinking",
+        "copy": "Deep reading of dynamics, causes, and consequences."
       },
       {
-        "title": "Information",
-        "copy": "What is known, when it is known, and who knows it."
+        "title": "Systemic strategy",
+        "copy": "Investment routes that move the whole, not just one part."
       },
       {
-        "title": "Relationships",
-        "copy": "Coordination is infrastructure, not “good will”."
-      },
-      {
-        "title": "Rules",
-        "copy": "Formal and informal norms: the system's true “code”."
+        "title": "Governance",
+        "copy": "Agreements, roles, and rhythms to execute with consistency."
       }
     ],
-    "zoomBlock": {
-      "title": "Zoom: Incentives",
-      "bullets": [
-        "Which metrics govern decisions",
-        "Which trade-offs are hidden",
-        "Which behaviors we are reinforcing"
-      ],
-      "note": "Example: when only speed is measured, quality and trust are sacrificed."
+    "levers": [
+      {
+        "key": "thinking",
+        "title": "Systemic thinking",
+        "lead": "It helps distinguish structural causes from visible symptoms.",
+        "whyTitle": "Why it matters",
+        "why": [
+          "Organizes complexity into actionable maps",
+          "Makes critical interdependencies explicit",
+          "Reduces short-term reactive decisions"
+        ],
+        "impactTitle": "Executive impact",
+        "impact": "Strategic direction with greater clarity and less political friction.",
+        "image": null
+      },
+      {
+        "key": "strategy",
+        "title": "Systemic strategy",
+        "lead": "It translates analysis into focused, sequenced investment decisions.",
+        "whyTitle": "Why it matters",
+        "why": [
+          "Prioritizes leverage points with systemic return",
+          "Connects purpose to phased execution",
+          "Protects resources by avoiding dispersion"
+        ],
+        "impactTitle": "Executive impact",
+        "impact": "Stronger portfolio choices and visible progress in fewer cycles.",
+        "image": null
+      },
+      {
+        "key": "governance",
+        "title": "Governance",
+        "lead": "It aligns actors, decisions, and accountability to sustain change.",
+        "whyTitle": "Why it matters",
+        "why": [
+          "Defines rules and roles to coordinate through uncertainty",
+          "Builds trust across decision levels",
+          "Sustains adaptiveness without losing direction"
+        ],
+        "impactTitle": "Executive impact",
+        "impact": "Consistent, measurable, and scalable institutional transformation.",
+        "image": null
+      }
+    ],
+    "intersectionInsights": {
+      "map": "A shared reading of the system to decide with focus and coherence.",
+      "intentions": "Clear purpose translated into collaboration and trust across actors.",
+      "organization": "Coordination structures that sustain strategy in execution."
     }
   },
   "program": {

@@ -79,64 +79,11 @@ const EXPERIENCES = {
   ],
 };
 
-const LEVER_ITEMS = [
-  {
-    key: 'incentivos',
-    title: 'Incentivos',
-    lead: 'Lo que el sistema premia (y castiga) manda.',
-    whyTitle: 'Por qué aplica',
-    why: [
-      'Alinea comportamiento con prioridades reales (no declaradas)',
-      'Hace visibles trade-offs entre velocidad, calidad y riesgo',
-      'Evita optimización local que daña el todo',
-    ],
-    impactTitle: 'Impacto ejecutivo',
-    impact: 'Decisiones coherentes con estrategia, sin desgaste organizacional.',
-    image: null,
-  },
-  {
-    key: 'informacion',
-    title: 'Información',
-    lead: 'Decidir con timing, contexto y ownership claros.',
-    whyTitle: 'Por qué aplica',
-    why: [
-      'Reduce asimetrías que frenan coordinación',
-      'Acelera decisiones sin perder calidad',
-      'Define quién debe saber qué, y cuándo',
-    ],
-    impactTitle: 'Impacto ejecutivo',
-    impact: 'Gobernanza basada en evidencia y alineada al ritmo del negocio.',
-    image: null,
-  },
-  {
-    key: 'relaciones',
-    title: 'Relaciones',
-    lead: 'Diseña colaboración como infraestructura.',
-    whyTitle: 'Por qué aplica',
-    why: [
-      'Clarifica interdependencias críticas entre áreas',
-      'Reduce fricción en proyectos complejos',
-      'Activa redes de confianza para ejecutar en conjunto',
-    ],
-    impactTitle: 'Impacto ejecutivo',
-    impact: 'Ejecución integrada con accountability compartida.',
-    image: null,
-  },
-  {
-    key: 'reglas',
-    title: 'Reglas',
-    lead: 'Convierte cultura en gobernanza operable.',
-    whyTitle: 'Por qué aplica',
-    why: [
-      'Establece estándares no negociables',
-      'Reduce ambigüedad en decisiones críticas',
-      'Protege ética, reputación y cumplimiento',
-    ],
-    impactTitle: 'Impacto ejecutivo',
-    impact: 'Consistencia operativa en entornos complejos y de alta presión.',
-    image: null,
-  },
-];
+const INTERSECTION_TO_CIRCLES = {
+  map: [1, 2],
+  intentions: [1, 3],
+  organization: [2, 3],
+};
 
 function App() {
   const { t, language, setLanguage } = useLanguage();
@@ -147,19 +94,24 @@ function App() {
   const faqs = t.faq.items;
   const interactiveTabs = t.interactive.tabs;
   const systemBlocks = t.interactive.systemBlocks;
+  const leverItems = t.interactive.levers;
+  const intersectionInsights = t.interactive.intersectionInsights;
   const organizations = useMemo(() => getOrganizations(t.organizations), [t]);
   const leadershipOrganizations = useMemo(
     () => organizations.filter((org) => org.id !== 'direccion'),
     [organizations],
   );
 
-  const [activeTab, setActiveTab] = useState('sintomas');
+  const [activeTab, setActiveTab] = useState('entender');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
   const [activeLeverIndex, setActiveLeverIndex] = useState(null);
+  const [activeIntersection, setActiveIntersection] = useState('map');
+  const [isTransformationActive, setIsTransformationActive] = useState(false);
   const [isBergenVideoOpen, setIsBergenVideoOpen] = useState(false);
   const [isInvestmentFormOpen, setIsInvestmentFormOpen] = useState(false);
   const isLeverOpen = activeLeverIndex !== null;
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), [interactiveTabs]);
+  const intersectionKeys = useMemo(() => Object.keys(intersectionInsights ?? {}), [intersectionInsights]);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
   const isECall = typeof window !== 'undefined' && window.location.pathname === '/e-call';
   const returnFocusRef = useRef(null);
@@ -194,17 +146,30 @@ function App() {
 
   const handleNextLever = () => {
     setActiveLeverIndex((prev) => {
-      if (prev === null) return prev;
-      return (prev + 1) % LEVER_ITEMS.length;
+      if (prev === null || !leverItems.length) return prev;
+      return (prev + 1) % leverItems.length;
     });
   };
 
   const handlePreviousLever = () => {
     setActiveLeverIndex((prev) => {
-      if (prev === null) return prev;
-      return (prev - 1 + LEVER_ITEMS.length) % LEVER_ITEMS.length;
+      if (prev === null || !leverItems.length) return prev;
+      return (prev - 1 + leverItems.length) % leverItems.length;
     });
   };
+
+
+  useEffect(() => {
+    if (!interactiveTabs[activeTab]) {
+      setActiveTab(Object.keys(interactiveTabs)[0]);
+    }
+  }, [activeTab, interactiveTabs]);
+
+  useEffect(() => {
+    if (!intersectionInsights?.[activeIntersection]) {
+      setActiveIntersection(intersectionKeys[0] ?? 'map');
+    }
+  }, [activeIntersection, intersectionInsights, intersectionKeys]);
 
   const scrollOutcomes = (direction) => {
     const container = outcomesFlowRef.current;
@@ -508,23 +473,86 @@ function App() {
             <p className="interactive__note">{interactiveTabs[activeTab].note}</p>
           </Card>
 
-          <div className="card-grid">
-            <p className="interactive__hint">Da click en cada bloque para explorar más.</p>
-            {systemBlocks.map((block, index) => (
-              <Card
-                key={block.title}
-                variant="elevated"
-                as="button"
+          <div className="method-map">
+            <p className="interactive__hint">{t.interactive.hint}</p>
+            <div className="method-map__canvas" aria-label={t.interactive.diagramAria}>
+              {systemBlocks.map((block, index) => {
+                const circleIndex = index + 1;
+                const isHighlighted = INTERSECTION_TO_CIRCLES[activeIntersection]?.includes(circleIndex);
+
+                return (
+                  <button
+                    key={block.title}
+                    type="button"
+                    className={`method-circle method-circle--${circleIndex} ${isHighlighted ? 'method-circle--highlight' : ''}`}
+                    onClick={(event) => handleOpenLever(index, event)}
+                  >
+                    <h4>{block.title}</h4>
+                    <p>{block.copy}</p>
+                  </button>
+                );
+              })}
+              <span
+                className={`method-map__intersection-glow method-map__intersection-glow--${activeIntersection}`}
+                aria-hidden="true"
+              />
+              <button
                 type="button"
-                className="lever-card interactive-lever"
-                onClick={(event) => handleOpenLever(index, event)}
+                className={`method-map__core ${isTransformationActive ? 'is-active' : ''}`}
+                aria-label={t.interactive.centerLabel}
+                onMouseEnter={() => setIsTransformationActive(true)}
+                onMouseLeave={() => setIsTransformationActive(false)}
+                onFocus={() => setIsTransformationActive(true)}
+                onBlur={() => setIsTransformationActive(false)}
               >
-                <div className="lever-card__body">
-                  <h4>{block.title}</h4>
-                  <p>{block.copy}</p>
-                </div>
-              </Card>
-            ))}
+                ✦
+              </button>
+            </div>
+            <div className="method-map__controls" role="group" aria-label={t.interactive.diagramAria}>
+              <button
+                type="button"
+                className={`method-map__intersection method-map__intersection--map ${
+                  activeIntersection === 'map' ? 'is-active' : ''
+                }`}
+                onClick={() => setActiveIntersection('map')}
+                onMouseEnter={() => setActiveIntersection('map')}
+                onFocus={() => setActiveIntersection('map')}
+              >
+                {t.interactive.intersections.map}
+              </button>
+              <button
+                type="button"
+                className={`method-map__intersection method-map__intersection--intentions ${
+                  activeIntersection === 'intentions' ? 'is-active' : ''
+                }`}
+                onClick={() => setActiveIntersection('intentions')}
+                onMouseEnter={() => setActiveIntersection('intentions')}
+                onFocus={() => setActiveIntersection('intentions')}
+              >
+                {t.interactive.intersections.intentions}
+              </button>
+              <button
+                type="button"
+                className={`method-map__intersection method-map__intersection--organization ${
+                  activeIntersection === 'organization' ? 'is-active' : ''
+                }`}
+                onClick={() => setActiveIntersection('organization')}
+                onMouseEnter={() => setActiveIntersection('organization')}
+                onFocus={() => setActiveIntersection('organization')}
+              >
+                {t.interactive.intersections.organization}
+              </button>
+            </div>
+            <p className="method-map__callout">{intersectionInsights?.[activeIntersection]}</p>
+            <div
+              className={`method-map__legend ${isTransformationActive ? 'is-active' : ''}`}
+              aria-hidden="true"
+              onMouseEnter={() => setIsTransformationActive(true)}
+              onMouseLeave={() => setIsTransformationActive(false)}
+            >
+              <span>✦</span>
+              <small>{t.interactive.centerLabel}</small>
+            </div>
           </div>
         </div>
       </Section>
@@ -896,32 +924,32 @@ function App() {
           </button>
         </header>
         <div className="lever-overlay__media">
-          {LEVER_ITEMS[activeLeverIndex].image ? (
-            <img src={LEVER_ITEMS[activeLeverIndex].image} alt="" className="lever-overlay__image" />
+          {leverItems[activeLeverIndex].image ? (
+            <img src={leverItems[activeLeverIndex].image} alt="" className="lever-overlay__image" />
           ) : (
             <div className="lever-overlay__placeholder" aria-hidden="true" />
           )}
-          <div className="lever-overlay__caption">Palanca: {LEVER_ITEMS[activeLeverIndex].title}</div>
+          <div className="lever-overlay__caption">Palanca: {leverItems[activeLeverIndex].title}</div>
         </div>
         <div className="lever-overlay__body">
-          <p className="lever-overlay__lead">{LEVER_ITEMS[activeLeverIndex].lead}</p>
+          <p className="lever-overlay__lead">{leverItems[activeLeverIndex].lead}</p>
           <h3 id="lever-overlay-title" tabIndex="-1" ref={leverTitleRef}>
-            {LEVER_ITEMS[activeLeverIndex].title}
+            {leverItems[activeLeverIndex].title}
           </h3>
           <div className="lever-overlay__section">
-            <h4>{LEVER_ITEMS[activeLeverIndex].whyTitle}</h4>
+            <h4>{leverItems[activeLeverIndex].whyTitle}</h4>
             <ul>
-              {LEVER_ITEMS[activeLeverIndex].why.map((item) => (
+              {leverItems[activeLeverIndex].why.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
           <div className="lever-overlay__section">
-            <h4>{LEVER_ITEMS[activeLeverIndex].impactTitle}</h4>
-            <p>{LEVER_ITEMS[activeLeverIndex].impact}</p>
+            <h4>{leverItems[activeLeverIndex].impactTitle}</h4>
+            <p>{leverItems[activeLeverIndex].impact}</p>
           </div>
           <div className="lever-overlay__chips" aria-label="Palancas">
-            {LEVER_ITEMS.map((item, index) => (
+            {leverItems.map((item, index) => (
               <button
                 key={item.key}
                 type="button"
@@ -932,7 +960,7 @@ function App() {
               </button>
             ))}
             <span className="lever-overlay__count" aria-hidden="true">
-              {`${activeLeverIndex + 1}/${LEVER_ITEMS.length}`}
+              {`${activeLeverIndex + 1}/${leverItems.length}`}
             </span>
           </div>
         </div>
