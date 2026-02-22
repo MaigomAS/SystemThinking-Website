@@ -55,11 +55,11 @@ const VOICES = {
       id: 'voice-elisa-estrada',
       name: 'Elisa Estrada',
       linkedInUrl: 'https://www.linkedin.com/in/elisaestradat/?originalSubdomain=mx',
-      role: 'Head of the Minister of Women Affairs, Apodaca, México',
+      role: 'Titular de la Secretaría de las Mujeres, Apodaca, México',
       sector: 'Gobierno local',
       initials: 'EE',
       details: [
-        'Head of the Minister of Women Affairs, Apodaca, México',
+        'Titular de la Secretaría de las Mujeres, Apodaca, México',
         'Gobierno local',
         'Ecosistema de cuidados',
         'Política pública',
@@ -79,14 +79,15 @@ const VOICES = {
       id: 'voice-2',
       name: 'L. Agustin Landa G-T',
       linkedInUrl: 'https://www.linkedin.com/in/agustinlanda/',
-      role: 'Civil society leader',
-      sector: 'LANZA Founder',
+      role: 'Líder de la sociedad civil',
+      sector: 'Fundador de LANZA',
       initials: 'AL',
       details: [
-        'Civil society leader',
-        'LANZA Founder',
-        'Consultor en Fundraising, Community Foundations, ESG Principles, Creation and Development of CSO Councils',
-        'Pioneer of system thinking and system strategy applied to societal changes in the 3rd sector',
+        'Líder de la sociedad civil',
+        'Fundador de LANZA',
+        'Pionero del pensamiento y la estrategia sistémica aplicados al cambio social en el tercer sector.',
+        'Consultor en procuración de fondos, fundaciones comunitarias, principios ASG y creación y desarrollo de consejos de OSC',
+        'Pionero del pensamiento y la estrategia sistémica aplicados a cambios sociales en el tercer sector',
       ],
       insightTitle: 'Anticipar el cambio conectando los puntos del sistema',
       context:
@@ -103,13 +104,14 @@ const VOICES = {
       id: 'voice-3',
       name: 'Ana Ricalde',
       linkedInUrl: 'https://www.linkedin.com/in/anapau-ricalde/',
-      role: 'Third sector leader',
+      role: 'Líder del tercer sector',
       sector: 'Subdirectora Fundación Santander',
       initials: 'AR',
       details: [
-        'Third sector leader',
+        'Líder del tercer sector',
         'Subdirectora Fundación Santander',
-        'Ecosystem leader, strategist and network weaver in the 3rd sector',
+        'Lideresa de ecosistema, estratega y articuladora de redes en el tercer sector.',
+        'Liderazgo de ecosistema, estrategia y tejido de redes para transformar el tercer sector.',
       ],
       insightTitle: 'Liderar transiciones sistémicas desde alianzas multiactor',
       context:
@@ -156,6 +158,7 @@ const VOICES = {
       details: [
         'Civil society leader',
         'LANZA Founder',
+        'Pioneering systems thinker and strategist for social change in the third sector.',
         'Fundraising, community foundations, ESG principles, and CSO council development consultant',
         'Pioneer of systems thinking and systems strategy applied to social change in the third sector',
       ],
@@ -167,7 +170,7 @@ const VOICES = {
       impact:
         'This requires a long-term vision that goes far beyond personal timelines and enables sustained third-sector change.',
       learning:
-        '“Los líderes de cualquier sector tienen una capacidad de prevenir o anticipar lo que va a suceder, para hacerlo es importante que conecten los diferentes puntos y entender que las soluciones no son unifactoriales es definitivo para el éxito del cumplimiento del propósito. Esto se ha hablado siempre en el mundo pero en realidad poco hacemos para vivirlo porque implica una visión de largo plazo mucho más allá de la vida misma personal.”',
+        '“Leaders in any sector can prevent or anticipate what is coming when they connect the different points in the system. Understanding that solutions are not single-factor is decisive to fulfill a shared purpose successfully. We have always talked about this, but we rarely live it, because it requires a long-term vision far beyond personal timelines.”',
       imageSrc: sofiaPortrait,
     },
     {
@@ -180,6 +183,7 @@ const VOICES = {
       details: [
         'Third sector leader',
         'Deputy Director, Fundación Santander',
+        'Ecosystem leader and network weaver driving strategy across the third sector.',
         'Ecosystem leader, strategist, and network weaver in the third sector',
       ],
       insightTitle: 'Leading systemic transitions through multi-stakeholder alliances',
@@ -188,7 +192,7 @@ const VOICES = {
         'That purpose is now focused on leading systemic transitions in multi-stakeholder alliances from the third sector.',
       impact: 'Her leadership drives collaborative, ecosystem-scale strategy execution.',
       learning:
-        '“Desde que conocí estas perspectivas mi paradigma cambió, y con él, mi propósito de vida, hoy enfocado a liderar transiciones sistémicas en alianzas multiactor desde el 3er sector”.',
+        '“Since discovering these perspectives, my paradigm changed, and with it, my life purpose—now focused on leading systemic transitions through multi-stakeholder alliances from the third sector.”',
       imageSrc: andresPortrait,
     },
   ],
