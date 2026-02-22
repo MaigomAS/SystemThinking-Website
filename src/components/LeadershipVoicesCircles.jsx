@@ -55,8 +55,10 @@ const VOICES = {
       id: 'voice-elisa-estrada',
       name: 'Elisa Estrada',
       linkedInUrl: 'https://www.linkedin.com/in/elisaestradat/?originalSubdomain=mx',
-      role: 'Titular de la Secretaría de las Mujeres, Apodaca, México',
-      sector: 'Gobierno local',
+      summary:
+        'Lideró la implementación del primer Ecosistema de Cuidados municipal en América Latina, aplicando un enfoque sistémico desde el gobierno local.',
+      role: 'Titular de la Secretaría de las Mujeres',
+      sector: 'Apodaca, México',
       initials: 'EE',
       details: [
         'Titular de la Secretaría de las Mujeres, Apodaca, México',
@@ -77,10 +79,12 @@ const VOICES = {
     },
     {
       id: 'voice-2',
-      name: 'L. Agustin Landa G-T',
+      name: 'L. Agustín Landa G-T',
       linkedInUrl: 'https://www.linkedin.com/in/agustinlanda/',
-      role: 'Líder de la sociedad civil',
-      sector: 'Fundador de LANZA',
+      summary:
+        'Referente en pensamiento y estrategia sistémica, con aplicación directa en procesos de cambio social en el tercer sector.',
+      role: 'Fundador de LANZA',
+      sector: 'Líder de la sociedad civil',
       initials: 'AL',
       details: [
         'Líder de la sociedad civil',
@@ -104,8 +108,10 @@ const VOICES = {
       id: 'voice-3',
       name: 'Ana Ricalde',
       linkedInUrl: 'https://www.linkedin.com/in/anapau-ricalde/',
-      role: 'Líder del tercer sector',
-      sector: 'Subdirectora Fundación Santander',
+      summary:
+        'Líder en diseño y articulación de ecosistemas, especializada en estrategia y tejido de redes en el tercer sector.',
+      role: 'Subdirectora',
+      sector: 'Fundación Santander',
       initials: 'AR',
       details: [
         'Líder del tercer sector',
@@ -128,6 +134,8 @@ const VOICES = {
       id: 'voice-elisa-estrada',
       name: 'Elisa Estrada',
       linkedInUrl: 'https://www.linkedin.com/in/elisaestradat/?originalSubdomain=mx',
+      summary:
+        'Led the implementation of Latin America’s first municipal Care Ecosystem, applying a systemic approach from local government.',
       role: 'Head of the Minister of Women Affairs, Apodaca, Mexico',
       sector: 'Local government',
       initials: 'EE',
@@ -150,8 +158,10 @@ const VOICES = {
     },
     {
       id: 'voice-2',
-      name: 'L. Agustin Landa G-T',
+      name: 'L. Agustín Landa G-T',
       linkedInUrl: 'https://www.linkedin.com/in/agustinlanda/',
+      summary:
+        'Reference in systemic thinking and strategy, directly applied to social change processes in the third sector.',
       role: 'Civil society leader',
       sector: 'LANZA Founder',
       initials: 'AL',
@@ -177,6 +187,8 @@ const VOICES = {
       id: 'voice-3',
       name: 'Ana Ricalde',
       linkedInUrl: 'https://www.linkedin.com/in/anapau-ricalde/',
+      summary:
+        'Leader in ecosystem design and articulation, specialized in strategy and network weaving in the third sector.',
       role: 'Third sector leader',
       sector: 'Deputy Director, Fundación Santander',
       initials: 'AR',
@@ -416,6 +428,7 @@ function LeadershipVoicesCircles() {
                     </a>
                   ) : null}
                 </span>
+                {voice.summary ? <span className="voices__summary">{voice.summary}</span> : null}
                 <span className="voices__role">
                   {voice.role} · {voice.sector}
                 </span>
