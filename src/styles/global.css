@@ -2864,7 +2864,7 @@ img {
 
 .voices__role {
   font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+  color: rgba(15, 23, 42, 0.72);
 }
 
 .voices__disclaimer {
