@@ -544,7 +544,12 @@ function App() {
               </button>
             </div>
             <p className="method-map__callout">{intersectionInsights?.[activeIntersection]}</p>
-            <div className={`method-map__legend ${isTransformationActive ? 'is-active' : ''}`} aria-hidden="true">
+            <div
+              className={`method-map__legend ${isTransformationActive ? 'is-active' : ''}`}
+              aria-hidden="true"
+              onMouseEnter={() => setIsTransformationActive(true)}
+              onMouseLeave={() => setIsTransformationActive(false)}
+            >
               <span>✦</span>
               <small>{t.interactive.centerLabel}</small>
             </div>
