@@ -746,7 +746,16 @@ function App() {
                     aria-haspopup="dialog"
                     onClick={(event) => handleOpenOrg(leadHostOrganization, event.currentTarget)}
                   >
-                    <span className="convocan-card__role">{t.leadership.convocan.roles.host}</span>
+                    <div className="convocan-card__top">
+                      <span className="convocan-card__role">{t.leadership.convocan.roles.host}</span>
+                      <div className="convocan-card__logo-slot" aria-label={`Logo de ${leadHostOrganization.name}`}>
+                        {leadHostOrganization.previewImage ? (
+                          <img src={leadHostOrganization.previewImage} alt="" loading="lazy" />
+                        ) : (
+                          <span>{leadHostOrganization.name.slice(0, 2)}</span>
+                        )}
+                      </div>
+                    </div>
                     <div className="convocan-card__header">
                       <h4>{leadHostOrganization.name}</h4>
                       <span className="convocan-card__tagline">{leadHostOrganization.tagline}</span>
@@ -771,7 +780,12 @@ function App() {
                       aria-haspopup="dialog"
                       onClick={(event) => handleOpenOrg(org, event.currentTarget)}
                     >
-                      <span className="convocan-card__role">{t.leadership.convocan.roles.partner}</span>
+                      <div className="convocan-card__top">
+                        <span className="convocan-card__role">{t.leadership.convocan.roles.partner}</span>
+                        <div className="convocan-card__logo-slot" aria-label={`Logo de ${org.name}`}>
+                          {org.previewImage ? <img src={org.previewImage} alt="" loading="lazy" /> : <span>{org.name.slice(0, 2)}</span>}
+                        </div>
+                      </div>
                       <div className="convocan-card__header">
                         <h4>{org.name}</h4>
                         <span className="convocan-card__tagline">{org.tagline}</span>
