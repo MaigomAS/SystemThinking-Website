@@ -31,7 +31,7 @@ const COPY = {
     eyebrow: 'Experiences that transform',
     title: 'Voices applying systemic thinking in the real world',
     subtitle: 'Click a profile to see the mini-case (not a program endorsement).',
-    disclaimer: '*Independent perspectives. They do not constitute program endorsement.',
+    disclaimer: '',
     cta: 'Learn more',
     modalDisclaimer: 'Independent perspective on systemic thinking. Not a program endorsement.',
     modalActions: {
