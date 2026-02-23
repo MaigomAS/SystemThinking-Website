@@ -454,6 +454,44 @@
         "partner": "Partner convocante"
       },
       "brandLabel": "Espacio logo"
+    },
+    "partners": {
+      "title": "Partners del evento",
+      "description": "",
+      "items": [
+        {
+          "id": "partner1",
+          "name": "ANNiA",
+          "url": "https://annia.no"
+        },
+        {
+          "id": "partner2",
+          "name": "Vida al Centro",
+          "url": "https://www.vidaalcentro.com"
+        },
+        {
+          "id": "partner3",
+          "name": "Visit Bergen",
+          "url": "https://en.visitbergen.com/"
+        }
+      ],
+      "fallbackItems": [
+        {
+          "id": "partner1",
+          "name": "ANNiA",
+          "url": "https://annia.no"
+        },
+        {
+          "id": "partner2",
+          "name": "Vida al Centro",
+          "url": "https://www.vidaalcentro.com"
+        },
+        {
+          "id": "partner3",
+          "name": "Visit Bergen",
+          "url": "https://en.visitbergen.com/"
+        }
+      ]
     }
   },
   "faq": {

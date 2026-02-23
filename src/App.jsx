@@ -85,6 +85,20 @@ const INTERSECTION_TO_CIRCLES = {
   organization: [2, 3],
 };
 
+// Partner logos convention: drop files named Partner1, Partner2, Partner3... in src/assets/partners to auto-render.
+const PARTNER_LOGO_MODULES = import.meta.glob('./assets/partners/Partner*.{png,jpg,jpeg,webp,svg}', {
+  eager: true,
+  import: 'default',
+});
+
+const PARTNER_LOGOS = Object.entries(PARTNER_LOGO_MODULES)
+  .map(([path, logo]) => ({
+    logo,
+    index: Number(path.match(/Partner(\d+)/i)?.[1] ?? Number.POSITIVE_INFINITY),
+  }))
+  .sort((a, b) => a.index - b.index)
+  .map((item) => item.logo);
+
 function App() {
   const { t, language, setLanguage } = useLanguage();
   const navLinks = t.nav.links;
@@ -109,6 +123,21 @@ function App() {
     () => leadershipOrganizations.filter((org) => org.id !== leadHostOrganization?.id),
     [leadershipOrganizations, leadHostOrganization],
   );
+  const eventPartners = useMemo(() => {
+    const configuredPartners = t.leadership.partners?.items ?? [];
+    const defaultPartners = t.leadership.partners?.fallbackItems ?? [];
+    const basePartners = configuredPartners.length ? configuredPartners : defaultPartners;
+
+    return PARTNER_LOGOS.map((logo, index) => {
+      const config = basePartners[index] ?? {};
+      return {
+        id: config.id ?? `partner-${index + 1}`,
+        name: config.name ?? `Partner ${index + 1}`,
+        url: config.url,
+        logo,
+      };
+    });
+  }, [t.leadership.partners]);
 
   const [activeTab, setActiveTab] = useState('entender');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
@@ -744,74 +773,91 @@ function App() {
           <div className="leadership-layout">
             <div className="section-grid leadership-section leadership-section--convocan">
               <h3>{t.leadership.convocan.title}</h3>
-              <div className="leadership-role-grid">
+              <div className="leadership-role-grid leadership-role-grid--classic">
                 {leadHostOrganization ? (
-                  <Card
+                  <button
                     key={leadHostOrganization.id}
-                    variant="elevated"
-                    as="button"
                     type="button"
-                    className="convocan-card convocan-card--lead"
+                    className="convocan-classic convocan-classic--lead"
                     aria-haspopup="dialog"
                     onClick={(event) => handleOpenOrg(leadHostOrganization, event.currentTarget)}
                   >
-                    <div className="convocan-card__top">
-                      <span className="convocan-card__role">{t.leadership.convocan.roles.host}</span>
-                      <div className="convocan-card__brand" aria-hidden="true">
-                        <span className="convocan-card__brand-label">{t.leadership.convocan.brandLabel}</span>
-                        <div className="convocan-card__logo-slot">
-                          {leadHostOrganization.previewImage ? (
-                            <img src={leadHostOrganization.previewImage} alt="" loading="lazy" />
-                          ) : (
-                            <span>{leadHostOrganization.name.slice(0, 3).toUpperCase()}</span>
-                          )}
-                        </div>
-                      </div>
+                    <div className="convocan-classic__logo" aria-hidden="true">
+                      {leadHostOrganization.previewImage ? (
+                        <img src={leadHostOrganization.previewImage} alt="" loading="lazy" />
+                      ) : (
+                        <span>{leadHostOrganization.name.slice(0, 3).toUpperCase()}</span>
+                      )}
                     </div>
-                    <div className="convocan-card__header">
-                      <h4>{leadHostOrganization.name}</h4>
-                      <span className="convocan-card__tagline">{leadHostOrganization.tagline}</span>
-                    </div>
-                    <p>{leadHostOrganization.description}</p>
-                    <div className="convocan-card__meta">
-                      <span>
-                        {leadHostOrganization.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}
-                      </span>
-                      <span>{t.leadership.convocan.meta.cta}</span>
-                    </div>
-                  </Card>
-                ) : null}
-                <div className="card-grid card-grid--partners">
-                  {partnerOrganizations.map((org) => (
-                    <Card
-                      key={org.id}
-                      variant="elevated"
-                      as="button"
-                      type="button"
-                      className="convocan-card"
-                      aria-haspopup="dialog"
-                      onClick={(event) => handleOpenOrg(org, event.currentTarget)}
-                    >
-                      <div className="convocan-card__top">
-                        <span className="convocan-card__role">{t.leadership.convocan.roles.partner}</span>
-                        <div className="convocan-card__brand" aria-hidden="true">
-                          <span className="convocan-card__brand-label">{t.leadership.convocan.brandLabel}</span>
-                          <div className="convocan-card__logo-slot">
-                            {org.previewImage ? <img src={org.previewImage} alt="" loading="lazy" /> : <span>{org.name.slice(0, 3).toUpperCase()}</span>}
-                          </div>
-                        </div>
+                    <div className="convocan-classic__content">
+                      <div className="convocan-classic__header">
+                        <span className="convocan-classic__role">{t.leadership.convocan.roles.host}</span>
+                        <h4>{leadHostOrganization.name}</h4>
+                        <span className="convocan-classic__tagline">{leadHostOrganization.tagline}</span>
                       </div>
-                      <div className="convocan-card__header">
-                        <h4>{org.name}</h4>
-                        <span className="convocan-card__tagline">{org.tagline}</span>
-                      </div>
-                      <p>{org.description}</p>
-                      <div className="convocan-card__meta">
-                        <span>{org.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}</span>
+                      <p>{leadHostOrganization.description}</p>
+                      <div className="convocan-classic__meta">
+                        <span>
+                          {leadHostOrganization.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}
+                        </span>
                         <span>{t.leadership.convocan.meta.cta}</span>
                       </div>
-                    </Card>
+                    </div>
+                  </button>
+                ) : null}
+
+                <div className="convocan-classic-list" role="list" aria-label={t.leadership.convocan.roles.partner}>
+                  {partnerOrganizations.map((org) => (
+                    <button
+                      key={org.id}
+                      type="button"
+                      className="convocan-classic convocan-classic--item"
+                      aria-haspopup="dialog"
+                      onClick={(event) => handleOpenOrg(org, event.currentTarget)}
+                      role="listitem"
+                    >
+                      <div className="convocan-classic__logo" aria-hidden="true">
+                        {org.previewImage ? <img src={org.previewImage} alt="" loading="lazy" /> : <span>{org.name.slice(0, 3).toUpperCase()}</span>}
+                      </div>
+                      <div className="convocan-classic__content">
+                        <span className="convocan-classic__role">{t.leadership.convocan.roles.partner}</span>
+                        <h4>{org.name}</h4>
+                        <span className="convocan-classic__tagline">{org.tagline}</span>
+                        <p>{org.description}</p>
+                        <div className="convocan-classic__meta">
+                          <span>{org.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}</span>
+                          <span>{t.leadership.convocan.meta.cta}</span>
+                        </div>
+                      </div>
+                    </button>
                   ))}
+                </div>
+              </div>
+
+              <div className="leadership-event-partners">
+                <h4>{t.leadership.partners.title}</h4>
+                {t.leadership.partners.description ? <p>{t.leadership.partners.description}</p> : null}
+                <div className="leadership-partners-strip" role="list" aria-label={t.leadership.partners.title}>
+                  {eventPartners.map((partner) =>
+                    partner.url ? (
+                      <a
+                        key={partner.id}
+                        href={partner.url}
+                        className="leadership-partner-logo"
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={partner.name}
+                        title={partner.name}
+                        role="listitem"
+                      >
+                        {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
+                      </a>
+                    ) : (
+                      <div key={partner.id} className="leadership-partner-logo" aria-label={partner.name} title={partner.name} role="listitem">
+                        {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
+                      </div>
+                    ),
+                  )}
                 </div>
               </div>
             </div>

@@ -1,0 +1,30 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0E1A3D" />
+      <stop offset="45%" stop-color="#274B7A" />
+      <stop offset="100%" stop-color="#6FAEDC" />
+    </linearGradient>
+    <linearGradient id="fjord" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1C3B5A" />
+      <stop offset="100%" stop-color="#0E1A2C" />
+    </linearGradient>
+    <linearGradient id="mist" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#E5F2FF" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#E5F2FF" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)" />
+  <path d="M0 520L280 360L560 520L760 400L1020 560L1280 380L1600 520V900H0V520Z" fill="#0B1B2B" />
+  <path d="M0 620L220 480L480 620L760 520L1000 660L1320 520L1600 640V900H0V620Z" fill="#112A3F" />
+  <path d="M0 700L260 620L520 720L820 620L1100 740L1400 620L1600 720V900H0V700Z" fill="url(#fjord)" />
+  <rect x="0" y="520" width="1600" height="180" fill="url(#mist)" />
+  <g opacity="0.5">
+    <rect x="180" y="560" width="70" height="110" fill="#1F3D5C" />
+    <rect x="260" y="540" width="80" height="130" fill="#274865" />
+    <rect x="350" y="560" width="90" height="110" fill="#1E3953" />
+    <rect x="460" y="530" width="70" height="140" fill="#2E5678" />
+    <rect x="540" y="560" width="85" height="110" fill="#24455F" />
+  </g>
+  <text x="80" y="160" font-size="80" fill="#E7F3FF" font-family="'Inter', sans-serif" opacity="0.4" letter-spacing="8">BERGEN</text>
+</svg>
