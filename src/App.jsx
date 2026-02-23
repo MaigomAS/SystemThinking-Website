@@ -998,7 +998,82 @@ function App() {
           {leverItems[activeLeverIndex].image ? (
             <img src={leverItems[activeLeverIndex].image} alt="" className="lever-overlay__image" />
           ) : (
-            <div className="lever-overlay__placeholder" aria-hidden="true" />
+            <div
+              className={`lever-overlay__placeholder ${
+                leverItems[activeLeverIndex].key === 'estrategia' ? 'lever-overlay__placeholder--strategy' : ''
+              }`.trim()}
+              aria-hidden="true"
+            >
+              {leverItems[activeLeverIndex].key === 'estrategia' ? (
+                <svg viewBox="0 0 900 620" className="lever-overlay__strategy-visual" role="presentation">
+                  <defs>
+                    <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stopColor="#59d9ff" />
+                      <stop offset="55%" stopColor="#8ba4ff" />
+                      <stop offset="100%" stopColor="#d3e6ff" />
+                    </linearGradient>
+                    <linearGradient id="focusGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stopColor="rgba(89,217,255,0.34)" />
+                      <stop offset="100%" stopColor="rgba(89,217,255,0.02)" />
+                    </linearGradient>
+                  </defs>
+
+                  <g className="strategy-grid" opacity="0.3">
+                    <line x1="80" y1="130" x2="820" y2="130" />
+                    <line x1="80" y1="260" x2="820" y2="260" />
+                    <line x1="80" y1="390" x2="820" y2="390" />
+                    <line x1="80" y1="520" x2="820" y2="520" />
+                    <line x1="120" y1="90" x2="120" y2="560" />
+                    <line x1="320" y1="90" x2="320" y2="560" />
+                    <line x1="520" y1="90" x2="520" y2="560" />
+                    <line x1="720" y1="90" x2="720" y2="560" />
+                  </g>
+
+                  <path
+                    className="strategy-route"
+                    d="M120 470 C 210 420, 260 380, 320 335 C 390 285, 430 320, 520 285 C 620 245, 650 165, 780 138"
+                  />
+                  <polygon points="780,138 760,132 766,152" fill="#d3e6ff" />
+
+                  <g className="strategy-window">
+                    <rect x="96" y="430" width="110" height="104" rx="16" />
+                    <rect x="290" y="298" width="126" height="112" rx="16" />
+                    <rect x="494" y="228" width="130" height="120" rx="16" />
+                  </g>
+
+                  <g className="strategy-node-group">
+                    <circle cx="120" cy="470" r="17" className="strategy-node" />
+                    <circle cx="320" cy="335" r="17" className="strategy-node" />
+                    <circle cx="520" cy="285" r="17" className="strategy-node" />
+                    <circle cx="780" cy="138" r="19" className="strategy-node strategy-node--highlight" />
+                  </g>
+
+                  <g className="strategy-timeline" aria-hidden="true">
+                    <line x1="110" y1="560" x2="790" y2="560" />
+                    <line x1="120" y1="560" x2="120" y2="548" />
+                    <line x1="320" y1="560" x2="320" y2="548" />
+                    <line x1="520" y1="560" x2="520" y2="548" />
+                    <line x1="780" y1="560" x2="780" y2="548" />
+                  </g>
+
+                  <g className="strategy-labels">
+                    <rect x="78" y="568" width="124" height="30" rx="15" />
+                    <rect x="252" y="568" width="150" height="30" rx="15" />
+                    <rect x="462" y="568" width="130" height="30" rx="15" />
+                    <text x="94" y="588">Corto plazo</text>
+                    <text x="268" y="588">Mediano plazo</text>
+                    <text x="480" y="588">Largo plazo</text>
+                  </g>
+
+                  <g className="strategy-cues">
+                    <text x="118" y="450">Complejidad inicial</text>
+                    <text x="340" y="282">Ciclos de retroalimentación</text>
+                    <text x="548" y="211">Variables estratégicas</text>
+                    <text x="664" y="112">Rutas sinérgicas</text>
+                  </g>
+                </svg>
+              ) : null}
+            </div>
           )}
           <div className="lever-overlay__caption">Palanca: {leverItems[activeLeverIndex].title}</div>
         </div>
