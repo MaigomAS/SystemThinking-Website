@@ -842,6 +842,16 @@ img {
   --top-offset: max(24px, calc((100% - var(--cluster-height)) / 2));
 }
 
+.method-map__copyright {
+  position: absolute;
+  right: 14px;
+  bottom: 10px;
+  font-size: 0.64rem;
+  letter-spacing: 0.01em;
+  color: rgba(238, 245, 255, 0.72);
+  pointer-events: none;
+}
+
 .method-circle {
   position: absolute;
   width: var(--circle-size);
@@ -2696,6 +2706,13 @@ img {
   font-size: var(--font-size-sm);
 }
 
+.footer__closing-note {
+  margin: 12px 0 0;
+  text-align: center;
+  font-size: 0.74rem;
+  color: #727b8f;
+}
+
 .footer__content {
   display: flex;
   gap: 20px;
@@ -4476,6 +4493,12 @@ img {
     min-height: 470px;
     padding: 14px;
     --circle-size: min(210px, 46vw);
+  }
+
+  .method-map__copyright {
+    right: 10px;
+    bottom: 8px;
+    font-size: 0.56rem;
   }
 
   .method-circle {
