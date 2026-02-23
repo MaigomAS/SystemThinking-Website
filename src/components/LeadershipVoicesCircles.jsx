@@ -67,14 +67,8 @@ const VOICES = {
         'Política pública',
       ],
       insightTitle: 'Decidir en sistemas vivos requiere corresponsabilidad real',
-      context:
-        'Los desafíos sociales, económicos y ambientales exigen decisiones que conecten a gobierno, industria y sociedad civil para evitar soluciones aisladas.',
-      lever:
-        'El pensamiento sistémico permite leer causas estructurales, anticipar efectos no deseados y coordinar acciones con múltiples actores.',
-      impact:
-        'Las intervenciones pasan de ser reactivas a ser estratégicas, con capacidad de sostener bienestar, equidad y estabilidad social.',
-      learning:
-        'Poner la vida al centro es evaluar cada decisión por su impacto en la dignidad, el cuidado y el futuro colectivo.',
+      testimonial:
+        '“Los principales desafíos actuales —sociales, económicos y ambientales— son problemas complejos e interconectados que no pueden resolverse con decisiones aisladas ni desde una sola institución. Estas herramientas de pensamiento y estrategia sistémica, nos dimensionan y nos potencian, entendiendo que ningún actor posee la visión completa del sistema.\n\nEsto es clave hoy, porque cada decisión puede reproducir desigualdades o, por el contrario, generar transformaciones sostenibles que pongan la vida, el bienestar y la estabilidad social al centro.”',
       imageSrc: elisaPortrait,
     },
     {
@@ -94,13 +88,7 @@ const VOICES = {
         'Pionero del pensamiento y la estrategia sistémica aplicados a cambios sociales en el tercer sector',
       ],
       insightTitle: 'Anticipar el cambio conectando los puntos del sistema',
-      context:
-        'Los líderes de cualquier sector tienen una capacidad de prevenir o anticipar lo que va a suceder, para hacerlo es importante que conecten los diferentes puntos.',
-      lever:
-        'Entender que las soluciones no son unifactoriales es definitivo para el éxito del cumplimiento del propósito.',
-      impact:
-        'Implica una visión de largo plazo mucho más allá de la vida misma personal, orientada a cambios sostenibles en el tercer sector.',
-      learning:
+      testimonial:
         '“Los líderes de cualquier sector tienen una capacidad de prevenir o anticipar lo que va a suceder, para hacerlo es importante que conecten los diferentes puntos y entender que las soluciones no son unifactoriales es definitivo para el éxito del cumplimiento del propósito. Esto se ha hablado siempre en el mundo pero en realidad poco hacemos para vivirlo porque implica una visión de largo plazo mucho más allá de la vida misma personal.”',
       imageSrc: sofiaPortrait,
     },
@@ -120,11 +108,7 @@ const VOICES = {
         'Liderazgo de ecosistema, estrategia y tejido de redes para transformar el tercer sector.',
       ],
       insightTitle: 'Liderar transiciones sistémicas desde alianzas multiactor',
-      context:
-        'Desde que conocí estas perspectivas mi paradigma cambió, y con él, mi propósito de vida.',
-      lever: 'Hoy está enfocado a liderar transiciones sistémicas en alianzas multiactor desde el 3er sector.',
-      impact: 'Su liderazgo impulsa estrategias colaborativas con alcance de ecosistema.',
-      learning:
+      testimonial:
         '“Desde que conocí estas perspectivas mi paradigma cambió, y con él, mi propósito de vida, hoy enfocado a liderar transiciones sistémicas en alianzas multiactor desde el 3er sector”.',
       imageSrc: andresPortrait,
     },
@@ -146,14 +130,8 @@ const VOICES = {
         'Public policy',
       ],
       insightTitle: 'Decisions in living systems require shared responsibility',
-      context:
-        'Social, economic, and environmental challenges demand decisions that connect government, industry, and civil society to avoid isolated responses.',
-      lever:
-        'Systemic thinking helps leaders read structural causes, anticipate unintended effects, and coordinate multi-actor action.',
-      impact:
-        'Interventions move from reactive fixes to strategic changes that protect wellbeing, equity, and social stability.',
-      learning:
-        'Putting life at the center means judging every decision by its impact on dignity, care, and our collective future.',
+      testimonial:
+        '“Today’s key social, economic, and environmental challenges are complex and interconnected. They cannot be solved through isolated decisions or by a single institution. Systemic thinking and strategy tools help us see scale and possibility, recognizing that no one actor holds the whole-system view.\n\nThis matters now because every decision can either reproduce inequality or enable sustainable transformations that place life, wellbeing, and social stability at the center.”',
       imageSrc: elisaPortrait,
     },
     {
@@ -173,13 +151,7 @@ const VOICES = {
         'Pioneer of systems thinking and systems strategy applied to social change in the third sector',
       ],
       insightTitle: 'Anticipating change by connecting systemic dots',
-      context:
-        'Leaders in every sector can prevent or anticipate what is coming when they connect the different points in the system.',
-      lever:
-        'Understanding that solutions are never single-factor is decisive for successfully fulfilling a shared purpose.',
-      impact:
-        'This requires a long-term vision that goes far beyond personal timelines and enables sustained third-sector change.',
-      learning:
+      testimonial:
         '“Leaders in any sector can prevent or anticipate what is coming when they connect the different points in the system. Understanding that solutions are not single-factor is decisive to fulfill a shared purpose successfully. We have always talked about this, but we rarely live it, because it requires a long-term vision far beyond personal timelines.”',
       imageSrc: sofiaPortrait,
     },
@@ -199,11 +171,7 @@ const VOICES = {
         'Ecosystem leader, strategist, and network weaver in the third sector',
       ],
       insightTitle: 'Leading systemic transitions through multi-stakeholder alliances',
-      context: 'Since discovering these perspectives, my paradigm shifted, along with my life purpose.',
-      lever:
-        'That purpose is now focused on leading systemic transitions in multi-stakeholder alliances from the third sector.',
-      impact: 'Her leadership drives collaborative, ecosystem-scale strategy execution.',
-      learning:
+      testimonial:
         '“Since discovering these perspectives, my paradigm changed, and with it, my life purpose—now focused on leading systemic transitions through multi-stakeholder alliances from the third sector.”',
       imageSrc: andresPortrait,
     },
@@ -338,35 +306,30 @@ function LeadershipVoicesCircles() {
                     <p className="voices-modal__name" id={`voice-title-${activeVoice.id}`}>
                       {activeVoice.name}
                     </p>
+                    {activeVoice.summary ? (
+                      <p className="voices-modal__summary">{activeVoice.summary}</p>
+                    ) : null}
                     <p className="voices-modal__role">{activeVoice.role}</p>
                     <p className="voices-modal__sector">{activeVoice.sector}</p>
                   </div>
-                  <ul className="voices-modal__details">
-                    {activeVoice.details.map((detail) => (
-                      <li key={detail} className="voices-modal__detail">
-                        {detail}
-                      </li>
-                    ))}
-                  </ul>
+                  {activeVoice.linkedInUrl ? (
+                    <a
+                      className="voices-modal__linkedin-cta"
+                      href={activeVoice.linkedInUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`${content.linkedInLabel}: ${activeVoice.name}`}
+                    >
+                      <span aria-hidden="true">in</span>
+                      {content.linkedInLabel}
+                    </a>
+                  ) : null}
                 </aside>
                 <div className="voices-modal__body">
                   <h3 className="voices-modal__headline">{activeVoice.insightTitle}</h3>
-                  <div className="voices-modal__block">
-                    <h4>{content.modalLabels.context}</h4>
-                    <p>{activeVoice.context}</p>
-                  </div>
-                  <div className="voices-modal__block">
-                    <h4>{content.modalLabels.lever}</h4>
-                    <p>{activeVoice.lever}</p>
-                  </div>
-                  <div className="voices-modal__block">
-                    <h4>{content.modalLabels.impact}</h4>
-                    <p>{activeVoice.impact}</p>
-                  </div>
-                  <div className="voices-modal__block">
-                    <h4>{content.modalLabels.learning}</h4>
-                    <p>{activeVoice.learning}</p>
-                  </div>
+                  <blockquote className="voices-modal__quote">
+                    <p>{activeVoice.testimonial}</p>
+                  </blockquote>
                   {content.modalDisclaimer ? (
                     <p className="voices-modal__disclaimer">{content.modalDisclaimer}</p>
                   ) : null}
