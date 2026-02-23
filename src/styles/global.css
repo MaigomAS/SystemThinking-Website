@@ -756,7 +756,15 @@ img {
 }
 
 .ui-section--light .interactive-tab {
+  background: rgba(124, 106, 255, 0.22);
+  border-color: rgba(124, 106, 255, 0.18);
   color: #4b556f;
+}
+
+.ui-section--light .interactive-tab:hover:not(:disabled) {
+  background: rgba(124, 106, 255, 0.28);
+  border-color: rgba(124, 106, 255, 0.26);
+  color: #334060;
 }
 
 .ui-section--light .interactive-tab--active {
@@ -892,8 +900,8 @@ img {
 
 .method-map__intersection-glow {
   position: absolute;
-  width: 56px;
-  height: 56px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(122, 231, 255, 0.34), rgba(122, 231, 255, 0.14));
   border: 1px solid rgba(122, 231, 255, 0.82);
@@ -924,12 +932,16 @@ img {
   left: 50%;
   top: calc(var(--top-offset) + var(--circle-size) * 0.67);
   transform: translate(-50%, -50%);
-  font-size: clamp(1.6rem, 2.4vw, 2.1rem);
+  font-size: clamp(1.76rem, 2.64vw, 2.31rem);
   line-height: 1;
   color: #f4f8ff;
   text-shadow: 0 6px 18px rgba(11, 18, 36, 0.45);
   background: transparent;
   border: 0;
+  display: grid;
+  place-items: center;
+  width: clamp(2.1rem, 3.2vw, 2.8rem);
+  aspect-ratio: 1;
   padding: 0;
   cursor: pointer;
 }
@@ -4301,12 +4313,12 @@ img {
   }
 
   .method-map__intersection-glow {
-    width: 48px;
-    height: 48px;
+    width: 29px;
+    height: 29px;
   }
 
   .method-map__core {
-    font-size: 1.2rem;
+    font-size: 1.32rem;
   }
 
   .method-map__intersection-glow--intentions {
