@@ -1,0 +1,75 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Modelo causal de pensamiento sistémico</title>
+  <desc id="desc">Un modelo con variables conectadas por flechas curvas que forman ciclos de retroalimentación, destacando relaciones causales importantes para intervenir en el comportamiento del sistema.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="80" x2="1080" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#244A83"/>
+      <stop offset="1" stop-color="#0F204F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 430) rotate(90) scale(380 520)">
+      <stop stop-color="#56B6FF" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#56B6FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="edge" x1="250" y1="180" x2="930" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A1DEFF"/>
+      <stop offset="1" stop-color="#7FC7FF"/>
+    </linearGradient>
+    <linearGradient id="edgeStrong" x1="420" y1="300" x2="830" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E5F7FF"/>
+      <stop offset="1" stop-color="#BEEBFF"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8.6" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L10 5L0 10Z" fill="#8FD5FF"/>
+    </marker>
+    <marker id="arrowStrong" markerWidth="11" markerHeight="11" refX="9.2" refY="5.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L11 5.5L0 11Z" fill="#D8F4FF"/>
+    </marker>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="900" rx="40" fill="#0B183F"/>
+  <rect x="60" y="55" width="1080" height="790" rx="28" fill="url(#bg)"/>
+  <rect x="60" y="55" width="1080" height="790" rx="28" fill="url(#glow)"/>
+
+  <g>
+    <circle cx="250" cy="285" r="50" fill="#1E3F75" stroke="#9EDCFF" stroke-width="3.5"/>
+    <circle cx="835" cy="250" r="55" fill="#1D3D73" stroke="#A6E1FF" stroke-width="3.5"/>
+    <circle cx="880" cy="575" r="50" fill="#1B3B6F" stroke="#95D8FF" stroke-width="3.5"/>
+    <circle cx="300" cy="595" r="44" fill="#1A396C" stroke="#95DBFF" stroke-width="3.5"/>
+
+    <circle cx="455" cy="510" r="58" fill="#2A5D93" stroke="#D6F3FF" stroke-width="4.5"/>
+    <circle cx="710" cy="510" r="58" fill="#2B5F94" stroke="#D6F3FF" stroke-width="4.5"/>
+    <circle cx="850" cy="675" r="56" fill="#295A8F" stroke="#D2F0FF" stroke-width="4.5"/>
+    <circle cx="410" cy="685" r="56" fill="#28588C" stroke="#D2F0FF" stroke-width="4.5"/>
+  </g>
+
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M305 270C420 175 620 156 772 233" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M865 295C930 352 944 454 902 529" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M850 618C710 702 500 700 350 627" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M268 548C230 472 228 372 246 336" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+
+    <path d="M520 495C575 475 622 476 650 497" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+    <path d="M753 535C790 562 818 597 832 634" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+    <path d="M798 695C700 744 560 744 471 709" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+    <path d="M383 650C360 612 359 560 382 528" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+
+    <path d="M448 452C418 396 367 344 306 315" stroke="url(#edge)" stroke-width="3.5" marker-end="url(#arrow)" opacity="0.84"/>
+    <path d="M714 451C744 392 790 339 850 302" stroke="url(#edge)" stroke-width="3.5" marker-end="url(#arrow)" opacity="0.84"/>
+  </g>
+
+  <g fill="#E8F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" text-anchor="middle" dominant-baseline="middle">
+    <text x="250" y="285" font-size="18" font-weight="600">Variable A</text>
+    <text x="835" y="250" font-size="18" font-weight="600">Variable B</text>
+    <text x="880" y="575" font-size="18" font-weight="600">Variable C</text>
+    <text x="300" y="595" font-size="18" font-weight="600">Variable D</text>
+
+    <text x="455" y="510" font-size="20" font-weight="700">Clave 1</text>
+    <text x="710" y="510" font-size="20" font-weight="700">Clave 2</text>
+    <text x="850" y="675" font-size="20" font-weight="700">Clave 3</text>
+    <text x="410" y="685" font-size="20" font-weight="700">Clave 4</text>
+  </g>
+</svg>
