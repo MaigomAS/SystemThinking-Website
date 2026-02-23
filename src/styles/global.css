@@ -837,7 +837,8 @@ img {
     linear-gradient(145deg, #1a2446, #22315d);
   overflow: hidden;
   --circle-size: min(280px, 42vw);
-  --top-offset: 34px;
+  --cluster-height: calc(var(--circle-size) * 1.56);
+  --top-offset: max(24px, calc((100% - var(--cluster-height)) / 2));
 }
 
 .method-circle {
@@ -4334,7 +4335,6 @@ img {
     min-height: 470px;
     padding: 14px;
     --circle-size: min(210px, 46vw);
-    --top-offset: 26px;
   }
 
   .method-circle {
