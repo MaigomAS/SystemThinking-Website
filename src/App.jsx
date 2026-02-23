@@ -555,6 +555,15 @@ function App() {
     ),
     program: (section) => (
       <Section key={section.id} id={section.id} title={t.program.title} tone="mid" className="reveal">
+        <div className="participant-profile" aria-label={t.leadership.audience.title}>
+          <p className="participant-profile__eyebrow">Perfil del participante</p>
+          <h3>{t.leadership.audience.title}</h3>
+          <div className="participant-profile__content">
+            {t.leadership.audience.paragraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </div>
         <div className="card-grid">
           {highlightCards.map((card) => (
             <Card key={card.title} variant="glass" as="article">
@@ -805,14 +814,6 @@ function App() {
                   ))}
                 </div>
               </div>
-            </div>
-            <div className="section-grid leadership-section leadership-section--audience">
-              <h3>{t.leadership.audience.title}</h3>
-              <Card variant="elevated" className="section-grid equipo-card">
-                {t.leadership.audience.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </Card>
             </div>
           </div>
         </Section>
