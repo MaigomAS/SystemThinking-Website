@@ -981,6 +981,11 @@ function App() {
   };
 
   const leverOverlay = isLeverOpen ? (
+    (() => {
+      const activeLever = leverItems[activeLeverIndex];
+      const isStrategyLever = activeLever?.key === 'estrategia' || activeLever?.key === 'strategy';
+
+      return (
     <div
       className="lever-overlay"
       role="dialog"
@@ -990,21 +995,26 @@ function App() {
     >
       <div className="lever-overlay__panel" onClick={(event) => event.stopPropagation()}>
         <header className="lever-overlay__header">
-          <button type="button" className="lever-overlay__close" onClick={handleCloseLever} aria-label="Cerrar">
+          <button
+            type="button"
+            className="lever-overlay__close"
+            onClick={handleCloseLever}
+            aria-label={t.interactive.leverOverlay.close}
+          >
             ×
           </button>
         </header>
         <div className="lever-overlay__media">
-          {leverItems[activeLeverIndex].image ? (
-            <img src={leverItems[activeLeverIndex].image} alt="" className="lever-overlay__image" />
+          {activeLever.image ? (
+            <img src={activeLever.image} alt="" className="lever-overlay__image" />
           ) : (
             <div
               className={`lever-overlay__placeholder ${
-                leverItems[activeLeverIndex].key === 'estrategia' ? 'lever-overlay__placeholder--strategy' : ''
+                isStrategyLever ? 'lever-overlay__placeholder--strategy' : ''
               }`.trim()}
               aria-hidden="true"
             >
-              {leverItems[activeLeverIndex].key === 'estrategia' ? (
+              {isStrategyLever ? (
                 <svg viewBox="0 0 900 620" className="lever-overlay__strategy-visual" role="presentation">
                   <defs>
                     <linearGradient id="routeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -1060,41 +1070,43 @@ function App() {
                     <rect x="78" y="568" width="124" height="30" rx="15" />
                     <rect x="252" y="568" width="150" height="30" rx="15" />
                     <rect x="462" y="568" width="130" height="30" rx="15" />
-                    <text x="94" y="588">Corto plazo</text>
-                    <text x="268" y="588">Mediano plazo</text>
-                    <text x="480" y="588">Largo plazo</text>
+                    <text x="94" y="588">{t.interactive.leverOverlay.strategyTimeline.shortTerm}</text>
+                    <text x="268" y="588">{t.interactive.leverOverlay.strategyTimeline.mediumTerm}</text>
+                    <text x="480" y="588">{t.interactive.leverOverlay.strategyTimeline.longTerm}</text>
                   </g>
 
                   <g className="strategy-cues">
-                    <text x="118" y="450">Complejidad inicial</text>
-                    <text x="340" y="282">Ciclos de retroalimentación</text>
-                    <text x="548" y="211">Variables estratégicas</text>
-                    <text x="664" y="112">Rutas sinérgicas</text>
+                    <text x="118" y="450">{t.interactive.leverOverlay.strategyCues.initialComplexity}</text>
+                    <text x="340" y="282">{t.interactive.leverOverlay.strategyCues.feedbackCycles}</text>
+                    <text x="548" y="211">{t.interactive.leverOverlay.strategyCues.strategicVariables}</text>
+                    <text x="664" y="112">{t.interactive.leverOverlay.strategyCues.synergisticRoutes}</text>
                   </g>
                 </svg>
               ) : null}
             </div>
           )}
-          <div className="lever-overlay__caption">Palanca: {leverItems[activeLeverIndex].title}</div>
+          <div className="lever-overlay__caption">
+            {t.interactive.leverOverlay.captionPrefix} {activeLever.title}
+          </div>
         </div>
         <div className="lever-overlay__body">
-          <p className="lever-overlay__lead">{leverItems[activeLeverIndex].lead}</p>
+          <p className="lever-overlay__lead">{activeLever.lead}</p>
           <h3 id="lever-overlay-title" tabIndex="-1" ref={leverTitleRef}>
-            {leverItems[activeLeverIndex].title}
+            {activeLever.title}
           </h3>
           <div className="lever-overlay__section">
-            <h4>{leverItems[activeLeverIndex].whyTitle}</h4>
+            <h4>{activeLever.whyTitle}</h4>
             <ul>
-              {leverItems[activeLeverIndex].why.map((item) => (
+              {activeLever.why.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
           </div>
           <div className="lever-overlay__section">
-            <h4>{leverItems[activeLeverIndex].impactTitle}</h4>
-            <p>{leverItems[activeLeverIndex].impact}</p>
+            <h4>{activeLever.impactTitle}</h4>
+            <p>{activeLever.impact}</p>
           </div>
-          <div className="lever-overlay__chips" aria-label="Palancas">
+          <div className="lever-overlay__chips" aria-label={t.interactive.leverOverlay.chipsLabel}>
             {leverItems.map((item, index) => (
               <button
                 key={item.key}
@@ -1118,7 +1130,7 @@ function App() {
           event.stopPropagation();
           handlePreviousLever();
         }}
-        aria-label="Anterior"
+        aria-label={t.interactive.leverOverlay.previous}
       >
         ←
       </button>
@@ -1129,11 +1141,13 @@ function App() {
           event.stopPropagation();
           handleNextLever();
         }}
-        aria-label="Siguiente"
+        aria-label={t.interactive.leverOverlay.next}
       >
         →
       </button>
     </div>
+      );
+    })()
   ) : null;
 
   const overlayPortal =
