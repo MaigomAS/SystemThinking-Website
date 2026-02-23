@@ -291,16 +291,17 @@
       {
         "key": "gobernanza",
         "title": "Gobernanza",
-        "lead": "Alinea actores, decisiones y accountability para sostener el cambio.",
+        "lead": "Orquesta acuerdos y evolución institucional para sostener cambios de largo plazo.",
         "whyTitle": "Por qué aplica",
         "why": [
-          "Define reglas y roles para coordinar en incertidumbre",
-          "Fortalece confianza entre niveles de decisión",
+          "Alinea alianzas, roles e implicaciones clave de una negociación sistémica",
+          "Identifica qué paradigmas internos evolucionar y qué narrativa comunicar hacia afuera",
+          "Diseña y establece mecanismos, estructuras y procesos de toma de decisión y recursos entre sectores sociales hacia el propósito común",
           "Sostiene adaptabilidad sin perder rumbo"
         ],
         "impactTitle": "Impacto ejecutivo",
-        "impact": "Transformación institucional consistente, medible y escalable.",
-        "image": null
+        "impact": "Transformación sostenible: coordinación confiable hoy y capacidad adaptativa para el futuro.",
+        "image": "/images/governance-network-realistic.svg"
       }
     ],
     "intersectionInsights": {

@@ -1,0 +1,83 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Gobernanza multisectorial y acuerdos en red</title>
+  <desc id="desc">Escena con múltiples sectores sociales conectados a un núcleo de coordinación, mostrando resultados negativos al operar aislados y mejoras cuando colaboran en red.</desc>
+  <defs>
+    <linearGradient id="bg" x1="110" y1="70" x2="1060" y2="830" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#14244B"/>
+      <stop offset="1" stop-color="#0A1531"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#1E3566" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#102246" stop-opacity="0.65"/>
+    </linearGradient>
+    <linearGradient id="good" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#5EE2FF"/>
+      <stop offset="1" stop-color="#A4BCFF"/>
+    </linearGradient>
+    <linearGradient id="bad" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#FF8296"/>
+      <stop offset="1" stop-color="#FFB178"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect x="70" y="50" width="1060" height="800" rx="44" fill="url(#bg)"/>
+  <rect x="110" y="90" width="980" height="720" rx="34" fill="url(#panel)" stroke="rgba(161,196,255,0.35)"/>
+
+  <!-- Sector cards -->
+  <g font-family="Inter, Arial, sans-serif" fill="#D7E5FF">
+    <rect x="170" y="150" width="210" height="118" rx="20" fill="#1B315C" stroke="rgba(187,214,255,0.32)"/>
+    <text x="195" y="194" font-size="24" font-weight="600">Gobierno</text>
+    <text x="195" y="226" font-size="18" fill="#AEC4EA">Políticas públicas</text>
+
+    <rect x="820" y="150" width="210" height="118" rx="20" fill="#1B315C" stroke="rgba(187,214,255,0.32)"/>
+    <text x="852" y="194" font-size="24" font-weight="600">Empresas</text>
+    <text x="845" y="226" font-size="18" fill="#AEC4EA">Producción e inversión</text>
+
+    <rect x="170" y="600" width="210" height="118" rx="20" fill="#1B315C" stroke="rgba(187,214,255,0.32)"/>
+    <text x="190" y="644" font-size="24" font-weight="600">Academia</text>
+    <text x="195" y="676" font-size="18" fill="#AEC4EA">Conocimiento y datos</text>
+
+    <rect x="820" y="600" width="210" height="118" rx="20" fill="#1B315C" stroke="rgba(187,214,255,0.32)"/>
+    <text x="845" y="644" font-size="24" font-weight="600">Comunidad</text>
+    <text x="850" y="676" font-size="18" fill="#AEC4EA">Necesidades reales</text>
+  </g>
+
+  <!-- Central agreement hub -->
+  <circle cx="600" cy="435" r="132" fill="#152B57" stroke="rgba(160,205,255,0.62)" stroke-width="4"/>
+  <circle cx="600" cy="435" r="93" fill="#112245" stroke="rgba(94,226,255,0.75)" stroke-width="3" filter="url(#glow)"/>
+  <text x="600" y="424" text-anchor="middle" fill="#E5F1FF" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">Acuerdos</text>
+  <text x="600" y="456" text-anchor="middle" fill="#BCD4FA" font-family="Inter, Arial, sans-serif" font-size="20">multisectoriales</text>
+
+  <!-- Positive network links -->
+  <g stroke="url(#good)" stroke-width="5" stroke-linecap="round">
+    <path d="M380 208L490 300"/>
+    <path d="M820 208L710 300"/>
+    <path d="M380 660L490 568"/>
+    <path d="M820 660L710 568"/>
+    <path d="M380 208L820 208" opacity="0.5"/>
+    <path d="M380 660L820 660" opacity="0.5"/>
+  </g>
+
+  <!-- Isolated behaviour -> negative outcomes -->
+  <g stroke="url(#bad)" stroke-width="4" stroke-dasharray="10 10" fill="none" opacity="0.9">
+    <path d="M250 286C214 338 206 392 230 446"/>
+    <path d="M950 286C986 338 994 392 970 446"/>
+    <path d="M250 582C214 530 206 478 230 424"/>
+    <path d="M950 582C986 530 994 478 970 424"/>
+  </g>
+
+  <!-- Negative outcomes area -->
+  <rect x="430" y="730" width="340" height="70" rx="18" fill="rgba(255,126,140,0.12)" stroke="rgba(255,160,130,0.6)"/>
+  <text x="600" y="773" text-anchor="middle" fill="#FFD8CD" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="500">Resultados negativos si se actúa aislado</text>
+
+  <!-- Collaboration outcome callout -->
+  <rect x="440" y="104" width="320" height="62" rx="16" fill="rgba(94,226,255,0.12)" stroke="rgba(156,202,255,0.6)"/>
+  <text x="600" y="143" text-anchor="middle" fill="#D8EDFF" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="500">Trabajo en red para mejores resultados sociales</text>
+</svg>
