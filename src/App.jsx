@@ -532,7 +532,7 @@ function App() {
               >
                 ✦
               </button>
-              <span className="method-map__copyright">© 2026 Vida al Centro. All rights reserved.</span>
+              <span className="method-map__copyright">{t.interactive.copyright}</span>
             </div>
             <div className="method-map__controls" role="group" aria-label={t.interactive.diagramAria}>
               <button
@@ -1220,7 +1220,7 @@ function App() {
             </a>
           </div>
         </Container>
-        <p className="footer__closing-note">@MAIGOM AS copa right protected 2026.</p>
+        <p className="footer__closing-note">{t.footer.copyright}</p>
       </footer>
       <OrganizationModal open={isOrgModalOpen} onClose={handleCloseOrg} org={activeOrg} returnFocusRef={returnFocusRef} />
     </div>
