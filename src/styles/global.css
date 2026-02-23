@@ -735,7 +735,15 @@ img {
 }
 
 .ui-section--light .interactive-tab {
+  background: rgba(124, 106, 255, 0.22);
+  border-color: rgba(124, 106, 255, 0.18);
   color: #4b556f;
+}
+
+.ui-section--light .interactive-tab:hover:not(:disabled) {
+  background: rgba(124, 106, 255, 0.28);
+  border-color: rgba(124, 106, 255, 0.26);
+  color: #334060;
 }
 
 .ui-section--light .interactive-tab--active {
