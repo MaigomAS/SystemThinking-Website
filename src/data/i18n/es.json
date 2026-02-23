@@ -262,44 +262,47 @@
       {
         "key": "pensamiento",
         "title": "Pensamiento sistémico",
-        "lead": "Permite distinguir causas estructurales de síntomas visibles.",
+        "lead": "Convierte complejidad en una lectura compartida para decidir mejor.",
         "whyTitle": "Por qué aplica",
         "why": [
-          "Ordena complejidad en mapas accionables",
-          "Hace explícitas interdependencias críticas",
-          "Reduce decisiones reactivas de corto plazo"
+          "Construye un mapa sistémico realmente útil para entender y tomar decisiones",
+          "Integra la mirada de personas expertas para crear una visión común de la realidad",
+          "Valida hipótesis con actores clave para priorizar acciones con mayor respaldo"
         ],
         "impactTitle": "Impacto ejecutivo",
-        "impact": "Dirección estratégica con mayor claridad y menos fricción política.",
-        "image": null
+        "impact": "Decisiones más pertinentes, con mayor legitimidad y menos correcciones en la ejecución.",
+        "image": null,
+        "imageAlt": "Mapa sistémico con nodos conectados que representan interdependencias"
       },
       {
         "key": "estrategia",
         "title": "Estrategia sistémica",
-        "lead": "Convierte análisis en decisiones de inversión con foco y secuencia.",
+        "lead": "Aterriza propósito, alianzas y rutas medibles para transformar con foco.",
         "whyTitle": "Por qué aplica",
         "why": [
-          "Prioriza palancas con retorno sistémico",
-          "Conecta propósito con ejecución gradual",
-          "Protege recursos evitando dispersión"
+          "Traduce un propósito común en resultados medibles y criterios de avance",
+          "Define con quién construir alianzas estratégicas y cómo negociar de forma sistémica",
+          "Diseña rutas trazables con evidencias de transformación más allá de la teoría de cambio"
         ],
         "impactTitle": "Impacto ejecutivo",
-        "impact": "Mejores decisiones de portafolio y avances visibles en menos ciclos.",
-        "image": null
+        "impact": "Portafolios más coherentes: inversión enfocada, progreso verificable y aprendizaje continuo.",
+        "image": null,
+        "imageAlt": "Ruta estratégica ascendente con hitos de decisión e inversión"
       },
       {
         "key": "gobernanza",
         "title": "Gobernanza",
-        "lead": "Alinea actores, decisiones y accountability para sostener el cambio.",
+        "lead": "Orquesta acuerdos y evolución institucional para sostener cambios de largo plazo.",
         "whyTitle": "Por qué aplica",
         "why": [
-          "Define reglas y roles para coordinar en incertidumbre",
-          "Fortalece confianza entre niveles de decisión",
-          "Sostiene adaptabilidad sin perder rumbo"
+          "Alinea alianzas, roles e implicaciones clave de una negociación sistémica",
+          "Identifica qué paradigmas internos evolucionar y qué narrativa comunicar hacia afuera",
+          "Instala ritmos de decisión y aprendizaje para sostener la iniciativa en el tiempo"
         ],
         "impactTitle": "Impacto ejecutivo",
-        "impact": "Transformación institucional consistente, medible y escalable.",
-        "image": null
+        "impact": "Transformación sostenible: coordinación confiable hoy y capacidad adaptativa para el futuro.",
+        "image": null,
+        "imageAlt": "Red de gobernanza con un núcleo central y actores coordinados"
       }
     ],
     "intersectionInsights": {

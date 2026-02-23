@@ -794,10 +794,14 @@ img {
 .method-map {
   display: grid;
   gap: 16px;
+  align-content: start;
 }
 
 .method-map__canvas {
   position: relative;
+  width: min(100%, 680px);
+  margin-inline: auto;
+  aspect-ratio: 1 / 1;
   min-height: 560px;
   border-radius: var(--radius-xl);
   padding: 26px;
@@ -807,8 +811,19 @@ img {
     radial-gradient(circle at 50% 70%, rgba(84, 222, 214, 0.42), transparent 48%),
     linear-gradient(145deg, #1a2446, #22315d);
   overflow: hidden;
-  --circle-size: min(280px, 42vw);
-  --top-offset: 34px;
+  --circle-size: clamp(190px, 30vw, 280px);
+  --circle-left-x: 35%;
+  --circle-right-x: 65%;
+  --circle-top-y: 33%;
+  --circle-bottom-y: 66%;
+  --glow-map-x: 50%;
+  --glow-map-y: 49%;
+  --glow-intentions-x: 43%;
+  --glow-intentions-y: 58%;
+  --glow-organization-x: 57%;
+  --glow-organization-y: 58%;
+  --core-x: 50%;
+  --core-y: 52%;
 }
 
 .method-circle {
@@ -824,28 +839,30 @@ img {
   justify-items: center;
   gap: 8px;
   text-align: center;
-  padding: 30px;
+  padding: clamp(16px, 2.4vw, 30px);
+  transform: translate(-50%, -50%);
+  transform-origin: center;
   transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base), background var(--transition-base);
 }
 
 .method-circle h4 {
   margin: 0;
-  font-size: clamp(0.98rem, 1.4vw, 1.16rem);
+  font-size: clamp(0.88rem, 1.4vw, 1.16rem);
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
 
 .method-circle p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: clamp(0.72rem, 0.95vw, 0.9rem);
   color: rgba(255, 255, 255, 0.86);
-  max-width: 210px;
+  max-width: clamp(130px, 18vw, 220px);
 }
 
 .method-circle:hover,
 .method-circle:focus-visible,
 .method-circle--highlight {
-  transform: scale(1.02);
+  transform: translate(-50%, -50%) scale(1.02);
   box-shadow: 0 0 0 4px rgba(122, 231, 255, 0.25);
   border-color: rgba(188, 242, 255, 0.95);
   background: radial-gradient(circle, rgba(130, 214, 255, 0.13), transparent 62%);
@@ -853,20 +870,18 @@ img {
 }
 
 .method-circle--1 {
-  left: calc(50% - var(--circle-size) * 0.92);
-  top: var(--top-offset);
+  left: var(--circle-left-x);
+  top: var(--circle-top-y);
 }
 
 .method-circle--2 {
-  left: calc(50% - var(--circle-size) * 0.08);
-  top: var(--top-offset);
+  left: var(--circle-right-x);
+  top: var(--circle-top-y);
 }
 
 .method-circle--3 {
-  left: calc(50% - var(--circle-size) * 0.5);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.56);
-  align-content: start;
-  padding-top: calc(var(--circle-size) * 0.36);
+  left: 50%;
+  top: var(--circle-bottom-y);
 }
 
 .method-map__intersection-glow {
@@ -877,31 +892,29 @@ img {
   background: radial-gradient(circle, rgba(122, 231, 255, 0.34), rgba(122, 231, 255, 0.14));
   border: 1px solid rgba(122, 231, 255, 0.82);
   box-shadow: 0 10px 26px rgba(2, 14, 42, 0.36);
+  transform: translate(-50%, -50%);
   transition: all var(--transition-base);
 }
 
 .method-map__intersection-glow--map {
-  left: 50%;
-  top: calc(var(--top-offset) + var(--circle-size) * 0.5);
-  transform: translate(-50%, -50%);
+  left: var(--glow-map-x);
+  top: var(--glow-map-y);
 }
 
 .method-map__intersection-glow--intentions {
-  left: calc(50% - var(--circle-size) * 0.26);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.84);
-  transform: translate(-50%, -50%);
+  left: var(--glow-intentions-x);
+  top: var(--glow-intentions-y);
 }
 
 .method-map__intersection-glow--organization {
-  left: calc(50% + var(--circle-size) * 0.26);
-  top: calc(var(--top-offset) + var(--circle-size) * 0.84);
-  transform: translate(-50%, -50%);
+  left: var(--glow-organization-x);
+  top: var(--glow-organization-y);
 }
 
 .method-map__core {
   position: absolute;
-  left: 50%;
-  top: calc(var(--top-offset) + var(--circle-size) * 0.67);
+  left: var(--core-x);
+  top: var(--core-y);
   transform: translate(-50%, -50%);
   font-size: clamp(1.6rem, 2.4vw, 2.1rem);
   line-height: 1;
@@ -4107,41 +4120,64 @@ img {
 @media (max-width: 960px) {
   .method-map__canvas {
     min-height: 520px;
-    --circle-size: min(250px, 44vw);
-  }
-
-  .method-circle p {
-    max-width: 180px;
+    --circle-size: clamp(168px, 34vw, 248px);
   }
 
   .method-map__controls {
-    grid-template-columns: repeat(3, minmax(100px, 1fr));
+    grid-template-columns: repeat(3, minmax(96px, 1fr));
   }
 
   .method-map__intersection {
-    font-size: 0.82rem;
+    font-size: 0.84rem;
     padding: 9px 10px;
   }
 }
 
+@media (max-width: 900px) {
+  .interactive {
+    grid-template-columns: 1fr;
+  }
+
+  .interactive-tabs {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .interactive-tab {
+    flex: 1 1 170px;
+    justify-content: center;
+  }
+}
+
 @media (max-width: 680px) {
+  .interactive-tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .interactive-tab {
+    width: 100%;
+  }
+
   .method-map__canvas {
-    min-height: 470px;
+    min-height: 420px;
     padding: 14px;
-    --circle-size: min(210px, 46vw);
-    --top-offset: 26px;
+    --circle-size: clamp(128px, 42vw, 188px);
+    --circle-top-y: 32%;
+    --circle-bottom-y: 69%;
+    --glow-map-y: 50%;
+    --glow-intentions-y: 59%;
+    --glow-organization-y: 59%;
+    --core-y: 53%;
   }
 
   .method-circle {
-    padding: 18px;
-  }
-
-  .method-circle--3 {
-    padding-top: calc(var(--circle-size) * 0.4);
+    padding: 12px;
   }
 
   .method-circle h4 {
-    font-size: 0.9rem;
+    font-size: 0.83rem;
+    line-height: 1.2;
   }
 
   .method-circle p {
@@ -4152,27 +4188,12 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .method-map__intersection {
-    font-size: 0.82rem;
-    padding: 9px 10px;
-  }
-
   .method-map__intersection-glow {
-    width: 48px;
-    height: 48px;
+    width: 42px;
+    height: 42px;
   }
 
   .method-map__core {
-    font-size: 1.2rem;
-  }
-
-  .method-map__intersection-glow--intentions {
-    left: calc(50% - var(--circle-size) * 0.24);
-    top: calc(var(--top-offset) + var(--circle-size) * 0.83);
-  }
-
-  .method-map__intersection-glow--organization {
-    left: calc(50% + var(--circle-size) * 0.24);
-    top: calc(var(--top-offset) + var(--circle-size) * 0.83);
+    font-size: 1.05rem;
   }
 }
