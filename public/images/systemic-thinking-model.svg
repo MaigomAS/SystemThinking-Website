@@ -1,6 +1,6 @@
 <svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Modelo causal de pensamiento sistémico</title>
-  <desc id="desc">Un modelo con variables conectadas por flechas curvas que forman ciclos de retroalimentación, destacando las relaciones causales más importantes para intervenir en el comportamiento del sistema.</desc>
+  <desc id="desc">Un modelo con variables conectadas por flechas curvas que forman ciclos de retroalimentación, destacando relaciones causales importantes para intervenir en el comportamiento del sistema.</desc>
   <defs>
     <linearGradient id="bg" x1="120" y1="80" x2="1080" y2="820" gradientUnits="userSpaceOnUse">
       <stop stop-color="#244A83"/>
@@ -18,11 +18,11 @@
       <stop stop-color="#E5F7FF"/>
       <stop offset="1" stop-color="#BEEBFF"/>
     </linearGradient>
-    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6.2" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M0 0L7 3.5L0 7Z" fill="#8FD5FF"/>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8.6" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L10 5L0 10Z" fill="#8FD5FF"/>
     </marker>
-    <marker id="arrowStrong" markerWidth="8" markerHeight="8" refX="6.8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
-      <path d="M0 0L8 4L0 8Z" fill="#D8F4FF"/>
+    <marker id="arrowStrong" markerWidth="11" markerHeight="11" refX="9.2" refY="5.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L11 5.5L0 11Z" fill="#D8F4FF"/>
     </marker>
     <filter id="soft" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
       <feGaussianBlur stdDeviation="6" result="b"/>
@@ -34,24 +34,6 @@
   <rect x="60" y="55" width="1080" height="790" rx="28" fill="url(#bg)"/>
   <rect x="60" y="55" width="1080" height="790" rx="28" fill="url(#glow)"/>
 
-  <!-- Ciclo general -->
-  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M255 285C395 170 620 145 805 240" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
-    <path d="M830 256C930 325 958 445 890 555" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
-    <path d="M860 585C700 705 470 700 315 600" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
-    <path d="M286 575C222 490 214 370 248 300" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
-
-    <!-- Relaciones clave destacadas -->
-    <path d="M465 510C535 470 625 470 700 505" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
-    <path d="M706 520C772 548 818 595 845 660" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
-    <path d="M820 685C705 760 540 760 435 690" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
-    <path d="M418 668C370 620 355 560 388 510" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
-
-    <!-- Relaciones secundarias -->
-    <path d="M458 500C432 410 372 345 290 307" stroke="url(#edge)" stroke-width="3.5" marker-end="url(#arrow)" opacity="0.78"/>
-    <path d="M705 505C735 410 792 340 875 285" stroke="url(#edge)" stroke-width="3.5" marker-end="url(#arrow)" opacity="0.78"/>
-  </g>
-
   <g>
     <circle cx="250" cy="285" r="50" fill="#1E3F75" stroke="#9EDCFF" stroke-width="3.5"/>
     <circle cx="835" cy="250" r="55" fill="#1D3D73" stroke="#A6E1FF" stroke-width="3.5"/>
@@ -62,6 +44,21 @@
     <circle cx="710" cy="510" r="58" fill="#2B5F94" stroke="#D6F3FF" stroke-width="4.5"/>
     <circle cx="850" cy="675" r="56" fill="#295A8F" stroke="#D2F0FF" stroke-width="4.5"/>
     <circle cx="410" cy="685" r="56" fill="#28588C" stroke="#D2F0FF" stroke-width="4.5"/>
+  </g>
+
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M305 270C420 175 620 156 772 233" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M865 295C930 352 944 454 902 529" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M850 618C710 702 500 700 350 627" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M268 548C230 472 228 372 246 336" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+
+    <path d="M520 495C575 475 622 476 650 497" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+    <path d="M753 535C790 562 818 597 832 634" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+    <path d="M798 695C700 744 560 744 471 709" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+    <path d="M383 650C360 612 359 560 382 528" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+
+    <path d="M448 452C418 396 367 344 306 315" stroke="url(#edge)" stroke-width="3.5" marker-end="url(#arrow)" opacity="0.84"/>
+    <path d="M714 451C744 392 790 339 850 302" stroke="url(#edge)" stroke-width="3.5" marker-end="url(#arrow)" opacity="0.84"/>
   </g>
 
   <g fill="#E8F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" text-anchor="middle" dominant-baseline="middle">
