@@ -308,6 +308,24 @@
       "map": "Una lectura compartida del sistema para decidir con foco y coherencia.",
       "intentions": "Propósito claro convertido en colaboración y confianza entre actores.",
       "organization": "Estructuras de coordinación que sostienen estrategia en ejecución."
+    },
+    "leverOverlay": {
+      "close": "Cerrar",
+      "captionPrefix": "Palanca:",
+      "chipsLabel": "Palancas",
+      "previous": "Anterior",
+      "next": "Siguiente",
+      "strategyTimeline": {
+        "shortTerm": "Corto plazo",
+        "mediumTerm": "Mediano plazo",
+        "longTerm": "Largo plazo"
+      },
+      "strategyCues": {
+        "initialComplexity": "Complejidad inicial",
+        "feedbackCycles": "Ciclos de retroalimentación",
+        "strategicVariables": "Variables estratégicas",
+        "synergisticRoutes": "Rutas sinérgicas"
+      }
     }
   },
   "program": {

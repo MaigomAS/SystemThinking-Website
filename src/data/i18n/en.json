@@ -264,49 +264,68 @@
         "key": "thinking",
         "title": "Systemic thinking",
         "lead": "It helps distinguish structural causes from visible symptoms.",
-        "whyTitle": "Why it matters",
+        "whyTitle": "Why it applies",
         "why": [
           "Organizes complexity into actionable maps",
           "Makes critical interdependencies explicit",
           "Reduces short-term reactive decisions"
         ],
-        "impactTitle": "Executive impact",
-        "impact": "Strategic direction with greater clarity and less political friction.",
-        "image": null
+        "impactTitle": "Executive outcome",
+        "impact": "Deeper understanding, sharper analysis, stronger legitimacy of projects and actions, and greater execution efficiency.",
+        "image": "/images/systemic-thinking-model.svg"
       },
       {
         "key": "strategy",
         "title": "Systemic strategy",
-        "lead": "It translates analysis into focused, sequenced investment decisions.",
-        "whyTitle": "Why it matters",
+        "lead": "It grounds purpose, alliances, and measurable pathways to transform what we do and what we achieve.",
+        "whyTitle": "Why it applies",
         "why": [
-          "Prioritizes leverage points with systemic return",
-          "Connects purpose to phased execution",
-          "Protects resources by avoiding dispersion"
+          "Translates shared purpose into measurable outcomes and progress criteria",
+          "Integrates feedback cycles to prioritize strategic investment variables",
+          "Designs traceable pathways with synergistic actions beyond a “theory of change”"
         ],
-        "impactTitle": "Executive impact",
-        "impact": "Stronger portfolio choices and visible progress in fewer cycles.",
+        "impactTitle": "Executive outcome",
+        "impact": "More coherent portfolios: focused investment, verifiable progress, and continuous learning in the short, medium, and long term.",
         "image": null
       },
       {
         "key": "governance",
         "title": "Governance",
-        "lead": "It aligns actors, decisions, and accountability to sustain change.",
-        "whyTitle": "Why it matters",
+        "lead": "It orchestrates agreements and institutional evolution to sustain long-term change.",
+        "whyTitle": "Why it applies",
         "why": [
-          "Defines rules and roles to coordinate through uncertainty",
-          "Builds trust across decision levels",
-          "Sustains adaptiveness without losing direction"
+          "Aligns alliances, roles, and key implications of systemic negotiation",
+          "Identifies which internal paradigms must evolve and what narrative should be communicated outward",
+          "Designs and establishes mechanisms, structures, and decision-making/resource processes across social sectors toward a shared purpose",
+          "Sustains adaptability without losing direction"
         ],
         "impactTitle": "Executive impact",
-        "impact": "Consistent, measurable, and scalable institutional transformation.",
-        "image": null
+        "impact": "Sustainable transformation: reliable coordination today and adaptive capacity for the future.",
+        "image": "/images/governance-network-realistic-en.svg"
       }
     ],
     "intersectionInsights": {
       "map": "A shared reading of the system to decide with focus and coherence.",
       "intentions": "Clear purpose translated into collaboration and trust across actors.",
       "organization": "Coordination structures that sustain strategy in execution."
+    },
+    "leverOverlay": {
+      "close": "Close",
+      "captionPrefix": "Lever:",
+      "chipsLabel": "Levers",
+      "previous": "Previous",
+      "next": "Next",
+      "strategyTimeline": {
+        "shortTerm": "Short term",
+        "mediumTerm": "Medium term",
+        "longTerm": "Long term"
+      },
+      "strategyCues": {
+        "initialComplexity": "Initial complexity",
+        "feedbackCycles": "Feedback cycles",
+        "strategicVariables": "Strategic variables",
+        "synergisticRoutes": "Synergistic routes"
+      }
     }
   },
   "program": {
