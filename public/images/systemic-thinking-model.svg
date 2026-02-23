@@ -1,80 +1,78 @@
-<svg width="1400" height="1000" viewBox="0 0 1400 1000" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Modelo de pensamiento sistémico con relaciones causales</title>
-  <desc id="desc">Diagrama con variables conectadas por flechas curvadas que forman ciclos de retroalimentación y resaltan relaciones causales clave.</desc>
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Modelo causal de pensamiento sistémico</title>
+  <desc id="desc">Un modelo con variables conectadas por flechas curvas que forman ciclos de retroalimentación, destacando las relaciones causales más importantes para intervenir en el comportamiento del sistema.</desc>
   <defs>
-    <radialGradient id="bgGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(700 500) rotate(90) scale(520 760)">
-      <stop stop-color="#3EA1F5" stop-opacity="0.38"/>
-      <stop offset="1" stop-color="#0C1A49" stop-opacity="0"/>
+    <linearGradient id="bg" x1="120" y1="80" x2="1080" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#244A83"/>
+      <stop offset="1" stop-color="#0F204F"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(600 430) rotate(90) scale(380 520)">
+      <stop stop-color="#56B6FF" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#56B6FF" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="panel" x1="180" y1="90" x2="1220" y2="920" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#203D71"/>
-      <stop offset="1" stop-color="#101E4F"/>
+    <linearGradient id="edge" x1="250" y1="180" x2="930" y2="700" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A1DEFF"/>
+      <stop offset="1" stop-color="#7FC7FF"/>
     </linearGradient>
-    <linearGradient id="lineSoft" x1="180" y1="120" x2="1210" y2="900" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#92D8FF"/>
-      <stop offset="1" stop-color="#73B7F8"/>
+    <linearGradient id="edgeStrong" x1="420" y1="300" x2="830" y2="640" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E5F7FF"/>
+      <stop offset="1" stop-color="#BEEBFF"/>
     </linearGradient>
-    <linearGradient id="lineStrong" x1="350" y1="260" x2="1090" y2="760" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#D7F3FF"/>
-      <stop offset="1" stop-color="#9BE3FF"/>
-    </linearGradient>
-    <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L11 5.5L0 11Z" fill="#8FD5FF"/>
+    </marker>
+    <marker id="arrowStrong" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M0 0L12 6L0 12Z" fill="#D8F4FF"/>
+    </marker>
+    <filter id="soft" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <marker id="arrowSoft" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L10,5 L0,10 Z" fill="#8ED4FF"/>
-    </marker>
-    <marker id="arrowStrong" markerWidth="11" markerHeight="11" refX="8" refY="5.5" orient="auto" markerUnits="strokeWidth">
-      <path d="M0,0 L11,5.5 L0,11 Z" fill="#C8EEFF"/>
-    </marker>
   </defs>
 
-  <rect width="1400" height="1000" rx="46" fill="#0A163D"/>
-  <rect x="72" y="64" width="1256" height="872" rx="32" fill="url(#panel)"/>
-  <rect x="72" y="64" width="1256" height="872" rx="32" fill="url(#bgGlow)"/>
+  <rect width="1200" height="900" rx="40" fill="#0B183F"/>
+  <rect x="60" y="55" width="1080" height="790" rx="28" fill="url(#bg)"/>
+  <rect x="60" y="55" width="1080" height="790" rx="28" fill="url(#glow)"/>
 
-  <g opacity="0.85" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M290 300 C510 185, 725 175, 910 320" stroke="url(#lineSoft)" stroke-width="5" marker-end="url(#arrowSoft)"/>
-    <path d="M920 340 C985 410, 1000 528, 926 598" stroke="url(#lineSoft)" stroke-width="5" marker-end="url(#arrowSoft)"/>
-    <path d="M895 616 C700 720, 495 720, 320 622" stroke="url(#lineSoft)" stroke-width="5" marker-end="url(#arrowSoft)"/>
-    <path d="M286 602 C220 540, 216 384, 276 316" stroke="url(#lineSoft)" stroke-width="5" marker-end="url(#arrowSoft)"/>
+  <!-- Ciclo general -->
+  <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M255 285C395 170 620 145 805 240" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M830 256C930 325 958 445 890 555" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M860 585C700 705 470 700 315 600" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
+    <path d="M286 575C222 490 214 370 248 300" stroke="url(#edge)" stroke-width="4.5" marker-end="url(#arrow)"/>
 
-    <path d="M530 548 C598 516, 670 504, 752 520" stroke="url(#lineStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#softGlow)"/>
-    <path d="M770 536 C846 556, 886 600, 918 666" stroke="url(#lineStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#softGlow)"/>
-    <path d="M900 690 C800 768, 634 790, 506 730" stroke="url(#lineStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#softGlow)"/>
-    <path d="M484 714 C420 684, 384 640, 386 576" stroke="url(#lineStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#softGlow)"/>
+    <!-- Relaciones clave destacadas -->
+    <path d="M465 510C535 470 625 470 700 505" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+    <path d="M706 520C772 548 818 595 845 660" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+    <path d="M820 685C705 760 540 760 435 690" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
+    <path d="M418 668C370 620 355 560 388 510" stroke="url(#edgeStrong)" stroke-width="5.5" marker-end="url(#arrowStrong)" filter="url(#soft)"/>
 
-    <path d="M538 538 C526 430, 468 358, 370 322" stroke="url(#lineSoft)" stroke-width="4" marker-end="url(#arrowSoft)" opacity="0.7"/>
-    <path d="M752 522 C764 430, 814 365, 896 330" stroke="url(#lineSoft)" stroke-width="4" marker-end="url(#arrowSoft)" opacity="0.7"/>
-    <path d="M510 724 C506 786, 542 832, 604 852" stroke="url(#lineSoft)" stroke-width="4" marker-end="url(#arrowSoft)" opacity="0.7"/>
-    <path d="M900 686 C980 700, 1042 662, 1080 600" stroke="url(#lineSoft)" stroke-width="4" marker-end="url(#arrowSoft)" opacity="0.7"/>
+    <!-- Relaciones secundarias -->
+    <path d="M458 500C432 410 372 345 290 307" stroke="url(#edge)" stroke-width="3.5" marker-end="url(#arrow)" opacity="0.78"/>
+    <path d="M705 505C735 410 792 340 875 285" stroke="url(#edge)" stroke-width="3.5" marker-end="url(#arrow)" opacity="0.78"/>
   </g>
 
   <g>
-    <circle cx="280" cy="304" r="54" fill="#1E3F75" stroke="#9FDCFF" stroke-width="4"/>
-    <circle cx="922" cy="324" r="58" fill="#1C3D73" stroke="#A2DEFF" stroke-width="4"/>
-    <circle cx="926" cy="604" r="48" fill="#1A3A70" stroke="#8FD7FF" stroke-width="4"/>
-    <circle cx="298" cy="622" r="44" fill="#1B3B70" stroke="#95DBFF" stroke-width="4"/>
+    <circle cx="250" cy="285" r="50" fill="#1E3F75" stroke="#9EDCFF" stroke-width="3.5"/>
+    <circle cx="835" cy="250" r="55" fill="#1D3D73" stroke="#A6E1FF" stroke-width="3.5"/>
+    <circle cx="880" cy="575" r="50" fill="#1B3B6F" stroke="#95D8FF" stroke-width="3.5"/>
+    <circle cx="300" cy="595" r="44" fill="#1A396C" stroke="#95DBFF" stroke-width="3.5"/>
 
-    <circle cx="528" cy="548" r="62" fill="#2C5F95" stroke="#D2F2FF" stroke-width="5"/>
-    <circle cx="758" cy="522" r="56" fill="#2A5B91" stroke="#CEF1FF" stroke-width="5"/>
-    <circle cx="904" cy="686" r="54" fill="#27578C" stroke="#C7ECFF" stroke-width="5"/>
-    <circle cx="496" cy="726" r="50" fill="#27568A" stroke="#C9EDFF" stroke-width="5"/>
+    <circle cx="455" cy="510" r="58" fill="#2A5D93" stroke="#D6F3FF" stroke-width="4.5"/>
+    <circle cx="710" cy="510" r="58" fill="#2B5F94" stroke="#D6F3FF" stroke-width="4.5"/>
+    <circle cx="850" cy="675" r="56" fill="#295A8F" stroke="#D2F0FF" stroke-width="4.5"/>
+    <circle cx="410" cy="685" r="56" fill="#28588C" stroke="#D2F0FF" stroke-width="4.5"/>
   </g>
 
-  <g fill="#DDF5FF" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="20" font-weight="500" opacity="0.92">
-    <text x="246" y="311">A</text>
-    <text x="907" y="331">B</text>
-    <text x="913" y="611">C</text>
-    <text x="286" y="628">D</text>
+  <g fill="#E8F8FF" font-family="Inter, Segoe UI, Arial, sans-serif" text-anchor="middle" dominant-baseline="middle">
+    <text x="250" y="285" font-size="18" font-weight="600">Variable A</text>
+    <text x="835" y="250" font-size="18" font-weight="600">Variable B</text>
+    <text x="880" y="575" font-size="18" font-weight="600">Variable C</text>
+    <text x="300" y="595" font-size="18" font-weight="600">Variable D</text>
 
-    <text x="514" y="555" font-size="24" font-weight="700">Clave 1</text>
-    <text x="738" y="529" font-size="24" font-weight="700">Clave 2</text>
-    <text x="884" y="693" font-size="24" font-weight="700">Clave 3</text>
-    <text x="477" y="733" font-size="24" font-weight="700">Clave 4</text>
+    <text x="455" y="510" font-size="20" font-weight="700">Clave 1</text>
+    <text x="710" y="510" font-size="20" font-weight="700">Clave 2</text>
+    <text x="850" y="675" font-size="20" font-weight="700">Clave 3</text>
+    <text x="410" y="685" font-size="20" font-weight="700">Clave 4</text>
   </g>
 </svg>
