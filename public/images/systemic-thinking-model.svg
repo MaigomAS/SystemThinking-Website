@@ -18,11 +18,11 @@
       <stop stop-color="#E5F7FF"/>
       <stop offset="1" stop-color="#BEEBFF"/>
     </linearGradient>
-    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
-      <path d="M0 0L11 5.5L0 11Z" fill="#8FD5FF"/>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6.2" refY="3.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L7 3.5L0 7Z" fill="#8FD5FF"/>
     </marker>
-    <marker id="arrowStrong" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto" markerUnits="strokeWidth">
-      <path d="M0 0L12 6L0 12Z" fill="#D8F4FF"/>
+    <marker id="arrowStrong" markerWidth="8" markerHeight="8" refX="6.8" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L8 4L0 8Z" fill="#D8F4FF"/>
     </marker>
     <filter id="soft" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
       <feGaussianBlur stdDeviation="6" result="b"/>
