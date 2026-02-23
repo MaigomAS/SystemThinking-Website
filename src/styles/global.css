@@ -1386,9 +1386,23 @@ img {
   background: var(--color-white);
   box-shadow: var(--shadow-elevated);
   display: grid;
+  grid-template-rows: auto minmax(calc(2 * 1.35em), auto) 1fr auto;
   gap: 12px;
   transform: translateZ(10px);
   min-height: 100%;
+}
+
+.result-step h4,
+.result-step p {
+  margin: 0;
+}
+
+.result-step h4 {
+  line-height: 1.35;
+}
+
+.result-step p {
+  align-self: start;
 }
 
 .result-step::after {
@@ -1402,9 +1416,10 @@ img {
 
 .result-step__header {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
+  min-height: 52px;
 }
 
 .result-step__index {
@@ -1428,7 +1443,7 @@ img {
 
 .result-step__meter {
   position: relative;
-  height: 6px;
+  height: 8px;
   border-radius: var(--radius-pill);
   background: rgba(27, 48, 67, 0.08);
   overflow: hidden;
