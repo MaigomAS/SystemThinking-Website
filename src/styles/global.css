@@ -14,6 +14,7 @@ body {
   color: var(--color-text-primary);
   line-height: var(--line-height-base);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 a {
@@ -4259,6 +4260,146 @@ img {
   display: none;
 }
 
+}
+
+@media (max-width: 760px) {
+  .ui-section {
+    padding: 70px 0;
+  }
+
+  .ui-container {
+    width: min(1120px, 94%);
+  }
+
+  .interactive-tabs {
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-radius: var(--radius-lg);
+  }
+
+  .interactive-tab {
+    flex: 1 1 calc(50% - 6px);
+    text-align: center;
+    min-width: 130px;
+  }
+
+  .method-map__callout {
+    text-align: left;
+  }
+
+  .format-strip__row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .format-strip__value {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  .bergen-statement__actions {
+    flex-wrap: wrap;
+  }
+
+  .faq-chat,
+  .faq-sidebar {
+    padding: 20px;
+  }
+
+  .investment-card__header {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .investment__cta {
+    justify-items: stretch;
+  }
+
+  .investment__cta .ui-button {
+    width: 100%;
+  }
+
+  .org-modal__content,
+  .investment-modal__intro,
+  .investment-modal__form {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .navbar__inner {
+    gap: 10px;
+  }
+
+  .navbar__actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .language-switch {
+    flex-shrink: 0;
+  }
+
+  .hero-rotator__controls {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-rotator__panel .playground-hero {
+    width: 100%;
+  }
+
+  .method-map__canvas {
+    min-height: 420px;
+    --circle-size: min(188px, 47vw);
+  }
+
+  .method-circle {
+    border-width: 1.5px;
+    padding: 16px;
+  }
+
+  .method-circle h4 {
+    font-size: 0.82rem;
+  }
+
+  .lever-overlay {
+    padding: 18px 12px;
+  }
+
+  .lever-overlay__body {
+    padding: 10px 16px 18px;
+  }
+
+  .lever-overlay__media {
+    padding: 16px;
+  }
+
+  .lever-overlay__caption {
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+  }
+
+  .bergen-experiences__track {
+    grid-auto-columns: minmax(220px, 88%);
+    gap: 16px;
+  }
+
+  .ecall-room__controls {
+    top: 8px;
+    right: 8px;
+    gap: 8px;
+  }
+
+  .ecall-room__control-button {
+    padding: 7px 9px;
+  }
 }
 
 @media (max-width: 900px) {
