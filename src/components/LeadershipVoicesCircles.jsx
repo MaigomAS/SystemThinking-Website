@@ -8,9 +8,9 @@ import andresPortrait from '../assets/leadership/voice-3.jpg';
 
 const COPY = {
   es: {
-    eyebrow: 'Experiencias que transforman',
-    title: 'Líderes que aplican pensamiento sistémico en el mundo real',
-    subtitle: 'Haz clic en un perfil para ver el mini-caso (no es recomendación del programa).',
+    eyebrow: 'Experiencias transformadoras',
+    title: 'Líderes sistémicos en el mundo real',
+    subtitle: 'Haz clic en un perfil para conocer más.',
     disclaimer: '',
     cta: 'Saber más',
     modalDisclaimer: '',
@@ -28,9 +28,9 @@ const COPY = {
     linkedInLabel: 'Ver perfil de LinkedIn',
   },
   en: {
-    eyebrow: 'Experiences that transform',
-    title: 'Voices applying systemic thinking in the real world',
-    subtitle: 'Click a profile to see the mini-case (not a program endorsement).',
+    eyebrow: 'Transformation experiences',
+    title: 'Systems leaders in the real world',
+    subtitle: 'Click a profile to know more.',
     disclaimer: '',
     cta: 'Learn more',
     modalDisclaimer: 'Independent perspective on systemic thinking. Not a program endorsement.',
@@ -109,7 +109,7 @@ const VOICES = {
       ],
       insightTitle: 'Liderar transiciones sistémicas desde alianzas multiactor',
       testimonial:
-        '“Desde que conocí estas perspectivas mi paradigma cambió, y con él, mi propósito de vida, hoy enfocado a liderar transiciones sistémicas en alianzas multiactor desde el 3er sector”.',
+        `“Desde que conocí estas perspectivas mi paradigma cambió, y con él, mi propósito de vida. Alcanzamos 7 de los 9 límites planetarios y operamos desde los mismos paradigmas… a pesar de miles de millones de dólares invertidos, acuerdos globales nada o poco ha cambiado. Hay que transformar la forma en que observamos y actuamos dentro de él…\n\nUn programa que integre estas dimensiones no solo mejora decisiones técnicas, también transforma la calidad de conciencia desde la cual se toman”.`,
       imageSrc: andresPortrait,
     },
   ],
