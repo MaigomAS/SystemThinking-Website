@@ -2282,6 +2282,10 @@ img {
   font-size: var(--font-size-lg);
 }
 
+.playground-hero__lead .hero__lead-line {
+  display: block;
+}
+
 .playground-hero__visual {
   min-height: 280px;
   position: relative;

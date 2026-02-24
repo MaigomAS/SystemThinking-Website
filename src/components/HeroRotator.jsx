@@ -183,7 +183,15 @@ function HeroRotator() {
                 ))}
             </h1>
             <p className="hero__subtitle">{content.subtitle}</p>
-            <p className="playground-hero__lead">{content.lead}</p>
+            <p className="playground-hero__lead">
+              {String(content.lead)
+                .split('\n')
+                .map((line, index) => (
+                  <span key={`${line}-${index}`} className="hero__lead-line">
+                    {line}
+                  </span>
+                ))}
+            </p>
             <p className="hero__meta">{content.meta}</p>
             <div className="hero__actions">
               <Button as="a" href="#contacto" variant="primary" className="cta-glow">
