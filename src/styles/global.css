@@ -3068,7 +3068,9 @@ img {
   max-height: clamp(48px, 6vw, 72px);
   object-fit: contain;
   border-radius: 0;
-  transition: transform 220ms ease, filter 220ms ease;
+  filter: grayscale(1) saturate(0.15) contrast(0.95);
+  opacity: 0.84;
+  transition: transform 220ms ease, filter 220ms ease, opacity 220ms ease;
 }
 
 .leadership-partner-logo:hover,
@@ -3080,6 +3082,8 @@ img {
 .leadership-partner-logo:hover img,
 .leadership-partner-logo:focus-visible img {
   transform: scale(1.03);
+  filter: grayscale(0) saturate(1) contrast(1);
+  opacity: 1;
 }
 
 .voices {
