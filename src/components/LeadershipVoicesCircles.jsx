@@ -109,7 +109,7 @@ const VOICES = {
       ],
       insightTitle: 'Liderar transiciones sistémicas desde alianzas multiactor',
       testimonial:
-        '“Desde que conocí estas perspectivas mi paradigma cambió, y con él, mi propósito de vida, hoy enfocado a liderar transiciones sistémicas en alianzas multiactor desde el 3er sector”.',
+        `“Desde que conocí estas perspectivas mi paradigma cambió, y con él, mi propósito de vida. Alcanzamos 7 de los 9 límites planetarios y operamos desde los mismos paradigmas… a pesar de miles de millones de dólares invertidos, acuerdos globales nada o poco ha cambiado. Hay que transformar la forma en que observamos y actuamos dentro de él…\n\nUn programa que integre estas dimensiones no solo mejora decisiones técnicas, también transforma la calidad de conciencia desde la cual se toman”.`,
       imageSrc: andresPortrait,
     },
   ],
