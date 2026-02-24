@@ -774,13 +774,18 @@ function App() {
           <div className="leadership-layout">
             <div className="section-grid leadership-section leadership-section--convocan">
               <h3>{t.leadership.convocan.title}</h3>
-              <div className="leadership-role-grid leadership-role-grid--classic">
+              <div
+                className="leadership-role-grid leadership-role-grid--classic"
+                role="list"
+                aria-label={t.leadership.convocan.title}
+              >
                 {leadHostOrganization ? (
                   <button
                     key={leadHostOrganization.id}
                     type="button"
                     className="convocan-classic convocan-classic--lead"
                     aria-haspopup="dialog"
+                    role="listitem"
                     onClick={(event) => handleOpenOrg(leadHostOrganization, event.currentTarget)}
                   >
                     <div className="convocan-classic__logo" aria-hidden="true">
@@ -798,41 +803,35 @@ function App() {
                       </div>
                       <p>{leadHostOrganization.description}</p>
                       <div className="convocan-classic__meta">
-                        <span>
-                          {leadHostOrganization.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}
-                        </span>
-                        <span>{t.leadership.convocan.meta.cta}</span>
+                        <span className="convocan-classic__cta">{t.leadership.convocan.meta.cta}</span>
                       </div>
                     </div>
                   </button>
                 ) : null}
 
-                <div className="convocan-classic-list" role="list" aria-label={t.leadership.convocan.roles.partner}>
-                  {partnerOrganizations.map((org) => (
-                    <button
-                      key={org.id}
-                      type="button"
-                      className="convocan-classic convocan-classic--item"
-                      aria-haspopup="dialog"
-                      onClick={(event) => handleOpenOrg(org, event.currentTarget)}
-                      role="listitem"
-                    >
-                      <div className="convocan-classic__logo" aria-hidden="true">
-                        {org.previewImage ? <img src={org.previewImage} alt="" loading="lazy" /> : <span>{org.name.slice(0, 3).toUpperCase()}</span>}
+                {partnerOrganizations.map((org) => (
+                  <button
+                    key={org.id}
+                    type="button"
+                    className="convocan-classic convocan-classic--item"
+                    aria-haspopup="dialog"
+                    onClick={(event) => handleOpenOrg(org, event.currentTarget)}
+                    role="listitem"
+                  >
+                    <div className="convocan-classic__logo" aria-hidden="true">
+                      {org.previewImage ? <img src={org.previewImage} alt="" loading="lazy" /> : <span>{org.name.slice(0, 3).toUpperCase()}</span>}
+                    </div>
+                    <div className="convocan-classic__content">
+                      <span className="convocan-classic__role">{t.leadership.convocan.roles.partner}</span>
+                      <h4>{org.name}</h4>
+                      <span className="convocan-classic__tagline">{org.tagline}</span>
+                      <p>{org.description}</p>
+                      <div className="convocan-classic__meta">
+                        <span className="convocan-classic__cta">{t.leadership.convocan.meta.cta}</span>
                       </div>
-                      <div className="convocan-classic__content">
-                        <span className="convocan-classic__role">{t.leadership.convocan.roles.partner}</span>
-                        <h4>{org.name}</h4>
-                        <span className="convocan-classic__tagline">{org.tagline}</span>
-                        <p>{org.description}</p>
-                        <div className="convocan-classic__meta">
-                          <span>{org.url ? t.leadership.convocan.meta.site : t.leadership.convocan.meta.internal}</span>
-                          <span>{t.leadership.convocan.meta.cta}</span>
-                        </div>
-                      </div>
-                    </button>
-                  ))}
-                </div>
+                    </div>
+                  </button>
+                ))}
               </div>
 
               <div className="leadership-event-partners">

@@ -485,17 +485,19 @@ img {
 
 @media (max-width: 720px) {
   .convocan-classic {
-    flex-direction: column;
-    align-items: flex-start;
+    justify-items: start;
+  }
+
+  .convocan-classic__content,
+  .convocan-classic__header,
+  .convocan-classic__meta {
+    justify-items: start;
+    text-align: left;
   }
 
   .convocan-classic__logo {
-    width: 92px;
-    height: 92px;
-  }
-
-  .convocan-classic__meta {
-    width: 100%;
+    width: 108px;
+    height: 108px;
   }
 
   .leadership-partners-strip {
@@ -1685,7 +1687,8 @@ img {
 }
 
 .leadership-role-grid--classic {
-  gap: 16px;
+  gap: clamp(18px, 2.8vw, 28px);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 .gradient-card {
@@ -2898,44 +2901,41 @@ img {
 .convocan-classic {
   width: 100%;
   border: none;
-  border-radius: 30px;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 12px 30px rgba(44, 62, 104, 0.11);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
   text-align: left;
-  display: flex;
-  align-items: center;
-  gap: clamp(18px, 2.2vw, 30px);
-  padding: clamp(18px, 2.1vw, 28px);
+  display: grid;
+  justify-items: center;
+  gap: clamp(14px, 2vw, 20px);
+  padding: clamp(8px, 1vw, 12px);
   color: inherit;
   cursor: pointer;
-  transition: transform 220ms ease, box-shadow 220ms ease;
+  transition: transform 220ms ease, filter 220ms ease;
 }
 
 .convocan-classic:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 36px rgba(44, 62, 104, 0.16);
+  filter: saturate(1.05);
 }
 
 .convocan-classic--lead {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.98), rgba(240, 244, 255, 0.95));
-}
-
-.convocan-classic-list {
-  display: grid;
-  gap: 14px;
+  position: relative;
 }
 
 .convocan-classic__logo {
-  width: clamp(96px, 9vw, 126px);
-  height: clamp(96px, 9vw, 126px);
+  width: clamp(124px, 13vw, 178px);
+  height: clamp(124px, 13vw, 178px);
   border-radius: 999px;
-  background: #fff;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(236, 241, 255, 0.82));
   display: grid;
   place-items: center;
   overflow: hidden;
-  padding: clamp(12px, 1.3vw, 16px);
+  padding: clamp(16px, 1.9vw, 22px);
   flex-shrink: 0;
-  box-shadow: inset 0 0 0 1px rgba(90, 120, 200, 0.14);
+  box-shadow:
+    0 14px 30px rgba(70, 91, 140, 0.18),
+    inset 0 0 0 1px rgba(90, 120, 200, 0.14);
 }
 
 .convocan-classic__logo img {
@@ -2952,15 +2952,17 @@ img {
 }
 
 .convocan-classic__content {
-  min-width: 0;
+  width: min(100%, 42ch);
   display: grid;
   gap: 8px;
-  align-content: center;
+  justify-items: center;
+  text-align: center;
 }
 
 .convocan-classic__header {
   display: grid;
   gap: 4px;
+  justify-items: center;
 }
 
 .convocan-classic__role {
@@ -2983,11 +2985,43 @@ img {
 }
 
 .convocan-classic__meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+}
+
+.convocan-classic__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(123, 211, 255, 0.22), rgba(163, 190, 255, 0.22));
+  color: #2f3f68;
   font-size: var(--font-size-xs);
-  color: #5b667d;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
+}
+
+.convocan-classic__cta::after {
+  content: '→';
+  font-size: 0.95em;
+  transform: translateX(0);
+  transition: transform 220ms ease;
+}
+
+.convocan-classic:hover .convocan-classic__cta,
+.convocan-classic:focus-visible .convocan-classic__cta {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 18px rgba(64, 82, 120, 0.18);
+  background: linear-gradient(135deg, rgba(123, 211, 255, 0.32), rgba(163, 190, 255, 0.28));
+}
+
+.convocan-classic:hover .convocan-classic__cta::after,
+.convocan-classic:focus-visible .convocan-classic__cta::after {
+  transform: translateX(3px);
 }
 
 .convocan-classic:focus-visible {
@@ -2997,8 +3031,9 @@ img {
 
 .leadership-event-partners {
   display: grid;
-  gap: 10px;
-  margin-top: 8px;
+  gap: 12px;
+  margin-top: 12px;
+  margin-bottom: clamp(24px, 4vw, 44px);
 }
 
 .leadership-event-partners p {
@@ -3006,46 +3041,49 @@ img {
 }
 
 .leadership-partners-strip {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: clamp(30px, 5vw, 60px);
-  margin-top: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: center;
+  justify-items: center;
+  gap: clamp(18px, 3vw, 30px) clamp(22px, 4vw, 42px);
+  margin-top: 10px;
 }
 
 .leadership-partner-logo {
-  width: clamp(94px, 11vw, 132px);
-  aspect-ratio: 1;
-  border-radius: 999px;
+  width: min(100%, 220px);
+  min-height: clamp(56px, 7vw, 84px);
+  border-radius: 14px;
   border: none;
-  background: rgba(255, 255, 255, 0.92);
+  background: transparent;
   display: grid;
   place-items: center;
-  padding: clamp(14px, 1.8vw, 20px);
-  transition: transform 220ms ease, box-shadow 220ms ease, filter 220ms ease;
-  box-shadow: 0 8px 20px rgba(44, 62, 104, 0.1);
+  padding: 8px;
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .leadership-partner-logo img {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
   max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  border-radius: 999px;
-  filter: grayscale(1) saturate(0.7) contrast(1.05);
-  transition: filter 220ms ease;
+  max-height: clamp(48px, 6vw, 72px);
+  object-fit: contain;
+  border-radius: 0;
+  filter: grayscale(1) saturate(0.15) contrast(0.95);
+  opacity: 0.84;
+  transition: transform 220ms ease, filter 220ms ease, opacity 220ms ease;
 }
 
 .leadership-partner-logo:hover,
 .leadership-partner-logo:focus-visible {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 16px 28px rgba(44, 62, 104, 0.16);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(44, 62, 104, 0.12);
 }
 
 .leadership-partner-logo:hover img,
 .leadership-partner-logo:focus-visible img {
-  filter: none;
+  transform: scale(1.03);
+  filter: grayscale(0) saturate(1) contrast(1);
+  opacity: 1;
 }
 
 .voices {
