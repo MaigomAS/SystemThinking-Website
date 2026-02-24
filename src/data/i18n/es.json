@@ -56,7 +56,7 @@
   "ecall": {
     "eyebrow": "E-Call",
     "title": "Sesiones estratégicas en una ventana propia",
-    "description": "Un espacio diseñado para talleres y lluvia de ideas y decisiones críticas en tiempo real, con una capa visual 100% ANNiA.",
+    "description": "Un espacio diseñado para talleres, lluvia de ideas y decisiones críticas en tiempo real, con una capa visual 100% ANNiA.",
     "note": "Creamos tensión creativa y foco: la conversación al centro, el resto en silencio.",
     "actions": {
       "enter": "Entrar a la sala",
@@ -72,7 +72,7 @@
     },
     "card": {
       "title": "Sala de trabajo ANNiA",
-      "description": "Una ventana limpia para workshops de alto impacto, con guía, agenda y próximos pasos claros.",
+      "description": "Una ventana limpia para talleres de alto impacto, con guía, agenda y próximos pasos claros.",
       "badges": [
         "Privado y seguro",
         "Agenda compartida",
@@ -117,7 +117,7 @@
           "copy": "El entorno mantiene nuestra paleta, tipografía y tono para que el equipo se sienta en casa."
         },
         {
-          "title": "Storming de ideas",
+          "title": "Lluvia de ideas",
           "copy": "Dinámicas guiadas para desbloquear ideas, visualizar tensiones y priorizar acciones."
         },
         {
@@ -460,7 +460,8 @@
       "paragraphs": [
         "Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.",
         "Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y capacidad real de acción."
-      ]
+      ],
+      "eyebrow": "Perfil del participante"
     },
     "convocan": {
       "title": "Quiénes convocan",
@@ -518,10 +519,10 @@
     "title": "Preguntas frecuentes",
     "sidebar": {
       "label": "Biblioteca dinámica",
-      "title": "Explora cómo si fuera un chat estratégico",
+      "title": "Explora como si fuera un chat estratégico",
       "description": "Selecciona una pregunta y observa cómo el asistente sintetiza decisiones, contexto y próximos pasos.",
       "footerLabel": "Automatización estilo OpenAI",
-      "footerDescription": "Respuestas guiadas, contexto sintetizado y follow-ups sugeridos para acelerar decisiones."
+      "footerDescription": "Respuestas guiadas, contexto sintetizado y preguntas sugeridas para acelerar decisiones."
     },
     "chat": {
       "badge": "Asistente FAQ",
@@ -565,8 +566,8 @@
             "La experiencia combina teoría aplicada, herramientas avanzadas y construcción de redes de confianza."
           ],
           "bullets": [
-            "Workshops intensivos + laboratorios de decisión",
-            "Mentoría estratégica y feedback personalizado",
+            "Talleres intensivos + laboratorios de decisión",
+            "Mentoría estratégica y retroalimentación personalizada",
             "Experiencias en Bergen y espacios de conexión"
           ]
         },
