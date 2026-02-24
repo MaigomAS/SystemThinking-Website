@@ -3046,12 +3046,13 @@ img {
   align-items: center;
   justify-items: center;
   gap: clamp(18px, 3vw, 30px) clamp(22px, 4vw, 42px);
-  margin-top: 10px;
+  margin-top: clamp(20px, 3vw, 34px);
+  padding-block: clamp(8px, 1.8vw, 18px);
 }
 
 .leadership-partner-logo {
   width: min(100%, 220px);
-  min-height: clamp(56px, 7vw, 84px);
+  min-height: clamp(72px, 8.5vw, 112px);
   border-radius: 14px;
   border: none;
   background: transparent;
