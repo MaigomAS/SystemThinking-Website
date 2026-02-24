@@ -50,13 +50,13 @@
     },
     "aria": {
       "switchToEs": "Cambiar idioma a español",
-      "switchToEn": "Switch language to English"
+      "switchToEn": "Cambiar idioma a inglés"
     }
   },
   "ecall": {
     "eyebrow": "E-Call",
     "title": "Sesiones estratégicas en una ventana propia",
-    "description": "Un espacio diseñado para workshops, storming de ideas y decisiones críticas en tiempo real, con una capa visual 100% ANNiA.",
+    "description": "Un espacio diseñado para talleres, lluvia de ideas y decisiones críticas en tiempo real, con una capa visual 100% ANNiA.",
     "note": "Creamos tensión creativa y foco: la conversación al centro, el resto en silencio.",
     "actions": {
       "enter": "Entrar a la sala",
@@ -72,7 +72,7 @@
     },
     "card": {
       "title": "Sala de trabajo ANNiA",
-      "description": "Una ventana limpia para workshops de alto impacto, con guía, agenda y próximos pasos claros.",
+      "description": "Una ventana limpia para talleres de alto impacto, con guía, agenda y próximos pasos claros.",
       "badges": [
         "Privado y seguro",
         "Agenda compartida",
@@ -85,7 +85,7 @@
       "title": "E-Call, sin distracciones",
       "subtitle": "Experiencia integrada con identidad ANNiA y enfoque total en el equipo.",
       "cardTitle": "Ventana de sesión",
-      "cardCopy": "Audio, video y chat dentro de una capa visual propia para workshops y storming de ideas.",
+      "cardCopy": "Audio, video y chat dentro de una capa visual propia para talleres y lluvia de ideas.",
       "status": "Disponible ahora",
       "iframeTitle": "Sala de videollamada ANNiA",
       "loading": "Preparando la sala…",
@@ -117,7 +117,7 @@
           "copy": "El entorno mantiene nuestra paleta, tipografía y tono para que el equipo se sienta en casa."
         },
         {
-          "title": "Storming de ideas",
+          "title": "Lluvia de ideas",
           "copy": "Dinámicas guiadas para desbloquear ideas, visualizar tensiones y priorizar acciones."
         },
         {
@@ -135,7 +135,7 @@
       "split": "Hero C · Split con simulación dinámica"
     },
     "badges": [
-      "Presencial · Full-time",
+      "Presencial · Tiempo completo",
       "2-20 Noviembre 2026",
       "Bergen, Noruega",
       "Cupos limitados · Aplicación"
@@ -151,7 +151,7 @@
         },
         "chips": [
           "Presencial",
-          "Full-time",
+          "Tiempo completo",
           "Bergen, Noruega"
         ]
       },
@@ -174,7 +174,7 @@
         "title": "Encuentro fundacional\nde liderazgo sistémico",
         "subtitle": "Bergen, Noruega · Noviembre 2026",
         "lead": "Programa ejecutivo internacional e inmersivo (3 semanas) para líderes del sector público, privado, industria y sociedad civil que toman decisiones estratégicas en contextos de alta complejidad.",
-        "meta": "Bergen, Noruega · Noviembre 2026 · Presencial · Full-time",
+        "meta": "Bergen, Noruega · Noviembre 2026 · Presencial · Tiempo completo",
         "actions": {
           "primary": "Solicitar información →",
           "secondary": "Solicita el programa completo"
@@ -359,7 +359,7 @@
       },
       {
         "title": "Acciones eficientes",
-        "copy": "Identificar puntos clave de efectos de apalancamiento sistémicos y definir decisiones estratégicas para con resultados impacto estructurales.",
+        "copy": "Identificar puntos de apalancamiento sistémico y definir decisiones estratégicas con impacto estructural.",
         "tag": "DECISIÓN INFORMADA"
       },
       {
@@ -460,7 +460,8 @@
       "paragraphs": [
         "Directores, ejecutivos y tomadores de decisión del sector público, privado, industria y sociedad civil, con responsabilidad directa sobre políticas, estrategias organizacionales o iniciativas de alto impacto.",
         "Está diseñado para líderes con experiencia que buscan profundidad analítica, claridad estratégica y capacidad real de acción."
-      ]
+      ],
+      "eyebrow": "Perfil del participante"
     },
     "convocan": {
       "title": "Quiénes convocan",
@@ -521,7 +522,7 @@
       "title": "Explora como si fuera un chat estratégico",
       "description": "Selecciona una pregunta y observa cómo el asistente sintetiza decisiones, contexto y próximos pasos.",
       "footerLabel": "Automatización estilo OpenAI",
-      "footerDescription": "Respuestas guiadas, contexto sintetizado y follow-ups sugeridos para acelerar decisiones."
+      "footerDescription": "Respuestas guiadas, contexto sintetizado y preguntas sugeridas para acelerar decisiones."
     },
     "chat": {
       "badge": "Asistente FAQ",
@@ -565,8 +566,8 @@
             "La experiencia combina teoría aplicada, herramientas avanzadas y construcción de redes de confianza."
           ],
           "bullets": [
-            "Workshops intensivos + laboratorios de decisión",
-            "Mentoría estratégica y feedback personalizado",
+            "Talleres intensivos + laboratorios de decisión",
+            "Mentoría estratégica y retroalimentación personalizada",
             "Experiencias en Bergen y espacios de conexión"
           ]
         },
@@ -581,7 +582,7 @@
         "question": "¿Cómo es el proceso de aplicación?",
         "summary": "Conversación de encaje, revisión de perfil y confirmación.",
         "answer": {
-          "heading": "Selectivo y personalizado para asegurar fit.",
+          "heading": "Selectivo y personalizado para asegurar encaje.",
           "paragraphs": [
             "Iniciamos con una conversación breve para entender tu desafío, contexto y objetivos.",
             "Luego revisamos el perfil y confirmamos cupo con tiempo para preparar la experiencia."
@@ -606,7 +607,7 @@
           "heading": "El valor depende del perfil y tipo de participación.",
           "paragraphs": [
             "Priorizamos conversaciones directas para entender el impacto esperado y definir condiciones.",
-            "Puedes solicitar un overview con rangos y alternativas de apoyo institucional."
+            "Puedes solicitar un resumen ejecutivo con rangos y alternativas de apoyo institucional."
           ],
           "bullets": [
             "Costos compartidos de forma transparente",
@@ -645,7 +646,7 @@
         "Prensa u otro"
       ],
       "submit": "Enviar",
-      "note": "Al enviar, recibirás un correo de confirmación y te contactamos con el overview y próximos pasos.",
+      "note": "Al enviar, recibirás un correo de confirmación y te contactamos con el resumen ejecutivo y próximos pasos.",
       "messages": {
         "success": "Solicitud enviada. Te llegará un correo de confirmación con los próximos pasos.",
         "error": "No pudimos enviar tu solicitud. Inténtalo nuevamente o escribe directamente a info@annia.no."
@@ -727,7 +728,7 @@
       "description": "Equipo responsable de asegurar profundidad intelectual, selección de contenidos y experiencia de aprendizaje para líderes sistémicos.",
       "bullets": [
         "Diseño instruccional con enfoque sistémico.",
-        "Selección de faculty internacional y casos reales.",
+        "Selección de profesorado internacional y casos reales.",
         "Evaluación continua de calidad y relevancia."
       ],
       "why": "Garantiza coherencia, profundidad y excelencia académica."
@@ -753,7 +754,7 @@
           },
           "chips": [
             "Presencial",
-            "Full-time",
+            "Tiempo completo",
             "Bergen, Noruega"
           ]
         },

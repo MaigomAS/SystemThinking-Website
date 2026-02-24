@@ -586,7 +586,7 @@ function App() {
     program: (section) => (
       <Section key={section.id} id={section.id} title={t.program.title} tone="mid" className="reveal">
         <div className="participant-profile" aria-label={t.leadership.audience.title}>
-          <p className="participant-profile__eyebrow">Perfil del participante</p>
+          <p className="participant-profile__eyebrow">{t.leadership.audience.eyebrow}</p>
           <h3>{t.leadership.audience.title}</h3>
           <div className="participant-profile__content">
             {t.leadership.audience.paragraphs.map((paragraph) => (
