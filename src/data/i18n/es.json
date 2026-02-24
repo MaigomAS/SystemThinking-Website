@@ -291,7 +291,7 @@
       {
         "key": "gobernanza",
         "title": "Gobernanza",
-        "lead": "Orquesta acuerdos y evolución institucional para sostener cambios de largo plazo.",
+        "lead": "Orquesta la evolución institucional -mecanismos, inversión, acuerdos- para sostener cambios de largo plazo.",
         "whyTitle": "Por qué aplica",
         "why": [
           "Alinea alianzas, roles e implicaciones clave de una negociación sistémica",
@@ -321,10 +321,10 @@
         "longTerm": "Largo plazo"
       },
       "strategyCues": {
-        "initialComplexity": "Complejidad inicial",
-        "feedbackCycles": "Ciclos de retroalimentación",
-        "strategicVariables": "Variables estratégicas",
-        "synergisticRoutes": "Rutas sinérgicas"
+        "initialComplexity": "Acciones",
+        "feedbackCycles": "Condiciones sistémicas",
+        "strategicVariables": "Valor generado",
+        "synergisticRoutes": "Grandes resultados"
       }
     }
   },
@@ -359,7 +359,7 @@
       },
       {
         "title": "Acciones eficientes",
-        "copy": "Identificar puntos de apalancamiento sistémico y definir decisiones estratégicas con impacto estructural.",
+        "copy": "Identificar puntos clave de apalancamiento y definir decisiones estratégicas con resultados de efectos estructurales.",
         "tag": "DECISIÓN INFORMADA"
       },
       {
@@ -431,7 +431,7 @@
   "bergen": {
     "title": "Por qué Bergen, Noruega",
     "badge": "Contexto del método",
-    "copy": "La reflexión profunda y el aprendizaje sistémico requieren entornos que favorezcan el enfoque, el rigor y la perspectiva de largo plazo. Noruega ofrece un contexto singular donde naturaleza, tecnología y gobernanza conviven de manera avanzada. Bergen no es un escenario decorativo: es parte del método.",
+    "copy": "La reflexión profunda y el aprendizaje sistémico requieren entornos que favorezcan el enfoque, el rigor y la perspectiva de largo plazo. Noruega ofrece un contexto singular donde naturaleza, tecnología y gobernanza conviven de manera avanzada. Bergen más allá de un maravilloso paisaje escénico: es parte del método.",
     "imageAlt": "Vista editorial de Bergen, Noruega",
     "actions": {
       "video": "Ver video",
@@ -445,7 +445,7 @@
     "experiences": {
       "eyebrow": "Extiende la inmersión",
       "title": "Experiencias opcionales en Bergen y fiordos",
-      "description": "No son el programa. Son el espacio donde las conversaciones continúan.",
+      "description": "El espacio donde las conversaciones continúan. Estas experiencias no son parte estricta del programa, sin embargo son altamente recomendadas.",
       "detailLink": "Ver detalle",
       "aria": {
         "prev": "Ver experiencias anteriores",

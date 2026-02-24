@@ -8,9 +8,9 @@ import andresPortrait from '../assets/leadership/voice-3.jpg';
 
 const COPY = {
   es: {
-    eyebrow: 'Experiencias que transforman',
-    title: 'Líderes que aplican pensamiento sistémico en el mundo real',
-    subtitle: 'Haz clic en un perfil para ver el mini-caso (no es recomendación del programa).',
+    eyebrow: 'Experiencias transformadoras',
+    title: 'Líderes sistémicos en el mundo real',
+    subtitle: 'Haz clic en un perfil para conocer más.',
     disclaimer: '',
     cta: 'Saber más',
     modalDisclaimer: '',
@@ -28,9 +28,9 @@ const COPY = {
     linkedInLabel: 'Ver perfil de LinkedIn',
   },
   en: {
-    eyebrow: 'Experiences that transform',
-    title: 'Voices applying systemic thinking in the real world',
-    subtitle: 'Click a profile to see the mini-case (not a program endorsement).',
+    eyebrow: 'Transformation experiences',
+    title: 'Systems leaders in the real world',
+    subtitle: 'Click a profile to know more.',
     disclaimer: '',
     cta: 'Learn more',
     modalDisclaimer: 'Independent perspective on systemic thinking. Not a program endorsement.',

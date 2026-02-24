@@ -171,7 +171,7 @@
       },
       "editorial": {
         "badge": "Systemic Strategy & Leadership for Complex Issues",
-        "title": "Foundational gathering\nof systemic leadership",
+        "title": "Systemic leadership foundational gathering",
         "subtitle": "Bergen, Norway · November 2026",
         "lead": "An international executive immersion (3 weeks) for public, private, industry, and civil society leaders who make strategic decisions in highly complex contexts.",
         "meta": "Bergen, Norway · November 2026 · In-person · Full-time",
@@ -195,7 +195,7 @@
   },
   "method": {
     "title": "Work on systems and activate their potential",
-    "description": "A clear, applied way to understand systems thinking and act strategically."
+    "description": "A clear, applied way to understand systems and act strategically."
   },
   "interactive": {
     "eyebrow": "Invest better, not just more",
@@ -235,8 +235,8 @@
       },
       "evolucionar": {
         "label": "Evolving capabilities",
-        "title": "Evolve organization and leadership together",
-        "description": "It is not only about designing strategy, but about navigating it with others and converting it into lasting capabilities.",
+        "title": "Evolve organization and leadership, simultaneously",
+        "description": "It is not only about designing a strategy, but about navigating it with others, and converting it into lasting capabilities.",
         "bullets": [
           "Navigate strategically with others",
           "Evolve our organizations and capabilities",
@@ -262,8 +262,8 @@
     "levers": [
       {
         "key": "thinking",
-        "title": "Systemic thinking",
-        "lead": "It helps distinguish structural causes from visible symptoms.",
+        "title": "Systems thinking",
+        "lead": "IDENTIFY STRUCTURAL CAUSES FROM VISIBLE SYMPTOMS",
         "whyTitle": "Why it applies",
         "why": [
           "Organizes complexity into actionable maps",
@@ -277,7 +277,7 @@
       {
         "key": "strategy",
         "title": "Systemic strategy",
-        "lead": "It grounds purpose, alliances, and measurable pathways to transform what we do and what we achieve.",
+        "lead": "A strategy is grounded on a purpose, alliances, and measurable pathways that transform what we do and what we achieve.",
         "whyTitle": "Why it applies",
         "why": [
           "Translates shared purpose into measurable outcomes and progress criteria",
@@ -291,7 +291,7 @@
       {
         "key": "governance",
         "title": "Governance",
-        "lead": "It orchestrates agreements and institutional evolution to sustain long-term change.",
+        "lead": "Orchestrates institutional evolution -mechanisms, investment, agreements- to sustain long-term change.",
         "whyTitle": "Why it applies",
         "why": [
           "Aligns alliances, roles, and key implications of systemic negotiation",
@@ -321,10 +321,10 @@
         "longTerm": "Long term"
       },
       "strategyCues": {
-        "initialComplexity": "Initial complexity",
-        "feedbackCycles": "Feedback cycles",
-        "strategicVariables": "Strategic variables",
-        "synergisticRoutes": "Synergistic routes"
+        "initialComplexity": "Actions",
+        "feedbackCycles": "Systemic conditions",
+        "strategicVariables": "Generated value",
+        "synergisticRoutes": "Major outcomes"
       }
     }
   },
@@ -332,8 +332,8 @@
     "title": "What happens in this gathering",
     "cards": [
       {
-        "title": "Applied systemic understanding",
-        "copy": "Learning and systemic understanding based on real cases, beyond conceptual or motivational frameworks."
+        "title": "Applied systems understanding",
+        "copy": "Learning and understanding based on real cases, beyond conceptual or motivational frameworks."
       },
       {
         "title": "Strategy in living systems",
@@ -359,7 +359,7 @@
       },
       {
         "title": "Leverage with impact",
-        "copy": "Identify systemic leverage points and define strategic decisions with structural impact.",
+        "copy": "Identify leverage points and define strategic decisions with structural effects.",
         "tag": "Informed decision"
       },
       {
@@ -431,7 +431,7 @@
   "bergen": {
     "title": "Why Bergen, Norway",
     "badge": "Method context",
-    "copy": "Deep reflection and systemic learning require environments that favor focus, rigor, and long-term perspective. Norway offers a unique context where nature, technology, and governance coexist at an advanced level. Bergen is not a decorative stage: it is part of the method.",
+    "copy": "Deep reflection and systemic learning require environments that favor focus, rigor, and long-term perspective. Norway offers a unique context where nature, technology, and governance coexist at an advanced level. Bergen beyond a scenic stage: it is part of the method.",
     "imageAlt": "Editorial view of Bergen, Norway",
     "actions": {
       "video": "Watch video",
@@ -445,7 +445,7 @@
     "experiences": {
       "eyebrow": "Extend the immersion",
       "title": "Optional experiences in Bergen and the fjords",
-      "description": "They are not the program. They are the space where the conversations continue.",
+      "description": "Space where the conversations continue. Not strictly part of the program, but highly recommended.",
       "detailLink": "View details",
       "aria": {
         "prev": "View previous experiences",
