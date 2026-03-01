@@ -3874,10 +3874,21 @@ img {
 }
 
 .org-modal__content {
-  padding: 36px;
-  display: grid;
+  padding: 28px 28px 24px;
+  display: flex;
+  flex-direction: column;
   gap: 18px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.org-modal__content-scroll {
+  display: grid;
+  gap: 16px;
   overflow-y: auto;
+  padding-right: 8px;
+  min-height: 0;
+  flex: 1;
 }
 
 .org-modal__eyebrow {
@@ -3896,6 +3907,20 @@ img {
   color: var(--color-text-secondary);
 }
 
+.org-modal__description-group {
+  display: grid;
+  gap: 12px;
+}
+
+.org-modal__distinction {
+  display: grid;
+  gap: 10px;
+}
+
+.org-modal__distinction > span {
+  font-weight: 600;
+}
+
 .org-modal__bullets {
   display: grid;
   gap: 8px;
@@ -3912,14 +3937,63 @@ img {
   gap: 8px;
 }
 
-.org-modal__why span {
+.org-modal__why span,
+.org-modal__founder > span {
   font-weight: 600;
+}
+
+.org-modal__founder {
+  padding: 18px;
+  border-radius: var(--radius-md);
+  background: rgba(248, 249, 255, 0.05);
+  border: 1px solid rgba(138, 155, 204, 0.28);
+  display: grid;
+  gap: 10px;
+}
+
+.org-modal__signature {
+  margin-top: 4px;
+  display: grid;
+  gap: 4px;
+}
+
+.org-modal__signature a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  min-height: 44px;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  opacity: 0.92;
+  transition: opacity 180ms ease, text-decoration-color 180ms ease;
+}
+
+.org-modal__signature a:hover,
+.org-modal__signature a:focus-visible {
+  opacity: 1;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.org-modal__signature svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.org-modal__signature p {
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
 }
 
 .org-modal__actions {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(138, 155, 204, 0.22);
+  background: linear-gradient(180deg, rgba(14, 19, 33, 0), rgba(14, 19, 33, 0.85) 20%);
 }
 
 @keyframes org-modal-fade {
@@ -3951,6 +4025,14 @@ img {
 
   .org-modal__preview {
     min-height: 240px;
+  }
+
+  .org-modal__content {
+    padding: 22px 18px 18px;
+  }
+
+  .org-modal__actions .ui-button {
+    flex: 1 1 0;
   }
 }
 

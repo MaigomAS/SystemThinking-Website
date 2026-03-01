@@ -678,7 +678,10 @@
     "previewLabel": "Preview",
     "videoLabel": "Reproducir video",
     "eyebrow": "Quiénes convocan",
+    "distinctionLabel": "Qué distingue a {{name}}",
     "whyLabel": "Por qué convoca",
+    "founderMessageLabel": "Mensaje institucional de apertura",
+    "founderLinkedin": "LinkedIn de {{name}}",
     "visitSite": "Visitar sitio →",
     "closeButton": "Cerrar"
   },
@@ -686,14 +689,33 @@
     {
       "id": "annia",
       "name": "ANNiA",
-      "tagline": "Innovación nórdica y hospitalidad sistémica.",
-      "description": "Una organización que opera como anfitriona y catalizadora de proyectos con alto impacto, combinando rigor estratégico y una sensibilidad humana muy marcada.",
-      "bullets": [
-        "Ecosistema de partners internacionales con experiencia real en transformación.",
-        "Mentoría y acompañamiento ejecutivo durante todo el proceso.",
-        "Enfoque en sostenibilidad y bienestar como indicadores clave."
+      "tagline": "Plataforma estratégica nórdica para liderazgo sistémico y cooperación multisectorial.",
+      "description": [
+        "ANNIA opera como anfitriona y catalizadora institucional de encuentros y procesos estratégicos de alto nivel, diseñados para articular actores públicos, industriales y financieros en contextos de alta complejidad.",
+        "Más que aportar soluciones aisladas, ANNIA crea las condiciones de contexto, rigor y confianza donde iniciativas con visión —que a menudo carecen de capital, innovación o articulación— pueden conectarse con los ecosistemas adecuados y evolucionar de manera sostenible."
       ],
-      "why": "Eleva el estándar de diseño y ejecución de experiencias premium en entornos complejos."
+      "bullets": [
+        "Hub de articulación internacional entre liderazgo público, industria y capital estratégico.",
+        "Diseño curado de espacios y experiencias que favorecen alineación, toma de decisiones y cooperación de largo plazo.",
+        "Ecosistema de partners y expertos internacionales con experiencia real en transformación sistémica.",
+        "Acompañamiento estratégico y mentoría ejecutiva, orientados a procesos, no a recetas.",
+        "Sostenibilidad y bienestar integrados como criterios estructurales de diseño y gobernanza."
+      ],
+      "why": [
+        "ANNIA eleva el estándar institucional desde el cual se diseñan y activan iniciativas complejas, no solo a través de contenidos, sino mediante contexto, red y narrativa estratégica.",
+        "Convoca porque habilita condiciones donde las colaboraciones correctas emergen, se estructuran y se sostienen en el tiempo."
+      ],
+      "founderMessage": {
+        "title": "Mensaje institucional de apertura",
+        "paragraphs": [
+          "Este encuentro nace de la convicción de que los desafíos complejos que enfrentan hoy municipios, industria y capital no se resuelven desde una sola disciplina ni desde un solo sector.",
+          "ANNIA se concibe como un espacio anfitrión institucional: un lugar donde se cuidan el contexto, el rigor y la calidad de las conversaciones necesarias para que actores diversos puedan encontrarse, alinearse y explorar caminos de acción con visión de largo plazo.",
+          "Más que proponer respuestas, este espacio busca crear las condiciones para que las preguntas correctas emerjan y las colaboraciones adecuadas puedan tomar forma de manera responsable y sostenible."
+        ],
+        "founderName": "Francisco Mainou",
+        "founderRole": "Fundador de ANNIA",
+        "linkedinUrl": "https://www.linkedin.com/in/franciscomainou/"
+      }
     },
     {
       "id": "vida",
