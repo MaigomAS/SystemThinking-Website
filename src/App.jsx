@@ -1293,7 +1293,7 @@ function App() {
             </a>
             <a
               className="footer__icon-link"
-              href="https://www.youtube.com"
+              href="https://www.youtube.com/@ANNiA-Hub"
               target="_blank"
               rel="noreferrer"
               aria-label={t.footer.aria.youtube}
