@@ -678,7 +678,10 @@
     "previewLabel": "Preview",
     "videoLabel": "Reproducir video",
     "eyebrow": "Quiénes convocan",
+    "distinctionLabel": "Qué distingue a {{name}}",
     "whyLabel": "Por qué convoca",
+    "founderMessageLabel": "Mensaje institucional de apertura",
+    "founderLinkedin": "LinkedIn de {{name}}",
     "visitSite": "Visitar sitio →",
     "closeButton": "Cerrar"
   },
@@ -686,14 +689,14 @@
     {
       "id": "annia",
       "name": "ANNiA",
-      "tagline": "Innovación nórdica y hospitalidad sistémica.",
-      "description": "Una organización que opera como anfitriona y catalizadora de proyectos con alto impacto, combinando rigor estratégico y una sensibilidad humana muy marcada.",
+      "tagline": "Liderazgo estratégico y articulación multisectorial.",
+      "description": "ANNIA opera como anfitriona y catalizadora institucional, creando las condiciones para conectar actores y activar iniciativas de alto impacto con rigor estratégico y visión de largo plazo.",
       "bullets": [
-        "Ecosistema de partners internacionales con experiencia real en transformación.",
-        "Mentoría y acompañamiento ejecutivo durante todo el proceso.",
-        "Enfoque en sostenibilidad y bienestar como indicadores clave."
+        "Ecosistema de partners internacionales con experiencia real en transformación sistémica.",
+        "Acompañamiento estratégico y mentoría ejecutiva a lo largo del proceso.",
+        "Sostenibilidad y bienestar integrados como criterios clave de diseño y gobernanza."
       ],
-      "why": "Eleva el estándar de diseño y ejecución de experiencias premium en entornos complejos."
+      "why": "Eleva el estándar institucional desde el cual se diseñan y activan colaboraciones en entornos complejos."
     },
     {
       "id": "vida",

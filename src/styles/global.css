@@ -3952,6 +3952,7 @@ img {
   .org-modal__preview {
     min-height: 240px;
   }
+
 }
 
 @media (prefers-reduced-motion: reduce) {

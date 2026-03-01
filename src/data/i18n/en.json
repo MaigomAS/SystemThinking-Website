@@ -678,7 +678,10 @@
     "previewLabel": "Preview",
     "videoLabel": "Play video",
     "eyebrow": "Convening organizations",
+    "distinctionLabel": "What distinguishes {{name}}",
     "whyLabel": "Why they convene",
+    "founderMessageLabel": "Institutional opening message",
+    "founderLinkedin": "LinkedIn profile for {{name}}",
     "visitSite": "Visit site →",
     "closeButton": "Close"
   },
