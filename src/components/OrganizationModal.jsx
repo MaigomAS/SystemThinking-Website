@@ -190,17 +190,12 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
 function AnniaFounderVisual({ org }) {
   return (
     <div className="org-modal__annia-visual">
-      <div className="org-modal__annia-network" aria-hidden="true">
-        <span className="org-modal__annia-grid" />
-        <span className="org-modal__annia-node org-modal__annia-node--one" />
-        <span className="org-modal__annia-node org-modal__annia-node--two" />
-        <span className="org-modal__annia-node org-modal__annia-node--three" />
-        <span className="org-modal__annia-node org-modal__annia-node--four" />
-        <span className="org-modal__annia-beam" />
-        <span className="org-modal__annia-wing org-modal__annia-wing--top-left" />
-        <span className="org-modal__annia-wing org-modal__annia-wing--top-right" />
-        <span className="org-modal__annia-wing org-modal__annia-wing--bottom-left" />
-        <span className="org-modal__annia-wing org-modal__annia-wing--bottom-right" />
+      <div className="org-modal__annia-logo-shell" aria-hidden="true">
+        {org.previewImage ? (
+          <img src={org.previewImage} alt="" loading="lazy" decoding="async" width="600" height="600" />
+        ) : (
+          <span className="org-modal__annia-logo-fallback">ANNIA</span>
+        )}
       </div>
 
       <div className="org-modal__founder-card">
