@@ -1293,6 +1293,21 @@ function App() {
             </a>
             <a
               className="footer__icon-link"
+              href="https://www.linkedin.com/company/annia-no/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label={t.footer.aria.linkedin}
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path
+                  d="M6.3 8.2a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6ZM4.8 9.8h3V19h-3V9.8Zm4.8 0h2.9v1.3h.1c.4-.7 1.4-1.5 2.8-1.5 3 0 3.6 2 3.6 4.5V19h-3v-4.3c0-1 0-2.4-1.5-2.4s-1.7 1.1-1.7 2.3V19h-3V9.8Z"
+                  fill="currentColor"
+                />
+              </svg>
+              <span className="sr-only">LinkedIn</span>
+            </a>
+            <a
+              className="footer__icon-link"
               href="https://www.youtube.com/@ANNiA-Hub"
               target="_blank"
               rel="noreferrer"
