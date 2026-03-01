@@ -3779,6 +3779,89 @@ img {
   padding: 24px;
 }
 
+
+.org-modal__annia-visual {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 20px;
+}
+
+.org-modal__annia-logo-shell {
+  width: min(280px, 74%);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 14px;
+  background: radial-gradient(circle at 35% 25%, rgba(140, 210, 255, 0.35), rgba(18, 29, 55, 0.95));
+  border: 1px solid rgba(138, 155, 204, 0.34);
+  box-shadow: 0 24px 48px rgba(4, 10, 22, 0.4);
+  display: grid;
+  place-items: center;
+}
+
+.org-modal__annia-logo-shell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.org-modal__annia-logo-fallback {
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #eaf4ff;
+}
+
+.org-modal__founder-card {
+  width: 100%;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(138, 155, 204, 0.3);
+  background: rgba(8, 13, 25, 0.72);
+  display: grid;
+  gap: 10px;
+}
+
+.org-modal__founder-eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  font-size: 0.72rem;
+  color: rgba(206, 225, 255, 0.75);
+}
+
+.org-modal__founder-message,
+.org-modal__founder-role {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.45;
+}
+
+.org-modal__founder-name {
+  margin: 0;
+  font-weight: 700;
+  color: #f7fbff;
+}
+
+.org-modal__founder-link {
+  color: #93d9ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.org-modal__founder-link:hover,
+.org-modal__founder-link:focus-visible {
+  text-decoration: underline;
+}
+
+.org-modal__section-title {
+  margin: 2px 0 0;
+  font-size: var(--font-size-md);
+}
+
 .org-modal__video {
   width: 100%;
   display: grid;
@@ -3874,9 +3957,9 @@ img {
 }
 
 .org-modal__content {
-  padding: 36px;
+  padding: 30px;
   display: grid;
-  gap: 18px;
+  gap: 14px;
   overflow-y: auto;
 }
 
@@ -3894,6 +3977,7 @@ img {
 
 .org-modal__description {
   color: var(--color-text-secondary);
+  line-height: 1.5;
 }
 
 .org-modal__bullets {
