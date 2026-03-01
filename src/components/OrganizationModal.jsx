@@ -76,6 +76,7 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
 
   const hasPreview = Boolean(org.previewImage) && !imageError;
   const videoOptions = Array.isArray(org.videos) ? org.videos : [];
+  const isAnnia = org.id === 'annia';
   const hasVideos = videoOptions.length > 0;
   const selectedVideo = videoOptions[selectedVideoIndex] ?? videoOptions[0];
   const videoId = selectedVideo?.url ? getYouTubeId(selectedVideo.url) : null;
@@ -127,6 +128,8 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
                 />
               </div>
             </div>
+          ) : isAnnia ? (
+            <AnniaFounderVisual org={org} />
           ) : hasPreview ? (
             <img
               src={org.previewImage}
@@ -156,6 +159,8 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
           <h3 id={`org-modal-title-${org.id}`}>{org.name}</h3>
           <p className="org-modal__tagline">{org.tagline}</p>
           <p className="org-modal__description">{org.description}</p>
+          {org.descriptionSecondary ? <p className="org-modal__description">{org.descriptionSecondary}</p> : null}
+          {org.distinctionTitle ? <h4 className="org-modal__section-title">{org.distinctionTitle}</h4> : null}
           <ul className="org-modal__bullets">
             {org.bullets.map((bullet) => (
               <li key={bullet}>{bullet}</li>
@@ -181,9 +186,42 @@ function OrganizationModal({ open, onClose, org, returnFocusRef }) {
   );
 }
 
+
+function AnniaFounderVisual({ org }) {
+  return (
+    <div className="org-modal__annia-visual">
+      <div className="org-modal__annia-network" aria-hidden="true">
+        <span className="org-modal__annia-grid" />
+        <span className="org-modal__annia-node org-modal__annia-node--one" />
+        <span className="org-modal__annia-node org-modal__annia-node--two" />
+        <span className="org-modal__annia-node org-modal__annia-node--three" />
+        <span className="org-modal__annia-node org-modal__annia-node--four" />
+        <span className="org-modal__annia-beam" />
+        <span className="org-modal__annia-wing org-modal__annia-wing--top-left" />
+        <span className="org-modal__annia-wing org-modal__annia-wing--top-right" />
+        <span className="org-modal__annia-wing org-modal__annia-wing--bottom-left" />
+        <span className="org-modal__annia-wing org-modal__annia-wing--bottom-right" />
+      </div>
+
+      <div className="org-modal__founder-card">
+        {org.founderWelcomeTitle ? <p className="org-modal__founder-eyebrow">{org.founderWelcomeTitle}</p> : null}
+        {org.founderMessage ? <p className="org-modal__founder-message">{org.founderMessage}</p> : null}
+        <p className="org-modal__founder-name">{org.founderName ?? 'Francisco Mainou'}</p>
+        {org.founderRole ? <p className="org-modal__founder-role">{org.founderRole}</p> : null}
+        {org.founderLinkedIn ? (
+          <a href={org.founderLinkedIn} target="_blank" rel="noreferrer" className="org-modal__founder-link">
+            {org.founderLinkedInLabel ?? 'LinkedIn'}
+          </a>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
 export default OrganizationModal;
 
 function getYouTubeId(url) {
+
   try {
     const parsed = new URL(url);
     if (parsed.hostname === 'youtu.be') {

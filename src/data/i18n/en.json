@@ -685,15 +685,25 @@
   "organizations": [
     {
       "id": "annia",
-      "name": "ANNiA",
-      "tagline": "Nordic innovation and systemic hospitality.",
-      "description": "An organization that hosts and catalyzes high-impact projects, combining strategic rigor with a very human sensitivity.",
+      "name": "ANNIA",
+      "tagline": "Nordic strategic platform for systemic leadership and cross-sector cooperation.",
+      "description": "ANNIA operates as an institutional host and catalyst for high-level strategic gatherings and processes, designed to align public, industrial, and financial stakeholders in highly complex contexts.",
+      "descriptionSecondary": "Rather than offering isolated solutions, ANNIA creates the context, rigor, and trust where visionary initiatives—often lacking capital, innovation, or coordination—can connect with the right ecosystems and evolve sustainably.",
+      "distinctionTitle": "What distinguishes ANNIA",
       "bullets": [
-        "International partner ecosystem with real transformation experience.",
-        "Executive mentoring and accompaniment throughout the process.",
-        "Focus on sustainability and wellbeing as key indicators."
+        "An international articulation hub connecting public leadership, industry, and strategic capital.",
+        "Curated space and experience design that enables alignment, decision-making, and long-term cooperation.",
+        "An ecosystem of international partners and experts with real systemic transformation experience.",
+        "Strategic support and executive mentoring focused on processes, not one-size-fits-all formulas.",
+        "Sustainability and wellbeing embedded as structural design and governance criteria."
       ],
-      "why": "Raises the standard for designing and executing premium experiences in complex environments."
+      "why": "ANNIA elevates the institutional standard from which complex initiatives are designed and activated—not only through content, but through context, network, and strategic narrative. It convenes because it enables the conditions where the right collaborations emerge, are structured, and endure over time.",
+      "founderWelcomeTitle": "Founder welcome",
+      "founderMessage": "As ANNIA's founder, Francisco Mainou advances a strategic hospitality approach that strengthens institutional collaboration and amplifies executive support for Vida al Centro.",
+      "founderName": "Francisco Mainou",
+      "founderRole": "Founder of ANNIA",
+      "founderLinkedIn": "https://www.linkedin.com/in/jose-francisco-mainou-gomez-37477262/",
+      "founderLinkedInLabel": "View LinkedIn profile"
     },
     {
       "id": "vida",
