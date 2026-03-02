@@ -53,6 +53,8 @@ const buildHtmlDetails = (payload) => `
   <p><strong>Interés:</strong> ${payload.interes}</p>
 `;
 
+const parseBoolean = (value) => String(value).toLowerCase() === 'true';
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).json({ error: 'Método no permitido.' });
@@ -76,28 +78,33 @@ export default async function handler(req, res) {
     return;
   }
 
+  const smtpPort = Number(SMTP_PORT);
+  const smtpSecure =
+    process.env.SMTP_SECURE !== undefined ? parseBoolean(process.env.SMTP_SECURE) : smtpPort === 465;
+
   const transporter = nodemailer.createTransport({
     host: SMTP_HOST,
-    port: Number(SMTP_PORT),
-    secure: process.env.SMTP_SECURE === 'true',
+    port: smtpPort,
+    secure: smtpSecure,
     auth: {
       user: SMTP_USER,
       pass: SMTP_PASS,
     },
-    requireTLS: process.env.SMTP_REQUIRE_TLS === 'true',
+    requireTLS: parseBoolean(process.env.SMTP_REQUIRE_TLS),
   });
 
   try {
-    await Promise.all([
-      transporter.sendMail({
-        from: `ANNiA <${mailFrom}>`,
-        to: mailTo,
-        replyTo: payload.email,
-        subject: `Nueva solicitud rápida: ${payload.nombre}`,
-        text: `Nombre: ${payload.nombre}\nCorreo: ${payload.email}\nRol/Organización: ${payload.rol_organizacion}\nInterés: ${payload.interes}`,
-        html: buildHtmlDetails(payload),
-      }),
-      transporter.sendMail({
+    await transporter.sendMail({
+      from: `ANNiA <${mailFrom}>`,
+      to: mailTo,
+      replyTo: payload.email,
+      subject: `Nueva solicitud rápida: ${payload.nombre}`,
+      text: `Nombre: ${payload.nombre}\nCorreo: ${payload.email}\nRol/Organización: ${payload.rol_organizacion}\nInterés: ${payload.interes}`,
+      html: buildHtmlDetails(payload),
+    });
+
+    try {
+      await transporter.sendMail({
         from: `ANNiA <${mailFrom}>`,
         to: payload.email,
         subject: 'Recibimos tu solicitud en ANNiA',
@@ -105,8 +112,10 @@ export default async function handler(req, res) {
           '¡Gracias por tu interés! Recibimos tu solicitud y el equipo de ANNiA te contactará pronto con el overview y próximos pasos.',
         html:
           '<p>¡Gracias por tu interés!</p><p>Recibimos tu solicitud y el equipo de ANNiA te contactará pronto con el overview y próximos pasos.</p>',
-      }),
-    ]);
+      });
+    } catch (confirmationError) {
+      console.error('Quick request confirmation email error:', confirmationError);
+    }
 
     res.status(200).json({ ok: true });
   } catch (error) {
