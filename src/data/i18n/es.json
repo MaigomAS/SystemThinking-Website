@@ -628,7 +628,8 @@
     "description": "Si estás evaluando tu participación o la de tu institución, podemos conversar directamente para explorar encaje y próximos pasos.",
     "buttons": {
       "whatsapp": "WhatsApp",
-      "calendly": "Agendar conversación"
+      "calendly": "Agendar conversación",
+      "email": "Escríbenos"
     },
     "note": "*Disponible arriba: asistente inteligente para responder preguntas frecuentes sobre el programa.*",
     "form": {
@@ -656,7 +657,8 @@
       "whatsapp": "Contactar por WhatsApp",
       "calendly": "Agendar una conversación",
       "form": "Formulario de solicitud rápida",
-      "submit": "Enviar solicitud"
+      "submit": "Enviar solicitud",
+      "email": "Contactar por correo"
     },
     "whatsappMessage": "Hola, me gustaría conversar sobre el programa y próximos pasos."
   },

@@ -628,7 +628,8 @@
     "description": "If you're evaluating your participation or that of your institution, we can speak directly to explore fit and next steps.",
     "buttons": {
       "whatsapp": "WhatsApp",
-      "calendly": "Schedule a conversation"
+      "calendly": "Schedule a conversation",
+      "email": "Email us"
     },
     "note": "*Also available above: an intelligent assistant to answer program FAQs.*",
     "form": {
@@ -655,6 +656,7 @@
     "aria": {
       "whatsapp": "Contact via WhatsApp",
       "calendly": "Schedule a conversation",
+      "email": "Contact by email",
       "form": "Quick request form",
       "submit": "Send request"
     },
