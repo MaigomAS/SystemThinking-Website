@@ -3924,6 +3924,7 @@ img {
   display: grid;
   gap: 18px;
   overflow-y: auto;
+  align-content: start;
 }
 
 .org-modal__eyebrow {
@@ -3966,6 +3967,12 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  position: sticky;
+  bottom: 0;
+  padding-top: 14px;
+  padding-bottom: 4px;
+  background: linear-gradient(to top, rgba(14, 19, 33, 0.98) 70%, rgba(14, 19, 33, 0));
+  margin-top: 8px;
 }
 
 @keyframes org-modal-fade {
