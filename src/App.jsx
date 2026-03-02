@@ -257,7 +257,7 @@ function App() {
 
       if (!response.ok) {
         const errorPayload = await response.json().catch(() => ({}));
-        throw new Error(errorPayload?.error || 'Request failed.');
+        throw new Error(errorPayload?.error || t.contact.form.messages.error);
       }
 
       setQuickRequestStatus('success');
@@ -265,7 +265,7 @@ function App() {
       form.reset();
     } catch (error) {
       setQuickRequestStatus('error');
-      setQuickRequestMessage(t.contact.form.messages.error);
+      setQuickRequestMessage(error.message || t.contact.form.messages.error);
     }
   };
 
@@ -365,6 +365,7 @@ function App() {
       onSubmit={handleQuickRequestSubmit}
     >
       <h4>{t.contact.form.title}</h4>
+      <input type="hidden" name="language" value={language} />
 
       <input type="text" name="nombre" placeholder={t.contact.form.fields.name} aria-label={t.contact.form.fields.name} required />
       <input
@@ -968,6 +969,9 @@ function App() {
                 aria-label={t.contact.aria.calendly}
               >
                 {t.contact.buttons.calendly}
+              </Button>
+              <Button as="a" href="mailto:info@annia.no" variant="outline" aria-label={t.contact.aria.email}>
+                {t.contact.buttons.email}
               </Button>
             </div>
             <p className="interactive__note">{t.contact.note}</p>
