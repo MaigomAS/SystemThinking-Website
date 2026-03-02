@@ -123,10 +123,10 @@ function App() {
     () => leadershipOrganizations.filter((org) => org.id !== leadHostOrganization?.id),
     [leadershipOrganizations, leadHostOrganization],
   );
+  const configuredEventPartners = t.leadership.partners?.items ?? [];
   const eventPartners = useMemo(() => {
-    const configuredPartners = t.leadership.partners?.items ?? [];
     const defaultPartners = t.leadership.partners?.fallbackItems ?? [];
-    const basePartners = configuredPartners.length ? configuredPartners : defaultPartners;
+    const basePartners = configuredEventPartners.length ? configuredEventPartners : defaultPartners;
 
     return PARTNER_LOGOS.map((logo, index) => {
       const config = basePartners[index] ?? {};
@@ -137,7 +137,20 @@ function App() {
         logo,
       };
     });
-  }, [t.leadership.partners]);
+  }, [configuredEventPartners, t.leadership.partners?.fallbackItems]);
+  const hasConfiguredPartners = configuredEventPartners.length > 0;
+  const partnerInvite = t.leadership.partners.invite ?? {};
+  const inviteDeadline = partnerInvite.activeUntil ? new Date(partnerInvite.activeUntil) : null;
+  const inviteDeadlineMs = Number.isNaN(inviteDeadline?.getTime()) ? null : inviteDeadline?.getTime();
+  const nowFromTest = import.meta.env.VITE_NOW_FOR_TEST || (typeof window !== 'undefined' ? window.__NOW_FOR_TEST__ : null);
+  const nowMs = nowFromTest ? new Date(nowFromTest).getTime() : Date.now();
+  const isInviteWindowOpen = inviteDeadlineMs ? nowMs <= inviteDeadlineMs : Boolean(partnerInvite.enabled);
+  const showPartnerInvite =
+    Boolean(partnerInvite.enabled) &&
+    isInviteWindowOpen &&
+    (!partnerInvite.autoHideWhenPartners || !hasConfiguredPartners);
+  const showPartnerLogos = !showPartnerInvite || Boolean(partnerInvite.showLogosWhileInvite);
+  const partnerInviteHref = partnerInvite.ctaHref ?? partnerInvite.ctaUrl;
 
   const [activeTab, setActiveTab] = useState('entender');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
@@ -838,28 +851,42 @@ function App() {
               <div className="leadership-event-partners">
                 <h4>{t.leadership.partners.title}</h4>
                 {t.leadership.partners.description ? <p>{t.leadership.partners.description}</p> : null}
-                <div className="leadership-partners-strip" role="list" aria-label={t.leadership.partners.title}>
-                  {eventPartners.map((partner) =>
-                    partner.url ? (
-                      <a
-                        key={partner.id}
-                        href={partner.url}
-                        className="leadership-partner-logo"
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={partner.name}
-                        title={partner.name}
-                        role="listitem"
-                      >
-                        {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
+                {showPartnerInvite ? (
+                  <div className="leadership-partner-invite" role="status" aria-live="polite">
+                    <h5>{partnerInvite.title}</h5>
+                    <p>{partnerInvite.description}</p>
+                    {partnerInvite.secondaryText ? <p className="leadership-partner-invite__secondary">{partnerInvite.secondaryText}</p> : null}
+                    {partnerInvite.ctaLabel && partnerInviteHref ? (
+                      <a className="leadership-partner-invite__cta" href={partnerInviteHref}>
+                        {partnerInvite.ctaLabel}
                       </a>
-                    ) : (
-                      <div key={partner.id} className="leadership-partner-logo" aria-label={partner.name} title={partner.name} role="listitem">
-                        {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
-                      </div>
-                    ),
-                  )}
-                </div>
+                    ) : null}
+                  </div>
+                ) : null}
+                {showPartnerLogos ? (
+                  <div className="leadership-partners-strip" role="list" aria-label={t.leadership.partners.title}>
+                    {eventPartners.map((partner) =>
+                      partner.url ? (
+                        <a
+                          key={partner.id}
+                          href={partner.url}
+                          className="leadership-partner-logo"
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={partner.name}
+                          title={partner.name}
+                          role="listitem"
+                        >
+                          {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
+                        </a>
+                      ) : (
+                        <div key={partner.id} className="leadership-partner-logo" aria-label={partner.name} title={partner.name} role="listitem">
+                          {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
+                        </div>
+                      ),
+                    )}
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

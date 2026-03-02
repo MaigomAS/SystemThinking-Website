@@ -478,24 +478,8 @@
     },
     "partners": {
       "title": "Event partners",
-      "description": "",
-      "items": [
-        {
-          "id": "partner1",
-          "name": "ANNiA",
-          "url": "https://annia.no"
-        },
-        {
-          "id": "partner2",
-          "name": "Vida al Centro",
-          "url": "https://www.vidaalcentro.com"
-        },
-        {
-          "id": "partner3",
-          "name": "Visit Bergen",
-          "url": "https://en.visitbergen.com/"
-        }
-      ],
+      "description": "Institutional alliances that amplify learning, policy influence, and regional implementation capacity.",
+      "items": [],
       "fallbackItems": [
         {
           "id": "partner1",
@@ -512,7 +496,18 @@
           "name": "Visit Bergen",
           "url": "https://en.visitbergen.com/"
         }
-      ]
+      ],
+      "invite": {
+        "enabled": true,
+        "activeUntil": "2026-03-19T23:59:59+01:00",
+        "autoHideWhenPartners": true,
+        "showLogosWhileInvite": false,
+        "title": "Strategic partnerships",
+        "description": "We are opening a limited window for alliances with teams and brands that share standards of excellence.",
+        "secondaryText": "If you are interested in exploring a mutually beneficial collaboration, let’s connect.",
+        "ctaLabel": "Propose collaboration",
+        "ctaHref": "mailto:info@annia.no?subject=Collaboration%20proposal"
+      }
     }
   },
   "faq": {
