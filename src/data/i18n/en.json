@@ -646,10 +646,10 @@
         "Press or other"
       ],
       "submit": "Send",
-      "note": "Al enviar, recibirás un correo de confirmación y te contactamos con el resumen ejecutivo y próximos pasos.",
+      "note": "By submitting, you'll receive a confirmation email and we will share the overview and next steps.",
       "messages": {
         "success": "Request sent. You'll receive a confirmation email with next steps.",
-        "error": "No pudimos enviar tu solicitud. Inténtalo nuevamente o escribe directamente a info@annia.no."
+        "error": "We couldn't send your request. Please try again or email info@annia.no directly."
       }
     },
     "aria": {
