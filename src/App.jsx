@@ -123,10 +123,10 @@ function App() {
     () => leadershipOrganizations.filter((org) => org.id !== leadHostOrganization?.id),
     [leadershipOrganizations, leadHostOrganization],
   );
+  const configuredEventPartners = t.leadership.partners?.items ?? [];
   const eventPartners = useMemo(() => {
-    const configuredPartners = t.leadership.partners?.items ?? [];
     const defaultPartners = t.leadership.partners?.fallbackItems ?? [];
-    const basePartners = configuredPartners.length ? configuredPartners : defaultPartners;
+    const basePartners = configuredEventPartners.length ? configuredEventPartners : defaultPartners;
 
     return PARTNER_LOGOS.map((logo, index) => {
       const config = basePartners[index] ?? {};
@@ -137,15 +137,20 @@ function App() {
         logo,
       };
     });
-  }, [t.leadership.partners]);
+  }, [configuredEventPartners, t.leadership.partners?.fallbackItems]);
+  const hasConfiguredPartners = configuredEventPartners.length > 0;
   const partnerInvite = t.leadership.partners.invite ?? {};
   const inviteDeadline = partnerInvite.activeUntil ? new Date(partnerInvite.activeUntil) : null;
-  const isInviteWindowOpen = inviteDeadline ? Date.now() <= inviteDeadline.getTime() : Boolean(partnerInvite.enabled);
+  const inviteDeadlineMs = Number.isNaN(inviteDeadline?.getTime()) ? null : inviteDeadline?.getTime();
+  const nowFromTest = import.meta.env.VITE_NOW_FOR_TEST || (typeof window !== 'undefined' ? window.__NOW_FOR_TEST__ : null);
+  const nowMs = nowFromTest ? new Date(nowFromTest).getTime() : Date.now();
+  const isInviteWindowOpen = inviteDeadlineMs ? nowMs <= inviteDeadlineMs : Boolean(partnerInvite.enabled);
   const showPartnerInvite =
     Boolean(partnerInvite.enabled) &&
     isInviteWindowOpen &&
-    (!partnerInvite.autoHideWhenPartners || eventPartners.length === 0);
+    (!partnerInvite.autoHideWhenPartners || !hasConfiguredPartners);
   const showPartnerLogos = !showPartnerInvite || Boolean(partnerInvite.showLogosWhileInvite);
+  const partnerInviteHref = partnerInvite.ctaHref ?? partnerInvite.ctaUrl;
 
   const [activeTab, setActiveTab] = useState('entender');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
@@ -850,8 +855,8 @@ function App() {
                     <h5>{partnerInvite.title}</h5>
                     <p>{partnerInvite.description}</p>
                     {partnerInvite.secondaryText ? <p className="leadership-partner-invite__secondary">{partnerInvite.secondaryText}</p> : null}
-                    {partnerInvite.ctaLabel && partnerInvite.ctaUrl ? (
-                      <a className="leadership-partner-invite__cta" href={partnerInvite.ctaUrl}>
+                    {partnerInvite.ctaLabel && partnerInviteHref ? (
+                      <a className="leadership-partner-invite__cta" href={partnerInviteHref}>
                         {partnerInvite.ctaLabel}
                       </a>
                     ) : null}
