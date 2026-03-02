@@ -478,7 +478,7 @@
     },
     "partners": {
       "title": "Event partners",
-      "description": "",
+      "description": "Institutional alliances that amplify learning, policy influence, and regional implementation capacity.",
       "items": [
         {
           "id": "partner1",
@@ -512,7 +512,18 @@
           "name": "Visit Bergen",
           "url": "https://en.visitbergen.com/"
         }
-      ]
+      ],
+      "invite": {
+        "enabled": true,
+        "activeUntil": "2026-12-31T23:59:59Z",
+        "autoHideWhenPartners": true,
+        "showLogosWhileInvite": false,
+        "title": "We are opening founding partner seats for the next executive cohort.",
+        "description": "We invite organizations with proven leadership in systemic transformation to co-design visibility, applied research, and high-level experiences in Bergen.",
+        "secondaryText": "Partner benefit: priority access to a curated decision-maker network, international positioning, and co-creation of measurable impact cases.",
+        "ctaLabel": "Apply as a strategic partner",
+        "ctaUrl": "mailto:hello@systemthinking.no?subject=Strategic%20partner%20application"
+      }
     }
   },
   "faq": {

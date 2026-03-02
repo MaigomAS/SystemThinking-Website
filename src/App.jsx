@@ -138,6 +138,14 @@ function App() {
       };
     });
   }, [t.leadership.partners]);
+  const partnerInvite = t.leadership.partners.invite ?? {};
+  const inviteDeadline = partnerInvite.activeUntil ? new Date(partnerInvite.activeUntil) : null;
+  const isInviteWindowOpen = inviteDeadline ? Date.now() <= inviteDeadline.getTime() : Boolean(partnerInvite.enabled);
+  const showPartnerInvite =
+    Boolean(partnerInvite.enabled) &&
+    isInviteWindowOpen &&
+    (!partnerInvite.autoHideWhenPartners || eventPartners.length === 0);
+  const showPartnerLogos = !showPartnerInvite || Boolean(partnerInvite.showLogosWhileInvite);
 
   const [activeTab, setActiveTab] = useState('entender');
   const [activeFaqId, setActiveFaqId] = useState(faqs[0]?.id ?? '');
@@ -837,28 +845,42 @@ function App() {
               <div className="leadership-event-partners">
                 <h4>{t.leadership.partners.title}</h4>
                 {t.leadership.partners.description ? <p>{t.leadership.partners.description}</p> : null}
-                <div className="leadership-partners-strip" role="list" aria-label={t.leadership.partners.title}>
-                  {eventPartners.map((partner) =>
-                    partner.url ? (
-                      <a
-                        key={partner.id}
-                        href={partner.url}
-                        className="leadership-partner-logo"
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label={partner.name}
-                        title={partner.name}
-                        role="listitem"
-                      >
-                        {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
+                {showPartnerInvite ? (
+                  <div className="leadership-partner-invite" role="status" aria-live="polite">
+                    <h5>{partnerInvite.title}</h5>
+                    <p>{partnerInvite.description}</p>
+                    {partnerInvite.secondaryText ? <p className="leadership-partner-invite__secondary">{partnerInvite.secondaryText}</p> : null}
+                    {partnerInvite.ctaLabel && partnerInvite.ctaUrl ? (
+                      <a className="leadership-partner-invite__cta" href={partnerInvite.ctaUrl}>
+                        {partnerInvite.ctaLabel}
                       </a>
-                    ) : (
-                      <div key={partner.id} className="leadership-partner-logo" aria-label={partner.name} title={partner.name} role="listitem">
-                        {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
-                      </div>
-                    ),
-                  )}
-                </div>
+                    ) : null}
+                  </div>
+                ) : null}
+                {showPartnerLogos ? (
+                  <div className="leadership-partners-strip" role="list" aria-label={t.leadership.partners.title}>
+                    {eventPartners.map((partner) =>
+                      partner.url ? (
+                        <a
+                          key={partner.id}
+                          href={partner.url}
+                          className="leadership-partner-logo"
+                          target="_blank"
+                          rel="noreferrer"
+                          aria-label={partner.name}
+                          title={partner.name}
+                          role="listitem"
+                        >
+                          {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
+                        </a>
+                      ) : (
+                        <div key={partner.id} className="leadership-partner-logo" aria-label={partner.name} title={partner.name} role="listitem">
+                          {partner.logo ? <img src={partner.logo} alt={partner.name} loading="lazy" /> : <span>{partner.name}</span>}
+                        </div>
+                      ),
+                    )}
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>

@@ -500,6 +500,7 @@ img {
     height: 108px;
   }
 
+  
   .leadership-partners-strip {
     gap: 14px;
   }
@@ -3042,6 +3043,46 @@ img {
 
 .leadership-event-partners p {
   color: var(--color-text-secondary);
+}
+
+.leadership-partner-invite {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+  padding: clamp(16px, 2.5vw, 24px);
+  border-radius: 18px;
+  border: 1px solid rgba(124, 106, 255, 0.22);
+  background: linear-gradient(135deg, rgba(123, 211, 255, 0.15), rgba(163, 190, 255, 0.08));
+}
+
+.leadership-partner-invite h5 {
+  margin: 0;
+  font-size: clamp(1.02rem, 2vw, 1.15rem);
+  color: rgba(28, 44, 76, 0.95);
+}
+
+.leadership-partner-invite__secondary {
+  font-size: 0.94rem;
+}
+
+.leadership-partner-invite__cta {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: linear-gradient(135deg, #4055d7, #6c65f2);
+  box-shadow: 0 10px 20px rgba(64, 85, 215, 0.2);
+}
+
+.leadership-partner-invite__cta:hover,
+.leadership-partner-invite__cta:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(64, 85, 215, 0.26);
 }
 
 .leadership-partners-strip {
