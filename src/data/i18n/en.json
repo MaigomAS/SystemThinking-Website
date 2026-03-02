@@ -130,21 +130,21 @@
   },
   "heroRotator": {
     "rotationLabels": {
-      "editorial": "Hero A · Editorial minimal",
+      "editorial": "Hero A · Minimal editorial",
       "orbs": "Hero B · Gradients and orbs",
-      "split": "Hero C · Split with live simulation"
+      "split": "Hero C · Split with dynamic simulation"
     },
     "badges": [
       "In-person · Full-time",
-      "Nov 2–20, 2026",
+      "2–20 November 2026",
       "Bergen, Norway",
       "Limited seats · Application"
     ],
     "variants": {
       "orbs": {
         "badge": "Foundational gathering · Cohort 2026",
-        "title": "An immersive experience to lead in living systems.",
-        "description": "We design a high-demand intellectual and emotional space for teams that must see the full system, make better decisions, and activate real change.",
+        "title": "An immersive experience to lead in living systems",
+        "description": "We designed a space to lead under high intellectual and emotional demand. Focused on teams that need to see the full system, make better decisions, and activate real change.",
         "actions": {
           "primary": "Apply now →",
           "secondary": "Schedule a call"
@@ -162,7 +162,7 @@
         "meta": "3 intensive weeks · Nov 2026 · Limited seats",
         "actions": {
           "primary": "Request information →",
-          "secondary": "View full program"
+          "secondary": "Request the full program"
         },
         "signals": {
           "primary": "Simulation",
@@ -171,9 +171,9 @@
       },
       "editorial": {
         "badge": "Systemic Strategy & Leadership for Complex Issues",
-        "title": "Systemic leadership foundational gathering",
+        "title": "Foundational gathering\nin systemic leadership",
         "subtitle": "Bergen, Norway · November 2026",
-        "lead": "An international executive immersion (3 weeks) for public, private, industry, and civil society leaders\nwho make strategic decisions in highly complex contexts.",
+        "lead": "An international and immersive executive program (3 weeks) for leaders from the public sector, private sector, industry, and civil society who make strategic decisions in highly complex contexts.",
         "meta": "Bergen, Norway · November 2026 · In-person · Full-time",
         "actions": {
           "primary": "Request information →",
@@ -456,15 +456,15 @@
   "leadership": {
     "title": "Leadership",
     "audience": {
-      "title": "Who it's for",
+      "title": "Who it is for",
       "paragraphs": [
-        "Directors, executives, and decision-makers in the public sector, private sector, industry, and civil society, with direct responsibility for policies, organizational strategies, or high-impact initiatives.",
+        "Directors, executives, and decision-makers from the public sector, private sector, industry, and civil society, with direct responsibility for policies, organizational strategies, or high-impact initiatives.",
         "Designed for experienced leaders seeking analytical depth, strategic clarity, and real capacity for action."
       ],
       "eyebrow": "Participant profile"
     },
     "convocan": {
-      "title": "Convening organizations",
+      "title": "Who convenes",
       "meta": {
         "site": "Website available",
         "internal": "Internal detail",
@@ -690,20 +690,20 @@
     {
       "id": "annia",
       "name": "ANNiA",
-      "tagline": "Nordic innovation and systemic hospitality.",
-      "description": "An organization that hosts and catalyzes high-impact projects, combining strategic rigor with a very human sensitivity.",
+      "tagline": "Strategic leadership and multisector articulation.",
+      "description": "ANNiA operates as host and institutional catalyst, creating the conditions to connect stakeholders and activate high-impact initiatives with strategic rigor and long-term vision.",
       "bullets": [
-        "International partner ecosystem with real transformation experience.",
-        "Executive mentoring and accompaniment throughout the process.",
-        "Focus on sustainability and wellbeing as key indicators."
+        "An international partner ecosystem with real experience in systemic transformation.",
+        "Strategic accompaniment and executive mentoring throughout the process.",
+        "Sustainability and wellbeing integrated as key design and governance criteria."
       ],
-      "why": "Raises the standard for designing and executing premium experiences in complex environments."
+      "why": "Raises the institutional standard from which collaborations are designed and activated in complex environments."
     },
     {
       "id": "vida",
       "name": "Vida al Centro",
       "tagline": "Science, Governance, and Conscious Leadership.",
-      "description": "An institute focused on connecting leaders to address the most important socio-ecological challenges of our time through a new generation of systemic governance.",
+      "description": "An institute focused on connecting with leaders to address the most important socio-ecological challenges of our time through a new generation of systemic governance.",
       "bullets": [
         "A human narrative that turns strategy into cultural movement.",
         "Ability to activate communities and impact networks.",

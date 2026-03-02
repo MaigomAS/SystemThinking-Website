@@ -62,7 +62,7 @@ const EXPERIENCES = {
       title: 'Orchard lunch (Hardanger)',
       badge: 'Optional tour',
       lead: 'Unhurried conversations',
-      description: 'A slower pace that invites perspective, focus, and quiet dialogue.',
+      description: 'A slow route to converse with perspective and conscious pause.',
       sourceUrl:
         'https://www.getyourguide.es/bergen-l1132/bergen-tour-por-el-fiordo-hardanger-con-almuerzo-y-cascadas-t1126812/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
       image: experienceHardangerImage,
@@ -71,7 +71,7 @@ const EXPERIENCES = {
       title: 'Voss + waterfalls',
       badge: 'Optional tour',
       lead: 'Scale and perspective',
-      description: 'Open panoramas to reframe strategic priorities and decisions.',
+      description: 'Open panoramas to reframe challenges and strategic priorities.',
       sourceUrl:
         'https://www.getyourguide.es/bergen-l1132/bergen-hardangerfjord-telecabina-de-voss-y-3-grandes-cascadas-t348716/?ranking_uuid=3c415476-d1e5-49b2-b8d3-67615888f16a',
       image: experienceVossImage,
