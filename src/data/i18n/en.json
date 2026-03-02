@@ -55,7 +55,7 @@
   },
   "ecall": {
     "eyebrow": "E-Call",
-    "title": "Strategic sessions inside a branded window",
+    "title": "Strategic Sessions Inside a Branded Window",
     "description": "A space designed for workshops, idea storming, and real-time decisions, wrapped in an ANNiA-owned interface.",
     "note": "We build creative tension and focus: the conversation leads, everything else fades.",
     "actions": {
@@ -71,7 +71,7 @@
       "whatsapp": "Message us on WhatsApp"
     },
     "card": {
-      "title": "ANNiA working room",
+      "title": "ANNiA Working Room",
       "description": "A clean window for high-impact workshops, with guidance, agenda, and clear next steps.",
       "badges": [
         "Private & secure",
@@ -81,8 +81,8 @@
       "subtle": "Built for intense sessions and shared decisions."
     },
     "room": {
-      "eyebrow": "Live window",
-      "title": "E-Call, no distractions",
+      "eyebrow": "Live Window",
+      "title": "E-Call, No Distractions",
       "subtitle": "An integrated experience with ANNiA identity and full team focus.",
       "cardTitle": "Session window",
       "cardCopy": "Audio, video, and chat wrapped in a custom layer for workshops and idea storming.",
@@ -95,7 +95,7 @@
       "subtle": "Full-size session mode available."
     },
     "prep": {
-      "title": "Before you enter",
+      "title": "Before You Enter",
       "items": [
         "Have the session goal and key participants ready.",
         "Use headphones to reduce background noise.",
@@ -103,25 +103,25 @@
       ]
     },
     "support": {
-      "title": "Need help accessing the room?",
+      "title": "Need Help Accessing the Room?",
       "copy": "Our team will guide you in and unblock anything within minutes.",
       "button": "Message on WhatsApp"
     },
     "steps": {
-      "eyebrow": "ANNiA experience",
-      "title": "How the e-call feels",
+      "eyebrow": "ANNiA Experience",
+      "title": "How the E-Call Feels",
       "subtitle": "Designed to raise creative tension and sustain clarity.",
       "items": [
         {
-          "title": "Owned identity",
+          "title": "Owned Identity",
           "copy": "The environment keeps our palette, typography, and tone so teams feel at home."
         },
         {
-          "title": "Idea storming",
+          "title": "Idea Storming",
           "copy": "Guided dynamics to unlock ideas, surface tension, and prioritize action."
         },
         {
-          "title": "Actionable close",
+          "title": "Actionable Close",
           "copy": "We end with clear agreements, owners, and a summary that fuels the work after."
         }
       ]
@@ -142,8 +142,8 @@
     ],
     "variants": {
       "orbs": {
-        "badge": "Foundational gathering · Cohort 2026",
-        "title": "An immersive experience to lead in living systems",
+        "badge": "Foundational Gathering · Cohort 2026",
+        "title": "An Immersive Experience to Lead in Living Systems",
         "description": "We designed a space to lead under high intellectual and emotional demand. Focused on teams that need to see the full system, make better decisions, and activate real change.",
         "actions": {
           "primary": "Apply now →",
@@ -156,8 +156,8 @@
         ]
       },
       "split": {
-        "badge": "Systemic strategy laboratory",
-        "title": "Strategy, governance, and execution in one space.",
+        "badge": "Systemic Strategy Laboratory",
+        "title": "Strategy, Governance, and Execution in One Space.",
         "description": "A hybrid format between a think tank and an intensive workshop, with real cases, applied work, and a global network of systemic leaders.",
         "meta": "3 intensive weeks · Nov 2026 · Limited seats",
         "actions": {
@@ -171,7 +171,7 @@
       },
       "editorial": {
         "badge": "Systemic Strategy & Leadership for Complex Issues",
-        "title": "Foundational gathering\nin systemic leadership",
+        "title": "Foundational Gathering\nIn Systemic Leadership",
         "subtitle": "Bergen, Norway · November 2026",
         "lead": "An international and immersive executive program (3 weeks) for leaders from the public sector, private sector, industry, and civil society who make strategic decisions in highly complex contexts.",
         "meta": "Bergen, Norway · November 2026 · In-person · Full-time",
@@ -194,12 +194,12 @@
     }
   },
   "method": {
-    "title": "Work on systems and activate their potential",
+    "title": "Work on Systems and Activate Their Potential",
     "description": "A clear, applied way to understand systems and act strategically."
   },
   "interactive": {
-    "eyebrow": "Invest better, not just more",
-    "title": "Leading through uncertainty",
+    "eyebrow": "Invest Better, Not Just More",
+    "title": "Leading Through Uncertainty",
     "ariaTabs": "Method capability selector",
     "hint": "Click each circle to explore executive implications.",
     "diagramAria": "Intersection map between systemic thinking, systemic strategy, and governance",
@@ -212,8 +212,8 @@
     "copyright": "© 2026 Vida al Centro. All rights reserved.",
     "tabs": {
       "entender": {
-        "label": "Understanding systemically",
-        "title": "Understand structure before accelerating response",
+        "label": "Understanding Systemically",
+        "title": "Understand Structure Before Accelerating Response",
         "description": "Leaders in this program learn to read patterns, causality, and interdependence to intervene with precision in ambiguous contexts.",
         "bullets": [
           "Understand our structures in depth",
@@ -223,8 +223,8 @@
         "note": "The challenge is not to do more, but to decide where to invest to unlock potential."
       },
       "decidir": {
-        "label": "Deciding strategically",
-        "title": "Decide where to intervene with strategic clarity",
+        "label": "Deciding Strategically",
+        "title": "Decide Where to Intervene with Strategic Clarity",
         "description": "The methodology connects evidence, purpose, and governance to choose investment paths that move the whole system.",
         "bullets": [
           "See strategic routes with clarity",
@@ -234,8 +234,8 @@
         "note": "A better decision today prevents multiple costly corrections tomorrow."
       },
       "evolucionar": {
-        "label": "Evolving capabilities",
-        "title": "Evolve organization and leadership, simultaneously",
+        "label": "Evolving Capabilities",
+        "title": "Evolve Organization and Leadership, Simultaneously",
         "description": "It is not only about designing a strategy, but about navigating it with others, and converting it into lasting capabilities.",
         "bullets": [
           "Navigate strategically with others",
@@ -247,11 +247,11 @@
     },
     "systemBlocks": [
       {
-        "title": "Systemic thinking",
+        "title": "Systemic Thinking",
         "copy": "Deep reading of dynamics, causes, and consequences."
       },
       {
-        "title": "Systemic strategy",
+        "title": "Systemic Strategy",
         "copy": "Investment routes that move the whole, not just one part."
       },
       {
@@ -262,7 +262,7 @@
     "levers": [
       {
         "key": "thinking",
-        "title": "Systems thinking",
+        "title": "Systems Thinking",
         "lead": "IDENTIFY STRUCTURAL CAUSES FROM VISIBLE SYMPTOMS",
         "whyTitle": "Why it applies",
         "why": [
@@ -272,12 +272,12 @@
         ],
         "impactTitle": "Executive outcome",
         "impact": "Deeper understanding, sharper analysis, stronger legitimacy of projects and actions, and greater execution efficiency.",
-        "image": "/images/systemic-thinking-model.svg"
+        "image": "/images/systemic-thinking-model-en.svg"
       },
       {
         "key": "strategy",
         "title": "Systemic strategy",
-        "lead": "A strategy is grounded on a purpose, alliances, and measurable pathways that transform what we do and what we achieve.",
+        "lead": "A strategy is grounded in purpose, alliances, and measurable pathways that transform what we do and what we achieve.",
         "whyTitle": "Why it applies",
         "why": [
           "Translates shared purpose into measurable outcomes and progress criteria",
@@ -291,7 +291,7 @@
       {
         "key": "governance",
         "title": "Governance",
-        "lead": "Orchestrates institutional evolution -mechanisms, investment, agreements- to sustain long-term change.",
+        "lead": "Orchestrates institutional evolution—mechanisms, investment, and agreements—to sustain long-term change.",
         "whyTitle": "Why it applies",
         "why": [
           "Aligns alliances, roles, and key implications of systemic negotiation",
@@ -329,51 +329,51 @@
     }
   },
   "program": {
-    "title": "What happens in this gathering",
+    "title": "What Happens in This Gathering",
     "cards": [
       {
-        "title": "Applied systems understanding",
+        "title": "Applied Systems Understanding",
         "copy": "Learning and understanding based on real cases, beyond conceptual or motivational frameworks."
       },
       {
-        "title": "Strategy in living systems",
+        "title": "Strategy in Living Systems",
         "copy": "Balanced integration of systems dynamics, systemic strategy, and governance, with lessons from real project trial and error."
       },
       {
-        "title": "Decision and action in practice",
+        "title": "Decision and Action in Practice",
         "copy": "Applied work, strategic analysis, collective reflection, and integration spaces on what it means to lead in real complex contexts."
       }
     ]
   },
   "outcomes": {
-    "title": "Outcomes for participants",
+    "title": "Outcomes for Participants",
     "controls": {
       "previous": "View previous card",
       "next": "View next card"
     },
     "items": [
       {
-        "title": "Actionable systemic vision",
+        "title": "Actionable Systemic Vision",
         "copy": "Understand complex social, organizational, technological, and territorial situations; identify root causes and communicate a clear strategic vision for action.",
         "tag": "Strategic clarity"
       },
       {
-        "title": "Leverage with impact",
+        "title": "Leverage with Impact",
         "copy": "Identify leverage points and define strategic decisions with structural effects.",
         "tag": "Informed decision"
       },
       {
-        "title": "Collaborative governance",
+        "title": "Collaborative Governance",
         "copy": "Design and participate in multi-sector collaboration ecosystems and new forms of governance.",
         "tag": "Systemic leadership"
       },
       {
-        "title": "Systemic project direction",
+        "title": "Systemic Project Direction",
         "copy": "Lead, commission, and evaluate systemic projects with specialized teams.",
         "tag": "Advanced execution"
       },
       {
-        "title": "Global leadership network",
+        "title": "Global Leadership Network",
         "copy": "Join an international network of system-aware leaders for long-term collaboration.",
         "tag": "Community and trust"
       }
@@ -407,7 +407,7 @@
     "microcopy": "The published fee applies exclusively to the Executive Program training process. Lodging and tourism activities are optional and must be booked separately."
   },
   "format": {
-    "title": "Gathering format",
+    "title": "Gathering Format",
     "cards": [
       {
         "title": "Duration",
@@ -430,8 +430,8 @@
   },
   "bergen": {
     "title": "Why Bergen, Norway",
-    "badge": "Method context",
-    "copy": "Deep reflection and systemic learning require environments that favor focus, rigor, and long-term perspective. Norway offers a unique context where nature, technology, and governance coexist at an advanced level. Bergen beyond a scenic stage: it is part of the method.",
+    "badge": "Method Context",
+    "copy": "Deep reflection and systemic learning require environments that favor focus, rigor, and long-term perspective. Norway offers a unique context where nature, technology, and governance coexist at an advanced level. Bergen is more than a scenic stage: it is part of the method.",
     "imageAlt": "Editorial view of Bergen, Norway",
     "actions": {
       "video": "Watch video",
@@ -443,8 +443,8 @@
       "title": "Video about Bergen, Norway"
     },
     "experiences": {
-      "eyebrow": "Extend the immersion",
-      "title": "Optional experiences in Bergen and the fjords",
+      "eyebrow": "Extend the Immersion",
+      "title": "Optional Experiences in Bergen and the Fjords",
       "description": "Space where the conversations continue. Not strictly part of the program, but highly recommended.",
       "detailLink": "View details",
       "aria": {
@@ -456,15 +456,15 @@
   "leadership": {
     "title": "Leadership",
     "audience": {
-      "title": "Who it is for",
+      "title": "Who It Is For",
       "paragraphs": [
         "Directors, executives, and decision-makers from the public sector, private sector, industry, and civil society, with direct responsibility for policies, organizational strategies, or high-impact initiatives.",
         "Designed for experienced leaders seeking analytical depth, strategic clarity, and real capacity for action."
       ],
-      "eyebrow": "Participant profile"
+      "eyebrow": "Participant Profile"
     },
     "convocan": {
-      "title": "Who convenes",
+      "title": "Who Convenes",
       "meta": {
         "site": "Website available",
         "internal": "Internal detail",
@@ -477,7 +477,7 @@
       "brandLabel": "Logo area"
     },
     "partners": {
-      "title": "Event partners",
+      "title": "Event Partners",
       "description": "Institutional alliances that amplify learning, policy influence, and regional implementation capacity.",
       "items": [],
       "fallbackItems": [
@@ -502,7 +502,7 @@
         "activeUntil": "2026-03-19T23:59:59+01:00",
         "autoHideWhenPartners": true,
         "showLogosWhileInvite": false,
-        "title": "Strategic partnerships",
+        "title": "Strategic Partnerships",
         "description": "We are opening a limited window for alliances with teams and brands that share standards of excellence.",
         "secondaryText": "If you are interested in exploring a mutually beneficial collaboration, let’s connect.",
         "ctaLabel": "Propose collaboration",
@@ -511,9 +511,9 @@
     }
   },
   "faq": {
-    "title": "Frequently asked questions",
+    "title": "Frequently Asked Questions",
     "sidebar": {
-      "label": "Dynamic library",
+      "label": "Dynamic Library",
       "title": "Explore as if it were a strategic chat",
       "description": "Select a question and see how the assistant synthesizes decisions, context, and next steps.",
       "footerLabel": "OpenAI-style automation",
@@ -619,7 +619,7 @@
     ]
   },
   "contact": {
-    "title": "Let's connect",
+    "title": "Let's Connect",
     "description": "If you're evaluating your participation or that of your institution, we can speak directly to explore fit and next steps.",
     "buttons": {
       "whatsapp": "WhatsApp",
@@ -628,7 +628,7 @@
     },
     "note": "*Also available above: an intelligent assistant to answer program FAQs.*",
     "form": {
-      "title": "Quick request",
+      "title": "Quick Request",
       "fields": {
         "name": "Name",
         "email": "Email",
@@ -675,7 +675,7 @@
     "previewAlt": "Preview of {{name}}",
     "previewLabel": "Preview",
     "videoLabel": "Play video",
-    "eyebrow": "Convening organizations",
+      "eyebrow": "Convening Organizations",
     "distinctionLabel": "What distinguishes {{name}}",
     "whyLabel": "Why they convene",
     "founderMessageLabel": "Institutional opening message",
@@ -746,8 +746,8 @@
       "aria": "Hero variant selector",
       "variants": {
         "orbs": {
-          "badge": "Foundational gathering · Cohort 2026",
-          "title": "An immersive experience to lead in living systems.",
+          "badge": "Foundational Gathering · Cohort 2026",
+          "title": "An Immersive Experience to Lead in Living Systems.",
           "description": "We design a high-demand intellectual and emotional space for teams that must see the full system, make better decisions, and activate real change.",
           "actions": {
             "primary": "Apply now →",
@@ -760,8 +760,8 @@
           ]
         },
         "split": {
-          "badge": "Systemic strategy laboratory",
-          "title": "Strategy, governance, and execution in one space.",
+          "badge": "Systemic Strategy Laboratory",
+          "title": "Strategy, Governance, and Execution in One Space.",
           "description": "A hybrid format between a think tank and an intensive workshop, with real cases, applied work, and a global network of systemic leaders.",
           "meta": "3 intensive weeks · Nov 2026 · Limited seats",
           "actions": {
