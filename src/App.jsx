@@ -6,7 +6,7 @@ import Chip from './components/ui/Chip.jsx';
 import Container from './components/ui/Container.jsx';
 import Section from './components/ui/Section.jsx';
 import DesignPlayground from './components/DesignPlayground.jsx';
-import ECallPage from './components/ECallPage.jsx';
+import ECallPage from './ecall/ECallPage.jsx';
 import HeroRotator from './components/HeroRotator.jsx';
 import LeadershipVoicesCircles from './components/LeadershipVoicesCircles.jsx';
 import OrganizationModal from './components/OrganizationModal.jsx';
@@ -163,7 +163,7 @@ function App() {
   const tabKeys = useMemo(() => Object.keys(interactiveTabs), [interactiveTabs]);
   const intersectionKeys = useMemo(() => Object.keys(intersectionInsights ?? {}), [intersectionInsights]);
   const isPlayground = typeof window !== 'undefined' && window.location.pathname === '/playground';
-  const isECall = typeof window !== 'undefined' && window.location.pathname === '/e-call';
+  const isECall = typeof window !== 'undefined' && /(^|\/)e-call\/?$/.test(window.location.pathname);
   const returnFocusRef = useRef(null);
   const lastTriggerRef = useRef(null);
   const leverTitleRef = useRef(null);
