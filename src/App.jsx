@@ -272,7 +272,7 @@ function App() {
     const payload = Object.fromEntries(formData.entries());
 
     try {
-      const response = await fetch('/api/quick-request', {
+      const response = await fetch('api/quick-request.php', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -384,7 +384,7 @@ function App() {
       className={`ui-form ${className}`.trim()}
       aria-label={t.contact.aria.form}
       method="POST"
-      action="/api/quick-request"
+      action="api/quick-request.php"
       onSubmit={handleQuickRequestSubmit}
     >
       <h4>{t.contact.form.title}</h4>
