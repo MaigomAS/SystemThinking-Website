@@ -81,3 +81,41 @@ So in Vercel preview, for example:
 - `https://system-thinking-website.vercel.app/e-call`
 
 This lets you keep E-Call within this repo while having independent text/config for later deployment at `annia.no/e-call`.
+
+## E-Call standalone static build (one.com `/e-call/`)
+
+The repository also includes a dedicated Vite build for E-Call that can be deployed independently from SystemThinking.
+
+### Build config
+
+- Entry HTML: `ecall/index.html`
+- Entry script: `ecall/main.jsx`
+- Vite config: `vite.ecall.config.js`
+- Required base: `'/e-call/'`
+- Output directory: `dist-ecall/`
+- Public assets source: root `public/` (copied into `dist-ecall/`)
+
+`ecall/main.jsx` imports both shared style layers:
+
+- `src/styles/tokens.css` (global CSS variables/theme tokens)
+- `src/styles/global.css` (global resets + components + E-Call section styles)
+
+This is required so E-Call renders with the same gradients, glass cards, and typography as local dev/Vercel.
+
+### Commands
+
+```bash
+npm run build:ecall
+npm run preview:ecall
+```
+
+### Deploy to one.com
+
+1. Run `npm run build:ecall`.
+2. Upload the full content of `dist-ecall/` to the one.com folder mapped to `https://annia.no/e-call/`.
+3. Ensure deployment includes at least:
+   - `index.html`
+   - `assets/`
+   - any copied static folders from `public/` that your E-Call page depends on.
+
+Do **not** change the base to `/systemthinking/` for this build.
