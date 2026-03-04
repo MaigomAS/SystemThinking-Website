@@ -1,5 +1,26 @@
 # SystemThinking Website
 
+## Production deployment constraints (one.com)
+
+This project is deployed under a subpath:
+
+- `https://annia.no/systemthinking/`
+
+Keep these settings stable unless there is an explicit migration plan:
+
+- `vite.config.js` must keep `base: '/systemthinking/'`.
+- The quick request form must post to `api/quick-request.php` (not `/api/quick-request`).
+- Backend form handling runs through `public/api/quick-request.php` and is copied into `dist/api/quick-request.php` at build time.
+
+### Deployment output checklist
+
+After `npm run build`, upload the content of `dist/` so production includes:
+
+- `index.html`
+- `assets/`
+- `images/`
+- `api/quick-request.php`
+
 ## i18n source of truth
 
 Spanish (`src/data/i18n/es.json`) is the source of truth for copy and structure. All other locales must include the same keys as Spanish.
