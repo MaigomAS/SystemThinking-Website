@@ -3320,9 +3320,11 @@ img {
   height: 100vh;
   background: rgba(6, 10, 20, 0.92);
   backdrop-filter: blur(16px);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 28px;
+  overflow-y: auto;
   z-index: 999;
   animation: voices-fade 220ms ease forwards;
 }
@@ -3330,20 +3332,21 @@ img {
 .voices-modal__panel {
   position: relative;
   width: min(1100px, 94vw);
-  max-height: min(86vh, 820px);
+  max-height: min(92vh, 860px);
   background: rgba(22, 30, 52, 0.92);
   border-radius: var(--radius-xl);
   border: 1px solid rgba(122, 231, 255, 0.18);
   box-shadow: 0 30px 60px rgba(4, 8, 18, 0.5);
   overflow: hidden;
+  display: flex;
   animation: voices-rise 240ms ease forwards;
 }
 
 .voices-modal__content {
   display: grid;
   grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.2fr);
-  min-height: 100%;
-  height: 100%;
+  flex: 1;
+  min-height: 0;
 }
 
 .voices-modal__aside {
@@ -3453,9 +3456,25 @@ img {
   display: grid;
   align-content: start;
   gap: 28px;
-  overflow: auto;
+  overflow-y: scroll;
   min-height: 0;
   overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(122, 231, 255, 0.55) rgba(8, 13, 28, 0.45);
+}
+
+.voices-modal__body::-webkit-scrollbar {
+  width: 10px;
+}
+
+.voices-modal__body::-webkit-scrollbar-track {
+  background: rgba(8, 13, 28, 0.45);
+}
+
+.voices-modal__body::-webkit-scrollbar-thumb {
+  background: rgba(122, 231, 255, 0.55);
+  border-radius: 999px;
+  border: 2px solid rgba(8, 13, 28, 0.45);
 }
 
 .voices-modal__headline {
@@ -3521,11 +3540,11 @@ img {
 }
 
 .voices-modal__nav--prev {
-  left: -52px;
+  left: 12px;
 }
 
 .voices-modal__nav--next {
-  right: -52px;
+  right: 12px;
 }
 
 .voices-modal__nav:focus-visible {
@@ -3560,6 +3579,7 @@ img {
 
   .voices-modal__content {
     grid-template-columns: 1fr;
+    grid-template-rows: auto minmax(0, 1fr);
   }
 
   .voices-modal__aside {
