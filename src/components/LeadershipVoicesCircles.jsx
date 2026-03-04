@@ -33,7 +33,7 @@ const COPY = {
     subtitle: 'Click on a profile to learn more.',
     disclaimer: '',
     cta: 'Learn more',
-    modalDisclaimer: 'Independent perspective on systemic thinking. Not a program endorsement.',
+    modalDisclaimer: '',
     modalActions: {
       close: 'Close modal',
       previous: 'View previous voice',
