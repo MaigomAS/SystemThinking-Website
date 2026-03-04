@@ -745,13 +745,13 @@ img {
   padding: 6px 16px;
   border-radius: var(--radius-pill);
   font-size: var(--font-size-sm);
+  font-weight: 600;
   color: var(--color-text-muted);
 }
 
 .interactive-tab--active {
   background: var(--color-white);
   color: var(--color-text-on-light);
-  font-weight: 600;
 }
 
 .ui-section--light .interactive-tabs {
@@ -999,12 +999,17 @@ img {
 }
 
 .method-map__intersection:hover,
-.method-map__intersection:focus-visible,
-.method-map__intersection.is-active {
+.method-map__intersection:focus-visible {
   background: rgba(27, 124, 168, 0.9);
   border-color: rgba(122, 231, 255, 0.92);
   transform: translateY(-1px);
   outline: none;
+}
+
+.method-map__intersection.is-active {
+  background: rgba(27, 124, 168, 0.9);
+  border-color: rgba(122, 231, 255, 0.92);
+  transform: none;
 }
 
 .method-map__callout {
