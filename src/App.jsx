@@ -207,6 +207,16 @@ function App() {
     });
   };
 
+  const handleTabChange = (tabKey) => {
+    setActiveTab((currentTab) => (currentTab === tabKey ? currentTab : tabKey));
+  };
+
+  const handleIntersectionChange = (intersectionKey) => {
+    setActiveIntersection((currentIntersection) =>
+      currentIntersection === intersectionKey ? currentIntersection : intersectionKey,
+    );
+  };
+
 
   useEffect(() => {
     if (!interactiveTabs[activeTab]) {
@@ -495,8 +505,9 @@ function App() {
                   key={key}
                   variant="ghost"
                   className={`interactive-tab ${activeTab === key ? 'interactive-tab--active' : ''}`}
-                  onClick={() => setActiveTab(key)}
+                  onClick={() => handleTabChange(key)}
                   aria-label={interactiveTabs[key].label}
+                  aria-pressed={activeTab === key}
                 >
                   {interactiveTabs[key].label}
                 </Button>
@@ -554,9 +565,9 @@ function App() {
                 className={`method-map__intersection method-map__intersection--map ${
                   activeIntersection === 'map' ? 'is-active' : ''
                 }`}
-                onClick={() => setActiveIntersection('map')}
-                onMouseEnter={() => setActiveIntersection('map')}
-                onFocus={() => setActiveIntersection('map')}
+                onClick={() => handleIntersectionChange('map')}
+                onFocus={() => handleIntersectionChange('map')}
+                aria-pressed={activeIntersection === 'map'}
               >
                 {t.interactive.intersections.map}
               </button>
@@ -565,9 +576,9 @@ function App() {
                 className={`method-map__intersection method-map__intersection--intentions ${
                   activeIntersection === 'intentions' ? 'is-active' : ''
                 }`}
-                onClick={() => setActiveIntersection('intentions')}
-                onMouseEnter={() => setActiveIntersection('intentions')}
-                onFocus={() => setActiveIntersection('intentions')}
+                onClick={() => handleIntersectionChange('intentions')}
+                onFocus={() => handleIntersectionChange('intentions')}
+                aria-pressed={activeIntersection === 'intentions'}
               >
                 {t.interactive.intersections.intentions}
               </button>
@@ -576,9 +587,9 @@ function App() {
                 className={`method-map__intersection method-map__intersection--organization ${
                   activeIntersection === 'organization' ? 'is-active' : ''
                 }`}
-                onClick={() => setActiveIntersection('organization')}
-                onMouseEnter={() => setActiveIntersection('organization')}
-                onFocus={() => setActiveIntersection('organization')}
+                onClick={() => handleIntersectionChange('organization')}
+                onFocus={() => handleIntersectionChange('organization')}
+                aria-pressed={activeIntersection === 'organization'}
               >
                 {t.interactive.intersections.organization}
               </button>
