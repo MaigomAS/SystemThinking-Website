@@ -20,7 +20,7 @@ import experienceVossImage from './assets/experience-voss.png';
 
 const whatsappPhone = '4741368586';
 const calendlyLink = 'https://calendly.com/annia-info/30min';
-const bergenVideoId = 'dQw4w9WgXcQ';
+const bergenVideoId = 'wTbhZLRS8Tw';
 
 const EXPERIENCES = {
   es: [
