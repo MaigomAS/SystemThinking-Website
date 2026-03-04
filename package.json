@@ -7,6 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+
+    "build:ecall": "vite build --config vite.ecall.config.js",
+    "preview:ecall": "vite preview --config vite.ecall.config.js --port 4174",
+
     "i18n:check": "node scripts/i18n-check.cjs",
     "quality:accessibility": "node scripts/quality-accessibility.cjs",
     "quality:i18n": "npm run i18n:check",
