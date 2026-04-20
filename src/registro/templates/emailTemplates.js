@@ -1,9 +1,9 @@
-export const buildConfirmationMessage = ({ firstName, programName }) => ({
+export const buildConfirmationMessage = ({ fullName, programName }) => ({
   subject: `Confirmación de registro · ${programName}`,
-  body: `Hola ${firstName}, tu registro para ${programName} fue recibido correctamente. Te compartiremos próximos pasos por este canal.`,
+  body: `Hola ${fullName || 'postulante'}, tu registro para ${programName} fue recibido correctamente. Te compartiremos próximos pasos por este canal.`,
 });
 
-export const buildInternalNotification = ({ firstName, lastName, organization, programName }) => ({
+export const buildInternalNotification = ({ fullName, organization, role, programName }) => ({
   subject: `Nuevo registro · ${programName}`,
-  body: `Nueva postulación de ${firstName} ${lastName} (${organization || 'Organización no declarada'}).`,
+  body: `Nueva postulación de ${fullName || 'Postulante'} (${role || 'Rol no declarado'} · ${organization || 'Organización no declarada'}).`,
 });

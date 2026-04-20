@@ -9,7 +9,6 @@ import { createRegistrationService } from './services/registration.service.js';
 import SectionCard from './sections/SectionCard.jsx';
 import './registro.css';
 
-
 const RegistroFooter = () => (
   <footer className="registro-footer" aria-label="Créditos del encuentro">
     <p>#SystemThinking2026</p>
@@ -29,7 +28,7 @@ function RegistroPage({ config: customConfig, services = {} }) {
   const registrationService =
     services.registrationService || createRegistrationService({ apiClient: services.apiClient, automationService });
 
-  const { formData, errors, status, submitError, updateField, submit, reset, showReferralName } = useRegistroForm({
+  const { formData, errors, status, submitError, updateField, submit, reset } = useRegistroForm({
     config,
     registrationService,
   });
@@ -85,176 +84,276 @@ function RegistroPage({ config: customConfig, services = {} }) {
             </p>
           ) : null}
 
-          <SectionCard
-            title={config.texts.sectionTitles.identity}
-            description={config.texts.sectionDescriptions.identity}
-          >
+          <SectionCard title={config.texts.sectionTitles.identity} description={config.texts.sectionDescriptions.identity}>
             <div className="registro-grid registro-grid--2">
               <FieldInput
-                label="Nombre"
-                hint="Tal como quieres que aparezca en comunicaciones oficiales."
+                label="Nombre completo"
                 required
-                placeholder="Ej. Ana"
-                value={formData.firstName}
-                onChange={(event) => updateField('firstName', event.target.value)}
-                error={errors.firstName}
+                value={formData.fullName}
+                onChange={(event) => updateField('fullName', event.target.value)}
+                error={errors.fullName}
+                placeholder="Ej. Ana Pérez"
               />
               <FieldInput
-                label="Apellido"
-                hint="Incluye ambos si los utilizas profesionalmente."
+                label="Correo electrónico"
+                type="email"
                 required
-                placeholder="Ej. Pérez"
-                value={formData.lastName}
-                onChange={(event) => updateField('lastName', event.target.value)}
-                error={errors.lastName}
+                value={formData.email}
+                onChange={(event) => updateField('email', event.target.value)}
+                error={errors.email}
+                placeholder="nombre@organizacion.com"
+              />
+              <FieldInput
+                label="Teléfono"
+                required
+                value={formData.phone}
+                onChange={(event) => updateField('phone', event.target.value)}
+                error={errors.phone}
+                placeholder="Ej. +57 300 000 0000"
+              />
+              <FieldInput
+                label="Organización actual"
+                required
+                value={formData.organization}
+                onChange={(event) => updateField('organization', event.target.value)}
+                error={errors.organization}
+                placeholder="Ej. Laboratorio Horizonte"
+              />
+              <FieldInput
+                label="Cargo o rol actual"
+                required
+                value={formData.role}
+                onChange={(event) => updateField('role', event.target.value)}
+                error={errors.role}
+                placeholder="Ej. Directora de Innovación"
+              />
+              <FieldInput
+                label="Fecha de nacimiento"
+                hint="Indica día, mes y año."
+                type="date"
+                required
+                value={formData.birthDate}
+                onChange={(event) => updateField('birthDate', event.target.value)}
+                error={errors.birthDate}
+              />
+              <FieldInput
+                label="Residencia actual"
+                hint="Indica el país en el que resides actualmente."
+                required
+                value={formData.residenceCountry}
+                onChange={(event) => updateField('residenceCountry', event.target.value)}
+                error={errors.residenceCountry}
+                placeholder="Ej. Colombia"
               />
             </div>
           </SectionCard>
 
           <SectionCard title={config.texts.sectionTitles.profile} description={config.texts.sectionDescriptions.profile}>
-            <div className="registro-grid registro-grid--2">
-              <FieldInput
-                label="Rol actual"
-                hint="Función principal desde la que lideras decisiones."
-                required
-                placeholder="Ej. Directora de Innovación"
-                value={formData.role}
-                onChange={(e) => updateField('role', e.target.value)}
-                error={errors.role}
-              />
-              <FieldInput
-                label="Organización"
-                hint="Empresa, institución, startup o colectivo."
-                required
-                placeholder="Ej. Laboratorio Horizonte"
-                value={formData.organization}
-                onChange={(e) => updateField('organization', e.target.value)}
-                error={errors.organization}
-              />
-              <FieldSelect
-                label="Sector"
-                hint="Elige el sector que mejor representa tu operación actual."
-                required
-                options={registroOptions.sectors}
-                value={formData.sector}
-                onChange={(e) => updateField('sector', e.target.value)}
-                error={errors.sector}
-              />
-              <FieldInput
-                label="Sitio web de la organización"
-                hint="Opcional, pero recomendado para revisión contextual."
-                value={formData.organizationWebsite}
-                onChange={(e) => updateField('organizationWebsite', e.target.value)}
-                error={errors.organizationWebsite}
-                placeholder="https://tuorganizacion.com"
-              />
-              <FieldInput
-                label="Perfil profesional"
-                hint="LinkedIn u otra referencia pública de trayectoria."
-                value={formData.professionalProfileUrl}
-                onChange={(e) => updateField('professionalProfileUrl', e.target.value)}
-                error={errors.professionalProfileUrl}
-                placeholder="https://linkedin.com/in/..."
-              />
-            </div>
             <FieldTextarea
               label="Biografía ejecutiva"
-              hint="Resume experiencia, enfoque y tipo de impacto que lideras (4–6 líneas)."
+              hint="Resume tu experiencia, enfoque y tipo de impacto que lideras (4–6 líneas)."
               required
               value={formData.bio}
-              onChange={(e) => updateField('bio', e.target.value)}
+              onChange={(event) => updateField('bio', event.target.value)}
               error={errors.bio}
               rows={4}
-              placeholder="Cuéntanos tu trayectoria y foco de trabajo actual."
+              placeholder="Comparte tu trayectoria y enfoque actual."
             />
-          </SectionCard>
-
-          <SectionCard title={config.texts.sectionTitles.contact} description={config.texts.sectionDescriptions.contact}>
             <div className="registro-grid registro-grid--2">
               <FieldInput
-                label="WhatsApp de contacto"
-                hint="Incluye código país para una coordinación ágil."
+                label="Área de trabajo"
+                hint="Indica tu área principal: Recursos Humanos, Sostenibilidad, Asuntos de Mujer, Gestión de Riesgos, Movilidad Social, etc."
                 required
-                placeholder="Ej. +57 300 000 0000"
-                value={formData.whatsapp}
-                onChange={(e) => updateField('whatsapp', e.target.value)}
-                error={errors.whatsapp}
+                value={formData.workArea}
+                onChange={(event) => updateField('workArea', event.target.value)}
+                error={errors.workArea}
+                placeholder="Ej. Sostenibilidad"
               />
-              <FieldInput
-                label="Correo principal"
-                hint="Aquí enviaremos confirmación y documentos del proceso."
-                type="email"
+              <FieldSelect
+                label="Grado de estudios"
+                hint="Indica tu nivel de formación formal."
                 required
-                placeholder="nombre@organizacion.com"
-                value={formData.email}
-                onChange={(e) => updateField('email', e.target.value)}
-                error={errors.email}
+                options={registroOptions.educationLevels}
+                value={formData.educationLevel}
+                onChange={(event) => updateField('educationLevel', event.target.value)}
+                error={errors.educationLevel}
               />
             </div>
+            <p className="registro-note-placeholder">{config.texts.notes.cvPlaceholder}</p>
           </SectionCard>
 
           <SectionCard
-            title={config.texts.sectionTitles.participation}
-            description={config.texts.sectionDescriptions.participation}
+            title={config.texts.sectionTitles.leadership}
+            description={config.texts.sectionDescriptions.leadership}
           >
             <FieldTextarea
-              label="Motivación para aplicar"
-              hint="¿Qué transformación buscas activar y por qué este encuentro es relevante para este momento?"
+              label="¿Cuál es el reto más complejo que enfrenta tu organización en este momento?"
               required
-              value={formData.motivation}
-              onChange={(e) => updateField('motivation', e.target.value)}
-              error={errors.motivation}
+              value={formData.leadershipChallenge}
+              onChange={(event) => updateField('leadershipChallenge', event.target.value)}
+              error={errors.leadershipChallenge}
               rows={4}
-              placeholder="Comparte intención, objetivos y el tipo de resultado que esperas construir."
             />
-            <div className="registro-grid registro-grid--2">
-              <FieldSelect
-                label="Disponibilidad de asistencia"
-                required
-                options={registroOptions.attendanceAvailability}
-                value={formData.attendanceAvailability}
-                onChange={(e) => updateField('attendanceAvailability', e.target.value)}
-                error={errors.attendanceAvailability}
-              />
-              <FieldSelect
-                label="¿Cómo conociste este encuentro?"
-                required
-                options={registroOptions.referralSource}
-                value={formData.referralSource}
-                onChange={(e) => updateField('referralSource', e.target.value)}
-                error={errors.referralSource}
-              />
-            </div>
-            {showReferralName ? (
-              <FieldInput
-                label="Nombre de quien te recomendó"
-                hint="Nos ayuda a comprender tu contexto de llegada."
-                required
-                placeholder="Ej. Laura Gómez"
-                value={formData.referralName}
-                onChange={(e) => updateField('referralName', e.target.value)}
-                error={errors.referralName}
-              />
-            ) : null}
             <FieldTextarea
-              label="Preguntas o contexto adicional"
-              hint="Opcional: necesidades logísticas, dudas o temas que quieras anticipar."
-              value={formData.questions}
-              onChange={(e) => updateField('questions', e.target.value)}
-              error={errors.questions}
-              rows={3}
-              placeholder="Si deseas, agrega aquí información relevante para el equipo ANNiA."
+              label="¿Qué tema o pregunta te genera mayor inquietud como líder hoy?"
+              required
+              value={formData.leadershipQuestion}
+              onChange={(event) => updateField('leadershipQuestion', event.target.value)}
+              error={errors.leadershipQuestion}
+              rows={4}
+            />
+            <FieldTextarea
+              label="¿Qué proyectos actuales lideras donde planeas aplicar estas herramientas?"
+              required
+              value={formData.currentProjects}
+              onChange={(event) => updateField('currentProjects', event.target.value)}
+              error={errors.currentProjects}
+              rows={4}
+            />
+            <FieldTextarea
+              label="¿Qué esperas encontrar en este encuentro que no encontrarías en otro espacio?"
+              required
+              value={formData.encounterExpectation}
+              onChange={(event) => updateField('encounterExpectation', event.target.value)}
+              error={errors.encounterExpectation}
+              rows={4}
+            />
+            <p className="registro-note-placeholder">{config.texts.notes.letterPlaceholder}</p>
+          </SectionCard>
+
+          <SectionCard
+            title={config.texts.sectionTitles.references}
+            description={config.texts.sectionDescriptions.references}
+          >
+            <div className="registro-subblock">
+              <h3>Referencia 1</h3>
+              <div className="registro-grid registro-grid--2">
+                <FieldInput
+                  label="Nombre completo"
+                  required
+                  value={formData.reference1FullName}
+                  onChange={(event) => updateField('reference1FullName', event.target.value)}
+                  error={errors.reference1FullName}
+                />
+                <FieldInput
+                  label="Organización"
+                  required
+                  value={formData.reference1Organization}
+                  onChange={(event) => updateField('reference1Organization', event.target.value)}
+                  error={errors.reference1Organization}
+                />
+                <FieldInput
+                  label="Cargo"
+                  required
+                  value={formData.reference1Role}
+                  onChange={(event) => updateField('reference1Role', event.target.value)}
+                  error={errors.reference1Role}
+                />
+                <FieldInput
+                  label="Email"
+                  type="email"
+                  required
+                  value={formData.reference1Email}
+                  onChange={(event) => updateField('reference1Email', event.target.value)}
+                  error={errors.reference1Email}
+                />
+                <FieldInput
+                  label="Teléfono"
+                  required
+                  value={formData.reference1Phone}
+                  onChange={(event) => updateField('reference1Phone', event.target.value)}
+                  error={errors.reference1Phone}
+                />
+              </div>
+            </div>
+
+            <div className="registro-subblock">
+              <h3>Referencia 2</h3>
+              <div className="registro-grid registro-grid--2">
+                <FieldInput
+                  label="Nombre completo"
+                  required
+                  value={formData.reference2FullName}
+                  onChange={(event) => updateField('reference2FullName', event.target.value)}
+                  error={errors.reference2FullName}
+                />
+                <FieldInput
+                  label="Organización"
+                  required
+                  value={formData.reference2Organization}
+                  onChange={(event) => updateField('reference2Organization', event.target.value)}
+                  error={errors.reference2Organization}
+                />
+                <FieldInput
+                  label="Cargo"
+                  required
+                  value={formData.reference2Role}
+                  onChange={(event) => updateField('reference2Role', event.target.value)}
+                  error={errors.reference2Role}
+                />
+                <FieldInput
+                  label="Email"
+                  type="email"
+                  required
+                  value={formData.reference2Email}
+                  onChange={(event) => updateField('reference2Email', event.target.value)}
+                  error={errors.reference2Email}
+                />
+                <FieldInput
+                  label="Teléfono"
+                  required
+                  value={formData.reference2Phone}
+                  onChange={(event) => updateField('reference2Phone', event.target.value)}
+                  error={errors.reference2Phone}
+                />
+              </div>
+            </div>
+
+            <FieldInput
+              label="¿Cómo supiste de este encuentro?"
+              value={formData.referralSource}
+              onChange={(event) => updateField('referralSource', event.target.value)}
+              error={errors.referralSource}
+              placeholder="Opcional"
+            />
+          </SectionCard>
+
+          <SectionCard
+            title={config.texts.sectionTitles.considerations}
+            description={config.texts.sectionDescriptions.considerations}
+          >
+            <FieldTextarea
+              label="Necesidades de accesibilidad o salud"
+              hint="Si hay alguna condición médica, alimentaria o de accesibilidad que debamos tener en cuenta para acompañar tu participación adecuadamente, puedes indicarla aquí."
+              value={formData.accessibilityNeeds}
+              onChange={(event) => updateField('accessibilityNeeds', event.target.value)}
+              error={errors.accessibilityNeeds}
+              rows={4}
+            />
+            <FieldTextarea
+              label="Límites o consideraciones personales"
+              hint="¿Existe algún tema, enfoque o dinámica que prefieras no abordar en este espacio?"
+              value={formData.personalBoundaries}
+              onChange={(event) => updateField('personalBoundaries', event.target.value)}
+              error={errors.personalBoundaries}
+              rows={4}
             />
           </SectionCard>
 
           <SectionCard title={config.texts.sectionTitles.consent} description={config.texts.sectionDescriptions.consent}>
             <FieldCheckbox checked={formData.consentData} onChange={(value) => updateField('consentData', value)} error={errors.consentData}>
               Autorizo el tratamiento de mis datos para gestionar mi solicitud, el seguimiento del proceso y las comunicaciones oficiales relacionadas con este encuentro.{' '}
-              <a href={config.urls.privacyPolicy} target="_blank" rel="noopener noreferrer">Política de Privacidad</a>.
+              <a href={config.urls.privacyPolicy} target="_blank" rel="noopener noreferrer">
+                Política de Privacidad
+              </a>
+              .
             </FieldCheckbox>
             <FieldCheckbox checked={formData.consentCommunity} onChange={(value) => updateField('consentCommunity', value)} error={errors.consentCommunity}>
               Acepto los lineamientos de colaboración y convivencia profesional de la comunidad ANNiA.{' '}
-              <a href={config.urls.communityGuidelines} target="_blank" rel="noopener noreferrer">Lineamientos de comunidad</a>.
+              <a href={config.urls.communityGuidelines} target="_blank" rel="noopener noreferrer">
+                Lineamientos de comunidad
+              </a>
+              .
             </FieldCheckbox>
           </SectionCard>
 

@@ -17,8 +17,7 @@ export const createAutomationService = ({ transport } = {}) => {
       return safeTransport.dispatch({ channel: 'internal', message });
     },
     async classifyRegistration(payload) {
-      const urgency = payload.attendanceAvailability === 'Disponible parcialmente' ? 'follow_up' : 'normal';
-      return { segment: payload.sector || 'general', urgency };
+      return { segment: payload.workArea || 'general', urgency: 'normal' };
     },
   };
 };

@@ -1,36 +1,43 @@
 const REQUIRED_MESSAGE = 'Este campo es obligatorio.';
 
-const isValidUrl = (value) => {
-  if (!value) return true;
-  try {
-    const parsed = new URL(value);
-    return ['http:', 'https:'].includes(parsed.protocol);
-  } catch {
-    return false;
-  }
-};
-
 const isValidEmail = (email) => /^\S+@\S+\.\S+$/.test(email);
 
+const requiredText = (value) => (!String(value || '').trim() ? REQUIRED_MESSAGE : '');
+
+const emailRule = (value) => {
+  if (!String(value || '').trim()) return REQUIRED_MESSAGE;
+  if (!isValidEmail(value)) return 'Ingresa un email válido.';
+  return '';
+};
+
 const fieldRules = {
-  firstName: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  lastName: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  role: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  organization: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  sector: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  organizationWebsite: (value) => (!isValidUrl(value) ? 'Ingresa una URL válida (https://...).': ''),
-  whatsapp: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  email: (value) => {
-    if (!value.trim()) return REQUIRED_MESSAGE;
-    if (!isValidEmail(value)) return 'Ingresa un email válido.';
-    return '';
-  },
-  professionalProfileUrl: (value) => (!isValidUrl(value) ? 'Ingresa una URL válida (https://...).': ''),
-  bio: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  motivation: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  attendanceAvailability: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  referralSource: (value) => (!value.trim() ? REQUIRED_MESSAGE : ''),
-  questions: () => '',
+  fullName: requiredText,
+  email: emailRule,
+  phone: requiredText,
+  organization: requiredText,
+  role: requiredText,
+  birthDate: requiredText,
+  residenceCountry: requiredText,
+  bio: requiredText,
+  workArea: requiredText,
+  educationLevel: requiredText,
+  leadershipChallenge: requiredText,
+  leadershipQuestion: requiredText,
+  currentProjects: requiredText,
+  encounterExpectation: requiredText,
+  referralSource: () => '',
+  reference1FullName: requiredText,
+  reference1Organization: requiredText,
+  reference1Role: requiredText,
+  reference1Email: emailRule,
+  reference1Phone: requiredText,
+  reference2FullName: requiredText,
+  reference2Organization: requiredText,
+  reference2Role: requiredText,
+  reference2Email: emailRule,
+  reference2Phone: requiredText,
+  accessibilityNeeds: () => '',
+  personalBoundaries: () => '',
   consentData: (value) => (!value ? 'Debes aceptar el tratamiento de datos.' : ''),
   consentCommunity: (value) => (!value ? 'Debes aceptar lineamientos de comunidad.' : ''),
 };
@@ -41,10 +48,6 @@ export const validateRegistration = (formData) => {
     if (error) acc[key] = error;
     return acc;
   }, {});
-
-  if (formData.referralSource === 'Recomendación directa' && !formData.referralName.trim()) {
-    errors.referralName = 'Indica quién te recomendó.';
-  }
 
   return {
     success: Object.keys(errors).length === 0,

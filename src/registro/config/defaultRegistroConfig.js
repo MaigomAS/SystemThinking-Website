@@ -8,18 +8,28 @@ const defaultTexts = {
   intro:
     'Este registro nos permite comprender tu trayectoria, el contexto donde lideras y el tipo de impacto que deseas habilitar. Cada solicitud es evaluada por el equipo académico y estratégico del encuentro.',
   sectionTitles: {
-    identity: '01 · Identidad profesional',
-    profile: '02 · Contexto y trayectoria',
-    contact: '03 · Canales de coordinación',
-    participation: '04 · Tu participación en el encuentro',
-    consent: '05 · Consentimientos',
+    identity: '01 · Identidad y contexto',
+    profile: '02 · Trayectoria y perfil',
+    leadership: '03 · Momento de liderazgo',
+    references: '04 · Participación y referencias',
+    considerations: '05 · Consideraciones de participación',
+    consent: '06 · Consentimientos',
   },
   sectionDescriptions: {
-    identity: 'Comencemos con los datos base de identificación.',
-    profile: 'Buscamos entender tu rol, sector y marco de influencia.',
-    contact: 'Estos canales se usan para confirmación y seguimiento del proceso.',
-    participation: 'Aquí evaluamos motivación, disponibilidad y punto de entrada al encuentro.',
+    identity: 'Información base para comprender tu contexto actual.',
+    profile: 'Este bloque nos ayuda a entender tu recorrido profesional y nivel de formación.',
+    leadership:
+      'Buscamos comprender el momento que atraviesas como líder y el tipo de desafíos que estás abordando actualmente.',
+    references:
+      'Esta información nos permite contextualizar tu participación y comprender mejor tu trayectoria profesional.',
+    considerations: 'Comparte cualquier consideración relevante para acompañar tu participación de forma adecuada.',
     consent: 'Necesarios para procesar tu solicitud y habilitar la comunicación oficial sobre el encuentro.',
+  },
+  notes: {
+    cvPlaceholder:
+      'CV o perfil ampliado (opcional): Si deseas complementar tu postulación con una hoja de vida o perfil profesional, podrás adjuntarlo aquí en futuras versiones.',
+    letterPlaceholder:
+      'Carta o nota complementaria (opcional): Si deseas ampliar tu postulación con una reflexión adicional, podrás adjuntarla en futuras versiones.',
   },
   actions: {
     submit: 'Enviar postulación',
@@ -74,6 +84,7 @@ export const createRegistroConfig = (overrides = {}) => {
         ...defaultTexts.sectionDescriptions,
         ...(overrides.texts?.sectionDescriptions || {}),
       },
+      notes: { ...defaultTexts.notes, ...(overrides.texts?.notes || {}) },
       actions: { ...defaultTexts.actions, ...(overrides.texts?.actions || {}) },
       states: { ...defaultTexts.states, ...(overrides.texts?.states || {}) },
       success: {
@@ -95,15 +106,13 @@ export const createRegistroConfig = (overrides = {}) => {
 };
 
 export const registroOptions = {
-  sectors: [
-    'Educación',
-    'Salud',
-    'Tecnología',
-    'Consultoría',
-    'Sector público',
-    'Impacto social',
+  educationLevels: [
+    'Secundaria',
+    'Técnico o tecnólogo',
+    'Pregrado',
+    'Especialización',
+    'Maestría',
+    'Doctorado',
     'Otro',
   ],
-  attendanceAvailability: ['Disponible para todas las sesiones', 'Disponible parcialmente', 'Necesito revisar agenda'],
-  referralSource: ['Comunidad ANNiA', 'Recomendación directa', 'LinkedIn', 'Evento', 'Otro'],
 };
