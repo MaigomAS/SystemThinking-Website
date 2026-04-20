@@ -35,9 +35,12 @@ export const useRegistroForm = ({ config, registrationService }) => {
     try {
       await registrationService.submitRegistration(formData, config);
       setStatus('success');
-    } catch {
+    } catch (error) {
       setStatus('error');
-      setSubmitError(config.texts.errors.submitFailed);
+      if (error?.fieldErrors && Object.keys(error.fieldErrors).length > 0) {
+        setErrors(error.fieldErrors);
+      }
+      setSubmitError(error?.message || config.texts.errors.submitFailed);
     }
   };
 
@@ -49,6 +52,5 @@ export const useRegistroForm = ({ config, registrationService }) => {
     updateField,
     submit,
     reset,
-    showReferralName: formData.referralSource === 'Recomendación directa',
   };
 };

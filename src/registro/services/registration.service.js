@@ -3,8 +3,21 @@ import { toIsoNow } from '../utils/date.js';
 
 const defaultApiClient = {
   async saveRegistration(data) {
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    return { id: `reg_${Math.random().toString(36).slice(2, 10)}`, ...data };
+    const response = await fetch('/api/registro', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    const payload = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+      const error = new Error(payload.error || 'No se pudo enviar la postulación.');
+      error.fieldErrors = payload.fieldErrors || {};
+      throw error;
+    }
+
+    return { ...data, id: payload.id, createdAt: payload.createdAt, status: payload.status };
   },
 };
 
