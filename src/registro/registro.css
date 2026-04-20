@@ -226,6 +226,34 @@
   gap: 0.7rem;
 }
 
+
+.registro-footer {
+  max-width: 940px;
+  margin: 1.1rem auto 0;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(8, 12, 24, 0.45);
+  color: #aebddd;
+  text-align: center;
+}
+
+.registro-footer p {
+  margin: 0.15rem 0;
+  font-size: 0.83rem;
+  line-height: 1.45;
+}
+
+.registro-footer p:first-child {
+  color: #c5d4ff;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.registro-footer a {
+  color: #d7e2ff;
+}
+
 @media (max-width: 780px) {
   .registro-shell {
     padding: 0.7rem;
@@ -257,5 +285,9 @@
   .registro-button--ghost {
     width: 100%;
     text-align: center;
+  }
+
+  .registro-footer {
+    margin-top: 0.8rem;
   }
 }

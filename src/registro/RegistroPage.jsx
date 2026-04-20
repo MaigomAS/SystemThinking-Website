@@ -9,6 +9,20 @@ import { createRegistrationService } from './services/registration.service.js';
 import SectionCard from './sections/SectionCard.jsx';
 import './registro.css';
 
+
+const RegistroFooter = () => (
+  <footer className="registro-footer" aria-label="Créditos del encuentro">
+    <p>#SystemThinking2026</p>
+    <p>Un espacio de liderazgo impulsado por ANNiA</p>
+    <p>
+      en colaboración con{' '}
+      <a href="https://www.vidaalcentro.com" target="_blank" rel="noopener noreferrer">
+        Vida al Centro
+      </a>
+    </p>
+  </footer>
+);
+
 function RegistroPage({ config: customConfig, services = {} }) {
   const config = createRegistroConfig(customConfig);
   const automationService = services.automationService || createAutomationService();
@@ -41,6 +55,7 @@ function RegistroPage({ config: customConfig, services = {} }) {
             </button>
           </div>
         </article>
+        <RegistroFooter />
       </main>
     );
   }
@@ -248,6 +263,7 @@ function RegistroPage({ config: customConfig, services = {} }) {
           </button>
         </form>
       </article>
+      <RegistroFooter />
     </main>
   );
 }

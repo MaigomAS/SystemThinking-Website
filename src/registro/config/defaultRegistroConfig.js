@@ -6,7 +6,7 @@ const defaultTexts = {
   subtitle: REGISTRO_EVENT.eventNameFull,
   eventMeta: REGISTRO_EVENT.eventLocationDate,
   intro:
-    'Este registro nos permite comprender tu trayectoria, el contexto donde lideras y el tipo de impacto que deseas habilitar. Cada aplicación es evaluada por el equipo académico y estratégico de ANNiA para este encuentro.',
+    'Este registro nos permite comprender tu trayectoria, el contexto donde lideras y el tipo de impacto que deseas habilitar. Cada solicitud es evaluada por el equipo académico y estratégico del encuentro.',
   sectionTitles: {
     identity: '01 · Identidad profesional',
     profile: '02 · Contexto y trayectoria',
