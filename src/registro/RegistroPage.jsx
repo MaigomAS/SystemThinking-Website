@@ -52,6 +52,7 @@ function RegistroPage({ config: customConfig, services = {} }) {
           <p className="registro-eyebrow">{config.texts.eyebrow}</p>
           <h1>{config.texts.title}</h1>
           <p className="registro-subtitle">{config.texts.subtitle}</p>
+          <p className="registro-event-meta">{config.texts.eventMeta}</p>
           <p>{config.texts.intro}</p>
         </header>
 
@@ -183,7 +184,7 @@ function RegistroPage({ config: customConfig, services = {} }) {
           >
             <FieldTextarea
               label="Motivación para aplicar"
-              hint="¿Qué transformación buscas activar y por qué Egisto es relevante para este momento?"
+              hint="¿Qué transformación buscas activar y por qué este encuentro es relevante para este momento?"
               required
               value={formData.motivation}
               onChange={(e) => updateField('motivation', e.target.value)}
@@ -201,7 +202,7 @@ function RegistroPage({ config: customConfig, services = {} }) {
                 error={errors.attendanceAvailability}
               />
               <FieldSelect
-                label="¿Cómo conociste Egisto?"
+                label="¿Cómo conociste este encuentro?"
                 required
                 options={registroOptions.referralSource}
                 value={formData.referralSource}

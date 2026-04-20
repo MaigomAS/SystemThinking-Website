@@ -1,4 +1,4 @@
-# Módulo `registro` (Egisto)
+# Módulo `registro` (#SystemThinking2026)
 
 Módulo aislado para registro premium de ANNiA, desacoplado de rutas/páginas existentes.
 
@@ -19,10 +19,19 @@ npx vite build --config vite.registro.config.js
 ```jsx
 import { RegistroPage } from '@/src/registro';
 
-<RegistroPage config={{ programName: 'Egisto', programKey: 'egisto' }} />
+<RegistroPage config={{ programName: '#SystemThinking2026', programKey: 'system-thinking-2026' }} />
 ```
 
 Luego solo se conecta a la ruta `/registro` desde el router principal cuando se autorice.
+
+## Configuración del evento
+
+La configuración central está en `src/registro/config/event.js`:
+
+- `eventNameShort`: `#SystemThinking2026`
+- `eventNameFull`: `Encuentro fundacional de liderazgo sistémico`
+- `eventLocationDate`: `Bergen, Noruega · Noviembre 2026`
+- `eventKey`: `system-thinking-2026`
 
 ## Configuración soportada
 
@@ -30,6 +39,7 @@ Luego solo se conecta a la ruta `/registro` desde el router principal cuando se 
 
 - `programName`
 - `programKey`
+- `event`
 - `texts`
 - `success messages`
 - `emailTemplates`

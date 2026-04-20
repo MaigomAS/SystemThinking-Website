@@ -1,28 +1,31 @@
+import { REGISTRO_EVENT } from './event.js';
+
 const defaultTexts = {
   eyebrow: 'ANNiA · Admisiones',
-  title: 'Registro de liderazgo para Egisto',
-  subtitle: 'Cohorte de transformación sistémica · edición 2026',
+  title: `Registro de liderazgo · ${REGISTRO_EVENT.eventNameShort}`,
+  subtitle: REGISTRO_EVENT.eventNameFull,
+  eventMeta: REGISTRO_EVENT.eventLocationDate,
   intro:
-    'Este registro nos permite comprender tu trayectoria, el contexto donde lideras y el tipo de impacto que deseas habilitar. Cada aplicación es evaluada por el equipo académico y estratégico de ANNiA.',
+    'Este registro nos permite comprender tu trayectoria, el contexto donde lideras y el tipo de impacto que deseas habilitar. Cada aplicación es evaluada por el equipo académico y estratégico de ANNiA para este encuentro.',
   sectionTitles: {
     identity: '01 · Identidad profesional',
     profile: '02 · Contexto y trayectoria',
     contact: '03 · Canales de coordinación',
-    participation: '04 · Participación en Egisto',
+    participation: '04 · Tu participación en el encuentro',
     consent: '05 · Confirmaciones',
   },
   sectionDescriptions: {
     identity: 'Comencemos con los datos base de identificación.',
     profile: 'Buscamos entender tu rol, sector y marco de influencia.',
     contact: 'Estos canales se usan para confirmación y seguimiento del proceso.',
-    participation: 'Aquí evaluamos motivación, disponibilidad y punto de entrada al programa.',
+    participation: 'Aquí evaluamos motivación, disponibilidad y punto de entrada al encuentro.',
     consent: 'Necesario para procesar la aplicación y habilitar comunicación oficial.',
   },
   actions: {
     submit: 'Enviar postulación',
     submitting: 'Enviando registro de forma segura…',
     reset: 'Registrar una nueva postulación',
-    nextSteps: 'Ver próximos pasos del programa',
+    nextSteps: 'Ver próximos pasos del encuentro',
   },
   states: {
     loading: 'Validando y preparando tu registro…',
@@ -35,7 +38,7 @@ const defaultTexts = {
     steps: [
       'Confirmación automática por email en los próximos minutos.',
       'Revisión de perfil por el comité de admisiones ANNiA.',
-      'Contacto con siguientes pasos, materiales y agenda del programa.',
+      'Contacto con siguientes pasos, materiales y agenda del encuentro.',
     ],
   },
   errors: {
@@ -56,12 +59,13 @@ const defaultUrls = {
 };
 
 export const createRegistroConfig = (overrides = {}) => {
-  const programName = overrides.programName || 'Egisto';
-  const programKey = overrides.programKey || 'egisto';
+  const programName = overrides.programName || REGISTRO_EVENT.eventNameShort;
+  const programKey = overrides.programKey || REGISTRO_EVENT.eventKey;
 
   return {
     programName,
     programKey,
+    event: { ...REGISTRO_EVENT, ...(overrides.event || {}) },
     texts: {
       ...defaultTexts,
       ...overrides.texts,
