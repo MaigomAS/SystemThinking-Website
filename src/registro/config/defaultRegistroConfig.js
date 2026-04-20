@@ -12,14 +12,14 @@ const defaultTexts = {
     profile: '02 · Contexto y trayectoria',
     contact: '03 · Canales de coordinación',
     participation: '04 · Tu participación en el encuentro',
-    consent: '05 · Confirmaciones',
+    consent: '05 · Consentimientos',
   },
   sectionDescriptions: {
     identity: 'Comencemos con los datos base de identificación.',
     profile: 'Buscamos entender tu rol, sector y marco de influencia.',
     contact: 'Estos canales se usan para confirmación y seguimiento del proceso.',
     participation: 'Aquí evaluamos motivación, disponibilidad y punto de entrada al encuentro.',
-    consent: 'Necesario para procesar la aplicación y habilitar comunicación oficial.',
+    consent: 'Necesarios para procesar tu solicitud y habilitar la comunicación oficial sobre el encuentro.',
   },
   actions: {
     submit: 'Enviar postulación',

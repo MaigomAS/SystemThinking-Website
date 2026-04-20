@@ -52,3 +52,13 @@ La configuración central está en `src/registro/config/event.js`:
 - **Persistencia:** `src/registro/services/registration.service.js`
 - **Automatizaciones:** `src/registro/services/automation.service.js`
 - **Templates:** `src/registro/templates/emailTemplates.js`
+
+
+## Páginas legales (standalone)
+
+El módulo incluye contenido listo para:
+
+- `registro/privacy/index.html` (Política de Privacidad)
+- `registro/community/index.html` (Lineamientos de comunidad)
+
+Estos documentos usan estilo compartido en `registro/legal.css`.

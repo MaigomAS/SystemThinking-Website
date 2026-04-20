@@ -234,12 +234,12 @@ function RegistroPage({ config: customConfig, services = {} }) {
 
           <SectionCard title={config.texts.sectionTitles.consent} description={config.texts.sectionDescriptions.consent}>
             <FieldCheckbox checked={formData.consentData} onChange={(value) => updateField('consentData', value)} error={errors.consentData}>
-              Autorizo el tratamiento de mis datos para gestionar admisión, seguimiento y comunicaciones asociadas al programa.{' '}
-              <a href={config.urls.privacyPolicy}>Política de Privacidad</a>.
+              Autorizo el tratamiento de mis datos para gestionar mi solicitud, el seguimiento del proceso y las comunicaciones oficiales relacionadas con este encuentro.{' '}
+              <a href={config.urls.privacyPolicy} target="_blank" rel="noopener noreferrer">Política de Privacidad</a>.
             </FieldCheckbox>
             <FieldCheckbox checked={formData.consentCommunity} onChange={(value) => updateField('consentCommunity', value)} error={errors.consentCommunity}>
-              Acepto lineamientos de colaboración y convivencia profesional de la comunidad ANNiA.{' '}
-              <a href={config.urls.communityGuidelines}>Lineamientos de comunidad</a>.
+              Acepto los lineamientos de colaboración y convivencia profesional de la comunidad ANNiA.{' '}
+              <a href={config.urls.communityGuidelines} target="_blank" rel="noopener noreferrer">Lineamientos de comunidad</a>.
             </FieldCheckbox>
           </SectionCard>
 
