@@ -17,3 +17,6 @@ yarn-error.log*
 .env.local
 .env.*.local
 dist-ecall/
+dist-registro/
+.vercel
+.env*.local

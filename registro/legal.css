@@ -1,0 +1,88 @@
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  color: #eaf0ff;
+  background:
+    radial-gradient(1200px 700px at 15% -10%, rgba(111, 143, 255, 0.22), transparent 65%),
+    radial-gradient(1000px 500px at 90% 0%, rgba(91, 210, 201, 0.14), transparent 70%),
+    linear-gradient(170deg, #0c1226 0%, #0a0f1f 50%, #070b16 100%);
+  min-height: 100vh;
+}
+
+.legal-shell {
+  width: min(900px, calc(100% - 2rem));
+  margin: 2rem auto;
+  padding: clamp(1rem, 3vw, 2rem);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: linear-gradient(160deg, rgba(13, 18, 36, 0.92), rgba(13, 18, 36, 0.76));
+  box-shadow: 0 24px 80px rgba(3, 5, 11, 0.55);
+}
+
+.legal-eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #9ab3ff;
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+h1 {
+  margin: 0.35rem 0 0.35rem;
+  font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+}
+
+.legal-meta {
+  margin: 0;
+  color: #b6c8f8;
+  font-weight: 600;
+}
+
+.legal-intro {
+  margin: 1rem 0 1.2rem;
+  color: #d6dff7;
+  line-height: 1.5;
+}
+
+section {
+  margin-top: 1rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.11);
+}
+
+h2 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+p {
+  margin: 0.45rem 0 0;
+  color: #d6dff7;
+  line-height: 1.5;
+}
+
+.legal-card {
+  margin-top: 0.6rem;
+  padding: 0.8rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.legal-footer {
+  margin-top: 1.4rem;
+  color: #c6d0ee;
+}
+
+a {
+  color: #cad8ff;
+}
